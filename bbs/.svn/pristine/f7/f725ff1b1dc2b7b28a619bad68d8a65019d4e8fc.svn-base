@@ -1,0 +1,9 @@
+<input type="hidden" name="itemCount" id="itemCount" value="###field:itemCount###"/>
+<!--fs:tiezi-->
+<tr>
+    <td class="subject"><span class="status">###zhong:###tiezi:post_clazz######</span><a href="/fenlei/post.jsp?postid=###tiezi:post_id###" target="_blank">###tiezi:topic###</a><em class="leve-1">###jing:###tiezi:is_best######</em><em class="leve-1">###suo:###tiezi:is_lock######</em></td>
+    <td class="later"><div class="name"><a href="/p-center/suso-username.jsp?cID=###tiezi:user_id###" target="_blank">###tiezi:nick###</a></div><div class="time">###shijian:###tiezi:create_time######</div></td>
+    <td class="score"><em class="hot">###tiezi:replies###</em>/<em class="hot">###tiezi:clicks###</em></td>
+    <td class="last"><div class="name"><a href="/p-center/suso-username.jsp?cID=###tiezi:replier_id###" target="_blank">###tiezi:rnick###</a></div><div class="time">###shijian:###tiezi:reply_time######</div></td>
+</tr>
+<!--fe:tiezi-->

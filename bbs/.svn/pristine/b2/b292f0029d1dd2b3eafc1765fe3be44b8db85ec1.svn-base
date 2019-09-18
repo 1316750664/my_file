@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <post_id valid="null">number</post_id>
+    <remark valid="null">string</remark>
+    <biao valid="null">string</biao>
+    <biaotiid valid="null">number</biaotiid>
+    <edit_time valid="null">string</edit_time>
+</map>

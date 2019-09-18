@@ -1,0 +1,23 @@
+.navp{width: 1001px; height: 40px;background: #eee;float: left;border: 1px solid #e5e5e5; border-bottom: 0;}
+.navp .navt{background: url(../images/pinpai.png) no-repeat;width: 100px; height: 30px;margin: 10px 0 0 16px;font-size: 14px; text-align: center; line-height: 30px;}
+.check{border:1px solid #e5e5e5;background: #f8f8f8;float: left; padding: 2px 20px;line-height: 40px;width: 961px;border-top:0}
+.gun{position: fixed;width: 961px;top: 0;*left:290px;}
+.hit{height: 38px;overflow: hidden;}
+.zimu{border-bottom:1px solid #e5e5e5;width: 961px;float: left;}
+span.ding{font-size: 14px;float: left; margin-right: 2px; }
+.zimu a{float:left;font: bold 14px "Microsoft YaHei"; height:20px;margin-right: 14px;border: 1px solid #f8f8f8;margin-top: 8px;width: 20px;text-align: center;}
+.zimu .no{color:#bbb;float:left;font: bold 14px "Microsoft YaHei";height:20px; width: 20px; margin-right: 13px;margin-top: 10px; text-align: center;}
+.zimu a.z{margin-right: 0;}
+.zimu .on{color: #fe0102; border: 1px solid #ba9292; }
+.chexi{float: left; width: 961px;}
+.chexi a{margin-right: 5px; }
+.liebiao{width: 1003px; margin-top: 10px;float: left;}
+.liebiao .much {border-collapse: collapse;}
+.liebiao .much .much_td1{background:#f8f8f8;border: 1px solid #e5e5e5; width: 120px;text-align: center;padding: 20px;}
+.liebiao .much .dc{width: 60px; height: 60px;}
+.liebiao .much_name{display:inline-block;width: 120px; text-align: center;margin-top: 3px;}
+.liebiao .much .much_td2{border: 1px solid #e5e5e5; width: 820px;padding: 20px 10px;}
+.liebiao .much_td2 a{text-align: center; display: block;line-height: 30px; width: 200px;font-size: 13px;color: #393942;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;padding-right:5px;float: left;}
+.liebiao .much_td2 a:hover{text-decoration: underline;color: #777;}
+.item_tab{display: none;}
+.liebiao .mucht .much_td1,.liebiao .mucht .much_td2{border-top: 0;}

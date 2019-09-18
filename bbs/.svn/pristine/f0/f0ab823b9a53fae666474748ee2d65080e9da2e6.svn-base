@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <pID valid="null">number</pID>
+    <fID valid="null">number</fID>
+    <user_id valid="null">number</user_id>
+    <yin valid="null">string</yin>
+    <neiR valid="null">string</neiR>
+    <niM valid="null">number</niM>
+    <create_time valid="null">string</create_time>
+</map>

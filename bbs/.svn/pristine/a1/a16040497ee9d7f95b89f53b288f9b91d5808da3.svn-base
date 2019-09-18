@@ -1,0 +1,27 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String key_w = null;
+    String goods_id =null;
+    String s_type = null;
+    if (request.getAttribute("key_w")!=null){
+        key_w = request.getAttribute("key_w").toString();
+    }
+    if(request.getAttribute("articleIds")!=null){
+        goods_id = request.getAttribute("articleIds").toString();
+    }
+    if(request.getAttribute("s_type")!=null){
+        s_type = request.getAttribute("s_type").toString();
+    }
+
+%>
+<form method="post" action="/sousuo/suso.jsp" id="orderForm">
+    <input type="hidden" name="key_w"
+           value='<%=key_w%>'/>
+    <input type="hidden" name="goods_id"
+           value='<%=goods_id%>'/>
+    <input type="hidden" name="s_type"
+           value='<%=s_type%>'/>
+</form>
+<script type="text/javascript">
+    document.getElementById("orderForm").submit();
+</script>

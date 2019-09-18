@@ -1,0 +1,147 @@
+package com.service.servlet.core;
+
+import com.bean.TaskBean;
+import com.service.Service.UserService.UserService;
+import com.service.Service.rll.TaskBeanService;
+import com.util.tools.CheckTools;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * BackDataAction改版  返回数据格式
+ * 使用backdata方法直接返回参数
+ * 请注意传值顺序要与sql语句一致
+ */
+@WebServlet(name = "NBackDataAction", urlPatterns = {"/Action/NBackDataAction.do"})
+public class NBackDataAction extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+//            response.setHeader("Access-Control-Allow-Origin", "*"); //本地测试用跨域
+            out = response.getWriter();
+            String taskId = "0";
+            List<String> paramValues = new ArrayList<String>();
+            List<String> paramTypes = new ArrayList<String>();
+            Enumeration enu = request.getParameterNames();
+            while (enu.hasMoreElements()) {
+                String paraName = (String) enu.nextElement();
+                if (paraName.equals("taskId")) {
+                    taskId = request.getParameter(paraName);
+                } else if (paraName.contains("id")) {//id类参数名，验证数字
+                    if (paraName.equals("user_id")) {
+                        paramValues.add(paraName);
+                        paramTypes.add("bigint");
+                    } else {
+                        if(CheckTools.checkIsNum(request.getParameter(paraName))){
+                            paramValues.add(request.getParameter(paraName));
+                            paramTypes.add("bigint");
+                        }else{
+                            out.write(ToolUtil.getReturnResultForString(701, null));
+                            out.flush();
+                            return;
+                        }
+                    }
+                }else if (paraName.contains("begin")) {//验证分页参数
+                    String begin = request.getParameter("begin");
+                    String size = request.getParameter("size");
+                    if(CheckTools.checkPositiveNum(begin) && CheckTools.checkPositiveNum(size)){
+                        int tBegin = Integer.parseInt(begin);
+                        int tSize = Integer.parseInt(size);
+                        int tmp = (tBegin-1)*tSize;
+                        paramValues.add(tmp+"");
+                        paramTypes.add("bigint");
+                        paramValues.add(size);
+                        paramTypes.add("bigint");
+                    }else{
+                        out.write(ToolUtil.getReturnResultForString(702, null));
+                        out.flush();
+                        return;
+                    }
+                } else {
+                    //验证非法字符串  但是可能会有子查询?
+                    paramValues.add(request.getParameter(paraName));
+                    paramTypes.add("varchar");
+                }
+            }
+
+            Map<String, String[]> paramMap = new HashMap<String, String[]>();
+            String backData = "backData";
+            String cmdType = "0";
+            String flagStr = "0";
+            paramMap.put("taskId", new String[]{taskId});
+            paramMap.put("cmdType", new String[]{cmdType});
+            paramMap.put("taskName", new String[]{backData});
+            paramMap.put("paramValues", paramValues.toArray(new String[]{}));
+            paramMap.put("paramTypes", paramTypes.toArray(new String[]{}));
+            paramMap.put("flag", new String[]{flagStr});
+
+            TaskBeanService taskBeanService = TaskBeanService.getInstance();
+            //验证参数
+            String result = taskBeanService.validMessage2(request, paramMap);
+            if (null != result) {
+                out.write(result);
+                out.flush();
+                return;
+            }
+            //组装bean
+            TaskBean taskBean = taskBeanService.makeTaskBean(paramMap);
+            int flag = Integer.parseInt(paramMap.get("flag")[0]);
+            UserService userService = UserService.getInstance();
+            String user_id = userService.getUidFromCookie(request);
+            //执行
+            out.write(taskBeanService.runTask2(backData, request, flag, taskBean, user_id));
+            out.flush();
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+        } catch (IOException e) {
+            exception = e.getCause();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            exception = e.getCause();
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            exception = e.getCause();
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            exception = e.getCause();
+            e.printStackTrace();
+        } catch (Exception e) {
+            exception = e.getCause();
+            e.printStackTrace();
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write(ToolUtil.getReturnResultForString(302,null));
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

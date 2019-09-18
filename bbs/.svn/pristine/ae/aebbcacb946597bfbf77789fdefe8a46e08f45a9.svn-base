@@ -1,0 +1,26 @@
+.ke-content p {
+    text-indent:2em;
+}
+dl{width:985px;overflow:hidden;}
+dl dd{width:978px;padding-left:6px;}
+dl dd h3{letter-spacing:1px; font:16px/30px "Microsoft Yahei"; height:30px; color:#000}
+dl dd p{line-height:20px;}
+h2{height:30px; line-height:30px;}
+dl dt{width:985px; height:107px; background:url(../../images/test/prodviwe.jpg) -5px -105px no-repeat; overflow:hidden;font-size:0px; text-indent:-3333px; margin-top:10px;}
+dl dt .b1{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -265px -1px no-repeat; float:left;font-size:0px; text-indent:-3333px;}
+dl .b1b{font:15px/30px "Microsoft Yahei";padding-top:5px; letter-spacing:1px;}
+dl dt .b2{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -403px -2px no-repeat; float:left; font-size:0px; text-indent:-3333px;}
+dl dt .b3{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -538px -2px no-repeat; float:left; font-size:0px; text-indent:-3333px;}
+dl .chanshu{width:965px;border-bottom:1px #eee solid; margin-left:10px;}
+dl .chanshu li{border-left:1px #eee solid;border-right:1px #eee solid; border-top:1px #eee solid;height:35px; line-height:35px;}
+dl .chanshu li b{border-right:1px #eee solid; width:120px; text-align:center;float:left;}
+dl .chanshu li .bnei{width:830px; float:left; padding-left:10px;}
+dl dt .b4{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -671px 0 no-repeat; overflow:hidden; font-size:0px; text-indent:-3333px;}
+dl .biaoge{letter-spacing:1px;width:965px;overflow:hidden; text-align:center}
+dl .biaotibig{font:16px/35px "Microsoft Yahei"; background:#eee; font-weight:bold}
+dl .biaoge span{width:150px; float:left;border-right:1px #ddd solid;}
+dl .biaoge .sc{width:330px; float:left;border-right:1px #ddd solid;}
+dl .biaoge .xh{width:180px; float:left;}
+dl dt .b5{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -810px 1px no-repeat; float:left; font-size:0px; text-indent:-3333px;}
+dl dt .b6{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -5px -212px no-repeat; float:left; font-size:0px; text-indent:-3333px;}
+dl dt .b7{width:120px; height:107px; background:url(../../images/test/prodviwe.jpg) -142px -216px no-repeat; float:left; font-size:0px; text-indent:-3333px;}

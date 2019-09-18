@@ -1,0 +1,13 @@
+<!--fs:index-->
+<li>
+    <div class="zuo"><img src="###src###" border="0"></div>
+    <div class="you">
+        <div class="name">
+<h4>###index:topic###</h4>
+<h5><a href="/fenlei/post.jsp?postid=###index:post_id###" ><em>###index:clicks### </em>查看 </a><a href="/fenlei/post.jsp?postid=###index:post_id###"> |<em> ###index:replies### </em>回复</a></h5>
+        </div>
+        <div class="rong">###index:content###</div>
+        <div class="time">发表于 ###time:###index:create_time######</div>
+    </div>
+</li>
+<!--fe:index-->

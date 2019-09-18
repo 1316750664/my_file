@@ -1,0 +1,44 @@
+.le{float:left}
+.ri{ float:right}
+.head{width:981px;border:1px solid #ccc;float:left; padding:8px 10px; margin-top:15px;}
+
+.fa{width:973px;margin-top:15px;float:left;background-color:#f1f1f1; padding:15px; border:1px solid #ddd;}
+.fat{font-family:micorsoft yehei; font-size:16px; padding-bottom:15px ; color:#F9872B}
+.inputt{height:18px; width:590px; color:#666; margin-left:8px;outline:none; padding:5px 0 5px 3px; line-height:18px;}
+.name{float:left; width:43px;}
+.kuang{width:928px; border:1px #ccc solid;height:400px; float:right; background-color:#fff;}
+.neirong{font-size:14px; font-family:micorsoft yehei;overflow:hidden}
+.select{height:28px; width:120px; margin-left:15px}
+.aite{font-size:13px; padding:2px 250px 0 15px}
+.aitee{font-size:18px; color:#7da0a0; font-family:Arial}
+.top{position:relative; top:3px; font-size:13px}
+.top1{position:relative; top:5px; font-size:13px}
+.pad{margin:0 30px; font-size:13px}
+.inputtt{height:480px; width:728px; color:#CCC; margin:3px 0 0 72px; font-size:12px}
+.anniu{ margin-top:5px;overflow:hidden; height:39px;text-align:right;}
+.tishi{line-height:39px; float:left; width:800px;}
+.anniu .ant{width:100px; float:right;}
+.margin-top10{margin-top:10px; overflow:hidden}
+
+/*投票*/
+.toupiao{width:100%; padding:10px; border-top:1px #ccc solid;}
+.toupiao tr{height:30px; line-height:30px;}
+.toupiao tr td{padding:5px 0}
+.toupiao .text_left{text-align:left;}
+.toupiao .text_right{text-align:right;}
+.toupiao .text_center{text-align:center;}
+.toupiao .tp{width:4%;}
+.toupiao .tp1{width:3%;}
+.toupiao .tp2{width:50%;}
+.toupiao .tp3{width:43%;}
+.toupiao .tpbg{background-color:#eee;}
+.toupiao .zhi{font-size:14px; background-color:#ccc; border:1px #bbb solid; color:#fff; font-family:"Times New Roman", Times, serif; width:30px; height:30px;float: left;}
+.toupiao .wz_kuang{border:1px #ccc solid; outline:none; padding-left:3px; width:97%; height:30px; margin-left:3px;}
+.bor_top{border-top:1px #ccc dashed}
+.bor_top .kuan{width:60px; height:20px; margin:0 5px}
+.tr_bg{background-color:#bbb}
+.toupiao .dz_kuang{border:1px #ccc solid; outline:none; padding-left:3px; width:200px; height:30px; margin-left:3px;}
+.toupiao .ant_ture{width:50px; height:25px; border:1px #ccc solid; background-color:#F9872B; color:#fff;}
+.toupiao .ant_flast{width:50px; height:25px; border:1px #ccc solid; background-color:#eee}
+
+

@@ -1,0 +1,47 @@
+<div class="tu">您当前搜索满足条件的帖子共有<span><strong>###field:itemCount###</strong></span>条。</div>
+    <div class="jian">
+        <table class="shu" border="0" cellpadding="0" cellspacing="0">
+            <colgroup>
+                <col class="shu1" />
+                <col class="shu1" />
+                <col class="shu2" />
+                <col class="shu3" />
+                <col class="shu4" />
+            </colgroup>
+            <thead>
+            <tr>
+                <td><span class="bt">标题</span></td>
+                <td>
+                        <span>
+                        <select id="sele">
+                            <option value="0">类目搜索</option>
+                           #4#:cococo4 #4#
+                        </select>
+                       </span>
+                </td>
+                <td><span class="th"><a href="#">发表</a></span></td>
+                <td><span class="th"><a href="#">回复</a>&nbsp;<b>/</b>&nbsp;<a href="#">阅读</a></span></td>
+                <td><span class="th" style="border-right:0"><a href="#">最后回复</a></span></td>
+            </tr>
+            </thead>
+            <tbody>
+<input type="hidden" name="itemCount" id="itemCount" value="###field:itemCount###"/>
+    ###cococo:forsplit###
+<!--fs:suso-->
+            <tr>
+                <td class="ssyi">
+                    <img src="../images/post_hot.png" />
+                    <a href="/fenlei/post.jsp?postid=###suso:post_id###">###suso:topic###</a>
+                </td>
+                <td class="sser"><a href="../fenlei/fenlei01.jsp?ID=###suso:forum_id###">###suso:forum_name###</a></td>
+                <td class="sssan">
+                    <div><a href="/p-center/suso-username.jsp?cID=###suso:user_id###">###suso:nick### </a></div>
+                    <div><em>#0#:cococo0###suso:create_time####0#</em></div>
+                </td>
+                <td class="sssi"><em>###suso:clicks###</em>/<em>###suso:replies###</em></td>
+                <td class="sswu">
+                    <div><a href="/p-center/suso-username.jsp?cID=###suso:user_id###">#2#:cococo2###suso:replier_id####2#</a></div>
+                    <div><em>#1#:cococo1###suso:reply_time####1#</em></div>
+                </td>
+            </tr>
+<!--fe:suso-->

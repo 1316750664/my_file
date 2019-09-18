@@ -1,0 +1,12 @@
+*{padding:0px; margin:0px;}
+ul,li{list-style:none}
+body {font-family: Arial, Helvetica, sans-serif,;font-size:12px;color: #333;}
+a{text-decoration:none; color:#333}
+a:hover{text-decoration:none; color:#D0021C}
+#max{width:1003px; margin:0 auto}
+.max_width{width:1003px; margin:0 auto}
+img{border:none}
+.left{float:left}
+.right{float:right}
+.clear{clear:both;}
+em,b,q,i{font-style:normal;}

@@ -1,0 +1,113 @@
+package com.service.servlet;
+
+import com.service.Service.UserService.UserService;
+import com.service.clazz.MainJsonService;
+import com.util.tools.CheckTools;
+import com.util.tools.FormParamValid;
+import com.util.tools.ReadWriteProperties;
+import com.util.tools.StaticUtil;
+import com.util.tools.ToolUtil;
+import solr.SolrService.SolrIndexOprate;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@WebServlet(name = "SendPost", urlPatterns = {"/Action/SendPost.do"})
+public class SendPost extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            Map<String, String[]> paramMap = new HashMap<String, String[]>(request.getParameterMap());
+
+            // 发帖 回贴 时间
+            paramMap.put("create_time", new String[]{new Date().getTime()+""});
+            //发帖
+            paramMap.put("taskId_1", new String[]{"9"});
+            paramMap.put("cmdType_1", new String[]{"Update"});
+            paramMap.put("ide_1", new String[]{"post_id"});
+            //总贴数
+            paramMap.put("taskId_2", new String[]{"17"});
+            paramMap.put("cmdType_2", new String[]{"Update"});
+            //发贴数
+            paramMap.put("taskId_3", new String[]{"22"});
+            paramMap.put("cmdType_3", new String[]{"Update"});
+// 积分
+            paramMap.put("points", new String[]{StaticUtil.properties.readValue("config","post_credit")});
+//            user_id  无则使用247
+            UserService userService = UserService.getInstance();
+            String user_id = userService.getUidFromCookie(request);
+            if (CheckTools.isNull(user_id)) {
+                paramMap.put("user_id", new String[]{"247"});
+            }else{
+                paramMap.put("user_id", new String[]{user_id});
+            }
+            String validMessage = FormParamValid.getInstance().valid2(paramMap);
+            if (validMessage != null) {
+                out.write(validMessage);
+                out.flush();
+                return;
+            }
+
+            String json = new MainJsonService().invoke(paramMap);
+            out.write(ToolUtil.getReturnResultForString(201,json));
+            out.flush();
+//            List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+//            SolrIndexOprate.getInstance().executeSolrAddPlus(list.get(0).get("post_id"),paramMap.get("biao")[0]);
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (Exception e) {
+            exception = e.getCause();
+            errorCode = "插入solr索引";
+        } finally {
+            if (exception != null) {
+//                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write(ToolUtil.getReturnResultForString(302, null));
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

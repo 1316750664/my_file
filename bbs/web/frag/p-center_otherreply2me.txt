@@ -1,0 +1,17 @@
+<input type="hidden" name="itemCount2" id="itemCount2" value="###field:itemCount###"/>
+ <!--fs:otherreply2me-->
+         ###cococoforsplit###
+                    <tr>
+                        <td colspan="2">
+                            <div class="hui_fu">
+                                <div class="hui_fu_l"><i class="iconfont">&#xe605;</i><strong class="bule">###otherreply2me:nick###</strong>　回复 我</div>
+                                <div class="hui_fu_r">#0#:cococo0###otherreply2me:reply_time####0#</div>
+                            </div>
+                            <div class="hui_fu_new">
+                                <div class="nei"><div class="fuhao">&ldquo;</div><div class="zhishu">#1#:cococo1###otherreply2me:reply_content####1#</div><div class="fuhao">&rdquo;</div></div>
+                                <div class="time"><em class="gart">（###otherreply2me:floor###楼）</em> 来自 <em style="text-decoration:underline">###otherreply2me:forum_name###</em></div>
+                            </div>
+
+                        </td>
+                    </tr>
+ <!--fe:otherreply2me-->

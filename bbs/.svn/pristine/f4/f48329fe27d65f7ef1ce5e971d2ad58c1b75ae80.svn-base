@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>企商论坛-浙江企商汇电子商务有限公司</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<link type="image/x-icon" href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="css/index.css" rel="stylesheet"/>
+<link type="text/css" href="css/body.css" rel="stylesheet"/>
+<link type="text/css" href="css/head.css" rel="stylesheet"/>
+<link type="text/css" href="font/iconfont.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+<div id="html_top"></div>
+<script type="text/javascript">
+    $.ajax({
+        type: 'post',
+        url: '/Action/HtmlHander.do',
+        data: {position:5},
+        dataType: 'html',
+        async: false,
+        success:function(data) {
+            $("#html_top").html(data);
+        }
+    });
+</script>
+
+<div class="bignav">
+   <div class="nav_h">
+      <div class="max_width">
+        <div id="max_nav">
+             <div class="navall">
+                全部社区
+                <i class="iconfont navall_xiao">&#xe601;</i>
+                <i class="iconfont navall_xiao dis_none">&#xe600;</i>
+             </div>
+             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="alllis">
+                  <tr>
+                    <td>
+                      <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd><a href="#">汽商汇</a></dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                    <td style="border-left:1px #ccc dashed; border-right:1px #ccc dashed">
+                       <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                    <td>
+                      <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                  </tr>
+             </table>
+         </div>
+         <ul class="nav">
+            <li cag="1"><a href="index.html" class="avices">首页</a></li>
+            <li cag="2"><a href="#">聚焦热点</a></li>
+            <li cag="3"><a href="#">卖家之声</a></li>
+            <li><a href="#">活动专区</a></li>
+            <li><a href="#">金牌卖家</a></li>
+         </ul>
+         <div class="p-center"><a href="p-center/andetiezi.jsp" style="color:#fff"><i class="iconfont" style="color:#fff">&#xe604; </i>个人中心</a></div>
+      </div>
+   </div>
+   <div class="navtwo">
+      <div class="max_width">
+          <ol class="navtwo_list list_margin10" id="navtwo2">
+              <li><a href="#">热点聚焦</a></li>
+              <li><span>|</span><a href="#">热点聚焦</a></li>
+              <li><span>|</span><a href="#">热点聚焦</a></li>
+          </ol>
+          <ol class="navtwo_list list_margin15" id="navtwo3">
+              <li><a href="fenlei/fenlei01.html">卖家之声</a></li>
+              <li><span>|</span><a href="#">热点聚焦</a></li>
+              <li><span>|</span><a href="#">热点聚焦</a></li>
+          </ol>
+      </div>
+   </div>
+   <div class="nav_z">
+      <div class="max_width">
+         <ul class="navlist">
+            <li><a href="#">汽商杂谈</a></li>
+            <li><span>|</span><a href="#">汽商杂谈</a></li>
+            <li><span>|</span><a href="#">汽商杂谈</a></li>
+         </ul>
+      </div>
+   </div>
+   <div class="nav_x">&nbsp;</div>
+</div>
+<div class="max_width">
+   <div class="index">
+       <div class="index_one">
+           <div class="index_one_l">
+              <div class="name"><span><i class="iconfont">&#xe603;</i><em>新手</em>话题</span><small>新手最关注的信息</small></div>
+              <ul class="new">
+                <li class="pei">
+                   <div class="left"><span class="d1"></span></div>
+                   <div class="center"><a href="#" class="yel">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li class="pei">
+                   <div class="left"><span class="d2"></span></div>
+                    <div class="center"><a href="#" class="yel">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li class="pei">
+                   <div class="left"><span class="d3"></span></div>
+                    <div class="center"><a href="#" class="yel">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">9</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">9</span></div>
+                   <div class="center"><a href="#" class="gary">2015年买家地盘志愿者招年买家地盘志愿者招</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+              </ul>
+           </div>
+           <div class="index_one_r"><img src="images/tu.jpg"></div>
+       </div>
+       <div class="index_two">
+          <div class="index_two_width" style="margin-right:10px;">
+              <span><em><i class="iconfont">&#xe603;</i>深度</em>解读</span>
+              <div class="nei">
+                  <div class="ya">
+                      <img src="images/12.png">
+                    <h4><a href="#" class="gary">如何成为有价值的卖家</a></h4>
+                  怎样打造网商的世界，给自己找到一块有价值的位置？<a href="#" class="red">[详情]</a>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                       <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+              </div>
+          </div>
+          <div class="index_two_width" style="padding:0 10px; border-left:1px #ccc dashed;border-right:1px #ccc dashed">
+              <ul class="tabs" id="tabs">
+                  <li><a href="javascript:void(0)" tab="1" class="current">线上活动</a></li>
+                  <li><a href="javascript:void(0)" tab="2">线下会议</a></li>
+              </ul>
+              <ul class="tab_conbox">
+                <li id="tab1">
+                    <div class="nei">
+                      <div class="ya">
+                          <img src="images/12.png">
+                        <h3>1月19日</h3>
+                        <h4><a href="#" class="gary">如何成为有价值的卖家</a></h4>
+                      怎样打造网商的世界，给自己找到一块有价值的位置？<a href="#" class="bule">[详情]</a>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                  </div>
+                </li>
+                <li id="tab2" class="tab_con">
+                  <div class="nei">
+                      <div class="ya">
+                          <img src="images/12.png">
+                        <h3>2月19日</h3>
+                        <h4><a href="#" class="gary">如何成为有价值的卖家</a></h4>
+                      怎样打造网商的世界，给自己找到一块有价值的位置？<a href="#" class="bule">[详情]</a>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                      </div>
+                      <div class="yb">
+                         <div class="yb_m">5月10日</div>
+                         <div class="yb_c"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+          </div>
+          <div class="index_two_width" style="margin-left:10px;">
+              <span><b class="yel"><i class="iconfont">&#xe603;</i>诚信</b>防骗</span>
+              <div class="nei">
+                  <div class="ya">
+                      <img src="images/12.png">
+                    <h4><a href="#" class="gary">如何成为有价值的卖家</a></h4>
+                  怎样打造网商的世界，给自己找到一块有价值的位置？<a href="#" class="yel">[详情]</a>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                       <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+                  <div class="yb">
+                     <div class="yb_l"><a href="#" class="gary"><i class="iconfont">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="yb_r"><a href="#" class="gart">40回复</a></div>
+                  </div>
+              </div>
+          </div>
+       </div>
+       <div class="index_three">
+          <div class="left">
+             <span><em><i class="iconfont">&#xe602;</i>热门</em>关注</span>
+             <ul class="nei">
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+                <li>
+                   <div class="zuo"><img src="images/tu.jpg" border="0"></div>
+                   <div class="you">
+                       <div class="name">
+                         <h4>五大行业频道 免费开放banner资源</h4>
+                         <h5><a href="#"><em>500 </em>查看 </a><a href="#"> |<em> 100 </em>回复</a></h5>
+                       </div>
+                       <div class="rong">做生意得看数据，没有数据的支撑生意无法长久经营。随着大家对数据的需求越来越大，从电脑端到无线端，随时随地都需要看数据！</div>
+                       <div class="time">发表于 2015-01-30 14:59</div>
+                   </div>
+                </li>
+             </ul>
+          </div>
+          <ul class="right">
+             <li>
+                 <h4><em class="yel"><i class="iconfont">&#xe603;</i>客户</em>服务</h4>
+                 <img src="images/tu.jpg" border="0">
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="yel"><i class="iconfont">&#xe603;</i>偶像</em>故事</h4>
+                 <img src="images/tu.jpg" border="0">
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="red"><i class="iconfont">&#xe603;</i>经验</em>分享</h4>
+                 <div class="pic">
+                    <img src="images/12.png" border="0">
+                    <div class="younei"> <h4><a href="#">新手卖家的福音来啦！</a></h4>
+                     你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="red">[详细]</a>
+                    </div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="red"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                 <div class="pic">
+                    <img src="images/12.png" border="0">
+                   <div class="younei">
+                     <h4><a href="#">新手卖家的福音来啦！</a></h4>
+                   你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="red">[详细]</a>
+                   </div>
+                  </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+          </ul>
+       </div>
+       <div class="index_four">
+          <ul class="index_four_width">
+             <li class="nei_padding">
+                  <div class="top">问题答疑：<a href="#" class="yel">2015电商之路如何走</a></div>
+                  <div class="bottom">
+                      <div class="left">
+                         <img src="images/12.png" border="0">
+                         <div class="picing">2014就要飘然走过，果果在思考20152014就要飘然走过，果果在思考2015...<a href="#" class="yel">[详情]</a></div>
+                      </div>
+                      <dl class="right">
+                          <h3><em>12万</em> 查看 | <em>5297</em> 回复</h3>
+                          <dd class="ming">
+                             <h4>刘小磊1925</h4>
+                             回顾2014，进淘宝也有三个多月的时间了
+                          </dd>
+                          <dd class="ming">
+                             <h4>刘小磊1925</h4>
+                             回顾2014，进淘宝也有三个多月的时间了
+                          </dd>
+                          <dd class="ming">
+                             <h4>刘小磊1925</h4>
+                             回顾2014，进淘宝也有三个多月的时间了
+                          </dd>
+                          <dd class="ming">
+                             <h4>刘小磊1925</h4>
+                             回顾2014，进淘宝也有三个多月的时间了
+                          </dd>
+                      </dl>
+                  </div>
+             </li>
+             <li style="padding:0 10px; border-left:1px #ccc dashed;border-right:1px #ccc dashed">
+                     <h4><em class="bule"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                     <div class="pic">
+                        <img src="images/12.png" border="0">
+                       <div class="younei">
+                         <h4><a href="#">新手卖家的福音来啦！</a></h4>
+                       你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="bule">[详细]</a>
+                       </div>
+                      </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+             </li>
+             <li style="padding-left:10px;">
+                     <h4><em class="bule"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                     <div class="pic">
+                        <img src="images/12.png" border="0">
+                       <div class="younei">
+                         <h4><a href="#">新手卖家的福音来啦！</a></h4>
+                       你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="bule">[详细]</a>
+                       </div>
+                      </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+             </li>
+           </ul>
+           <ul class="index_four_width nei_padding_t">
+             <li class="nei_padding">
+                  <h2><em><i class="iconfont">&#xe603;</i>干货</em>分享</h2>
+                  <dl class="xiao_list">
+                     <dd style="padding-right:8px;">
+                        <img src="images/12.png" border="0">
+                        <h5><a href="#">【干货分享】无线wap点图</a></h5>
+                        <small><b class="red">5297</b> 回复</small>
+                     </dd>
+                     <dd style="padding-right:8px;">
+                        <img src="images/12.png" border="0">
+                        <h5>【干货分享】无线wap焦点</h5>
+                        <small><b class="red">5297</b> 回复</small>
+                     </dd>
+                     <dd>
+                        <img src="images/12.png" border="0">
+                        <h5>【干货分享】无线wap焦点</h5>
+                        <small><b class="red">5297</b> 回复</small>
+                     </dd>
+                  </dl>
+                  <div class="ta">
+                       <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                   </div>
+                   <div class="ta">
+                       <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                   </div>
+                   <div class="ta">
+                       <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                   </div>
+                   <div class="ta">
+                       <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                       <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                   </div>
+             </li>
+             <li style="padding:0 10px; border-left:1px #ccc dashed;border-right:1px #ccc dashed">
+                     <h4><em class="bule"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                     <div class="pic">
+                        <img src="images/12.png" border="0">
+                       <div class="younei">
+                         <h4><a href="#">新手卖家的福音来啦！</a></h4>
+                       你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="bule">[详细]</a>
+                       </div>
+                      </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+             </li>
+             <li style="padding-left:10px;">
+                     <h4><em class="bule"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                     <div class="pic">
+                        <img src="images/12.png" border="0">
+                       <div class="younei">
+                         <h4>新手卖家的福音来啦！</h4>
+                       你还在开店之路茫茫然然吗？你还在被简单的操作问题所困扰吗？快来点击查看啦！… <a href="#" class="bule">[详细]</a>
+                       </div>
+                      </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+                     <div class="ta">
+                         <div class="ta_l"><a href="#" class="gary"><i class="iconfont bule">&#xe605;</i>[水煮网商]成为有价值的网商</a></div>
+                         <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                     </div>
+             </li>
+           </ul>
+       </div>
+   </div>
+</div>
+<div id="ftload">
+    <script type="text/javascript">
+
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:3},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $("#ftload").html(data);
+            }
+        });
+    </script>
+</div>
+<script type="text/javascript" src="js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/head.js" charset="utf-8"></script>
+<script type="text/javascript">
+//载入头部和尾部
+////$("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: "http://192.168.2.21:8089/js/jsonp.js?r=" + Math.random(), type: 'text/javascript', id: 'load' }).appendTo($('head'));
+//选项卡
+$("#tabs li a").each(function(index, element) {
+    $(this).hover(function(){
+	  $("#tabs li a").removeClass("current");
+	  $(".tab_conbox li").addClass("tab_con");
+	   var zhi=parseInt($(this).attr("tab"));
+		$("#tab"+zhi).removeClass("tab_con");
+		$(this).addClass("current");
+	});
+
+ });
+$(".tab_conbox li").each(function(index, element) {
+    $(this).hover(function(){
+		$(".tab_conbox li").addClass("tab_con");
+	     $(this).removeClass("tab_con");
+	})
+});
+//搜索
+$(".list").hover(function(){
+    $(this).addClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+},function(){
+	$(this).removeClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+	}
+);
+$(".ming li").each(function(index, element) {
+	$(this).click(function(){
+		var index=$(this).index();
+		var bbj=$(".ming li").eq(0).text();
+		var abj=$(this).text();
+		if(index != 0){
+			$(".ming li").eq(0).text(abj);
+			$(".ming li").eq(1).text(bbj);
+		}
+	});
+});
+
+//头部二级导航
+$(".nav li").each(function(index, element) {
+   $(this).mouseenter(function(e){
+	   	$(".navtwo_list").css("display","none");
+		$(".nav li").removeClass("nav_bg");
+		var index = $(this).index();
+		var cg = $(this).attr("cag");
+		if($("#navtwo"+cg).length == 1){
+			$("#navtwo"+cg).css("display","block");
+			$(".navtwo").css("display","block");
+			$(".navtwo").addClass("navtwo_bg");
+			$(this).addClass("nav_bg");
+		}else{
+			$(this).addClass("nav_ye");
+			
+		}
+	}).mouseleave(function(e){
+		$(this).removeClass("nav_ye");
+		$(".navtwo").css("display","none");
+		});
+});
+
+$(".navtwo").mouseenter(function(e){
+	var index = $(this).index();
+	var cg = $(this).attr("cag");
+	$(".navtwo").css("display","inline");
+	$(".navtwo").addClass("navtwo_bg");
+
+	}).mouseleave(function(e){
+		$(".navtwo").css("display","none");
+	});
+$(".bignav").mouseleave(function(){
+    $(".nav li").removeClass("nav_bg");
+})
+//大分类
+$("#max_nav").mouseenter(function(){
+	$(".alllis").css("display","block");
+		$(".navall").find("i").each(function(index, element) {
+			  $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+		 });
+	
+	}).mouseleave(function(){
+	$(".alllis").css("display","none");
+	$(".navall").find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+});
+
+</script>
+</body>
+</html>

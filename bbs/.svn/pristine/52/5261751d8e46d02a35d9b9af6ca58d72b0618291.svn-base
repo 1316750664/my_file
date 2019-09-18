@@ -1,0 +1,11 @@
+<!--fs:voteoption-->
+        <li>
+              <input name="choice" type="checkbox" >
+              <span class="opt">###voteoption:option_sn###</span>
+              <span class="opt-title">###voteoption:option_content###</span>
+        </li>
+        <li>
+              <div class="fraction-base"><span class="color###voteoption:option_sn###" style="width:29.2%"></span></div>
+              <div class="fraction"><em>###voteoption:votes###</em><em>(29.2%)</em></div>
+        </li>
+<!--fe:voteoption-->

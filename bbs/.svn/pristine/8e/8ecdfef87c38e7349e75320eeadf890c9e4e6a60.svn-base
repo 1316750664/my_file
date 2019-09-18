@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <biaotiId valid="null">number</biaotiId>
+    <tieL valid="null">number</tieL>
+    <user_id valid="null">number</user_id>
+    <create_time valid="null">string</create_time>
+    <biao valid="null">string</biao>
+    <remark valid="null">string</remark>
+    <xuan valid="null">number</xuan>
+    <touNum valid="null">number</touNum>
+    <isTou valid="null">number</isTou>
+    <end_time valid="null">string</end_time>
+</map>

@@ -1,0 +1,6 @@
+<!--fs:index-->
+<div class="left">
+    <img src="###src###" border="0">
+    <div class="picing" ><strong>###index:topic###</strong><br>###index:content###<a href="/fenlei/post.jsp?postid=###index:post_id###" class="yel">[详情]</a></div>
+</div>
+<!--fe:index-->

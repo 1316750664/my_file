@@ -1,0 +1,10 @@
+<input type="hidden" name="itemCount1" id="itemCount1" value="###field:itemCount###"/>
+<!--fs:andetiezi-->
+       ###cococoforsplit###
+        <tr>
+            <td class="padding10 text-left "><i class="iconfont">&#xe605;</i><a href="/fenlei/post.jsp?postid=###andetiezi:post_id###">###andetiezi:topic###</a></td>
+            <td>###andetiezi:forum_name###</td>
+            <td>###andetiezi:clicks###/###andetiezi:replies###</td>
+            <td>#0#:cococo0###andetiezi:create_time####0#</td>
+        </tr>
+<!--fe:andetiezi-->

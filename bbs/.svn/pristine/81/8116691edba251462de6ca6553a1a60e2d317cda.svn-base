@@ -1,0 +1,27 @@
+<div class="max_width">
+    <div class="bbs_index">
+        <div class="index_l">
+            <img src="/images/bbslogo.png" border="0">
+        </div>
+        <form action="/Action/SearchServlet.do" method="post" id="ss">
+        <div class="index_r">
+            <div class="shoubig">
+                <div class="list">
+                    <ul class="ming">
+                        <li data-id="1">帖子</li>
+                        <li data-id="2">汽友</li>
+                    </ul>
+                    <i class="iconfont shangjiao">&#xe601;</i>
+                    <i class="iconfont shangjiao dis_none">&#xe600;</i>
+                </div>
+                <input name="search_key" type="text" class="kuang" id="kw1"/>
+                <input type="hidden" name="indexid" id="indexid" value=""/>
+                <input type="hidden" name="q_type" id="s_type" value="1"/>
+                <input name="shousuo" type="button" class="ant" value="搜索"/>
+                <ul class="xialakuang">
+                </ul>
+            </div>
+        </div>
+            </form>
+    </div>
+</div>

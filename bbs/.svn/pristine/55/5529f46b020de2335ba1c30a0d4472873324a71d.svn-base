@@ -1,0 +1,162 @@
+package com.service.servlet;
+
+import com.service.Service.loginDetection.LoginDetection;
+import com.service.clazz.MainJsonService;
+import com.util.tools.FormParamValid;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by hzm on 2014/7/4.
+ */
+@WebServlet(name = "Adminapply", urlPatterns = {"/Action/Adminapply.do"})
+public class Adminapply extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            Map<String, String[]> paramMap = new HashMap<String, String[]>(request.getParameterMap());
+            //后台验证
+            //名字验证
+            String name = paramMap.get("name")[0];
+            if (name.trim() == "" || name.length() < 2) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "请输入正确的姓名" + "\"}");
+                return;
+            }
+            //身份证验证
+            String sfz = paramMap.get("sfz")[0];
+            String rs = "";
+            rs = ToolUtil.IDCardValidate(sfz);
+            if (!"".equals(rs)) {
+                out.write("{\"error\":\"\",\"msg\":\"" + rs + "\"}");
+                return;
+            }
+            //address验证
+            String address = paramMap.get("address")[0];
+            if ("".equals(address.trim())) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "地址不能为空" + "\"}");
+                return;
+            }
+
+            //E-mail
+            String mail = paramMap.get("E-mail")[0];
+            Boolean a = ToolUtil.checkEmail(mail);
+            if (!a) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "E-mail格式不正确" + "\"}");
+                return;
+            }
+            //手机号pon
+            String pon = paramMap.get("pon")[0];
+            boolean re2 = ToolUtil.checkMobileNumber(pon);
+            if (!re2) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "手机号格式不正确" + "\"}");
+                return;
+            }
+
+            String industry = paramMap.get("industry")[0];
+            if ("".equals(industry)||industry==null||"null".equals(industry)) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "从事行业不能为空" + "\"}");
+                return;
+            }
+
+            String career = paramMap.get("career")[0];
+            if ("".equals(career)||career==null||"null".equals(career)) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "职业不能为空" + "\"}");
+                return;
+            }
+
+            String rank = paramMap.get("rank")[0];
+            if ("".equals(rank)||rank==null||"null".equals(rank)) {
+                out.write("{\"error\":\"\",\"msg\":\"" + "等级不能为空" + "\"}");
+                return;
+            }
+
+
+            paramMap.put("taskId",new String[]{"339"} );
+            paramMap.put("cmdType",new String[]{"Update"});
+
+            String validMessage = FormParamValid.getInstance().valid(paramMap);
+            if (validMessage != null) {
+                out.write(validMessage);
+                out.flush();
+                return;
+            }
+            //     String cookie_uuid = ToolUtil.getRequestCookie(request.getCookies(), "cookie_uuid");
+            //    String[] param_user_id = paramMap.get("user_id");
+
+
+//            Iterator<Map.Entry<String, String[]>> iterator = paramMap.entrySet().iterator();
+//            while (iterator.hasNext()) {
+//                Map.Entry<String, String[]> entry = iterator.next();
+//                System.out.print("key::" + entry.getKey());
+//                String[] values = entry.getValue();
+//                if (values == null) {
+//                    System.out.println("===value::" + null);
+//                } else {
+//                    System.out.print("===value::");
+//                    for (String value : values) {
+//                        System.out.print(value + "--");
+//                    }
+//                    System.out.println("===");
+//                }
+//            }
+//            TaoDbPool.getInstance().getDataSource(1).getConnection();
+            //System.out.println(new MainJsonService().invoke(paramMap));
+            out.write(new MainJsonService().invoke(paramMap));
+            out.flush();
+//            System.out.println("out...:"+System.currentTimeMillis());
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

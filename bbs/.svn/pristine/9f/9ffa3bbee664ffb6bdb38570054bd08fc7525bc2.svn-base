@@ -1,0 +1,28 @@
+<input type="hidden" name="itemCount1" id="itemCount1" value="###field:itemCount###"/>
+<!--fs:reply2-->
+        ###cococo:forsplit###
+        <div class="floor-other loucheng">
+                <div class="left">
+                    <h4><a href="#"> #5#:cococo5###reply2:nick###_#coco#_###reply2:is_anony### #5# </a></h4>
+                    <div class="user-headimg">
+                        <a href="#" target="_blank"><img src="#j#:cococoj###reply2:avatar####j#" /></a>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="hdtitle">
+                        发表于 #0#:cococo0###reply2:reply_time####0#<s>|</s>#7#:cococo7<a href="http://localhost:8080/fenlei/post.jsp">#7#查看全部</a><em> #2#:cococo2###reply2:is_top####2#&nbsp&nbsp&nbsp  #1#:cococo1###reply2:floor####1#</em>
+                    </div>
+                    <div class="bd">
+                           #4#:cococo4###reply2:ref_content###_#coco#_###reply2:floor####4#
+                        <div class="article">
+                            <div class="ke-post">
+                                     #8#:cococo8###reply2:reply_content######reply2:is_delete####8#
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft">
+                        <div class="op"><a href="#" onclick=reply('###reply2:nick###',###reply2:floor###,###reply2:reply_id###,###reply2:post_id###) >回复</a></div>
+                    </div>
+                </div>
+        </div>
+<!--fe:reply2-->

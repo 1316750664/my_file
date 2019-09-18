@@ -1,0 +1,12 @@
+<!--fs:votepostedit-->
+               <tr class="tr_a">
+                    <td class="text_center"><i class="iconfont dis_none">&#xe60b;</i></td>
+                    <td class="text_center"><span class="zhi">###votepostedit:option_sn###</span></td>
+                    <td><input name="wz" type="text" class="wz_kuang" disabled="disabled" value="###votepostedit:option_content###"></td>
+                    <td>
+                        <a href="javascript:void(0)" class="bule"><i class="iconfont" style="font-size:20px">&#xe61c;</i></a>
+                        <span class="dis_none">链接到：<input name="lj" type="text"  disabled="disabled" value="###votepostedit:option_url###" class="dz_kuang">
+                        <span class="dis_none">链接到：<em></em> <a href="javascript:void(0)" class="red">修改</a> | <a href="javascript:void(0)">删除</a></span>
+                    </td>
+                </tr>
+<!--fe:votepostedit-->

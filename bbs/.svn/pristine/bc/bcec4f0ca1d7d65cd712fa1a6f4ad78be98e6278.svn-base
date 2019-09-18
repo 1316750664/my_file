@@ -1,0 +1,32 @@
+package com.service.servlet.RegisterPackages;
+
+import com.service.Service.loginDetection.LoginDetection;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+
+/**
+ * Created by hty070503 on 2014/11/21.
+ */
+@WebServlet(name = "LoginDetectionAction", urlPatterns = {"/Action/LoginDetectionAction.do"})
+public class LoginDetectionServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setHeader("content-type", "text/html;charset=UTF-8");
+            out = response.getWriter();
+            String ip = ToolUtil.getClientIp(request);
+            int statu = LoginDetection.getInstance().loginCheck(request.getCookies(), ip,response);
+            out.write(statu + "");
+            out.flush();
+        } catch (Exception e) {
+            out.write(4 + "");
+            out.flush();
+        }
+    }
+}

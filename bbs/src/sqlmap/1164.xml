@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <post_id>number</post_id>
+    <replies_user_id>number</replies_user_id>
+    <replies_content>string</replies_content>
+    <replies_timestamp>string</replies_timestamp>
+</map>

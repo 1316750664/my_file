@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <user_id valid="null">number</user_id>
+    <forum_id valid="null">number</forum_id>
+    <name valid="null">string</name>
+    <sfz valid="null">string</sfz>
+    <address valid="null">string</address>
+    <pon valid="null">string</pon>
+    <E-mail valid="null">string</E-mail>
+    <industry valid="null">string</industry>
+    <career valid="null">string</career>
+    <rank valid="null">string</rank>
+    <shuoming valid="null">string</shuoming>
+</map>

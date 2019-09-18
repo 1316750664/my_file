@@ -1,0 +1,9 @@
+<!--fs:index-->
+<div class="pic">
+    <img src="###src###" border="0">
+    <div class="younei">
+        <h4><a href="/fenlei/post.jsp?postid=###index:post_id###" >###index:topic###</a></h4>
+        ###index:content###<a href="/fenlei/post.jsp?postid=###index:post_id###" class="red">[详细]</a>
+    </div>
+</div>
+<!--fe:index-->

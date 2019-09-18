@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>出错啦...</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link type="image/x-icon" href="/favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="/css/error400.css" rel="stylesheet" />
+<link type="text/css" href="/css/foot.css" rel="stylesheet" />
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="margin">
+ <div id="border">
+  <div id="logo"> <a href="/"></a></div>
+    <div id="right"><a href="/" target="_blank">商城首页</a>｜<a href="/brand/index.html" target="_blank">配件品牌</a>｜<a href="/accessory/index.html" target="_blank">汽车用品</a>｜<a href="/m-center/unsalable.jsp" target="_blank">底价清仓</a>｜<a href="/buy-center/index.jsp" target="_blank">求购中心</a></div>
+ </div>
+</div>
+<div id="line"><div class="line"></div></div>
+<div class="margin" style="padding-bottom:40px">
+ <div id="centre">
+   <div class="centre1">
+     <div class="centre1-left">400 Error</div>
+     <div class="centre1-right"> <img src="/images/Main_03.jpg"/></div>
+     <div class="centre2"><a href="/index.html" >返回首页</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">返回上一页</a></div>
+     <div class="centre3">您输入的是火星文字，我们无法理解，请重新输入或返回上一页<br/>
+          <li>不要返回吗?</li>
+          <li>确定不要返回吗?</li>
+          <li>真的真的确定不要返回吗?</li>
+          <li>好吧.还是随便你要不要真的确定返回吧!</li></div>
+   </div>
+ </div>
+</div>
+<script type="text/javascript">
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:3},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $(data).appendTo($("body"));
+            }
+        });
+</script>
+</body>
+</html>

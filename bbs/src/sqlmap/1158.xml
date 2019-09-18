@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <user_id>number</user_id>
+    <user_name>string</user_name>
+    <password>string</password>
+    <email>string</email>
+    <age>string</age>
+    <like>string</like>
+    <is_root>number</is_root>
+    <sex>string</sex>
+    <Journal>string</Journal>
+</map>

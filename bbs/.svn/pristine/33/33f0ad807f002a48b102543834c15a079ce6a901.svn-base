@@ -1,0 +1,244 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="com.util.tools.CheckTools" %>
+<%@ page import="org.codehaus.jackson.map.ObjectMapper" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
+<!DOCTYPE html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <title>搜索</title>
+    <link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/pager.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link href="../css/suso.css" rel="stylesheet" type="text/css" />
+</head>
+<%
+        String post_ids = request.getParameter("goods_id");
+//        String post_ids="1,2,3,4,5,49,6,7,8,9,10,11,12,13,14,15,16,17";
+        String curPage = request.getParameter("page");
+        int curP = 1;
+        if (CheckTools.checkPositiveNum(curPage)) {
+             curP = Integer.parseInt(curPage);
+        }
+        String sel = request.getParameter("sel");
+        int selVal=0;
+        if (CheckTools.checkPositiveNum(sel)) {
+            selVal = Integer.parseInt(sel);
+         }
+        String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+%>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+
+    <%
+            String[] param_pid={"0"};
+            TaskBean taskBean_opt=new TaskBean(343,param_pid);
+            String  rs_343 = FragService.getInstance().fragment(10, fragPath + "/sousuo_opt.txt", taskBean_opt, "opt");
+            String[] c = rs_343.split("###cococo:forsplit###");
+            for (int i = 1; i < c.length; i++) {
+                Pattern p = Pattern.compile("#0#:cococo0.*#0#");
+                Matcher m = p.matcher(c[i]);
+                while (m.find()) {
+                    String pid_2 = m.group().substring(11, m.group().length() - 3);
+                    String[] param_pid_2={pid_2};
+                    TaskBean taskBean_opt_2=new TaskBean(343,param_pid_2);
+                    String  rs_343_2 = FragService.getInstance().fragment(10, fragPath + "/sousuo_optsec.txt", taskBean_opt_2, "optsec");
+                    c[i] = c[i].replace(m.group(), rs_343_2);
+                }
+            }
+            StringBuffer sb2 = new StringBuffer();
+            for (int i = 0; i < c.length; i++) {
+                sb2.append(c[i]);
+            }
+            rs_343 = sb2.toString();
+    %>
+
+
+
+
+        <%
+            int row=10;
+            TaskBean taskBean=null;
+            if(selVal==0) {
+                String[] paramType = {"object"};
+                taskBean = new TaskBean(341, 1, 1, curP, row, new String[]{post_ids}, paramType);
+            }else{
+                String[] paramType = {"object","number"};
+                taskBean = new TaskBean(344, 1, 1, curP, row, new String[]{post_ids,selVal+""}, paramType);
+            }
+            String  jsonTypeData = FragService.getInstance().fragment(10, fragPath + "/sousuo_suso.txt", taskBean, "suso");
+            String[] b = jsonTypeData.split("###cococo:forsplit###");
+            for (int i = 1; i < b.length; i++) {
+                Pattern p = Pattern.compile("#0#:cococo0.*#0#");
+                Matcher m = p.matcher(b[i]);
+                Pattern p1 = Pattern.compile("#1#:cococo1.*#1#");
+                Matcher m1 = p1.matcher(b[i]);
+                Pattern p2 = Pattern.compile("#2#:cococo2.*#2#");
+                Matcher m2 = p2.matcher(b[i]);
+
+                //发表时间
+                while (m.find()) {
+                    String k = m.group().substring(11, m.group().length() - 3);
+                    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                    String date=sdf.format(new Date(Long.parseLong(k)));
+                    b[i]= b[i].replace(m.group(),date);
+                }
+                //最后回复时间
+                while(m1.find()){
+                    String k="";
+                    k = m1.group().substring(11, m1.group().length() - 3);
+                    if(!"".equals(k)) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        String date = sdf.format(new Date(Long.parseLong(k)));
+                        b[i] = b[i].replace(m1.group(), date);
+                    }else{
+                        b[i] = b[i].replace(m1.group(), "");
+                    }
+                }
+                while(m2.find()){
+                    String k = m2.group().substring(11, m2.group().length() - 3);
+                    TaskBean taskBean_342 = new TaskBean(342,0,new String[]{k});
+                    String r_342= FragService.getInstance().fragment(10, taskBean_342);
+                    ObjectMapper objectMapper=new ObjectMapper();
+                    List<Map<String, String>> list_42= objectMapper.readValue(r_342, List.class);
+                    String nick="";
+                    if(list_42!=null||list_42.size()!=0) {
+                        for (Map<String, String> map : list_42) {
+                            nick = map.get("nick");
+                        }
+                        b[i] = b[i].replace(m2.group(),nick);
+                    }
+                }
+            }
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < b.length; i++) {
+                sb.append(b[i]);
+            }
+            jsonTypeData = sb.toString();
+
+            Pattern p4 = Pattern.compile("#4#:cococo4.*#4#");
+            Matcher m4 = p4.matcher(jsonTypeData);
+            while(m4.find()){
+                jsonTypeData=jsonTypeData.replace(m4.group(),rs_343);
+            }
+            out.write(jsonTypeData);
+
+        %>
+
+            </tbody>
+        </table>
+        <form>
+            <input type="hidden" name="curPage" id="curPage" value="<%=curP%>"/>
+            <input type="hidden" name="pageSize" id="pageSize" value="<%=row%>"/>
+            <input type="hidden" name="ids" id="ids" value="<%=post_ids%>"/>
+            <input type="hidden" name="sel" id="sel" value="<%=sel%>"/>
+        </form>
+        <div class="allgoodslist">
+            <div class="divPagePanel" ></div>
+            <div class="tiaozhuan">
+                <ul>
+                    <li>到第<input type="text" id="goto0"value="<%=curP%>"/>页</li>
+                    <li class="queding"><a href="#" id="confirm0">确&nbsp;定 </a></li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $(document).ready(function(){
+        <!--分页代码 -->
+        var curpage=parseInt($("#curPage").val());
+        var pageSize=parseInt($("#pageSize").val());
+        var itemCount=parseInt($("#itemCount").val());
+        var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+        $(".divPagePanel").html(Hhtml);
+        var sel= $("#sel").val();
+        $("#sele").val(sel);
+    });
+    function pageClick(action){
+        var curpage=parseInt($("#curPage").val());
+        var pageSize=parseInt($("#pageSize").val());
+        var itemCount=parseInt($("#itemCount").val());
+        if(action=="minus"){
+            curpage=curpage-1;
+        } else if(action=="add"){
+            curpage=curpage+1;
+        } else {
+            curpage=action;
+        }
+        var sel=$("#sel").val();
+        window.location.href="/sousuo/suso.jsp?page="+curpage+"&sel="+sel;
+    }
+    $("#sele").bind("change",function(){
+       var sel= $("#sele").val();
+        window.location.href="/sousuo/suso.jsp?sel="+sel;
+    })
+    $("#confirm0").click(function(){
+        var value=$("#goto0").val();
+        var ids=$("#ids").val();
+        var sel=$("#sel").val();
+        window.location.href="/sousuo/suso.jsp?ids="+ids+"&sel="+sel;
+    });
+</script>
+</body>
+</html>

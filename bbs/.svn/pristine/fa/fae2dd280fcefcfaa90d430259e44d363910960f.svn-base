@@ -1,0 +1,211 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网"/>
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存"/>
+    <title>车型品牌搜索-浙江企商汇电子商务有限公司</title>
+    <link type="image/x-icon" href="/favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="/css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="/css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="/css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="/font/iconfont.css" rel="stylesheet">
+    <link type="text/css" href="/css/search_brand.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<%
+    int taskId = 43;
+    int cmdType = 0;
+    TaskBean taskBean = new TaskBean(taskId, cmdType);
+    String json = FragService.getInstance().fragment(0, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+    String parentId = "";
+    Map<String, List<Map<String, String>>> cateMap = new HashMap<String, List<Map<String, String>>>();
+    List<Map<String, String>> cateList = null;
+    for (Map<String, String> map : list) {
+        parentId = map.get("parent_id");
+        if (parentId.equals("0")) {//父节点
+            cateList = cateMap.get(map.get("forum_id"));//null?
+            if (null == cateList) {
+                cateList = new ArrayList<Map<String, String>>();
+            }
+            cateList.add(map);
+            cateMap.put(map.get("forum_id"), cateList);
+        } else {//子节点
+            cateList = cateMap.get(parentId);
+            if (null == cateList) {
+                cateList = new ArrayList<Map<String, String>>();
+            }
+            cateList.add(map);
+            cateMap.put(parentId, cateList);
+        }
+    }
+    //map转换
+    Map<String, List<Map<String, String>>> spMap = new HashMap<String, List<Map<String, String>>>();
+    Iterator<Map.Entry<String, List<Map<String, String>>>> it = cateMap.entrySet().iterator();
+    List<Map<String, String>> tmpList = null;
+    Map<String, Integer> pyMap = new HashMap<String, Integer>();
+    while (it.hasNext()) {
+        Map.Entry<String, List<Map<String, String>>> entry = it.next();
+        String sp = entry.getValue().get(0).get("cate_sp");
+        if ((tmpList = spMap.get(sp)) == null) {
+            if(!sp.equals("")){
+                spMap.put(sp, entry.getValue());
+                pyMap.put(sp, Integer.parseInt(sp));
+            }
+        } else {
+            tmpList.addAll(entry.getValue());
+            spMap.put(sp, tmpList);
+        }
+    }
+%>
+<div class="max_width">
+    <div class="navp">
+        <div class="navt">品牌论坛</div>
+    </div>
+    <div class="check">
+        <div class="zimu">
+            <span class="ding">字母 &gt;</span>
+            <%
+                StringBuffer pySb = new StringBuffer();
+                for (int i = 97; i < 123; i++) {
+                    if (pyMap.get("" + i) == null) {
+                        pySb.append("<span class=\"no\">" + (char) (i - 32) + "</span>");
+                    } else {
+                        pySb.append("<a href=\"javascript:void(0);\" class=\""+(char)i+"\" onclick=\"find('" + (char) i + "')\" >" + (char) (i - 32) + "</a>");
+                    }
+                }
+                out.write(pySb.toString());
+                pySb.delete(0, pySb.length());
+            %>
+        </div>
+        <div class="chexi">
+            <span class="ding">品牌 &gt;</span>
+            <%
+                String pId = "";
+                StringBuffer ppSb = new StringBuffer();
+                List<Map<String, String>> tmp = new ArrayList<Map<String, String>>();
+                for (int i = 97; i < 123; i++) {
+                    tmp = spMap.get("" + i);
+                    if (null != tmp) {
+                        ppSb.append("<span class=\"item_tab\">");
+                        for (int j = 0; j < tmp.size(); j++) {
+                            pId = tmp.get(j).get("parent_id");
+                            if (pId.equals("0")) { //肯定先是0的父节点
+                                ppSb.append("<a href=\"javascript:void(0);\" onclick=\"findByName('" + tmp.get(j).get("forum_name") + "')\">" + tmp.get(j).get("forum_name") + "</a>");
+                            }
+                        }
+                        ppSb.append("</span>");
+                        out.write(ppSb.toString());
+                        ppSb.delete(0, ppSb.length());
+                    }
+                }
+            %>
+        </div>
+    </div>
+    <div class="liebiao">
+        <table class="much" border="0" cellpadding="0" cellspacing="0">
+            <%
+                boolean tou = false;
+                pId = "";
+                List<Map<String, String>> temp = new ArrayList<Map<String, String>>();
+                Iterator<Map.Entry<String, List<Map<String, String>>>> it1 = spMap.entrySet().iterator();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 97; i < 123; i++) {
+                    temp = spMap.get("" + i);
+                    if (null != temp) {
+                        for (int j = 0; j < temp.size(); j++) {
+                            pId = temp.get(j).get("parent_id");
+                            if (pId.equals("0")) {//肯定先是0的父节点
+                                if (tou) {
+                                    sb.append("</td></tr>");
+                                }
+                                sb.append("<tr name='" + (char) i + "' id='" + temp.get(j).get("forum_name") + "' >");
+                                sb.append("<td class=\"much_td1\"><a name=\"2\" href=\"javascript:void(0);\"><img class=\"dc\" src=\"/images/brand/" + temp.get(j).get("forum_id") + ".jpg\" /><span class=\"much_name\" href=\"javascript:void(0);\" >" + temp.get(j).get("forum_name") + "</span></a></td>");
+                                sb.append("<td class=\"much_td2\">");
+                                tou = true;
+                            } else {
+                                sb.append("<a href=\"/fenlei/fenlei01.jsp?ID="+temp.get(j).get("forum_id")+"\" target=\"_blank\" >" + temp.get(j).get("forum_name") + "</a>");
+                            }
+                            out.write(sb.toString());
+                            sb.delete(0, sb.length());
+                        }
+                    }
+                }
+            %>
+        </table>
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/placeholder.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(window).scroll(function () {
+        var currentTOP = $(window).scrollTop();
+        if (currentTOP > 200) {
+            $(".check").addClass("gun");
+            $(".check").addClass("hit");
+        } else {
+            $(".check").removeClass("gun");
+            $(".check").removeClass("hit");
+        }
+        $(".gun").hover(function () {
+            $(".gun").removeClass("hit");
+        }, function () {
+            $(".gun").addClass("hit");
+        });
+    });
+
+    function find(py) {
+        $("tr").each(function () {
+            if ($(this).attr("name") != py) {
+                $(this).css("display", "none");
+            } else {
+                $(this).css("display", "block");
+            }
+        });
+    }
+
+    function findByName(name) {
+        $("tr").each(function () {
+            if ($(this).attr("id") != name) {
+                $(this).css("display", "none");
+            } else {
+                $(this).css("display", "block");
+            }
+        });
+    }
+
+    $(function () {
+        $('.zimu a').hover(function () {
+            $(this).siblings().removeClass('on');
+            $(this).addClass('on');
+            var index = $(".zimu a").index($(this));
+            $("span.item_tab").hide();
+            $("span.item_tab").eq(index).show();
+        });
+    });
+</script>
+</body>
+</html>

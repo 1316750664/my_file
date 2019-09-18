@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>快照生成中-买汽配-卖汽配-企商汇-浙江企商汇电子商务有限公司</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找汽配,买汽配,卖汽配,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,防冻液-国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<link type="text/css" href="/css/top2.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="/css/foot.css">
+<link type="text/css" rel="stylesheet" href="/css/shared.css">
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<style type="text/css">
+.cont{width:1003px; margin:0 auto;}
+.center{width:350px; padding-top:100px;text-align:center; margin:0 auto 100px; }
+.center span{ font:15px/20px bold Verdana, Geneva, sans-serif; width:350px;}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:2},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $(data).appendTo($("body"));
+            }
+        });
+</script>
+<div class="cont">
+  <div class="center">
+    <img src="/images/meng.jpg" /><br />
+    <span>交易快照正在生成中，请稍后<img src="/images/xuan.gif" /></span>
+  </div>
+</div>
+<script type="text/javascript">
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:3},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $(data).appendTo($("body"));
+            }
+        });
+</script>
+</body>
+</html>

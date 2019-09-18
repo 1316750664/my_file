@@ -1,0 +1,615 @@
+package com.service.servlet.fileUpload;
+
+import com.bean.GoodsCateIdBean;
+import com.ctd.util.database.TaoDbConnection;
+import com.service.Service.fastDfsUpload.uploadFileByStream;
+import com.util.tools.CheckTools;
+import com.util.tools.FingerUtil;
+import com.util.tools.FormatDate;
+import com.util.tools.GetPinYin;
+import com.util.tools.GoodsIdHandle;
+import com.util.tools.ReadWriteProperties;
+import com.util.tools.ToolUtil;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.DateUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+@WebServlet(name = "FileUploadServlet", urlPatterns = {"/FileUploadServlet.action"}, asyncSupported = true)
+public class FileUploadServlet extends HttpServlet {
+    private static final SimpleDateFormat formatDate1 = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat formatDate2 = new SimpleDateFormat("HH:mm:ss");
+    private static final int batchNum = 1000;//建议50-1000之间
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setHeader("content-type", "text/html;charset=utf-8");
+            out = response.getWriter();
+            String fileType = request.getParameter("fileType");
+            String type = request.getParameter("type");
+            String user_id = request.getParameter("user_id");
+            if (!CheckTools.checkPositiveNum(type)) {
+                out.print("{\"error\":1,\"url\":\"\",\"message\":\"文件上传方式参数缺失\"}");
+                out.flush();
+                return;
+            }
+            uploadFileByStream uploadFileByStream = null;
+            String dateStr = FormatDate.getFormatTimeString("yyyyMM");
+//			System.out.println("type:"+fileType);
+            ReadWriteProperties rwp = ReadWriteProperties.getInstance();
+            String serverCache = rwp.readValue("config", "server");
+            String serverCachePath = rwp.readValue("config", "server_path");
+            String img_domain = rwp.readValue("config", "img_domain");
+            long limit = Long.parseLong(rwp.readValue("config", "limit"));
+            //String imageFormat = rwp.readValue("nalianConfig", "image_format");
+            StringBuilder sb = new StringBuilder("");
+            FileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setHeaderEncoding("UTF-8");
+            List<FileItem> items = upload.parseRequest(request);
+            //System.out.println("待上传的文件数*****"+items.size());
+            for (FileItem item : items) {
+                if (item.isFormField()) {
+//                    System.out.println(item.getFieldName());//参数名
+//                    System.out.println(item.getString());//参数值
+                    continue;
+                }
+                sb = sb.append("{").append("\"").append("error").append("\"").append(":");
+                String oldfilename = item.getName();//上传文件名
+                long fSize = item.getSize();
+                //System.out.println("待上传的文件大小*****"+fSize);
+                if (fSize > limit) {
+                    sb.append("1")
+                            .append(",").append("\"").append("url").append("\"").append(":").append("\"").append("").append("\"")
+                            .append(",").append("\"").append("group").append("\"").append(":").append("\"").append("").append("\"")
+                            .append(",").append("\"").append("message").append("\"").append(":").append("\"").append(oldfilename + "文件大小超出" + ToolUtil.fileSize2string(limit)).append("\"")
+                            .append("}");
+                    out.print(sb.toString());
+                    out.flush();
+                    sb.delete(0, sb.length());
+                    continue;
+                }
+                //System.out.println("限制大小*****"+limit);
+                String suffix = oldfilename.substring(oldfilename.lastIndexOf("."));//上传文件的后缀名
+                if (".xls".equals(suffix)) {
+                    type = "2";
+                }
+                if ("1".equals(type)) {
+                    //用inputstream上传到fastDfs
+                    if (uploadFileByStream == null) {
+                        uploadFileByStream = new uploadFileByStream();
+                    }
+                    String[] result = uploadFileByStream.uploadFileBySteam(item.getInputStream(), suffix);
+                    if (result == null || result.length < 2) {
+                        sb.append("1")
+                                .append(",").append("\"").append("url").append("\"").append(":").append("\"").append("").append("\"")
+                                .append(",").append("\"").append("group").append("\"").append(":").append("\"").append("").append("\"")
+                                .append(",").append("\"").append("message").append("\"").append(":").append("\"").append(oldfilename + "文件上传失败").append("\"")
+                                .append("}");
+                    } else {
+                        //System.out.println(result[0]+"/"+result[1]);
+                        sb.append("0")
+                                .append(",").append("\"").append("url").append("\"").append(":").append("\"").append(img_domain + result[0] + "/" + result[1]).append("\"")
+                                .append(",").append("\"").append("group").append("\"").append(":").append("\"").append(result[0] + "/" + result[1]).append("\"")
+                                .append(",").append("\"").append("message").append("\"").append(":").append("\"").append(oldfilename + "文件上传成功").append("\"")
+                                .append("}");
+                    }
+                } else if ("2".equals(type)) {
+                    if (CheckTools.isNull(fileType)) {
+                        out.print("{\"error\":1,\"url\":\"\",\"message\":\"文件上传路径参数为空\"}");
+                        out.flush();
+                        return;
+                    }
+                    String is_dead = request.getParameter("is_dead");
+                    if (CheckTools.isNull(is_dead)) {
+                        out.print("{\"error\":1,\"url\":\"\",\"message\":\"文件上传缺失参数\"}");
+                        out.flush();
+                        return;
+                    }
+                    String fileDir = serverCachePath + fileType + "/" + dateStr;
+                    File file = new File(fileDir);
+                    if (!file.exists()) {
+                        file.mkdirs();
+                    }
+                    String md5filename = FingerUtil.md5(oldfilename + fSize + System.currentTimeMillis());
+                    String newfilename = fileDir + "/" + md5filename + suffix;
+                    String fileUrlPath = serverCache + fileType + "/" + dateStr + "/" + md5filename + suffix;
+                    String fileGroupPath = fileType + "/" + dateStr + "/" + md5filename + suffix;
+                    item.write(new File(newfilename));
+                    item.delete();
+                    //System.out.println("url:"+fileUrlPath);
+                    sb.append("0")
+                            .append(",").append("\"").append("url").append("\"").append(":").append("\"").append(fileUrlPath).append("\"")
+                            .append(",").append("\"").append("group").append("\"").append(":").append("\"").append(fileGroupPath).append("\"")
+                            .append(",").append("\"").append("message").append("\"").append(":").append("\"").append(oldfilename + "文件上传成功").append("\"")
+                            .append("}");
+                    if (".xls".equals(suffix)) {
+                        if (!CheckTools.checkPositiveNum(user_id)) {
+                            out.print("{\"error\":1,\"url\":\"\",\"message\":\"请先登录\"}");
+                            out.flush();
+                            return;
+                        }
+                        boolean dead;
+                        if ("yes".equals(is_dead)) {
+                            dead = true;//是呆滞件
+                        } else {
+                            dead = false;//不是呆滞件
+                        }
+                        uploadExcel(newfilename, user_id, dead);
+                    }
+                }
+                out.print(sb.toString());
+                out.flush();
+                sb.delete(0, sb.length());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+
+    public void uploadExcel(String filename, String user_id, boolean dead) {
+        TaoDbConnection writeTaoDbConnection = null;
+        Integer partId = null;
+        String partName = null;
+        Map<String, Integer> cateData = null;
+        Map<String, Integer> brandData = null;
+        Map<String, Integer> carBrandData = null;
+        Map<String, Integer> carModelData = null;
+        Map<String, Integer> carConfData = null;
+        try {
+            List<String[]> dataList = _GetExcelData(filename, dead);
+            if (dataList == null) {
+                return;
+            }
+            int is_dead = 0;
+            if (dead) {
+                is_dead = 1;
+            }
+            String sql = "insert into tb_product_offline(goods_id,user_id,is_dead,goods_name,mfg_no,parts_cate_name,parts_brand_name,original_car_no,brand_names," +
+                    "car_model_names,car_conf_names,rank,goods_no,goods_sn," +
+                    "goods_standard,unit_name,weight,volume,price1,price2,price3,min_num_3,price4,min_num_4,price5,min_num_5,store_num,add_time) " +
+                    "values(?," + user_id + "," + is_dead + ",?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,now())";
+            int sqlParmsNum = sql.split("\\?").length;
+            if (!"?".equals(sql.substring(sql.length() - 1))) {
+                sqlParmsNum = sqlParmsNum - 1;
+            }
+            writeTaoDbConnection = new TaoDbConnection(0);
+            PreparedStatement stmt = null;
+            stmt = writeTaoDbConnection.getStmt(sql);
+            writeTaoDbConnection.setAutoCommit(false);
+            int size = dataList.size();
+            int row = 1;
+            int i = 0;
+            int sn = GoodsIdHandle.generateGoodId(size, "tb_product_offline");
+            String[] values = null;
+            String value = null;
+            List<GoodsCateIdBean> list = new ArrayList<GoodsCateIdBean>(size);
+            GoodsCateIdBean goodsCateIdBean = null;
+            Iterator<String[]> iter = dataList.iterator();
+            String goods_id = null;
+            while (iter.hasNext()) {
+                values = iter.next();
+                if (values == null) {
+                    size--;
+                    continue;
+                }
+                goods_id = GoodsIdHandle.getGoodsSn(sn);
+                stmt.setObject(1, goods_id);
+                goodsCateIdBean = new GoodsCateIdBean();
+                goodsCateIdBean.setGoods_id(Long.parseLong(goods_id));
+                sn++;
+                for (i = 0; i < Math.min(sqlParmsNum, values.length); i++) {
+                    value = values[i];
+                    switch (i) {
+                        case 0:
+                            goodsCateIdBean.setGoods_name(value);
+                            break;
+                        case 2:
+                            goodsCateIdBean.setParts_cate_name(value);
+                            break;
+                        case 3:
+                            goodsCateIdBean.setBrand_name(value);
+                            break;
+                        case 5:
+                            goodsCateIdBean.setCar_brand_name(value);
+                            break;
+                        case 6:
+                            goodsCateIdBean.setCar_model_name(value);
+                            break;
+                        case 7:
+                            goodsCateIdBean.setCar_conf_name(value);
+                            break;
+                        default:
+                            break;
+                    }
+                    stmt.setObject(i + 2, value);
+                }
+                list.add(goodsCateIdBean);
+                stmt.addBatch();
+                if (row % batchNum == 0 || row == size) {
+                    stmt.executeBatch();
+                    writeTaoDbConnection.commit();
+                    stmt.clearBatch();
+                }
+                iter.remove();
+                row++;
+            }
+            ResultSet rs = null;
+            String sqlQuery = null;
+            if (cateData == null) {
+                cateData = new HashMap<String, Integer>();
+                sqlQuery = "select parts_cate_id,parts_cate_name from tb_parts_category";
+                stmt = writeTaoDbConnection.getStmt(sqlQuery);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    partId = rs.getInt(1);
+                    partName = rs.getString(2);
+                    cateData.put(partName, partId);
+                }
+                rs.close();
+            }
+            if (brandData == null) {
+                brandData = new HashMap<String, Integer>();
+                sqlQuery = "select parts_brand_id,parts_brand_name from tb_parts_brand";
+                stmt = writeTaoDbConnection.getStmt(sqlQuery);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    partId = rs.getInt(1);
+                    partName = rs.getString(2);
+                    brandData.put(partName, partId);
+                }
+                rs.close();
+            }
+            if (carBrandData == null) {
+                carBrandData = new HashMap<String, Integer>();
+                sqlQuery = "select brand_id,brand_name from tb_car_brand";
+                stmt = writeTaoDbConnection.getStmt(sqlQuery);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    partId = rs.getInt(1);
+                    partName = rs.getString(2);
+                    carBrandData.put(partName, partId);
+                }
+                rs.close();
+            }
+            if (carModelData == null) {
+                carModelData = new HashMap<String, Integer>();
+                sqlQuery = "select car_model_id,car_model_name from tb_car_model";
+                stmt = writeTaoDbConnection.getStmt(sqlQuery);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    partId = rs.getInt(1);
+                    partName = rs.getString(2);
+                    carModelData.put(partName, partId);
+                }
+                rs.close();
+            }
+            if (carConfData == null) {
+                carConfData = new HashMap<String, Integer>();
+                sqlQuery = "select car_conf_id,car_conf_name from tb_car_conf";
+                stmt = writeTaoDbConnection.getStmt(sqlQuery);
+                rs = stmt.executeQuery();
+                while (rs.next()) {
+                    partId = rs.getInt(1);
+                    partName = rs.getString(2);
+                    carConfData.put(partName, partId);
+                }
+                rs.close();
+            }
+
+            String[] partNames = null;
+            int t = 0;
+            short sp = 0;
+            String py = null;
+            Iterator<GoodsCateIdBean> iterator = list.iterator();
+            while (iterator.hasNext()) {
+                goodsCateIdBean = iterator.next();
+                partName = goodsCateIdBean.getGoods_name();
+                if (!CheckTools.isNull(partName)) {
+                    py = GetPinYin.getPinYinHeadChar(partName);
+                    for (int k = 0; k < py.length(); k++) {
+                        sp = (short) py.codePointAt(k);
+                        if ((sp >= 97 && sp <= 122) || (sp >= 65 && sp <= 90) || (sp >= 48 && sp <= 57)) {
+                            break;
+                        }
+                    }
+                    goodsCateIdBean.setGoods_name_py(py);
+                    goodsCateIdBean.setGoods_name_sp(sp);
+                }
+
+                partName = goodsCateIdBean.getParts_cate_name();
+                if (!CheckTools.isNull(partName)) {
+                    partId = cateData.get(partName);
+                    if (partId != null) {
+                        goodsCateIdBean.setParts_cate_id(partId);//单
+                    }
+                }
+
+                if (!CheckTools.isNull(partName)) {
+                    partId = brandData.get(partName);
+                    if (partId != null) {
+                        goodsCateIdBean.setBrand_id(partId);//单
+                    }
+                }
+
+                partName = goodsCateIdBean.getCar_brand_name();
+                if (!CheckTools.isNull(partName)) {
+                    partNames = partName.split(",");
+                    for (t = 0; t < partNames.length; t++) {
+                        partName = partNames[t];
+                        partId = carBrandData.get(partName);
+                        if (partId != null) {
+                            goodsCateIdBean.setCar_brand_ids((goodsCateIdBean.getCar_brand_ids() == null ? "" : goodsCateIdBean.getCar_brand_ids() + ",") + partId);
+                        }
+                    }
+                }
+
+                partName = goodsCateIdBean.getCar_model_name();
+                if (!CheckTools.isNull(partName)) {
+                    partNames = partName.split(",");
+                    for (t = 0; t < partNames.length; t++) {
+                        partName = partNames[t];
+                        partId = carModelData.get(partName);
+                        if (partId != null) {
+                            goodsCateIdBean.setCar_model_ids((goodsCateIdBean.getCar_model_ids() == null ? "" : goodsCateIdBean.getCar_model_ids() + ",") + partId);
+                        }
+                    }
+                }
+
+                partName = goodsCateIdBean.getCar_conf_name();
+                if (!CheckTools.isNull(partName)) {
+                    partNames = partName.split(",");
+                    for (t = 0; t < partNames.length; t++) {
+                        partName = partNames[t];
+                        partId = carConfData.get(partName);
+                        if (partId != null) {
+                            goodsCateIdBean.setCar_conf_ids((goodsCateIdBean.getCar_conf_ids() == null ? "" : goodsCateIdBean.getCar_conf_ids() + ",") + partId);
+                        }
+                    }
+                }
+            }
+
+            sql = "update tb_product_offline set goods_name_py=?,goods_name_sp=?,brand_ids=?,car_model_ids=?,car_conf_ids=?,parts_cate_id=?,parts_brand_id=? where goods_id=?";
+            singleSqlBatch(writeTaoDbConnection, sql, list);
+        } catch (Exception e) {
+            try {
+                if (writeTaoDbConnection != null) {
+                    writeTaoDbConnection.rollback();
+                }
+            } catch (SQLException e1) {
+                //e1.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writeTaoDbConnection != null) {
+                    writeTaoDbConnection.setAutoCommit(true);
+                    writeTaoDbConnection.closeConn();
+                }
+                if (cateData != null) {
+                    cateData.clear();
+                }
+                if (brandData != null) {
+                    brandData.clear();
+                }
+                if (carBrandData != null) {
+                    carBrandData.clear();
+                }
+                if (carModelData != null) {
+                    carModelData.clear();
+                }
+                if (carConfData != null) {
+                    carConfData.clear();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public int singleSqlBatch(TaoDbConnection writeTaoDbConnection, String sql, List<GoodsCateIdBean> valueList) {
+        if (sql == null || "".equals(sql) || valueList == null) {
+            return -4;
+        }
+        int result = -3;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = writeTaoDbConnection.getStmt(sql);
+            writeTaoDbConnection.setAutoCommit(false);
+            int size = valueList.size();
+            int row = 1;
+            Iterator<GoodsCateIdBean> iter = valueList.iterator();
+            GoodsCateIdBean values = null;
+            while (iter.hasNext()) {
+                values = iter.next();
+                if (values == null) {
+                    size--;
+                    continue;
+                }
+                //update tb_product_offline set brand_ids=?,car_model_ids=?,car_conf_id=?,parts_cate_id=?,parts_brand_id=? where goods_id=?
+                stmt.setObject(1, values.getGoods_name_py());
+                stmt.setObject(2, values.getGoods_name_sp());
+                stmt.setObject(3, values.getCar_brand_ids());
+                stmt.setObject(4, values.getCar_model_ids());
+                stmt.setObject(5, values.getCar_conf_ids());
+                stmt.setObject(6, values.getParts_cate_id());
+                stmt.setObject(7, values.getBrand_id());
+                stmt.setObject(8, values.getGoods_id());
+                stmt.addBatch();
+                if (row % batchNum == 0 || row == size) {
+                    stmt.executeBatch();
+                    writeTaoDbConnection.commit();
+                    stmt.clearBatch();
+                }
+                iter.remove();
+                row++;
+            }
+            result = 0;
+        } catch (SQLException e) {
+            try {
+                writeTaoDbConnection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            result = -3;
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public List<String[]> _GetExcelData(String filename, boolean dead) throws IOException {
+        File file = new File(filename);
+        if (!file.exists()) {
+            return null;
+        }
+        FileInputStream stream = new FileInputStream(file);
+        POIFSFileSystem fs = new POIFSFileSystem(stream);
+        HSSFWorkbook wb = new HSSFWorkbook(fs);
+        HSSFSheet sheet = wb.getSheetAt(0);
+        int rs = sheet.getFirstRowNum();
+        int re = sheet.getLastRowNum();
+        int totalRow = 0;
+        totalRow += (re - rs < 0 ? 0 : re - rs);// 去掉第一行表头实际应等于re-rs+1
+        if (totalRow == 0) {
+            // System.out.println("无实质上传内容");
+            return null;
+        }
+        HSSFRow firstRow = sheet.getRow(rs);
+        if (firstRow == null) {
+            // System.out.println("表头为空");
+            return null;
+        }
+        int cs = firstRow.getFirstCellNum();
+        int ce = firstRow.getLastCellNum();
+        //System.out.println("firstcol==="+cs+":lastcol==="+ce);
+        int totalCol = 0;
+        totalCol += (ce - cs < 0 ? 0 : ce - cs);
+        if (totalCol == 0) {
+            // System.out.println("无实质上传内容");
+            return null;
+        }
+        List<String[]> dataList = new ArrayList<String[]>(totalRow);
+        for (int i = rs + 1; i <= re; i++) {// 注意此处有等于
+            HSSFRow row = sheet.getRow(i);
+            if (null == row || isBlankRow(row)) {
+                continue;
+            }
+            String[] strings = new String[totalCol];
+            for (int j = cs; j < ce; j++) {// 注意此处没有等于，行、列起标数不一样
+                HSSFCell cell = row.getCell(j);
+                String cellValue = null;
+                if (j == 8 && dead) {
+                    cellValue = "呆滞件";
+                } else {
+                    if (cell != null) {
+                        cellValue = getCellValue(cell);
+                    }
+                    if (cellValue != null) {
+                        cellValue = cellValue.trim();
+                    }
+                }
+                strings[j] = cellValue;
+            }
+            dataList.add(strings);
+        }
+        stream.close();
+
+        return dataList;
+    }
+
+    private boolean isBlankRow(HSSFRow row) {
+        int cs = row.getFirstCellNum();
+        int ce = row.getLastCellNum();
+        int blank = 0;
+        for (int j = cs; j < ce; j++) {
+            HSSFCell cell = row.getCell(j);
+            if (cell == null) {
+                blank = blank + 1;
+            } else {
+                String cellValue = getCellValue(cell);
+                if (cellValue == null || "".equals(cellValue) || "".equals(cellValue.trim())) {
+                    blank = blank + 1;
+                }
+            }
+        }
+        if (blank == ce - cs) {
+            return true;
+        }
+        return false;
+    }
+
+    private String getCellValue(HSSFCell cell) {
+        if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
+            short dataFormat = cell.getCellStyle().getDataFormat();
+            if (dataFormat == 14 || dataFormat == 31 || dataFormat == 57 || dataFormat == 58) {
+                double dateValue1 = cell.getNumericCellValue();
+                Date date1 = DateUtil.getJavaDate(dateValue1);
+                return formatDate1.format(date1);
+            } else if (dataFormat == 20 || dataFormat == 32) {
+                double dateValue2 = cell.getNumericCellValue();
+                Date date2 = DateUtil.getJavaDate(dateValue2);
+                return formatDate2.format(date2);
+            }
+        }
+        String value = null;
+        int cellType = cell.getCellType();
+        switch (cellType) {
+            case HSSFCell.CELL_TYPE_BLANK:
+                value = null;
+                break;
+            case HSSFCell.CELL_TYPE_ERROR:
+                value = null;
+                break;
+            case HSSFCell.CELL_TYPE_BOOLEAN:
+                value = String.valueOf(cell.getBooleanCellValue());
+                break;
+            case HSSFCell.CELL_TYPE_FORMULA:
+                value = String.valueOf(new BigDecimal(cell.getNumericCellValue()));
+                break;
+            case HSSFCell.CELL_TYPE_NUMERIC:
+                value = String.valueOf(new BigDecimal(cell.getNumericCellValue()));
+                break;
+            case HSSFCell.CELL_TYPE_STRING:
+                value = String.valueOf(cell.getRichStringCellValue());
+                break;
+            default:
+                value = null;
+                break;
+        }
+        return value;
+    }
+}

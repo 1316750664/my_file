@@ -1,0 +1,174 @@
+package com.service.servlet.RegisterPackages;
+
+import com.bean.TaskBean;
+import com.service.Service.CartService.CartService;
+import com.service.Service.UserService.UserService;
+import com.service.clazz.MainJsonService;
+import com.service.fragService.FragService;
+import com.util.tools.CheckTools;
+import com.util.tools.FingerUtil;
+import com.util.tools.FormatDate;
+import com.util.tools.ToolUtil;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.DeserializationConfig;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * Created by rcl on 2014/10/21.
+ * 登陆
+ */
+@WebServlet(name = "LoginAction", urlPatterns = {"/Login/LoginAction.do"})
+public class LoginAction extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+
+            String login_type = request.getParameter("login_type");
+            String zh = request.getParameter("txt_zh");
+            String pw = request.getParameter("txt_pwd");
+//            System.out.println(login_type+"::::"+zh+"::::"+pw);
+            if (!CheckTools.checkPositiveNum(login_type)) {
+                out.write("{\"error\":\"300\",\"msg\":\"非法操作\"}");
+                out.flush();
+                return;
+            }
+            if (CheckTools.isNull(zh)) {
+                out.write("{\"error\":\"301\",\"msg\":\"请输入用户账号\"}");
+                out.flush();
+                return;
+            }
+            if (CheckTools.isNull(pw)) {
+                out.write("{\"error\":\"302\",\"msg\":\"请输入用户密码\"}");
+                out.flush();
+                return;
+            }
+            TaskBean taskBean = new TaskBean(100, 0, new String[]{zh});
+            String json = FragService.getInstance().fragment(0, taskBean);
+            if (json == null || "[]".equals(json)) {
+                out.write("{\"error\":\"303\",\"msg\":\"用户不存在\"}");//用户不存在
+                out.flush();
+                return;
+            }
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
+            objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+            objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+            objectMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+            objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+            objectMapper.configure(JsonParser.Feature.INTERN_FIELD_NAMES, true);
+            objectMapper.configure(JsonParser.Feature.CANONICALIZE_FIELD_NAMES, true);
+            objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            List<Map<String, String>> list = objectMapper.readValue(json, List.class);
+            Map<String, String> map = list.get(0);
+            if ("1".equals(map.get("is_lock"))) {
+                out.write("{\"error\":\"304\",\"msg\":\"用户被锁定，请联系网站管理员postmaster@8673h.com\"}");//用户已锁定
+                out.flush();
+                return;
+            }
+
+            String uid = map.get("user_id");
+            String pssw = map.get("login_pwd");
+            if (login_type != null && "3".equals(login_type)) {
+                String pwJson = ToolUtil.getRequestCookie(request.getCookies(), "_s_pwd");
+                if (pwJson == null) {
+                    out.write("{\"error\":\"305\",\"msg\":\"记住密码已过期\"}");//记住密码已失效
+                    out.flush();
+                    return;
+                }
+                Map<String, String> mp = objectMapper.readValue(URLDecoder.decode(pwJson, "UTF-8"), Map.class);
+                if (mp != null) {
+                    pw = FingerUtil.decryptPropertiesAES(mp.get("pw"), "pwKey");
+                }
+            }
+
+            if (!CheckTools.isNull(pw) && !CheckTools.isNull(pssw) && pssw.equals(FingerUtil.md5(FingerUtil.md5(pw) + map.get("login_salt")))) {
+                String last_time = FormatDate.getTimestampString(new Timestamp(System.currentTimeMillis()));
+                String ip = ToolUtil.getClientIp(request);
+                //写入cookie
+                map.put("last_time", last_time);
+                map.put("last_ip", ip);
+                String uuid = UUID.randomUUID().toString();
+                UserService.getInstance().setCookieUser(uuid, map, response);
+                //查询购物车数据并生成cookie
+                CartService.getInstance().createCart(response, uid);
+                //用户表更新
+                Map<String, String[]> paramMap1 = new HashMap<String, String[]>();
+                paramMap1.put("taskId", new String[]{"103"});
+                paramMap1.put("cmdType", new String[]{"Update"});
+                paramMap1.put("last_time", new String[]{last_time});
+                paramMap1.put("session_uuid", new String[]{uuid.toString()});
+                paramMap1.put("last_ip", new String[]{ip});
+                paramMap1.put("user_id", new String[]{uid});
+
+                new MainJsonService().invoke(paramMap1);
+                if (login_type != null && ("2".equals(login_type) || "3".equals(login_type))) {
+                    String sjson = "{\"login_name\":\"" + zh + "\",\"pw\":\"" + FingerUtil.encryptPropertiesAES(pw, "pwKey") + "\"}";
+                    Cookie cookie = new Cookie("_s_pwd", URLEncoder.encode(sjson, "UTF-8"));
+                    cookie.setPath("/Login");
+                    cookie.setMaxAge(7 * 24 * 60 * 60);
+                    response.addCookie(cookie);
+                }
+
+                out.write("{\"error\":\"201\",\"msg\":\"登录成功\"}");//登陆成功
+                out.flush();
+            } else {
+                out.write("{\"error\":\"306\",\"msg\":\"密码错误\"}");///密码出错
+                out.flush();
+            }
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+}

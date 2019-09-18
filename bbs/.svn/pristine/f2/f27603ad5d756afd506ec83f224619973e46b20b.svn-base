@@ -1,0 +1,114 @@
+package com.service.servlet.order;
+
+import com.service.Service.CartService.CartService;
+import com.service.Service.UserService.UserService;
+import com.service.Service.loginDetection.LoginDetection;
+import com.util.tools.StaticUtil;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by hty070503 on 2014/12/11.
+ */
+@WebServlet(name = "CartServlet", urlPatterns = {"/Action/CartServlet.do"})
+public class CartServlet extends HttpServlet {
+    /**
+     * @param request
+     * @param response 一旦购物车更新成功则返回cookie存储用字符串
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            String statu = request.getParameter("statu");//0添加1清空我的购物车2删除部分商品
+            int ifLogin = LoginDetection.getInstance().loginCheck(request.getCookies(), ToolUtil.getClientIp(request));
+            if (ifLogin != 0) {
+                out.write("{\"error\":\"202\"}");//无登陆用户数据
+                out.flush();
+                return;
+            }
+            String uid = UserService.getInstance().getUidFromCookie(request);
+
+            if (null == uid || "".equals(uid)) {
+                out.write("{\"error\":\"202\"}");//无登陆用户数据
+                out.flush();
+                return;
+            }
+
+            if (statu == null || "".equals(statu)) {
+                out.write("{\"error\":\"201\"}");//购物车异常
+                out.flush();
+                return;
+            }
+
+            String goodsids = request.getParameter("cart_goods");
+            if ((goodsids == null || "".equals(goodsids)) && !"1".equals(statu)) {
+                out.write("{\"error\":\"201\"}");//参数异常
+                out.flush();
+                return;
+            }
+
+            String new_cookie = "";
+            if (statu.equals("0")) {//json数据[{"goods_id":"1","property_code":"1","num":"3","price":"3","property_json":"3","car_property":"奥迪/A4L/2014款"}]
+                List<Map<String, String>> listMap = StaticUtil.objectMapper.readValue(goodsids, List.class);
+                new_cookie = CartService.getInstance().addGoodsInCart(listMap.get(0), uid);
+            } else if (statu.equals("1")) {//清空购物车
+                new_cookie = CartService.getInstance().delAllMyCart(uid);
+            } else if (statu.equals("2")) {//json数据[{"cart_uuid":"1234525"}]删除产品
+                List<Map<String, String>> listMap = StaticUtil.objectMapper.readValue(goodsids, List.class);
+                new_cookie = CartService.getInstance().delGoodsInCart(listMap, uid);
+            } else {
+                out.write("{\"error\":\"302\"}");//参数异常
+                out.flush();
+                return;
+            }
+
+            if (new_cookie == null && !statu.equals("0")) {
+                out.write("{\"error\":\"0\"}");
+                out.flush();
+                return;
+            }
+            if (new_cookie == null && statu.equals("0")) {
+                out.write("{\"error\":\"201\"}");
+                out.flush();
+                return;
+            }
+
+            out.write(new_cookie);//操作成功
+            out.flush();
+            return;
+
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+}

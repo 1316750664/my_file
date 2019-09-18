@@ -1,0 +1,23 @@
+@charset "utf-8";
+body{font:12px/1.5 tahoma,arial,sans-serif}
+.fenleihead{width:991px; float:left;font:12px Tahoma,Arial; margin:10px 0;border:1px solid #d9d9d9; background-color:#fcfcfc; padding-left:10px; height:32px; line-height:32px;}
+.fenleihead a{ color:#6a6a6a; margin:0 8px; line-height:32px;}
+.fenleihead a:hover{ text-decoration:underline;}
+.detail-edit{border:1px solid #d9d9d9;background-color:#fafafa; float:left; width:901px;padding:10px 50px 30px 50px;}
+.detail-edit .hd{height:29px;}
+.detail-edit .hd  h3{padding-left:19px;line-height:29px;color:#4d4d4d;border-bottom:2px solid #d9d9d9;font-size:14px;}
+.detail-edit .edit-group{padding-top:18px;border-top:0; overflow:hidden;}
+.detail-edit  form.group-form{display:block;float:left;}
+.detail-edit .group-form textarea{ width:897px; height:280px;}
+.detail-edit .group-form .wenzi{font-size:13px;padding-left:5px;height:24px;}
+.detail-edit .group-form .for-anon{margin-top:-20px;float:right;}
+.detail-edit .group-form #anon {vertical-align:middle;float:left;margin-top:2px;_margin-top:0;}
+.detail-edit .group-form .for-anon span{float:left;padding-left:5px;}
+.detail-edit .group-form .Reply-info{margin:5px auto;text-align:right;}
+.detail-edit .btn-bm {width:84px;height:32px;border:0;cursor:pointer; background:url(../images/ftbtnall.png) no-repeat -200px -100px;vertical-align: middle;}
+.citation {padding:3px;padding-bottom:10px;border:1px solid #ddd;background-color:#fcfcfc;clear:both;margin-bottom:4px;zoom:1;}
+.citation .citation-title{height:26px;padding:0 9px;}
+.citation .citation-title .user-name{float:left;line-height:26px;color:#5881d1;}
+.citation .citation-title .citation-number {float:right;color:#808080;}
+.citation p{font-size:14px;line-height:24px;word-wrap:break-word;padding:0 9px;}
+.warned-d{width:187px;padding: 10px;font-size: 14px;font-weight:700;color:#bbb;border:1px solid #F1F1F1;background:#fff; display:block;}

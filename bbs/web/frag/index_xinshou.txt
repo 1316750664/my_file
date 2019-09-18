@@ -1,0 +1,7 @@
+<!--fs:xinshou-->
+<li class="pei">
+    <div class="left">###class###</div>
+    <div class="center"><a href="javascript:void(0);" class="###class2:gary###">###xinshou:art_title###</a></div>
+    <div class="right"><a href="javascript:void(0);" class="gart">400回复</a></div>
+</li>
+<!--fe:xinshou-->

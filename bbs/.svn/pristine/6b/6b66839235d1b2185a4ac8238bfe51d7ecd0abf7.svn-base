@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <biao valid="null">string</biao>
+    <neiR valid="null">string</neiR>
+    <create_time valid="null">number</create_time>
+    <fId valid="null">number</fId>
+    <user_id valid="null">number</user_id>
+</map>

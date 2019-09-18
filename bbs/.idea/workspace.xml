@@ -1,0 +1,2126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="bbs" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/web/index.html" line="612" mnemonic="9" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="62d3377d-ee7f-4865-baef-54d782d67265" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/ScannerActiveProj.cab" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/accordion_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/accordion_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/accordion_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/accordion_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/accordion_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/address.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/audit.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/backward.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/bigger.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/blank.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/calendar_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/calendar_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/calendar_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/calendar_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/calendar_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/cartin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/checkAll.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/close_big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/close_small.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/combo_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/combo_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/combo_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/combo_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/combo_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/datagrid_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/datagrid_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/datagrid_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/datagrid_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/datagrid_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/datebox_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/datebox_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/datebox_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/datebox_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/datebox_arrow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/delivery.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/down.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/download.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/eat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/eat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/edit_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/edit_remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/excel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/exchange.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/filesave.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/flash" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/foward.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/full_screen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/icon-lock.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/icon-unlock.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/include" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/install_lodop32.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/install_lodop64.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/invoice.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/layout_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/layout_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/layout_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/layout_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/layout_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/linkbutton_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/linkbutton_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/linkbutton_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/linkbutton_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/linkbutton_bg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/menu_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/menu_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/menu_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/menu_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/menu_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/messager_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/messager_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/messager_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/messager_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/messager_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/mini_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/mini_edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/mini_refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/money.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/new_img.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/pagination_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/pagination_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/pagination_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/pagination_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/pagination_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/panAll.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/panDian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/panGet.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/panKui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/panel_tools.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/panel_tools.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/panel_tools.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/panel_tools.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/panel_tools.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/pencil.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/post_img.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/prev.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/print.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/prize.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/redo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/reject.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/reload.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/report_user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/reset.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/returns.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/rotate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/sale.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/searchbox_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/searchbox_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/searchbox_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/searchbox_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/searchbox_button.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/set.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/share_img.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/slider_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/slider_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/slider_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/slider_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/slider_handle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/icon/smaller.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/spinner_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/spinner_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/spinner_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/spinner_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/spinner_arrows.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/sum.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/flash/swfupload.swf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/tabs_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/tabs_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/tabs_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/tabs_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/tabs_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/time_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/time_del.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/time_edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/tip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/tree_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/tree_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/tree_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/tree_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/tree_icons.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/tu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/up.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/user_suit.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/images/validatebox_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/images/validatebox_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/images/validatebox_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/images/validatebox_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/images/validatebox_warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/view.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icons/weixin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/zxx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1153.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1154.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1155.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1156.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1157.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1158.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1159.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1160.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1162.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1163.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sqlmap/1164.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/Admin.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsCardQuery.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsLoginAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsNewAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostLook.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsRepliesAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/Core Changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/LodopFuncs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins/SWFObject License.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/accordion.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsDel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsMod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsQuery.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserAdd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserDel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserMod.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserQuery.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/ajaxfileupload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/asdf.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/asgfsaga.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/calendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/car_insure.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/include/comScript.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/combo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/combo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/combo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/combo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/combo.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/combobox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/combobox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/combobox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/combobox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/combobox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/common.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/datagrid-detailview.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/datagrid-scrollview.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/datagrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/datagrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/datagrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/datagrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/datagrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/date.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/datebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/datebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/datebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/datebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/datebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/dialog.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/easyloader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-af.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-ar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-bg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-ca.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-cz.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-da.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-de.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-el.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-en.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-es.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-fr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-it.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-jp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-nl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-pl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-pt_BR.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-ru.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-sv_SE.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-tr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-zh_CN.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-zh_TW.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/easyui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/easyui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/easyui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/easyui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/easyui.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/font-awesome-ie7.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/font-awesome-ie7.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/gallery.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/highcharts-3d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/highcharts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/icon.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-1.7.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/eat/jquery-1.9.0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-3.2.1.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.accordion.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.calendar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.combo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.combobox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.combogrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.combotree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.datagrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.datebox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.datetimebox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.dialog.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.draggable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.droppable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/jquery.easyui.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.linkbutton.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.menu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.menubutton.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.messager.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.numberbox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.numberspinner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.pagination.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.panel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/jquery.photo.gallery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.progressbar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.propertygrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.resizable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.searchbox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.slider.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.spinner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.splitbutton.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.tabs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.timespinner.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.tooltip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.tree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.treegrid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.validatebox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/plugins/jquery.window.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jqueryUtil.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/include/kindeditorScript.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/layout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/layout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/layout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/layout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/layout.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/licence_gpl.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/license_commercial.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/lightbox.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/linkbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/linkbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/linkbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/linkbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/linkbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/eat/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/eat/main.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/main.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/mapfunction.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/mask.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/menu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/menubutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/menubutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/menubutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/menubutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/menubutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/messager.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/messager.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/messager.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/messager.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/messager.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/eat/newCalendar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/eat/newCalendar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/nlWin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/npm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/pagination.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/pagination.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/pagination.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/pagination.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/pagination.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/panel.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jquery-photo-gallery/photoGallery.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/zxx/postmod.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/include/privilege.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/progressbar.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/propertygrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/propertygrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/propertygrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/propertygrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/propertygrid.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/public.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/public.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/easyui/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/replies.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/eat/reset.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/rotate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/searchbox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/searchbox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/searchbox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/searchbox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/searchbox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/slider.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/spinner.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/splitbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/splitbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/splitbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/splitbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/splitbutton.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/swfupload license.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins/swfupload.cookies.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/swfupload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/include/swfupload.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins/swfupload.queue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins/swfupload.speed.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/plugins/swfupload.swfobject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/tabs.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/tooltip.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/tree.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/tree.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/tree.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/tree.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/tree.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/swfupload/uploadhandler.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/zxx/useradd.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/zxx/usermod.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/validata.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/validateLogon.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/validatebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/validatebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/validatebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/validatebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/validatebox.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/web.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/black/window.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/bootstrap/window.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/default/window.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/gray/window.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/easyui/metro/window.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/xq.js" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\Adminapply.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\BuyOfferSearch.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\CashOutAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\CodeFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\DeletePost.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\EmailServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\GetPinYinServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\HotLink.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\HtmlHander.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\ImageCodeServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\InitSystemServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\JsonDispatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\NJsonDispatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\Postfavor.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\RegisterPackages\LoginAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\RegisterPackages\LoginDetectionServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\RegisterPackages\RegisterCheckAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\RegisterPackages\UserRegisterAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\SendPost.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\SendPostRep.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\SendPostTou.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\SendPostUpdate.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\ToupEdit.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\TrackerServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\UnDeletePost.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\XmlDispatcher.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\core\NBackDataAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\fileUpload\FileUploadServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\fileUpload\TemplateDownload.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\order\CartServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\rll\BbsIndexAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\rll\PostHostAction.java" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\key.properties" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\10.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\11.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\131.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\132.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\15.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\16.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\17.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\18.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\19.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\22.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\23.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\25.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\316.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\317.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\32.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\320.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\321.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\322.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\325.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\326.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\33.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\330.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\331.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\335.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\336.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\339.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\34.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\345.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\346.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\35.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\36.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\sqlmap\37.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Firsthead.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Login\loginDetect.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Login\logout.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Thirdhead.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Twohead.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\error\abnormal.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\error\server_busy.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\error\snapLoading.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\error\wuquan.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\_notes\dwsync.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier1.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier1.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier2.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier2.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier3.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\applier3.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fabutiezi.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fabutiezi.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fabutieziEdit.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fenlei01.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fenlei01.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\fenleileft.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\post-vote.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\post.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\post.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\publish_reply.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\publish_reply.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\serch_brand.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\serch_brand.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\toup.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\toup.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\toup_edit.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\footThird.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\_notes\dwsync.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\andetiezi.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\andetiezi.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\bkshenq.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\bkshenq1.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\myfavorite.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\myreply.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\suso-username.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\suso-username.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\wodeguanl.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\wodeguanl.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\wodehuifu.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\wodeshoucang.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\zuoce.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\search.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo\_notes\dwsync.xml" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo\search_result.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo\suso.html" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo\suso.jsp" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\Login" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\RegisterPackages" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei\_notes" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center\_notes" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo\_notes" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\core" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\fenlei" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\fileUpload" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\order" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\p-center" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\src\com\service\servlet\rll" afterPath="" />
+      <change type="DELETED" beforePath="G:\bbs\web\sousuo" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/util/tools/ToolUtil.java" afterPath="$PROJECT_DIR$/src/com/util/tools/ToolUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config.properties" afterPath="$PROJECT_DIR$/src/config.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/datasource1.properties" afterPath="$PROJECT_DIR$/src/datasource1.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/datasource101.properties" afterPath="$PROJECT_DIR$/src/datasource101.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/datasource102.properties" afterPath="$PROJECT_DIR$/src/datasource102.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/datasource2.properties" afterPath="$PROJECT_DIR$/src/datasource2.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/datasource3.properties" afterPath="$PROJECT_DIR$/src/datasource3.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/head.js" afterPath="$PROJECT_DIR$/web/js/head.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/imageConfig.properties" afterPath="$PROJECT_DIR$/src/imageConfig.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/index.css" afterPath="$PROJECT_DIR$/web/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sqlconfig.xml" afterPath="$PROJECT_DIR$/src/sqlconfig.xml" />
+      <change type="MOVED" beforePath="G:\bbs\src\sqlmap\9.xml" afterPath="$PROJECT_DIR$/src/sqlmap/1152.xml" />
+    </list>
+    <ignored path="bbs.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="bbs" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.2459016" vertical-offset="6240" max-vertical-offset="27040">
+              <caret line="205" column="6" selection-start-line="170" selection-start-column="0" selection-end-line="205" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BbsLoginAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsLoginAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="2496">
+              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validateLogon.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/validateLogon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1056" max-vertical-offset="2976">
+              <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BbsPostAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="955" max-vertical-offset="2528">
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="replies.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/replies.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9866" max-vertical-offset="12768">
+              <caret line="315" column="31" selection-start-line="315" selection-start-column="31" selection-end-line="315" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sqlconfig.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sqlconfig.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="896">
+              <caret line="18" column="188" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="188" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1153.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sqlmap/1153.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="1164.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sqlmap/1164.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BbsRepliesAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsRepliesAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="514" max-vertical-offset="2368">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BbsPostLook.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostLook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="508" max-vertical-offset="2304">
+              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/Twohead.html" />
+        <option value="$PROJECT_DIR$/web/search.html" />
+        <option value="$PROJECT_DIR$/web/css/common.css" />
+        <option value="$PROJECT_DIR$/web/css/index.css" />
+        <option value="$PROJECT_DIR$/web/Firsthead.html" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1153.xml" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1152.xml" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1154.xml" />
+        <option value="$PROJECT_DIR$/web/js/public.js" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1155.xml" />
+        <option value="$PROJECT_DIR$/src/config.properties" />
+        <option value="$PROJECT_DIR$/src/imageConfig.properties" />
+        <option value="$PROJECT_DIR$/web/Thirdhead.html" />
+        <option value="$PROJECT_DIR$/web/fenlei/toup.html" />
+        <option value="$PROJECT_DIR$/src/datasource2.properties" />
+        <option value="$PROJECT_DIR$/src/datasource1.properties" />
+        <option value="$PROJECT_DIR$/src/datasource3.properties" />
+        <option value="$PROJECT_DIR$/src/datasource101.properties" />
+        <option value="$PROJECT_DIR$/src/datasource102.properties" />
+        <option value="$PROJECT_DIR$/web/js/head.js" />
+        <option value="$PROJECT_DIR$/src/com/SharePackages/Html2Text.java" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1157.xml" />
+        <option value="$PROJECT_DIR$/web/zxx/useradd.jsp" />
+        <option value="$PROJECT_DIR$/web/Admin.jsp" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1159.xml" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1158.xml" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserAdd.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserQuery.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserDel.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsCardQuery.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsNewAction.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostAction.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostLook.java" />
+        <option value="$PROJECT_DIR$/web/zxx/usermod.jsp" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserMod.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsQuery.java" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1163.xml" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsDel.java" />
+        <option value="$PROJECT_DIR$/web/zxx/postadd.jsp" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1162.xml" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsMod.java" />
+        <option value="$PROJECT_DIR$/web/zxx/postmod.jsp" />
+        <option value="$PROJECT_DIR$/web/main.jsp" />
+        <option value="$PROJECT_DIR$/src/sqlmap/1164.xml" />
+        <option value="$PROJECT_DIR$/src/sqlconfig.xml" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsRepliesAction.java" />
+        <option value="$PROJECT_DIR$/web/replies.jsp" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/validateLogon.java" />
+        <option value="$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsLoginAction.java" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zxx" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sqlmap" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zxx" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zxx" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBS_post" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zxx" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBS_new" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="servlet" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zxx" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BBS_admin" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bbs" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="vcs.Subversion" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="G:/sysservice" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="sq&#9;FILE&#9;file://G:/bbs/src/sqlconfig.xml&#10;sql&#9;FILE&#9;file://G:/bbs/src/sqlconfig.xml&#10;lo&#9;PSI&#9;JAVA://com.service.servlet.RegisterPackages.LoginAction&#10;&#9;FILE&#9;file://G:/bbs/src/sqlconfig.xml&#10;HtmlHander&#9;PSI&#9;JAVA://com.service.servlet.HtmlHander&#10;imageConfig&#9;PSI&#9;JAVA://sun.awt.image.BufferedImageGraphicsConfig" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\bbs\src\sqlmap" />
+      <recent name="G:\bbs\web\zxx" />
+      <recent name="G:\bbs\src\com" />
+      <recent name="G:\bbs\web" />
+      <recent name="G:\bbs\web\js" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat8.9">
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tomcat8.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.9" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8065/" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="bbs">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_bbs" />
+        <option name="HTTP_PORT" value="8065" />
+        <option name="JNDI_PORT" value="1065" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50003" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="bbs" />
+        </option>
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat8.9" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" myUseAcceleration="nothing" cleanupOnStartRun="true">
+    <configuration>C:\Users\TTL\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="G:\bbs" />
+          <option name="myCopyRoot" value="G:\bbs" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="G:\bbs" />
+          <option name="myCopyRoot" value="G:\bbs" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62d3377d-ee7f-4865-baef-54d782d67265" name="Default" comment="" />
+      <created>1518480492348</created>
+      <updated>1518480492348</updated>
+      <workItem from="1518480495182" duration="86000" />
+      <workItem from="1518480583472" duration="10340000" />
+      <workItem from="1518501253586" duration="212000" />
+      <workItem from="1518504045317" duration="1355000" />
+      <workItem from="1518505419331" duration="6506000" />
+      <workItem from="1518572191420" duration="3673000" />
+      <workItem from="1518575991432" duration="7495000" />
+      <workItem from="1518586146767" duration="9312000" />
+      <workItem from="1518605574308" duration="2817000" />
+      <workItem from="1518753408943" duration="2981000" />
+      <workItem from="1518831100133" duration="657000" />
+      <workItem from="1518842409876" duration="5230000" />
+      <workItem from="1518848333994" duration="6375000" />
+      <workItem from="1518854927039" duration="9474000" />
+      <workItem from="1518866609264" duration="11988000" />
+      <workItem from="1518919989041" duration="30000" />
+      <workItem from="1518936776871" duration="1092000" />
+      <workItem from="1518943669268" duration="6690000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="86313000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44590163" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25755286" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974428" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25755286" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991013" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974428" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974428" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25755286" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45901638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295082" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25755286" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserMod.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="27" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web/error/sysError.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1475">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/error/_notes/dwsync.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="703">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/datasource2.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1376">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/datasource1.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1408">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/datasource3.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1376">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/datasource101.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1216">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/datasource102.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1216">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/imageConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="224">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/head.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1472" max-vertical-offset="11456">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1156.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/easyui/locale/easyui-lang-af.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1824">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/_notes/dwsync.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="548">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/asgfsaga.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/asdf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.399287" vertical-offset="0" max-vertical-offset="561">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1157.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+          <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/Service/costCalculation/Calculation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="74" max-vertical-offset="21728">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/Service/Bbs/BbsTaskService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="3552">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/nlWin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1569343" vertical-offset="7050" max-vertical-offset="13408">
+          <caret line="223" column="9" selection-start-line="223" selection-start-column="9" selection-end-line="223" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/include/comScript.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5" vertical-offset="0" max-vertical-offset="512">
+          <caret line="8" column="50" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/clazz/MainJsonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1088">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/Service/Bbs/BbsMcenterLeftService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1856">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1159.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserAdd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="283" max-vertical-offset="2944">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsCardQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="2144">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsNewAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="2144">
+          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1158.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="16128">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1160.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2432">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserDel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2464">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="86" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1163.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1162.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="320">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_admin/adminUserMod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3168">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsMod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="938" max-vertical-offset="3008">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsDel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47272727" vertical-offset="636" max-vertical-offset="2464">
+          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.208955" vertical-offset="7232" max-vertical-offset="13760">
+          <caret line="397" column="9" selection-start-line="397" selection-start-column="9" selection-end-line="397" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_post/adminBbsQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3881119" vertical-offset="2" max-vertical-offset="2432">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/zxx/usermod.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4328358" vertical-offset="1536" max-vertical-offset="4896">
+          <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/zxx/postmod.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47761193" vertical-offset="480" max-vertical-offset="4608">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/zxx/useradd.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7790262" vertical-offset="0" max-vertical-offset="4160">
+          <caret line="13" column="2" selection-start-line="9" selection-start-column="0" selection-end-line="13" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2718" max-vertical-offset="3488">
+          <caret line="91" column="19" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/replies.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9866" max-vertical-offset="12768">
+          <caret line="315" column="31" selection-start-line="315" selection-start-column="31" selection-end-line="315" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="955" max-vertical-offset="2528">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/validateLogon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1056" max-vertical-offset="2976">
+          <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsPostLook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="508" max-vertical-offset="2304">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2459016" vertical-offset="6240" max-vertical-offset="27040">
+          <caret line="205" column="6" selection-start-line="170" selection-start-column="0" selection-end-line="205" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsLoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="2496">
+          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1153.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/service/servlet/zxx/BBS_new/BbsRepliesAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="514" max-vertical-offset="2368">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlconfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="348" max-vertical-offset="896">
+          <caret line="18" column="188" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="188" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlmap/1164.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>bbs</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (bbs)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>bbs</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+

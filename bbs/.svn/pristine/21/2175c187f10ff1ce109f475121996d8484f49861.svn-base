@@ -1,0 +1,6 @@
+<!--fs:opt-->
+          ###cococo:forsplit###
+               <optgroup label="###opt:forum_name###">
+                        #0#:cococo0###opt:forum_id####0#
+                </optgroup>
+<!--fe:opt-->

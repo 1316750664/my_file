@@ -1,0 +1,337 @@
+package com.service.servlet;
+
+import com.bean.SendMail;
+import com.bean.TaskBean;
+import com.bean.ValidCodeBean;
+import com.service.Service.loginDetection.LoginDetection;
+import com.service.clazz.MainJsonService;
+import com.service.fragService.FragService;
+import com.util.tools.CheckTools;
+import com.util.tools.FingerUtil;
+import com.util.tools.FormParamValid;
+import com.util.tools.HtmlGenerator;
+import com.util.tools.RandomValidateCode;
+import com.util.tools.ReadWriteProperties;
+import com.util.tools.StaticUtil;
+import com.util.tools.ToolUtil;
+import com.util.tools.ValidCodeCookie;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * on 2014/11/27.
+ */
+@WebServlet(name = "EmailServlet", urlPatterns = {"/Action/EmailServlet.do"})
+public class EmailServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        response.setHeader("content-type", "application/json;charset=utf-8");
+        try {
+            out = response.getWriter();
+            String email = request.getParameter("email");
+            if (null == email || "".equals(email)) {
+                out.write("{\"error\":\"301\",\"msg\":\"邮箱不可为空\"}");
+                out.flush();
+                return;
+            }
+            //先判定uid,再放入map
+            String cookie_uuid = ToolUtil.getRequestCookie(request.getCookies(), "cookie_uuid");
+            if (null == cookie_uuid) {
+                out.write("{\"error\":\"301\",\"msg\":\"请登陆再发送邮件\"}");
+                out.flush();
+                return;
+            }
+            String user_id = LoginDetection.getInstance().getUserid(cookie_uuid);//用户id
+            if (null == user_id) {
+                out.write("{\"error\":\"301\",\"msg\":\"请登陆再发送邮件\"}");
+                out.flush();
+                return;
+            }
+            String user = request.getParameter("user_id");
+            if (null == user || !user_id.equals(user)) {
+                out.write("{\"error\":\"301\",\"msg\":\"用户信息出错，请重新登陆\"}");
+                out.flush();
+                return;
+            }
+            int taskId2 = 1113;
+            int cmdType2 = 0;
+            String[] params3 = {email};
+            TaskBean taskBean3 = new TaskBean(taskId2, cmdType2, params3);
+            List<Map<String, String>> subList = StaticUtil.objectMapper.readValue(FragService.getInstance().fragment(0, taskBean3), List.class);
+            String all = subList.get(0).get("num");
+            if (!all.equals("0")) {
+                out.write("{\"error\":\"301\",\"msg\":\"该邮箱已被使用，请填写其他邮箱\"}");
+                out.flush();
+                return;
+            }
+
+            ReadWriteProperties rwp = ReadWriteProperties.getInstance();
+            ValidCodeCookie validCodeCookie = ValidCodeCookie.getInstance();
+            if (null == request.getParameter("check")) {  //发验证码   是否重复发送?
+                if (null != validCodeCookie.readCodeCookie(response, request.getCookies(), 3)) {
+                    out.write("{\"error\":\"301\",\"msg\":\"不可重复发送验证码\"}");
+                    out.flush();
+                    return;
+                }
+                String pay = request.getParameter("type");
+                if ("pay".equals(pay)) {//支付密码
+                    taskId2 = 1108;
+                    cmdType2 = 0;
+                    String[] params4 = {user_id};
+                    taskBean3 = new TaskBean(taskId2, cmdType2, params4);
+                    subList = StaticUtil.objectMapper.readValue(FragService.getInstance().fragment(0, taskBean3), List.class);
+                    email = subList.get(0).get("valid_email");
+                }
+                if (!CheckTools.checkEmail(email)) {
+                    out.write("{\"error\":\"301\",\"msg\":\"邮箱格式不正确，无法发送邮件\"}");
+                    out.flush();
+                    return;
+                }
+                //产生验证码
+                RandomValidateCode rc = new RandomValidateCode();
+                String yanZheng = rc.getRandomStrings(4);
+
+                // 邮件内容 从email_msg.txt获取
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("code", yanZheng);
+                map.put("time", rwp.readValue("email", "valid_time"));
+                String msg1 = HtmlGenerator.getInstance().replaceHtml(ToolUtil.readFile(request.getSession().getServletContext().getRealPath("/frag") + "/email_msg.txt"), map, null);
+//                String msg = "本次激活邮箱验证码：" + yanZheng + ",请您即时激活，过" + time + "分钟后，该激活码不可用。";
+
+                // 创建实例
+                SendMail sm = createSendMail(email, rwp.readValue("email", "email_title_msg2"), msg1);
+                // 执行发送
+
+                sm.send();
+                List<ValidCodeBean> validCodeBeanList = new ArrayList<ValidCodeBean>();
+                ValidCodeBean bean = new ValidCodeBean(3, System.currentTimeMillis() + Integer.parseInt(rwp.readValue("email", "valid_time")) * 60 * 1000, yanZheng);
+                validCodeBeanList.add(bean);
+//                validCodeCookie.writeCodeCookie(response, request.getCookies(), bean);
+                bean = new ValidCodeBean(10, System.currentTimeMillis() + Integer.parseInt(rwp.readValue("email", "valid_time")) * 60 * 1000, email);//接收邮箱
+                validCodeBeanList.add(bean);
+//                validCodeCookie.writeCodeCookie(response, request.getCookies(), bean);
+                validCodeCookie.writeCodeCookie(response, request.getCookies(), validCodeBeanList);
+                out.write("{\"error\":\"201\",\"msg\":\"邮件发送成功\"}");
+                out.flush();
+            } else {
+
+                if ("1".equals(request.getParameter("check"))) {//验证验证码
+                    List<ValidCodeBean> validCodeBeanList = validCodeCookie.readCodeCookie(response, request.getCookies(), new int[]{3, 10});
+                    if (null == validCodeBeanList) {
+                        //邮件未发送
+                        out.write("{\"error\":\"301\",\"msg\":\"请先发送邮件获取验证码\"}");
+                        out.flush();
+                        return;
+                    }
+                    ValidCodeBean code1 = validCodeBeanList.get(0);
+                    String code = code1.getCode();
+                    code1 = validCodeBeanList.get(1);
+                    String sendEmail = code1.getCode();//接收手机
+                    if (null == sendEmail || !sendEmail.equals(email)) {
+                        out.write("{\"error\":\"301\",\"msg\":\"非已发送邮箱，请重新填写\"}");
+                        out.flush();
+                        return;
+                    }
+                    String validCode = request.getParameter("validCode");
+                    if (null == validCode || "".equals(validCode)) {
+                        out.write("{\"error\":\"301\",\"msg\":\"验证码不能为空，请重新填写\"}");
+                        out.flush();
+                        return;
+                    }
+                    if (code.toUpperCase().equals(validCode.toUpperCase())) {//成功   大小写
+                        Map<String, String[]> paramMap = new HashMap<String, String[]>();
+                        if (null == request.getParameter("type")) {
+                            paramMap.put("taskId", new String[]{"1102"});
+                            paramMap.put("cmdType", new String[]{"Update"});
+                            paramMap.put("valid_email", new String[]{request.getParameter("email")});
+                            paramMap.put("user_id", new String[]{user_id});
+                            if ("0".equals(request.getParameter("upda"))) {//更新支付账号
+                                paramMap.put("taskId_2", new String[]{"1106"});
+                                paramMap.put("cmdType_2", new String[]{"Update"});
+                                paramMap.put("trade_accout", new String[]{request.getParameter("email")});
+                            }
+                        } else if ("pay".equals(request.getParameter("type"))) {//修改支付密码
+                            //新密码 填写一致  加密  数据库修改
+                            String newPwd = request.getParameter("newPwd");
+                            String newPwd1 = request.getParameter("newPwd1");
+                            if (null == newPwd || null == newPwd1) {
+                                out.write("{\"error\":\"301\",\"msg\":\"请填写新支付密码\"}");
+                                out.flush();
+                                return;
+                            }
+                            if (!newPwd.equals(newPwd1)) {
+                                out.write("{\"error\":\"301\",\"msg\":\"新密码不一致，请重新确认\"}");
+                                out.flush();
+                                return;
+                            }
+                            //验证登录密码是否相同
+                            int taskId = 1115;
+                            int cmdType = 0;
+                            String[] params = {user_id};
+                            TaskBean taskBean = new TaskBean(taskId, cmdType, params);
+                            String txt = FragService.getInstance().fragment(0, taskBean);
+                            subList = StaticUtil.objectMapper.readValue(txt, List.class);
+                            String salt = subList.get(0).get("login_salt");
+                            String login_pwd = subList.get(0).get("login_pwd");
+                            newPwd = FingerUtil.md5(FingerUtil.md5(newPwd) + salt);
+                            if (newPwd.equals(login_pwd)) {
+                                out.write("{\"error\":\"301\",\"msg\":\"支付密码不可与登陆密码相同\"}");
+                                out.flush();
+                                return;
+                            }
+                            paramMap.put("taskId_1", new String[]{"1107"});
+                            paramMap.put("cmdType_1", new String[]{"Update"});
+                            paramMap.put("trade_password", new String[]{newPwd});
+                            paramMap.put("user_id", new String[]{user_id});
+                        }
+                        FormParamValid fpv = FormParamValid.getInstance();
+                        String result = fpv.valid(paramMap);
+                        if (null == result) {
+                            new MainJsonService().invoke(paramMap);
+                            out.write("{\"error\":\"201\",\"msg\":\"验证码正确，操作成功\"}");
+                            validCodeCookie.deleteCodeCookie(response, request.getCookies(), new int[]{3, 10});//验证成功删除
+                        }
+                    } else {
+                        out.write("{\"error\":\"301\",\"msg\":\"验证码错误，请重新填写\"}");
+                    }
+                    out.flush();
+                } else if ("2".equals(request.getParameter("check"))) { //注册后填写，发送帐号密码
+
+                    //页面传入账号，密码，user_id，邮箱
+                    Map<String, String[]> paramMap = new HashMap<String, String[]>(request.getParameterMap());
+                    paramMap.put("valid_email", new String[]{email});
+                    String validMessage = FormParamValid.getInstance().valid(paramMap);
+                    if (validMessage != null) {
+                        out.write(validMessage);
+                        out.flush();
+                        return;
+                    }
+                    //密码解密
+                    String pwd = paramMap.get("login_pwd")[0];
+                    String name = paramMap.get("login_name")[0];
+                    if (null == pwd || "".equals(pwd) || null == name || "".equals(name)) {
+                        out.write("{\"error\":\"301\",\"msg\":\"系统出错,帐号信息获取出错\"}");
+                        out.flush();
+                        return;
+                    }
+                    String realPwd = FingerUtil.decryptPropertiesAES(pwd, "pwKey");
+                    String phone_msg = rwp.readValue("email", "phone_msg");
+                    phone_msg = phone_msg.replaceAll("###login_name###", name);
+                    phone_msg = phone_msg.replaceAll("###login_pwd###", realPwd);
+                    SendMail sm = createSendMail(email, rwp.readValue("email", "email_title_msg1"), phone_msg);
+                    //任务1发送邮箱 任务2更新数据库 valided = 1
+                    sm.send();
+                    //查找支付账号
+                    int taskId = 1121;
+                    int cmdType = 0;
+                    String[] params = {user_id};
+                    TaskBean taskBean = new TaskBean(taskId, cmdType, params);
+                    String acountMap = FragService.getInstance().fragment(0, taskBean);
+                    subList = StaticUtil.objectMapper.readValue(acountMap, List.class);
+                    String acount = subList.get(0).get("trade_accout");
+                    if (null != acount && !"".equals(acount)) {
+                        out.write("{\"error\":\"201\",\"msg\":\"账号信息已发送，您已设置支付账号\"}");
+                        out.flush();
+                        return;
+                    }
+                    //支付账号设置
+                    paramMap.put("taskId_2", new String[]{"1106"});
+                    paramMap.put("cmdType_2", new String[]{"Update"});
+                    paramMap.put("user_id", new String[]{user_id});
+                    paramMap.put("trade_accout", new String[]{email});
+                    new MainJsonService().invoke(paramMap);
+                    out.write("{\"error\":\"201\",\"msg\":\"发送成功\"}");
+                    out.flush();
+                }
+            }
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式" + "EmailServlet";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误" + "EmailServlet";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            errorCode = e.getMessage() + "EmailServlet";
+        } catch (Exception e) {
+            e.printStackTrace();
+            errorCode = e.getMessage() + "EmailServlet";
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    private SendMail createSendMail(String email, String title, String msg) {
+        Map<String, String> map = new HashMap<String, String>();
+        ReadWriteProperties rwp = ReadWriteProperties.getInstance();
+        // 邮件服务器主机名(smtp服务器地址)
+        // 如：qq的smtp服务器地址：SMTP.qq.com
+        map.put("smtp", rwp.readValue("email", "email_smtp"));
+        // 邮件传输协议：如smtp
+        map.put("protocol", rwp.readValue("email", "email_protocol"));
+        // 登录邮箱的用户名
+        map.put("username", rwp.readValue("email", "email_Name"));
+        // 登录邮箱的密码
+        map.put("password", rwp.readValue("email", "email_Pwd"));
+        // 发送人的帐号
+        map.put("from", rwp.readValue("email", "email_Name"));
+        // 接收人的帐号，多个以","号隔开
+        map.put("to", email);
+        // 邮件主题
+        map.put("subject", title);
+
+        // 邮件内容
+        map.put("body", msg);
+
+        // 内嵌了多少张图片，如果没有，则new一个不带值的Map
+        Map<String, String> image = new HashMap<String, String>();
+
+
+        // 附件的绝对路径,不发附件则new一个不带值的List
+        List<String> list = new ArrayList<String>();
+
+        // 创建实例
+        return new SendMail(map, list, image);
+    }
+}

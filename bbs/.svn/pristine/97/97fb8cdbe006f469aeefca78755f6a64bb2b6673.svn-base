@@ -1,0 +1,6 @@
+<!--fs:index-->
+<div class="yb">
+    <div class="yb_l"><a href="/fenlei/post.jsp?postid=###index:post_id###" class="gary"><i class="iconfont">&#xe605;</i>###index:topic###</a></div>
+    <div class="yb_r"><a href="/fenlei/post.jsp?postid=###index:post_id###" class="gart">###index:replies###回复</a></div>
+</div>
+<!--fe:index-->

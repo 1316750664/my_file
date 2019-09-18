@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<title>搜索</title>
+<link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/body.css" rel="stylesheet"/>
+<link type="text/css" href="../css/head.css" rel="stylesheet"/>
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+<link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="../css/pager.css" rel="stylesheet"/>
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+</head>
+
+<body>
+<div id="JS_head"></div>
+<div id="JS_twohead"></div>
+<div id="JS_threehead"></div>
+<div class="max_width">
+    <div class="left" style="height:30px; line-height:30px"><a class="bule" href="#">个人中心</a> &gt; 论坛管理</div>
+    <div class="left" style="border:1px solid #ccc; width:1001px">
+       <div style="background:#eee; height:35px; line-height:35px; padding-left:10px; width:991px"><strong>论坛管理</strong></div>  
+       <div style="height:150px; line-height:150px; margin-left:10px">对不起，您没有论坛管理的权限。还是去逛逛<a class="bule" href="#">企商汇论坛</a>吧！</div>  
+    </div>
+</div>
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript">  
+$("#JS_head").load("../Firsthead.html");
+$("#JS_twohead").load("../Twohead.html"); 
+$("#JS_threehead").load("../Thirdhead.html"); 
+$("#JS_foot").load("../footThird.html");
+</script>
+</body>
+</html>

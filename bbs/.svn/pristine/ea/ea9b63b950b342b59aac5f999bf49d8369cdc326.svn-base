@@ -1,0 +1,94 @@
+@charset "utf-8";
+.fenleihead{width:991px; float:left;font:12px Tahoma,Arial; margin:10px 0;border:1px solid #d9d9d9; background-color:#fcfcfc; padding-left:10px; height:32px; line-height:32px;}
+.fenleihead a{ color:#6a6a6a; margin:0 8px; line-height:32px;}
+.fenleihead a:hover{ text-decoration:underline;}
+.fenleimenu{width:160px; height:auto; background:#fff;margin-left:15px; margin-right:20px;float:left;}
+.fenleimenu dl dt{ font-size:13px; border-bottom:1px solid #f1f1f1; line-height:32px;}
+.fenleimenu dl dt strong{ margin-left:5px;}
+.fenleimenu dl dd{ font-size:12px;line-height:25px;}
+.fenleimenu dl dd ul li{ border-bottom:1px solid #f1f1f1;margin-left:5px;line-height:25px; padding-left:16px;}
+.fenleimenu dl dd a{ color:#666;}
+.fenleimenu dl dd a:hover{ text-decoration:underline;}
+.fenleicontent{width:762px;margin-left:26px; margin-right:20px; float:left;}
+.fenleicontent .toppart{ width:762px; height:285px; padding-bottom:5px; }
+.fenleicontent .toppart .title{ width:762px; height:43px; line-height:43px;}
+.fenleicontent .toppart .title p{ padding-left:20px; font-weight:normal; margin-right:15px;float:left;}
+.fenleicontent .toppart .title p strong{ font-size:16px;}
+.fenleicontent .toppart .title p span{ font-size:14px;}
+.fenleicontent .toppart .title a{ width:76px;height:24px;font-size:13px; font-family:Microsoft yahei; font-weight:bold;margin-top:10px;text-align:center; line-height:24px; float:left; background:url(../images/bangzhubg.png) no-repeat;}
+.fenleicontent .toppart .title .total{ padding-left:30px; float:left;font-family: microsoft yahei;font-weight:bold;font-size:13px;}
+#topContent { width:762px; position:relative;}
+#topContent #tagbtn{ width:148px; height:26px; position:absolute; right:5px; top:-26px;}
+#topContent #tagbtn li{ width:74px; float:left; background:none;}
+#topContent #tagbtn li a{width:74px; height:26px;color:#fff; line-height:26px; text-align:center; float:left; font-weight:bold;}
+#topContent #tagbtn li a:hover{ text-decoration:none;}
+#topContent #tagbtn li.selectTagbtn{ width:74px; height:26px; background:url(../images/titletabbg.png) no-repeat;}
+#topContent #tagbtn li.selectTagbtn a{ color:#333;}
+#topContent #tagContent{ background-color:#FFF; margin-left:5px; margin-right:5px; width:752px; height:242px;}
+#topContent #tagContent .tagContent{ display:none;}
+#topContent #tagContent div.selectTag{ display:block;}
+/******轮播图样式****/
+.bigOutBor{width:180px;position:absolute;top:15px;left:20px;}
+#bigImg{width:100%;height:180px;position:relative; z-index:1}
+#slides{width:100%;height:180px;position:relative;}
+#slides li{width:100%; height:100%;position:absolute;}
+#slides li a{display:block;width:100%;height:100%;text-indent:-9999px;}
+#pagination{position:absolute;right:10px;bottom:10px;z-index:99;}
+#pagination li{ background-color:#000;width:16px;height:18px;float:left;margin-right:5px;}
+#pagination li a{display:block;width:100%;height:100%; text-align:center; line-height:18px; color:#fff;}
+#pagination li.current{ background-color:#c40001;}
+#focusimgtitle{ width:160px; padding:0 10px; margin-top:5px;}
+#focusimgtitle li{width:160px;height:32px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+#focusimgtitle li a{ line-height:32px; font-size:14px; font-family:Microsoft yahei; font-weight:bold;}
+/*****结束****/
+#topContent #tagContent .tagContent .tag1part1{width:752px; margin-top:20px; float:left;}
+#topContent #tagContent .tagContent .tag1part1 ul{ width:752px; height:auto; overflow:hidden;padding-bottom:20px;border-bottom: 1px dashed #ccc;}
+#topContent #tagContent .tagContent .tag1part1 ul li{float:left;height:32px;line-height:32px; padding:0 25px;}
+#topContent #tagContent .tagContent .tag1part1 ul li a{ color:#555; font-size:14px; font-weight:bold;}
+#topContent #tagContent .tagContent .tag1part1 ul li a:hover{ text-decoration:underline;}
+#topContent #tagContent .tagContent .tag1part2{width:664px; margin-top:20px; float:left; padding:0 44px;}
+#topContent #tagContent .tagContent .tag1part2 p{ font-size:14px; line-height:26px;}
+#topContent #tagContent .tagContent .tag2right{width:500px; height:212px; margin:15px 0;position:absolute;left:245px;}
+#topContent #tagContent .tagContent .tag2right .bigtitle{width:470px;text-align:center;font-size:16px; line-height:30px;padding:0 15px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+#topContent #tagContent .tagContent .tag2right .bigtitle a{font-size:16px; font-weight:bold; }
+#topContent #tagContent .tagContent .tag2right .bigtitle a:hover{text-decoration:underline;}
+#topContent #tagContent .tagContent .tag2right ul.newslist0{ width:500px; margin-top:15px; height:auto; list-style-type:disc;overflow:hidden;list-style-position: inside}
+#topContent #tagContent .tagContent .tag2right ul.newslist0 li{width:215px; line-height:30px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap; padding-left:20px; padding-right:15px; background:url(../images/newslistdisc.png) no-repeat 10px 14px;float:left;}
+#topContent #tagContent .tagContent .tag2right ul.newslist0 li a{ font-size:14px; color:#666;}
+#topContent #tagContent .tagContent .tag2right ul.newslist0 li a:hover{ text-decoration:underline;}
+.fenleicontent .centerpart{ width:762px; overflow:hidden; margin-bottom:50px;position: relative;}
+.fenleicontent .centerpart ul.postState{width:746px; float:left;padding-top:10px;border-bottom:1px solid #d6d6d6; background:#fbfbfb;padding-left:16px;}
+.fenleicontent .centerpart ul.postState li{font-weight:400;font-size:14px;color:#404040;float:left; width:86px; text-align:center;line-height:30px;}
+.fenleicontent .centerpart ul.postState li a{color:#36c;}
+.fenleicontent .centerpart ul.postState li.select{ background:url(../images/postStatebg.png) no-repeat;margin-bottom: -1px;border-bottom: 1px #fff solid;_position:relative;_bottom:-1px;}
+.fenleicontent .centerpart ul.postState li.select a{color:#404040;}
+.fenleicontent .centerpart .btn-fb{background:url(../images/ftbtnall.png) no-repeat -100px 0;width:85px;height:30px;overflow:hidden;cursor:pointer; border:none; position:absolute; top:5px;right:0;}
+.fenleicontent .centerpart .type-fb{position:absolute;top:35px;right:0; display:none;}
+.fenleicontent .centerpart .type-fb ul{ width:83px; float:left; background:#fff; border:1px solid #CCC;}
+.fenleicontent .centerpart .type-fb ul li{ height:26px;}
+.fenleicontent .centerpart .type-fb ul li span{display:inline-block;}
+.fenleicontent .centerpart .type-fb ul li a{ width:83px; height:26px; line-height:26px;display:block; font-size:14px; vertical-align:middle;}
+.fenleicontent .centerpart .type-fb ul li a:hover{ background:#f3f3f3; color:#000;}
+.fenleicontent .centerpart .type-fb ul li a img{ margin-left:14px; margin-right:10px; vertical-align:middle;}
+.fenleicontent .centerpart .allgoodslist{width:762px; float:left; margin-top:15px; margin-bottom:5px;}
+.fenleicontent .centerpart table{width:762px;table-layout:fixed; color:#999; border-spacing:0;border-collapse:collapse;font:12px/1.5 tahoma,arial,sans-serif;}
+.fenleicontent .centerpart table th{background:#f4f4f1;height:26px;line-height:26px;text-align:left;color:#999;border-bottom:1px solid #dededc;border-top:1px solid #dededc;}
+.fenleicontent .centerpart table .subject {font-size:14px;}
+.fenleicontent .centerpart table .subject .status{ margin-right:3px;}
+.fenleicontent .centerpart table .later {padding:0 10px 0 20px;}
+.fenleicontent .centerpart table .score{width:100px;text-align: center;}
+.fenleicontent .centerpart table .last{text-align:right;padding:0 10px;}
+.fenleicontent .centerpart table .later , table .last{ width:80px;}
+.fenleicontent .centerpart table th.subject {text-indent:20px;border-left:1px solid #dededc;font-size:12px;}
+.fenleicontent .centerpart table th.score {text-align: center;padding:0 5px;}
+.fenleicontent .centerpart table th.last{padding-right:10px;border-right:1px solid #dededc;}
+.fenleicontent .centerpart table td{border-top:1px solid #dededc; height:40px;}
+.fenleicontent .centerpart table td a{ color:#0000ee;}
+.fenleicontent .centerpart table td a:hover{ text-decoration:underline;}
+.fenleicontent .centerpart table td .name{overflow: hidden;white-space:nowrap;}
+.fenleicontent .centerpart table td .time {overflow: hidden;white-space: nowrap;}
+.fenleicontent .centerpart table td em.hot{ color:#ff0000;}
+.fenleicontent .centerpart table td em.leve-1{ margin-left:8px;}
+
+
+

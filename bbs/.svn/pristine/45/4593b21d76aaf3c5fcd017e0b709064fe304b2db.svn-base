@@ -1,0 +1,9 @@
+#bbs首页图片
+index_img=images/tu.jpg
+no_pic=/images/pro_pic.png
+#商品无图片默认图片
+good_default=/images/pro_pic.png
+#用户头像无图片默认图片
+user_default=/images/tuzi.png
+#二维码logo默认图片
+qrcode_default=/qishanghui_E.jpg

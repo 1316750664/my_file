@@ -1,0 +1,96 @@
+package com.service.servlet;
+
+import com.service.clazz.MainJsonService;
+import com.util.tools.FormParamValid;
+import solr.SolrService.SolrIndexOprate;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 删除贴子
+ */
+@WebServlet(name = "UnDeletePost", urlPatterns = {"/Action/UnDeletePost.do"})
+public class UnDeletePost extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            Map<String, String[]> paramMap = new HashMap<String, String[]>(request.getParameterMap());
+            String validMessage = FormParamValid.getInstance().valid(paramMap);
+            if (validMessage != null) {
+                out.write(validMessage);
+                out.flush();
+                return;
+            }
+//            String cookie_uuid = ToolUtil.getRequestCookie(request.getCookies(), "cookie_uuid");
+//            String[] param_user_id = paramMap.get("user_id");
+//            if (cookie_uuid == null || "".equals(cookie_uuid) || param_user_id == null) {//未登录或者无需验证
+//
+//            } else {
+//                String user_id = LoginDetection.getInstance().getUserid(cookie_uuid);//用户id
+//                if (!param_user_id[0].equals(user_id)) {//非法访问
+//                    out.write("{\"error\":\"501\",\"msg\":\"非法访问\"}");
+//                    out.flush();
+//                    return;
+//                }
+//            }
+            out.write(new MainJsonService().invoke(paramMap));
+            out.flush();
+            //titile
+            SolrIndexOprate.getInstance().executeSolrAddPlus(paramMap.get("pId")[0],paramMap.get("title")[0]);
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (Exception e) {
+            exception = e.getCause();
+            errorCode = "插入solr索引";
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

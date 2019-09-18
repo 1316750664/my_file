@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<title>发贴投票-浙江企商汇电子商务有限公司</title>
+<link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/body.css" rel="stylesheet"/>
+<link type="text/css" href="../css/head.css" rel="stylesheet"/>
+<link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="../css/fat.css"  rel="stylesheet">  
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+</head>
+
+<body>
+<div id="JS_head"></div>
+<div id="JS_twohead"></div>
+<div id="JS_threehead"></div>
+<div class="max_width">
+    <div class="head"> 汽商论坛 &gt; 经验畅谈居 &gt; <strong>发表投票帖</strong></div>
+    <div class="fa">
+     <p class="fat"><i class="iconfont">&#xe618;</i><strong>发表投票帖</strong> | <em style="text-decoration:underline; font-size:12px" class="bule">《企商论坛用户发帖规则》新手必读</em></p>
+     <p class="neirong">
+        <span style="float:left; width:650px;">
+          <label for="biaoti" style="float:left">标题:</label>
+          <input type="text" name="biaoti" placeholder="不论快乐悲伤 大事小事 都可以分享出来 让大家帮你排忧解难或分享快乐" class="inputt"style=" float:left">
+        </span>
+        <select class="select" name="选择版块" style="float:left">
+           <option value="经验分享">经验分享</option>
+           <option value="娱乐八卦">娱乐八卦</option>
+           <option value="汽车天地">汽车天地</option>
+         </select>
+     </p>
+     <p class="neirong margin-top10">
+       <span class="name">内容：</span>
+       <span class="kuang"></span>
+     </p>
+     <div class="anniu" style="line-height:39px;">
+      源码:已输入<b class="red"> 0 </b>/ 最多输入 <b class="yel">20000</b>
+     </div>
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="toupiao">
+        <col class="tp">
+        <col class="tp1">
+        <col class="tp2">
+        <col class="tp3">
+        <tr class="tr_a">
+          <td class="text_center"><i class="iconfont dis_none">&#xe60b;</i></td>
+          <td class="text_center"><span class="zhi">1</span></td>
+          <td><input name="name" type="text" class="wz_kuang"></td>
+          <td>
+             <a href="javascript:void(0)" class="bule"><i class="iconfont" style="font-size:20px">&#xe61c;</i></a>
+             <span class="dis_none">链接到：<input name="name" type="text" value="http://" class="dz_kuang"> <button type="button" class="ant_ture">确认</button> <button type="button" class="ant_flast">取消</button></span>
+             <span class="dis_none">链接到：<em></em> <a href="javascript:void(0)" class="red">修改</a> | <a href="javascript:void(0)">删除</a></span>
+          </td>
+        </tr>
+        <tr class="tr_a">
+          <td class="text_center"><i class="iconfont dis_none">&#xe60b;</i></td>
+          <td class="text_center"><span class="zhi">2</span></td>
+          <td><input name="name" type="text" class="wz_kuang"></td>
+          <td>
+          	<a href="javascript:void(0)" class="bule"><i class="iconfont" style="font-size:20px">&#xe61c;</i></a>
+			<span class="dis_none">链接到：<input name="name" type="text" value="http://" class="dz_kuang"> <button type="button" class="ant_ture">确认</button> <button type="button" class="ant_flast">取消</button></span>
+            <span class="dis_none">链接到：<em></em> <a href="javascript:void(0)" class="red">修改</a> | <a href="javascript:void(0)">删除</a></span>
+          </td>
+        </tr>
+        <tr class="tr_a">
+          <td class="text_center"><i class="iconfont dis_none">&#xe60b;</i></td>
+          <td class="text_center"><span class="zhi">3</span></td>
+          <td><input name="name" type="text" class="wz_kuang"></td>
+          <td>
+          	<a href="javascript:void(0)" class="bule"><i class="iconfont" style="font-size:20px">&#xe61c;</i></a>
+            <span class="dis_none">链接到：<input name="name" type="text"  value="http://" class="dz_kuang"> <button type="button" class="ant_ture">确认</button> <button type="button" class="ant_flast">取消</button></span>
+            <span class="dis_none">链接到：<em></em> <a href="javascript:void(0)" class="red">修改</a> | <a href="javascript:void(0)">删除</a></span>
+          </td>
+        </tr>
+        
+		<tr>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td><a href="javascript:void(0)" class="bule add"><i class="iconfont">&#xe61b;</i> 增加选项</a></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text_right bor_top">投票方式：</td>
+          <td colspan="2" class="bor_top fangshi">
+              <span style="float:left"><input name="dang xuan" class="dang" type="radio" value="0" style="vertical-align:-2px;" checked> 单选</span> 
+              <span style="float:left;padding-left:5px"> <input name="dang xuan" type="radio" class="addduo" value="1" style="vertical-align:-2px;"> 多选</span>
+              <span class="xiang" style="display:none;float:left; padding-left:5px"><label for="wuxuan"> 最多可选</label><input name="wuxuan" class="kuan" type="text">项</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text_right bor_top">投票结果：</td>
+          <td colspan="2" class="bor_top"><input name="jieguo" type="checkbox" value="" style="vertical-align:-2px;"> <label for="jieguo">只有投票才能查看结果</label> </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text_right bor_top">结束时间：</td>
+          <td colspan="2" class="bor_top">
+            <select name="year">
+              <option>2015</option>
+              <option>2016</option>
+            </select>
+            <select name="yue">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+            <select name="ri">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option>
+              <option>31</option>
+            </select>
+            <select name="shi">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+            </select>
+         </td>
+        </tr>
+    </table>
+    <div class="bor_top" style="float:right; width:930px; text-align:right; padding:10px 10px 0 0; margin:0 10px;"><a href="#"><img src="../images/ft6.jpg" /></a></div>
+   </div>
+</div> 
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/placeholder.js" charset="utf-8"></script>
+<script type="text/javascript">
+	var urlData=["http://www.8673h.com","http://bbs.8673h.com"];
+	var defaultVal = "";
+	//载入头部和尾部 
+	$("#JS_head").load("../Firsthead.html");
+	$("#JS_twohead").load("../Twohead.html"); 
+	$("#JS_threehead").load("../Thirdhead.html"); 
+	$("#JS_foot").load("../footThird.html");
+    $(".addduo").click(function(){
+		$(this).parent().next().css("display","block");
+	})
+	$(".dang").click(function(){
+		$(this).parents(".fangshi").find(".xiang").css("display","none");
+	})
+	$(".add").click(function(){
+		var obj = $(this).parents("tr").prev();
+		var num = parseInt(obj.find(".zhi").text()) + 1;
+		var trHtml = "<tr  class=\"tr_a\">" +
+          "<td class=\"text_center\"><i class=\"iconfont dis_none\">&#xe60b;</i></td>" +
+          "<td class=\"text_center\"><span class=\"zhi\">"+ num +"</span></td>" +
+          "<td><input name=\"name\" type=\"text\" class=\"wz_kuang\"></td>" +
+          "<td><a href=\"javascript:void(0)\" class=\"bule\"><i class=\"iconfont\" style=\"font-size:20px\">&#xe61c;</i></a>" +
+		  "<span class=\"dis_none\">链接到：<input name=\"name\" type=\"text\" value=\"http://\" class=\"dz_kuang\"> <button type=\"button\" class=\"ant_ture\">确认</button> <button type=\"button\" class=\"ant_flast\">取消</button></span>" +
+		  "<span class=\"dis_none\">链接到：<em></em> <a href=\"javascript:void(0)\" class=\"red\">修改</a> | <a href=\"javascript:void(0)\">删除</a></span>" +
+		  "</td></tr>";
+		obj.after(trHtml);
+		trAction();
+	})
+	
+	trAction();
+	function trAction(){
+		$(".tr_a").each(function(index, element) {
+            $(this).hover(function(){
+				$(this).addClass("tr_bg");
+				$(this).find("i:eq(0)").removeClass("dis_none");
+				$(this).find("i:eq(0)").click(function(){
+					$(this).parents("tr").remove();
+					$(".tr_a").each(function(index, element) {
+                        $(this).find(".zhi").text(index + 1)
+                    });
+				})
+			},function(){
+				$(this).removeClass("tr_bg");
+				$(this).find("i:eq(0)").addClass("dis_none");
+			});
+        });
+		urlFunc();
+	}
+	
+	function urlFunc(){
+		$(".tr_a").each(function(index, element) {
+			
+			$(this).find("a:eq(0)").click(function(){
+				if($(this).parents("tr").find(".wz_kuang").val() == ""){
+					alert("1111");
+					return;
+				}
+				
+				defaultVal =  $(this).next().find(".dz_kuang").val();
+				$(this).next().removeClass("dis_none");
+				$(this).css("display","none");
+				
+				$(this).next().find(".ant_flast").click(function(){
+					$(this).parent().addClass("dis_none");
+					$(this).parent().next().removeClass("dis_none");
+					if(defaultVal == "http://"){
+						defaultVal = "";
+						$(this).parent().next().find("em").text(defaultVal);
+						$(this).parent().find("input").val("http://");
+					}else{
+						$(this).parent().find("input").val(defaultVal);
+					}
+				});
+				
+				
+				$(this).next().find(".ant_ture").click(function(){
+					var txtVal = $(this).prev().val();
+					var flg = false;
+					for(var i = 0 ; i< urlData.length;i++){
+						if(txtVal.indexOf(urlData[i]) >= 0 ){
+							flg = true;
+						};
+					}
+					if(!flg){
+						alert("zzzzz");
+					}else{
+						$(this).parent().addClass("dis_none");
+						$(this).parent().next().removeClass("dis_none");
+						$(this).parent().next().find("em").text(txtVal);
+					}
+				});
+				
+				$(this).next().next().find("a:eq(0)").click(function(){
+					$(this).parent().addClass("dis_none");
+					$(this).parent().prev().removeClass("dis_none");
+					defaultVal = $(this).parent().prev().find("input").val();
+				});
+				
+				
+				$(this).next().next().find("a:eq(1)").click(function(){
+					$(this).parent().addClass("dis_none");
+					$(this).parents("td").find("input").val("http://");
+					$(this).parents("td").find(".bule").css("display","block");
+				})
+				
+		   });
+		});
+	}
+	
+</script>
+</body>
+</html>

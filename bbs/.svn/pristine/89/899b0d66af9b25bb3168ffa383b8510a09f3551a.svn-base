@@ -1,0 +1,63 @@
+package com.service.servlet;
+
+import com.service.Service.ComHtmlHandler;
+import com.util.tools.CheckTools;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+/**
+ * Created by zjj on 2014/12/18
+ */
+@WebServlet(name = "HtmlHander", urlPatterns = {"/Action/HtmlHander.do"})
+public class HtmlHander extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "text/html;charset=utf-8");
+            out = response.getWriter();
+
+            String ps = request.getParameter("position");
+            int status = 0;
+            if (!CheckTools.checkPositiveNum(ps)) {
+                out.write("数据加载有误，请刷新重试！！");
+                out.flush();
+                return;
+            }
+            status = Integer.parseInt(ps);
+            out.write(ComHtmlHandler.getInstance().htmlHandler(status));
+            out.flush();
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+//                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write("{\"error\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

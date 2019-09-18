@@ -1,0 +1,3 @@
+1={"table":"mg_sms","insert":{"msg_id":"@msg_id@","msg_cate":"1","msg_status":"0","sender_id":"@sender_id@"\
+  ,"send_time":"@send_time@","send_addr":"@send_addr@","receiver_id":"@receiver_id@","msg_content":"@msg_content@"}}
+2={"table":"mg_sms","find":{"id":"@id@"},"limit":"100"}

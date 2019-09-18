@@ -1,0 +1,102 @@
+package com.service.servlet.rll;
+
+import com.bean.TaskBean;
+import com.service.Service.rll.TaskBeanService;
+import com.util.tools.CheckTools;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by bangong on 2015/10/8.
+ * 发帖人信息
+ */
+@WebServlet(name = "PostHostAction", urlPatterns = {"/Action/PostHostAction.do"})
+public class PostHostAction extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+//        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            String u_id = request.getParameter("u_id");
+            if(!CheckTools.checkPositiveNum(u_id)){
+                out.write(ToolUtil.getReturnResultForString(702, null));
+                out.flush();
+                return;
+            }
+
+            Map<String, String[]> paramMap = new HashMap<String, String[]>();
+            String backData = "postHost";
+            String cmdType = "0";
+            String flagStr = "0";
+            paramMap.put("taskId", new String[]{"324"});
+            paramMap.put("cmdType", new String[]{cmdType});
+            paramMap.put("taskName", new String[]{backData});
+            paramMap.put("paramValues",new String[]{u_id});
+            paramMap.put("paramTypes", new String[]{"bigint"});
+            paramMap.put("flag", new String[]{flagStr});
+
+            TaskBeanService taskBeanService = TaskBeanService.getInstance();
+            //验证参数
+            String result = taskBeanService.validMessage2(request, paramMap);
+            if (null != result) {
+                out.write(result);
+                out.flush();
+                return;
+            }
+            //组装bean
+            TaskBean taskBean = taskBeanService.makeTaskBean(paramMap);
+            int flag = Integer.parseInt(paramMap.get("flag")[0]);
+
+            //执行
+            out.write(taskBeanService.runTask2(backData, request, flag, taskBean, null));
+            out.flush();
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+//            errorCode = "不支持的编码格式";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+//            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+//            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+//            errorCode = e.getMessage();
+        } catch (ClassNotFoundException e) {
+            exception = e.getCause();
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+        } catch (InvocationTargetException e) {
+            exception = e.getCause();
+        } catch (InstantiationException e) {
+            exception = e.getCause();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write(ToolUtil.getReturnResultForString(302, null));
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

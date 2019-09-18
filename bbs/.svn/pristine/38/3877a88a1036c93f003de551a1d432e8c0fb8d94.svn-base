@@ -1,0 +1,8 @@
+<dl class="right">
+<!--fs:index-->
+    <dd class="ming">
+        <a href="/fenlei/post.jsp?postid=###index:post_id###" ><h4>###index:topic###</h4></a>
+        ###index:content###
+    </dd>
+<!--fe:index-->
+</dl>

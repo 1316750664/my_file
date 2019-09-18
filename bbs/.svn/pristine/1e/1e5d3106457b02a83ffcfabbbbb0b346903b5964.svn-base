@@ -1,0 +1,27 @@
+<div class="fenleimenu">
+		<dl>
+        	<dt style="color:#448aca"><i class="iconfont">&#xe608;</i><strong>买家地盘</strong></dt>
+        	<dd>
+            	<ul>
+                	<li id="fenlei01"><a href="#">谈天说地</a></li>
+                    <li id="fenlei02"><a href="#">经验交流</a></li>
+                    <li id="fenlei03"><a href="#">七嘴八舌</a></li>
+            	</ul>
+            </dd>
+            <dt style=" color:#F90"><i class="iconfont">&#xe606;</i><strong>卖家地盘</strong></dt>
+        	<dd>
+            	<ul>
+                	<li id="fenlei04"><a href="#">谈天说地</a></li>
+                    <li id="fenlei05"><a href="#">经验交流</a></li>
+                    <li id="fenlei06"><a href="#">七嘴八舌</a></li>
+            	</ul>
+            </dd>
+            <dt style=" color:#6c9"><i class="iconfont">&#xe607;</i><strong>保养维修</strong></dt>
+        	<dd>
+            	<ul>
+                	<li><a href="#">保养交流</a></li>
+                    <li><a href="#">经验交流</a></li>
+            	</ul>
+            </dd>
+        </dl>	
+	</div>

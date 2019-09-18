@@ -1,0 +1,68 @@
+.left_float{float:left}
+.right_f{float:right}
+.bodd{width:975px; height:682px; background: url(../images/wodeshoucanghk.jpg) no-repeat center; float:left;margin: 1em 0; padding:14px}
+.zuo{width:166px; height:420px; padding-right:14px}
+.zuo1{width:166px; height:109px; background:url(../images/wodtz1.jpg) no-repeat;}
+.img{ padding:24px 0 0 44px; width:73px; height:58px;}
+#pp{ font-family: micorsoft yehei; font-size:11px; padding-left:58px}
+#pp a{text-decoration:none; color:#fff;}
+#pp a:hover{ text-decoration:none; color:#333}
+.zuo2{width:166px; height:76px; background:url(../images/wodtzy.jpg) no-repeat; margin:14px 0}
+.pp2{font:18px micorsoft yehei; float:left; padding:13px 5px 0 30px}
+.pp3{ font-size:14px; clear:both; text-align:center; padding:5px 0}
+.zuo3{ width:166px; height:59px; background:url(../images/wodtzj.jpg) no-repeat;}
+.pp4{ font-size:22px; font-family: micorsoft yehei; padding:15px 0; text-align:center}
+.zuo4{width:136px; height:150px; padding-left:28px}
+.zuo4 li{ background:url(../images/xiaogezi.jpg) no-repeat; width:136px; height:36px; list-style:none}
+.zuo4 li a{ text-decoration:none; color:#d14b51; display:block}
+.zuo4 li a:hover{ background:url(../images/xiaohonggezi.jpg); width:136px; height:36px; color:#fff;}
+.zuo4 li a.aver{ background:url(../images/xiaohonggezi.jpg); width:136px; height:36px; color:#fff;}
+.zuo_p{padding-top:10px; text-align:center}
+
+.you{width:795px;float:right}
+.you1{width:795px; height:35px;  background-color:#fff}
+.jiantou{margin:10px 10px 0 20px; border:none}
+.ppl{font:16px/35px micorsoft yehei; padding-left:10px;}
+.you2{ background-color:#fff; width:796px; margin:14px 0;overflow: hidden;height: 633px;}
+.huit{font-size:12px; font-family: micorsoft songti; text-align:center; letter-spacing:1px; margin:10px; width:776px;}
+.huit th{background-color:#f1f1f1; font-size:14px;}
+.huit th, .huit td{line-height:35px; height:35px;}
+.huit td{border-bottom:1px #ddd dashed;}
+.clear{clear:both}
+.tian{width:60%}
+.tian1{width:13.333%}
+.text-left{text-align:left}
+.text-right{text-align:right}
+.padding10{padding-left:15px;}
+.shang{width:60%;}
+.shang1{width:27.6666%;}
+
+.zw2{ display:block; overflow:hidden}
+.pzxxx{font-size:14px; color:#d0cece; font-family:micorsoft yehei; text-align:center; padding:50px 0}
+.xiaofangkuai{background:url(../images/wodehfxkk.jpg) no-repeat; width:671px; height:60px; margin:0 auto; padding-bottom:30px; position:relative}
+.plz{font-size:14px; margin:25px 0 0 30px}
+.plz a{font-size:14px; color:#000; padding:0 20px}
+.huise{color:#a4a6a7; font-size:14px ; padding: 0 10px}
+.huisee{color:#a4a6a7; font-size:14px; position:absolute; left:550px; top:25px;}
+
+
+/*收藏*/
+.xuxiao{cursor:pointer}
+.xuxiao:hover{color:#3172CA; text-decoration:underline}
+
+/*回复*/
+.huifu_width{width:86.3333%}
+.hui_fu, .hui_fu_new{overflow:hidden; display:block;}
+.hui_fu .hui_fu_l{width:657px; float:left; padding-left:15px; text-align:left}
+.hui_fu .hui_fu_r{width:104px; float:left; text-align:center;}
+.hui_fu_new{width:100%; height:60px; background:url(../images/wodehfxkk.png) no-repeat; padding:17px 0 10px 0;}
+.hui_fu_new .nei{width:455px; float:left; text-align:left; padding-left:10px;}
+.hui_fu_new .nei .fuhao{width:17px; float:left}
+.hui_fu_new .nei .zhishu{overflow:hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 420px;float:left}
+.hui_fu_new .time{width:200px; float:left;}
+
+/*我的管理*/
+.gl{width:55%;}
+.gl1{width:13%;}
+.guangli{width:975px;background:#e6a4b0; float:left;margin: 1em 0; padding:14px}
+.guangli .guang_r{ background-color:#fff; width:796px; margin-top:14px;overflow: hidden;}

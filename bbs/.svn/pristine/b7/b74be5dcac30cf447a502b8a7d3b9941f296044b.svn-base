@@ -1,0 +1,245 @@
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>申请成为斑主－-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <link type="image/x-icon" href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/applier.css"rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<%
+    String ip= ToolUtil.getClientIp(request);
+    int status= LoginDetection.getInstance().loginCheck(request.getCookies(),ip,response);
+    if (status==1){
+        return;
+    }
+    String user_id= UserService.getInstance().getUidFromCookie(request);
+    String forum = request.getParameter("fID");
+    if (null == forum || "".equals(forum)) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    String[] param4 = {forum};
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+    TaskBean taskBean4 = new TaskBean(313, 0, param4);
+    String result4 =  FragService.getInstance().fragment(10, taskBean4);
+    String forum_name=null;
+    List<Map<String, String>> list4 = StaticUtil.objectMapper.readValue(result4, List.class);
+    for (Map<String, String> map : list4) {
+        forum_name = map.get("forum_name");
+    }
+
+    String[] param5 = {user_id};
+    TaskBean taskBean_340 = new TaskBean(340, 0, param5);
+    String result_340 =  FragService.getInstance().fragment(10, taskBean_340);
+    List<Map<String, String>> list_340 = StaticUtil.objectMapper.readValue(result_340, List.class);
+    String nick=null;
+    for (Map<String, String> map : list_340) {
+        nick = map.get("nick");
+    }
+
+%>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class="fenleihead"><a href="#">汽商社区</a><span>&gt;</span><a href="#"><%=forum_name%></a></span>&gt;</span><a href="applier1.html">申请斑主</a></div>
+    <div class="applier">
+        <div class="apph1 bule"><i class="iconfont" style="font-size:24px">&#xe61d;</i><strong>再次确认信息</strong></div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lei1">
+            <col class="cell">
+            <col class="cell1">
+            <tr>
+                <th colspan="2" scope="row" style="text-align:center; border-bottom:1px #eee solid; font-size:15px; font-family:micorsoft yehei"><strong>基本信息</strong>(务必真实有效)</th>
+            </tr>
+        <form action="applier2.jsp">
+            <tr>
+                <th>申请账号：</th>
+                <td><%=nick%></td>               <input type="hidden" name="user_id" id="user_id" value="<%=user_id%>" />
+                                             <input type="hidden" name="forum_id" id="forum_id" value="<%=forum%>" />
+                                            <input type="hidden" name="fID" id="fID" value="<%=forum%>" />
+            </tr>
+            <tr>
+                <th><span>*</span> 真实姓名：</th>
+                <td><%=request.getParameter("name")%></td>    <input type="hidden" name="name" id="name" value="<%=request.getParameter("name")%>" />
+            </tr>
+            <tr>
+                <th><span>*</span> 身份证号码：</th>
+                <td><%=request.getParameter("sfz")%></td>       <input type="hidden" name="sfz" id="sfz" value="<%=request.getParameter("sfz")%>" />
+            </tr>
+            <tr>
+                <th><span>*</span> 联系地址：</th>
+                <td><%=request.getParameter("address")%></td>   <input type="hidden" name="address" id="address" value="<%=request.getParameter("address")%>" />
+            </tr>
+            <tr>
+                <th><span>*</span> 邮箱地址：</th>
+                <td><%=request.getParameter("E-mail")%></td>    <input type="hidden" name="E-mail" id="E-mail" value="<%=request.getParameter("E-mail")%>" />
+            </tr>
+            <tr>
+                <th><span>*</span> 手机号码：</th>
+                <td><%=request.getParameter("pon")%></td>       <input type="hidden" name="pon" id="pon" value="<%=request.getParameter("pon")%>" />
+            </tr>
+
+            <tr>
+                <%
+                    String[] param = {"18",request.getParameter("industry")};
+                    TaskBean taskBean = new TaskBean(338, 0, param);
+                    String result =  FragService.getInstance().fragment(10, taskBean);
+                    String industry=null;
+                    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(result, List.class);
+                    for (Map<String, String> map : list) {
+                        industry = map.get("dic_name");
+                    }
+                %>
+                <th> <span>*</span>从事行业：</th>
+                <td><%=industry%></td>          <input type="hidden" name="industry" id="industry" value="<%=industry%>" />
+      </tr>
+            <tr>
+                <%
+                    String[] param2 = {"19",request.getParameter("career")};
+                    TaskBean taskBean2 = new TaskBean(338, 0, param2);
+                    String result2 =  FragService.getInstance().fragment(10, taskBean2);
+                    String career=null;
+                    List<Map<String, String>> list2 = StaticUtil.objectMapper.readValue(result2, List.class);
+                    for (Map<String, String> map : list2) {
+                        career = map.get("dic_name");
+                    }
+                %>
+                <th> <span>*</span>职业： </th>
+                <td><%=career%></td>    <input type="hidden" name="career" id="career" value="<%=career%>" />
+
+
+            </tr>
+            <tr>
+                <%
+                    String[] param3 = {"20",request.getParameter("rank")};
+                    TaskBean taskBean3 = new TaskBean(338, 0, param3);
+                    String result3 =  FragService.getInstance().fragment(10, taskBean3);
+                    String rank=null;
+                    List<Map<String, String>> list3 = StaticUtil.objectMapper.readValue(result3, List.class);
+                    for (Map<String, String> map : list3) {
+                        rank = map.get("dic_name");
+                    }
+                %>
+                <th> <span>*</span>等级：</th>
+                <td><%=rank%></td>  <input type="hidden" name="rank" id="rank" value="<%=rank%>" />
+            </tr>
+
+            <tr>
+                <th valign="top"> <span>*</span>申请说明：</th>
+                <td><%=request.getParameter("shuoming")%></td>  <input type="hidden" name="shuoming" id="shuoming" value="<%=request.getParameter("shuoming")%>" />
+            </tr>
+            <input  hidden="hidden" type="submit" id="submit"/>
+        </form>
+            <tr>
+                <td colspan="2" style="text-align:center; border-top:1px #eee solid; padding-top:10px">
+                    <a class="next" href="#" id="sub">确认提交</a>
+                    <a class="a" href="#" id="back">返回修改</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script>
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $("#sub").click(function(){
+        $.ajax({
+            type: 'get',
+            url: '/Action/Adminapply.do',
+            data: $("form").serialize(),
+            dataType: 'json',
+            async: false,
+            success: function (data){
+                var err = null, msg = null, field = null;
+                for (var i in data) {
+                    if (i == 0) {
+                        $.showTipPop('null', "申请已提交,3秒后返回");
+                        setTimeout(function() {
+                            window.location.href="fenlei01.jsp"
+                        },3000)
+                    }
+                    else if (i == "error") {
+                        err = data[i];
+                    }
+                    else if (i == "msg") {
+                        msg = data[i];
+                        $.showTipPop('null', msg);
+                        return false;
+                    }
+                    else if (i == "field") {
+                        field = data[i];
+                    }
+                }
+                if(field != null) {
+                    $.showTipPop('null', msg);
+                    return false;
+                }
+            },
+            error: function () {
+                $.showTipPop('null', '系统错误，请刷新页面重试');
+            }
+
+        })
+
+    })
+    $("#back").click(function(){
+        $("#submit").click();
+    })
+</script>
+</body>
+</html>

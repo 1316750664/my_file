@@ -1,0 +1,120 @@
+package com.service.servlet.rll;
+
+import com.bean.TaskBean;
+import com.service.Service.rll.TaskBeanService;
+import com.service.fragService.FragService;
+import com.util.tools.StaticUtil;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by bangong on 2015/9/22.
+ */
+@WebServlet(name = "BbsIndexAction", urlPatterns = {"/Action/BbsIndexAction.do"})
+public class BbsIndexAction extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+//        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+            Map<String, String[]> paramMap = new HashMap<String, String[]>();
+            String backData = "backData";
+            String cmdType = "0";
+            String flagStr = "0";
+            paramMap.put("taskId", new String[]{"42"});
+            paramMap.put("cmdType", new String[]{cmdType});
+            paramMap.put("taskName", new String[]{backData});
+            paramMap.put("flag", new String[]{flagStr});
+
+            TaskBeanService taskBeanService = TaskBeanService.getInstance();
+            //验证参数
+            String result = taskBeanService.validMessage2(request, paramMap);
+            if (null != result) {
+                out.write(result);
+                out.flush();
+                return;
+            }
+            //组装bean
+            TaskBean taskBean = taskBeanService.makeTaskBean(paramMap);
+            int flag = Integer.parseInt(paramMap.get("flag")[0]);
+            //查首页配置信息
+            String res = FragService.getInstance().fragment(flag, taskBean);
+            List<Map<String, String>> list = StaticUtil.objectMapper.readValue(res, List.class);
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            for(Map<String,String> index : list){
+                sb.append("{");
+                sb.append("\"position_id\":\""+index.get("position_id")+"\",");
+                sb.append("\"position_name\":\""+index.get("position_name")+"\",");
+                sb.append("\"remark\":\""+index.get("remark")+"\",");
+                sb.append("\"main_img\":\""+index.get("main_img")+"\",");
+                String auto_load = index.get("auto_load");
+                String ids = index.get("ids");
+                if(!"".equals(ids)){//有ids需要查询帖子
+                    String sort_field = index.get("sort_field");
+                    if (!sort_field.equals("")) {//多个逗号分开 desc自带
+                        sort_field = " order by " + sort_field;
+                    }
+                    String read_num = index.get("read_num");
+                    if (!read_num.equals("")) {
+                        read_num = " limit " + read_num;
+                    }
+                    int taskId = 0;
+                    if(auto_load.equals("0")) {//不自动，直接读取帖子
+//                        (@ids@) @orderBy@ @limit@
+                        taskId = 40;
+                    }else if(auto_load.equals("1")){//自动，读取板块中帖子
+//                        (@ids@) @orderBy@ @limit@
+                        taskId = 41;
+                    }
+                    String posts = FragService.getInstance().fragment(flag, new TaskBean(taskId, 0, 1, new String[]{ids, sort_field, read_num}, new String[]{"object", "object", "object"}));
+                    sb.append("\"posts\":"+posts);
+                }else{
+                    sb.append("\"posts\":\"[]\"");
+                }
+                sb.append("},");
+            }
+            sb.delete(sb.length() - 1, sb.length());
+            sb.append("]");
+            out.write(ToolUtil.getReturnResultForString(201,"成功",sb.toString()));
+            out.flush();
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+//            errorCode = "不支持的编码格式";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+//            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+//            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+//            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write(ToolUtil.getReturnResultForString(302, null));
+                    out.flush();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

@@ -1,0 +1,207 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String ip= ToolUtil.getClientIp(request);
+    int status= LoginDetection.getInstance().loginCheck(request.getCookies(),ip,response);
+    if (status==1){
+        return;
+    }
+    String user_id= UserService.getInstance().getUidFromCookie(request);
+    String forum = request.getParameter("fID");//postID
+    if (null == forum || "".equals(forum)) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    int taskId = 24;
+    int cmdType = 0;
+    String[] param = {forum,user_id};
+    TaskBean taskBean = new TaskBean(taskId, cmdType, param);
+    String json = FragService.getInstance().fragment(0, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+
+    String leiX = "";
+    String biaoTi = "";
+    String neiR = "";
+    String banK = "";
+    for (Map<String, String> map : list) {
+        leiX = map.get("post_clazz");
+        biaoTi = map.get("topic");
+        neiR = map.get("content");
+        banK = map.get("forum_name");
+    }
+    if (biaoTi.equals("") || leiX.equals("2")) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <title>发贴-浙江企商汇电子商务有限公司</title>
+    <link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/fat.css"  rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" />
+    <link type="text/css" href="../js/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class="head"> 汽商论坛 &gt; <span id="biaoti"><%out.write(banK);out.flush(); %></span> &gt; <strong>编辑贴子</strong></div>
+    <div class="fa">
+        <p class="fat"><i class="iconfont">&#xe619;</i><strong>编辑贴子</strong> | <em style="text-decoration:underline; font-size:12px" class="bule">《企商论坛用户发帖规则》新手必读</em></p>
+        <p class="neirong">标题:<input type="text" id="biao" placeholder="不论快乐悲伤 大事小事 都可以分享出来 让大家帮你排忧解难或分享快乐" class="inputt" maxlength="30" value="<%=biaoTi%>" />
+            <select class="select" id="xuanZe" disabled="disabled">
+                <option data-id="0"><%=banK%></option>
+            </select>
+        </p>
+        <p class="neirong margin-top10">
+            <span class="name">内容：</span>
+            <textarea class="kuang" name="remark" id="neiR"><%=neiR%></textarea>
+        </p>
+        <div class="anniu">
+            <span class="tishi">源码:已输入<b class="red">0</b>/ 最多输入 <b class="yel">2000</b></span><span class="ant" onclick="fabiao()"><a href="javascript:void(0)"><img src="../images/ft6.jpg" /></a></span>
+        </div>
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/placeholder.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/kindeditor-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    var myKindEditor;
+    $(document).ready(function () {
+        KindEditor.basePath = '/js/kindeditor/';
+        KindEditor.ready(function(K) {
+            myKindEditor = K.create('textarea[name="remark"]', {
+                resizeType: 1,
+                urlType: 'domain',
+                allowImageUpload: true,
+                allowFileManager: false,
+                formatUploadUrl:false,
+                uploadJson: '/FileUploadServlet.action?fileType=bbsImg&type=1',
+                items: $.kindMenu,
+                cssPath: ['/js/kindeditor/extcss.css'],
+                afterFocus:function(){},
+                afterChange:function(){
+                    this.sync();
+                    $(".red").text($("#neiR").val().length);
+                }
+            });
+        });
+        KindEditor.html(unKillHtml($("textarea[name='remark']").val()));
+    });
+
+    function fabiao () {
+        myKindEditor.html(killHtml(myKindEditor.html()));
+        myKindEditor.sync();
+        var neiR = $("#neiR").val();
+        var chang = neiR.length;
+        if(chang > 2000 || chang <= 0) {
+            $.showTipPop('null', '内容为1--2000', {btn: false});
+            return false;
+        }
+        var biao = $("#biao").val();
+        if(biao.length>30||biao.length <= 0) {
+            $.showTipPop('null', '标题长度不对', {btn: false});
+            return false;
+        }
+
+        $.Bigo('/Action/SendPostUpdate.do',{taskId: '25', cmdType: 'Update',biao:biao,neiR:neiR,fId:'<%=forum%>',user_id: '<%=user_id%>'}, {sucAction: suc7});
+        function suc7(data) {
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                    $.showTipPop('null', '编辑成功', function () {
+                        window.location.href="/fenlei/post.jsp?postid=<%=forum%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            var resStr;
+            if (field == "biao") {
+                resStr = "标题" + msg;
+            } else if (field == "neiR") {
+                resStr = "内容" + msg;
+            } else if (field == "biaotiId") {
+                resStr = "请选择板块";
+            } else if (field == "tieL") {
+                resStr = "系统错误";
+            }else if (field == "user_id") {
+                resStr = "无用户信息，请重新登录";
+            } else if (null != err) {
+                resStr = "未知错误" + err + ":" + msg;
+            }
+            $.showTipPop('null', resStr);
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
+

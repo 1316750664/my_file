@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>回复-帮助买家填写退货单号，加快退款速度，亲怎么看？！-买家地盘-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找汽配,汽商汇,买汽配,卖汽配,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,防冻液-国内最专业最全面的汽配在线交易查询网"/>
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<link type="image/x-icon" href="../favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/shared.css" rel="stylesheet"/>
+<link href="../css/head.css" rel="stylesheet" type="text/css" />
+<link href="../font/iconfont.css" rel="stylesheet" type="text/css"/>
+<link type="text/css" rel="stylesheet" href="../css/pager.css" />
+<link href="../css/foot.css" rel="stylesheet" type="text/css" />
+<link href="../js/kindeditor/themes/default/default.css" rel="stylesheet" type="text/css"/>
+<link href="../css/publish_reply.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="JS_firsthead"></div>
+<div id="JS_twohead"></div>
+<div id="JS_thirdhead"></div>
+<div class="max_width">
+	<div class=" fenleihead"><a href="#">买家地盘</a><span>></span><a href="#">谈天说地</a><span>></span><a href="#">帮助买家填写退货单号，加快退款速度，亲怎么看？！</a><span>></span>发表回复</div>
+    <div class="detail-edit" id="reply">
+        <div class="hd"><h3>发表回复</h3></div>
+        <div class="citation">
+        	<div class="citation">
+            	<div class="citation-title">
+                    <span class="user-name">原帖由楼主 楼主叫楼主 发表</span>
+                    <span class="citation-number">1</span>
+                </div>
+                <p>花时间，无聊的话是因为没有投入</p>
+                </div>
+            <div class="citation-title">
+                <span class="user-name">原帖由楼主 楼主叫楼主 发表</span>
+                <span class="citation-number">2</span>
+            </div>
+            <p>花时间，无聊的话是因为没有投入</p>
+        </div>
+        <div class="edit-group">
+            <form class="group-form">
+                <textarea name="remark" cols="" rows=""></textarea>
+                <div class="wenzi">源码:已输入<em style="font-weight:bold;color:green;">78</em>/最多输入<em style=" font-weight:bold">20000</em></div>
+                <label class="for-anon" for="anon">
+                    <input type="checkbox" id="anon" name="">
+                    <span>匿名回复</span>
+                </label>
+                <div class="Reply-info">
+                    <input name="" type="button" class="btn-bm"/>
+            
+                </div>
+            
+            </form>
+        </div>
+    </div>  
+</div>
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/kindeditor/kindeditor-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<!--<script type="text/javascript" src="../js/head.js"></script>-->
+<script>
+	$("#JS_firsthead").load("../Firsthead.html");
+	$("#JS_twohead").load("../Twohead.html");
+	$("#JS_thirdhead").load("../Thirdhead.html");  
+	$("#JS_foot").load("../footThird.html");
+//描述,初始化kindeditor
+var myKindEditor;
+KindEditor.basePath = '/js/kindeditor/';
+KindEditor.ready(function(K) {
+    myKindEditor = KindEditor.create('textarea[name="remark"]', {
+        resizeType: 1,
+        urlType: 'domain',
+        allowImageUpload: true,
+        allowFileManager: false,
+        formatUploadUrl:false,
+        uploadJson: '/FileUploadServlet.action?fileType=goodsImg&type=1',
+        items: $.kindMenu,
+        cssPath: ['/js/kindeditor/extcss.css']
+    });
+});
+
+</script>
+</body>
+</html>

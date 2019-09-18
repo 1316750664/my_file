@@ -1,0 +1,84 @@
+package com.service.servlet.fileUpload;
+
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+
+/**
+ * Created by hty070505 on 2014/12/4.
+ */
+@WebServlet(name = "TemplateDownload", urlPatterns = {"/TemplateDownload.action"})
+public class TemplateDownload extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        String filename = request.getParameter("filename");
+        if (filename == null || "".equals(filename)) {
+            return;
+        }
+
+        String webRealPath = System.getProperty("webApp.root");
+        String os = ToolUtil.getOS();
+        if (os.startsWith("Windows")) {
+            webRealPath = webRealPath.replace("\\", "/");
+        }
+        //System.out.println(webRealPath);
+        String fileRealName = null;//文件实际名称
+        String fileDisplayName = null;//文件显示名
+
+        if ("a".equals(filename)) {
+            fileRealName = webRealPath + "/excel/product.xls";
+            fileDisplayName = "产品上传模板.xls";
+        }else if("b".equals(filename)) {
+            fileRealName = webRealPath + "/excel/product_dead.xls";
+            fileDisplayName = "呆滞件上传模板.xls";
+        }
+
+        BufferedOutputStream out = null;
+        BufferedInputStream in = null;
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setContentType("application/x-download;charset=UTF-8");
+            fileDisplayName = URLEncoder.encode(fileDisplayName, "UTF-8");
+            response.setHeader("Content-Disposition", "attachment;filename=" + fileDisplayName);
+            File fileLoad = new File(fileRealName);
+            response.setHeader("Content-Length", String.valueOf(fileLoad.length()));
+            in = new BufferedInputStream(new FileInputStream(fileLoad));
+            out = new BufferedOutputStream(response.getOutputStream());
+            int n = 0;
+            byte b[] = new byte[1024];
+            while ((n = in.read(b)) != -1 && out != null) {
+                out.write(b, 0, n);
+                out.flush();
+            }
+        } catch (Exception e) {
+            response.reset();
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                    in = null;
+                }
+                if (out != null) {
+                    out.close();
+                    out = null;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        doGet(request, response);
+    }
+}

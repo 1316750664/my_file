@@ -1,0 +1,27 @@
+<!--fs:reply-->
+        ###cococo:forsplit###
+        <div class="floor-other loucheng">
+                <div class="left">
+                    <h4><a href="#"> #5#:cococo5###reply:nick###_#coco#_###reply:is_anony### #5# </a></h4>
+                    <div class="user-headimg">
+                        <a href="#" target="_blank"><img src="#j#:cococoj###reply:avatar####j#" /></a>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="hdtitle">
+                        发表于 #0#:cococo0###reply:reply_time####0#<s>|</s><a href="#" onclick=dodo(###reply:user_id###)>#6#:cococo6只看该作者#6#</a><em> #2#:cococo2###reply:is_top####2#&nbsp&nbsp&nbsp  #1#:cococo1###reply:floor####1#</em>
+                    </div>
+                    <div class="bd">
+                           #4#:cococo4###reply:ref_content###_#coco#_###reply:floor####4#
+                        <div class="article">
+                            <div class="ke-post">
+                                    #8#:cococo8###reply:reply_content######reply:is_delete####8#
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft">
+                        <div class="op"><a href="#" onclick=reply(#i#:cococoi'###reply:nick###'#i#,###reply:floor###,###reply:reply_id###,###reply:post_id###) >回复</a></div>
+                    </div>
+                </div>
+        </div>
+<!--fe:reply-->

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<title>申请成为斑主－-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+<link type="image/x-icon" href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="../css/applier.css" rel="stylesheet"/>
+<link type="text/css" href="../css/body.css" rel="stylesheet"/>
+<link type="text/css" href="../css/head.css" rel="stylesheet"/>
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+</head>
+
+<body>
+<div id="JS_firsthead"></div>
+<div id="JS_twohead"></div>
+<div id="JS_thirdhead"></div>
+<div class="max_width">
+    <div class="fenleihead"><a href="#">汽商社区</a><span>&gt;</span><a href="#">申请斑主</a>&gt;</span><a href="#">申请斑主</a></div>
+    <div class="applier">
+        <div class="apph1 bule"><i class="iconfont" style="font-size:24px">&#xe61e;</i><strong>申请斑主协议</strong></div>
+        <div class="er">
+           <textarea class="deal" readonly >
+            企商汇论坛斑主协议：
+                企商汇斑主，必须遵从意下协议。
+                1.保证完成任务保证完成任务保证完成任务保证完成任务保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+                3.保证完成任务
+                1.保证完成任务
+                2.保证完成任务
+                3.保证完成任务
+           </textarea>       
+        </div>
+        <div class="finish">
+           <a class="next" href="applier2.jsp">同意协议</a>
+           <a class="a" onclick="javascript:window.close()">取消</a>
+        </div>
+    </div>
+</div>
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script>
+	$("#JS_firsthead").load("../Firsthead.html");
+	$("#JS_twohead").load("../Twohead.html");
+	$("#JS_thirdhead").load("../Thirdhead.html");  
+	$("#JS_foot").load("../footThird.html");
+</script>
+</body>
+</html>

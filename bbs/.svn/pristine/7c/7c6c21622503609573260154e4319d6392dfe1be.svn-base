@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<title>个人中心-板块申请-浙江企商汇电子商务有限公司</title>
+<link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/body.css" rel="stylesheet"/>
+<link type="text/css" href="../css/head.css" rel="stylesheet"/>
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+<link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="../css/pager.css" rel="stylesheet"/>
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+<link type="text/css" href="../css/sqbk.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="JS_head"></div>
+<div id="JS_twohead"></div>
+<div id="JS_threehead"></div>
+<div class="max_width">
+   <table class="kuai" border="0">
+     <thead>
+      <tr>
+         <td class="bt" colspan="2"><a href="#">汽商社区</a><span>&gt;</span>申请斑块</td>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+        <td colspan="2">
+             <div class="kt">再次确认信息</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="k1">斑名</td>
+        <td class="k2">
+           <span>企商新手</span>
+        </td>
+      </tr>
+      <tr>
+         <td class="k1">斑主</td>
+         <td class="k2"><span>我是哈哈</span></td>
+      </tr>
+        <tr>
+        <td class="k1">真实姓名</td>
+        <td class="k2"><span>张某某</span></td>
+      </tr>
+      <tr>
+        <td class="k1">身份证号码</td>
+        <td class="k2"><span>1234444444</span></td>
+      </tr>
+       <tr>
+        <td class="k1">联系地址</td>
+        <td class="k2"><span>浙江省台州市</span></td>
+      </tr>
+      <tr>
+        <td class="k1">邮箱地址</td>
+        <td class="k2"><span>123456@sina.com</span></td>
+      </tr>
+      <tr>
+        <td class="k1">手机号码</td>
+        <td class="k2"><span>7894562</span></td>
+      </tr>
+      <tr>
+         <td class="k1" style="vertical-align:text-top">斑块介绍</td>
+         <td class="p1">
+          <div style="padding:5px; line-height:20px">此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。此版块为公益版块，一些交流心得，以及自己的所思所想。</div>
+         </td>
+      </tr>
+      <tr>
+         <td class="k1">斑块分类</td>
+         <td class="k2">
+             <span>企商杂谈</span>
+         </td>
+      </tr>
+      <tr>
+         <td class="k1"></td>
+         <td class="k2"></td>
+      </tr>
+      <tr>
+         <td colspan="2" style="text-align:center"><div style="width:155px; margin:0 auto;"><a href="#" class="p2 left">提交审核</a><a href="bkshenq.html" class="p3 right">上一步</a></div></td>
+      </tr>
+    </tbody>
+   </table>
+</div>
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript">
+//载入头部和尾部
+$("#js_zuoce").load("zuoce.html",function(){
+	$("#shouc").addClass("aver");
+});  
+$("#JS_head").load("../Firsthead.html");
+$("#JS_twohead").load("../Twohead.html"); 
+$("#JS_threehead").load("../Thirdhead.html"); 
+$("#JS_foot").load("../footThird.html");
+//取消收藏
+$(".huit tr").each(function(index, element) {
+	$(this).find(".xuxiao").click(function(){
+	  $(this).parent("tr").remove();
+	});
+});
+
+<!--分页代码 -->	
+$(document).ready(function(){
+	var curpage=parseInt($("#curPage").val());
+	var pageSize=parseInt($("#pageSize").val());
+	var itemCount=parseInt($("#itemCount").val());
+	var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+	$(".divPagePanel").html(Hhtml);
+});
+function pageClick(action){
+	var curpage=parseInt($("#curPage").val());
+	var pageSize=parseInt($("#pageSize").val());
+	var itemCount=parseInt($("#itemCount").val());
+	if(action=="minus"){
+		curpage=curpage-1;
+	} else if(action=="add"){
+		curpage=curpage+1;
+	} else {
+		curpage=action;
+	}
+	$("#curPage").val(curpage);
+	var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+	$(".divPagePanel").html(Hhtml);
+	$(".tiaozhuan input").attr("value",curpage);
+}
+</script>
+</html>

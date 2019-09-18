@@ -1,0 +1,38 @@
+@charset "utf-8";
+.fenleihead{width:991px; float:left;font:12px Tahoma,Arial; margin:10px 0;border:1px solid #d9d9d9; background-color:#fcfcfc; padding-left:10px; height:32px; line-height:32px;}
+.bodycenter{overflow:hidden; float:left; margin-bottom:15px;}
+.bodycenter .left{width:189px; float:left;padding-bottom:15px;border:1px solid #e1e4e9;background:#f8f8f8;}
+.bodycenter .left h4{word-break:break-all;word-wrap:break-word;font-weight:500;cursor:default;height:25px;line-height:25px;overflow:hidden;margin:0 2px;padding-top:10px;text-align:center;color:#4c4c4c;}
+.bodycenter .left h4 a{ color:#333; font-family:Microsoft yahei;}
+.bodycenter .left h4 a:hover{ color:#c40001;}
+.bodycenter .left .user-headimg{ position:relative; margin:13px 0 13px 34px; width:120px; background:#fff; border:5px solid #fff;}
+.bodycenter .left .user-headimg img{ max-width:120px; max-height:120px;}
+.bodycenter .left ul.user-info{ padding:5px 10px 0 28px; overflow:hidden;}
+.bodycenter .left ul li{ height:20px; line-height:20px;}
+.bodycenter .right{width:770px;float:left; background:#fff;padding-left:40px; position:relative;}
+.allgoodslist{ float:right;}
+.bodycenter .right .centerpart{ width:762px; overflow:hidden; margin-bottom:50px;position: relative;}
+.bodycenter .right .centerpart ul.postState{width:746px; float:left;border-bottom:1px solid #d6d6d6; background:#fbfbfb;padding-left:16px;}
+.bodycenter .right .centerpart ul.postState li{font-weight:400;font-size:14px;color:#404040;float:left; width:86px; text-align:center;line-height:30px;}
+.bodycenter .right .centerpart ul.postState li.select{ background:url(../images/postStatebg.png) no-repeat;margin-bottom: -1px;border-bottom: 1px #fff solid;_position:relative;_bottom:-1px;}
+.bodycenter .right .centerpart ul.postState li.select a{color:#404040;}
+.bodycenter .right .centerpart .allgoodslist{float:right; margin-top:15px; margin-bottom:5px;}
+.bodycenter .right .centerpart table{width:762px;table-layout:fixed; color:#999; border-spacing:0;border-collapse:collapse;font:12px/1.5 tahoma,arial,sans-serif;}
+.bodycenter .right .centerpart table th{background:#f4f4f1;height:26px;line-height:26px;text-align:left;color:#999;border-bottom:1px solid #dededc;}
+.bodycenter .right .centerpart table .subject {font-size:14px;}
+.bodycenter .right .centerpart table .subject .status{ margin-right:3px;}
+.bodycenter .right .centerpart table .later {padding:0 10px 0 20px;}
+.bodycenter .right .centerpart table .score{width:100px;text-align: center;}
+.bodycenter .right .centerpart table .last{text-align:right;padding:0 10px;}
+.bodycenter .right .centerpart table .later , table .last{ width:80px;}
+.bodycenter .right .centerpart table th.subject {text-indent:20px;border-left:1px solid #dededc;font-size:12px;}
+.bodycenter .right .centerpart table th.score {text-align: center;padding:0 5px;}
+.bodycenter .right .centerpart table th.last{padding-right:10px;border-right:1px solid #dededc;}
+.bodycenter .right .centerpart table td{border-top:1px solid #dededc; height:40px;}
+.bodycenter .right .centerpart table td a{ color:#0000ee;}
+.bodycenter .right .centerpart table td a:hover{ text-decoration:underline;}
+.bodycenter .right .centerpart table td .name{overflow: hidden;white-space:nowrap;}
+.bodycenter .right .centerpart table td .time {overflow: hidden;white-space: nowrap;}
+.bodycenter .right .centerpart table td em.hot{ color:#ff0000;}
+.bodycenter .right .centerpart table td em.leve-1{ margin-left:8px;}
+

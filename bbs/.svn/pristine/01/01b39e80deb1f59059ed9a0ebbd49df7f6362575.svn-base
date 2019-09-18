@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <user_id valid="null">number</user_id>
+    <post_id valid="null">number</post_id>
+    <forum_id valid="null">number</forum_id>
+    <options_ids valid="null">string</options_ids>
+</map>

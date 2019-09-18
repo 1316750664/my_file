@@ -1,0 +1,455 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.util.tools.ReadWriteProperties" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page import="com.service.Service.Bbs.BbsMcenterLeftService" %>
+<%
+    String ip=ToolUtil.getClientIp(request);
+    int status= LoginDetection.getInstance().loginCheck(request.getCookies(),ip,response);
+    if (status==1){
+        return;
+    }
+    String user_id = UserService.getInstance().getUidFromCookie(request);
+    String[] param = {user_id};
+    TaskBean t = new TaskBean(38, 0, param);
+    String json1 = FragService.getInstance().fragment(0, t);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json1, List.class);
+    String tou = "";
+    String ni = "";
+    String bei = "";
+    for (Map<String, String> map : list) {
+        tou = map.get("avatar");
+        ni = map.get("nick");
+        bei = map.get("remark");
+    }
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <title>个人中心-我的管理-浙江企商汇电子商务有限公司</title>
+    <link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/wodetiezi.css" rel="stylesheet" />
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/pager.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+<div class="guangli">
+<%
+    BbsMcenterLeftService left = BbsMcenterLeftService.getInstance();
+    out.write(left.makeLeft(fragPath+ "/p-center_left.txt",tou,ni,bei));
+    out.flush();
+%>
+<div class="you left_float">
+    <div class="you1">
+        <p class="ppl gary"> <i class="iconfont">&#xe612;</i> <strong>我的管理</strong></p>
+    </div>
+    <div class="guang_r">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="huit" id="fatian">
+            <col class="gl">
+            <col class="gl1">
+            <col class="gl1">
+            <col>
+            <tr>
+                <th class="text-left padding10 red"><i class="iconfont" style=" font-weight:normal">&#xe619;</i>近六个小时发布的帖子</th>
+                <th>所属版块</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            <%
+
+                String curPage1 = request.getParameter("page1");
+                int curP1 = 1;
+                if (null != curPage1 && Integer.parseInt(curPage1) >= 0) {
+                    curP1 = Integer.parseInt(curPage1);
+                }
+                int page1 = curP1;
+
+                String curPage2 = request.getParameter("page2");
+                int curP2 = 1;
+                if (null != curPage2 && Integer.parseInt(curPage2) >= 0) {
+                    curP2 = Integer.parseInt(curPage2);
+                }
+                int page2 = curP2;
+
+                String curPage3 = request.getParameter("page3");
+                int curP3 = 1;
+                if (null != curPage3 && Integer.parseInt(curPage3) >= 0) {
+                    curP3 = Integer.parseInt(curPage3);
+                }
+                int page3 = curP3;
+
+                String curPage4 = request.getParameter("page4");
+                int curP4 = 1;
+                if (null != curPage4 && Integer.parseInt(curPage4) >= 0) {
+                    curP4 = Integer.parseInt(curPage4);
+                }
+                int page4 = curP4;
+
+                int row = 2;//通用
+
+                TaskBean taskBean = new TaskBean(28, 1, page1, row, param);
+                String json = FragService.getInstance().fragment(0, fragPath + "/p-center_wodeguanli_new.txt", taskBean, "tiezi");
+                Pattern pattern = Pattern.compile("###shijian:(.*?)###");
+                Matcher matcher = pattern.matcher(json);
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");// HH:mm:ss:SSS
+                String str = null;
+                String str1 = null;
+                while (matcher.find()) {
+                    str1 = matcher.group();//匹配部分，最后替换掉
+                    str = matcher.group(1);//匹配的值 毫秒数
+                    if(!str.equals("")){
+                        long shujushijian = Long.parseLong(str);
+                        str = sdf1.format(new Date(shujushijian));
+                    }
+                    json = json.replaceFirst(str1, str);
+                }
+                out.write(json);
+                out.flush();
+            %>
+            <tr>
+                <td colspan="4" style="border:none; padding:10px 0;">
+                    <form>
+                        <input type="hidden" name="curPage" id="curPage1" value="<%=curP1%>"/>
+                        <input type="hidden" name="pageSize" id="pageSize1" value="<%=row%>"/>
+                    </form>
+                    <div class="allgoodslist right_f">
+                        <div class="divPagePanel" id="divPagePanel1" ></div>
+                        <div class="tiaozhuan">
+                            <ul>
+                                <li>到第<input type="text" id="tiao1"/>页</li>
+                                <li class="queding"><a href="javascript:void(0);" onclick="jump(1)">确&nbsp;定</a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="huit">
+            <col class="bian">
+            <col class="bian1">
+            <col class="bian1">
+            <col>
+            <tr>
+                <th class="text-left padding10"><i class="iconfont" style=" font-weight:normal">&#xe616;</i> 近六个小时删除的帖子</th>
+                <th>所属版块</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            <%
+                taskBean = new TaskBean(29, 1, page2, row, param);
+                json = FragService.getInstance().fragment(0, fragPath + "/p-center_wodeguanli_del.txt", taskBean, "tiezi");
+                matcher = pattern.matcher(json);
+                while (matcher.find()) {
+                    str1 = matcher.group();//匹配部分，最后替换掉
+                    str = matcher.group(1);//匹配的值 毫秒数
+                    if(!str.equals("")){
+                        long shujushijian = Long.parseLong(str);
+                        str = sdf1.format(new Date(shujushijian));
+                    }
+                    json = json.replaceFirst(str1, str);
+                }
+                out.write(json);
+                out.flush();
+            %>
+            <tr>
+                <td colspan="4" style="border:none; padding:10px 0;">
+                    <form>
+                        <input type="hidden" name="curPage" id="curPage2" value="<%=curP2%>"/>
+                        <input type="hidden" name="pageSize" id="pageSize2" value="<%=row%>"/>
+                    </form>
+                    <div class="allgoodslist right_f">
+                        <div class="divPagePanel" id="divPagePanel2" ></div>
+                        <div class="tiaozhuan">
+                            <ul>
+                                <li>到第<input type="text" id="tiao2"/>页</li>
+                                <li class="queding"><a href="javascript:void(0);" onclick="jump(2)">确&nbsp;定</a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="huit">
+            <col class="bian">
+            <col class="bian1">
+            <col class="bian1">
+            <col>
+            <tr>
+                <th class="text-left padding10 bule"><i class="iconfont" style=" font-weight:normal">&#xe615;</i> 近六个小时置顶的帖子</th>
+                <th>所属版块</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            <%
+                taskBean = new TaskBean(30, 1, page3, row, param);
+                json = FragService.getInstance().fragment(0, fragPath + "/p-center_wodeguanli_top.txt", taskBean, "tiezi");
+                matcher = pattern.matcher(json);
+                while (matcher.find()) {
+                    str1 = matcher.group();//匹配部分，最后替换掉
+                    str = matcher.group(1);//匹配的值 毫秒数
+                    if(!str.equals("")){
+                        long shujushijian = Long.parseLong(str);
+                        str = sdf1.format(new Date(shujushijian));
+                    }
+                    json = json.replaceFirst(str1, str);
+                }
+                out.write(json);
+                out.flush();
+            %>
+            <tr>
+                <td colspan="4" style="border:none; padding:10px 0;">
+                    <form>
+                        <input type="hidden" name="curPage" id="curPage3" value="<%=curP3%>"/>
+                        <input type="hidden" name="pageSize" id="pageSize3" value="<%=row%>"/>
+                    </form>
+                    <div class="allgoodslist right_f">
+                        <div class="divPagePanel" id="divPagePanel3" ></div>
+                        <div class="tiaozhuan">
+                            <ul>
+                                <li>到第<input type="text" id="tiao3"/>页</li>
+                                <li class="queding"><a href="javascript:void(0);" onclick="jump(3)">确&nbsp;定</a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="huit">
+            <col class="bian">
+            <col class="bian1">
+            <col class="bian1">
+            <col>
+            <tr>
+                <th class="text-left padding10 yel"><i class="iconfont" style=" font-size:20px; font-weight:normal">&#xe61a;</i> 近六个小时加精的帖子</th>
+                <th>所属版块</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            <%
+                taskBean = new TaskBean(31, 1, page4, row, param);
+                json = FragService.getInstance().fragment(0, fragPath + "/p-center_wodeguanli_best.txt", taskBean, "tiezi");
+                matcher = pattern.matcher(json);
+                while (matcher.find()) {
+                    str1 = matcher.group();//匹配部分，最后替换掉
+                    str = matcher.group(1);//匹配的值 毫秒数
+                    if(!str.equals("")){
+                        long shujushijian = Long.parseLong(str);
+                        str = sdf1.format(new Date(shujushijian));
+                    }
+                    json = json.replaceFirst(str1, str);
+                }
+                out.write(json);
+                out.flush();
+            %>
+            <tr>
+                <td colspan="4" style="border:none; padding:10px 0;">
+                    <form>
+                        <input type="hidden" name="curPage" id="curPage4" value="<%=curP4%>"/>
+                        <input type="hidden" name="pageSize" id="pageSize4" value="<%=row%>"/>
+                    </form>
+                    <div class="allgoodslist right_f">
+                        <div class="divPagePanel" id="divPagePanel4" ></div>
+                        <div class="tiaozhuan">
+                            <ul>
+                                <li>到第<input type="text" id="tiao4"/>页</li>
+                                <li class="queding"><a href="javascript:void(0);" onclick="jump(4)">确&nbsp;定</a></li>
+                                <div class="clear"></div>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="pzxxx" style="border:none; padding:10px 0;">
+                    严禁在论坛中传播违法不良信息，违反者立即删除帖子，屡教不改者将封停账号！请您配合。
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/head.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $("#guanl").addClass("aver");
+    $("#fatian tr").each(function(index, element) {
+        $(this).find(".cu").click(function(){
+            $(this).parents("tr").remove();
+        })
+    });
+
+    <!--分页代码 -->
+    $(document).ready(function(){
+        var curpage=parseInt($("#curPage1").val());
+        var pageSize=parseInt($("#pageSize1").val());
+        var itemCount=parseInt($("#itemCount1").val());
+        var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+        $("#divPagePanel1").html(Hhtml);
+        curpage=parseInt($("#curPage2").val());
+        pageSize=parseInt($("#pageSize2").val());
+        itemCount=parseInt($("#itemCount2").val());
+        Hhtml = MyPager.printPage(curpage,pageSize,itemCount,{type:2});
+        $("#divPagePanel2").html(Hhtml);
+        curpage=parseInt($("#curPage3").val());
+        pageSize=parseInt($("#pageSize3").val());
+        itemCount=parseInt($("#itemCount3").val());
+        Hhtml = MyPager.printPage(curpage,pageSize,itemCount,{type:3});
+        $("#divPagePanel3").html(Hhtml);
+        curpage=parseInt($("#curPage4").val());
+        pageSize=parseInt($("#pageSize4").val());
+        itemCount=parseInt($("#itemCount4").val());
+        Hhtml = MyPager.printPage(curpage,pageSize,itemCount,{type:4});
+        $("#divPagePanel4").html(Hhtml);
+    });
+    function pageClick(action,type){
+        var curpage=parseInt($("#curPage"+type).val());
+        var pageSize=parseInt($("#pageSize"+type).val());
+        var itemCount=parseInt($("#itemCount"+type).val());
+        if(action=="minus"){
+            curpage=curpage-1;
+        } else if(action=="add"){
+            curpage=curpage+1;
+        } else {
+            curpage=action;
+        }
+        //跳转
+        $("#curPage"+type).val(curpage);
+        window.location.href="/p-center/wodeguanl.jsp?page1="+$("#curPage1").val()+"&page2="+$("#curPage2").val()+"&page3="+$("#curPage3").val()+"&page4="+$("#curPage4").val();
+    }
+    function dataD(data) {
+        var err = null, msg = null, field = null;
+        for (var i in data) {
+            if (i == 0) {
+                $.showTipPop('null', '操作成功', function () {
+                    window.location.href="/p-center/wodeguanl.jsp";
+                });
+                return false;
+            }
+            else if (i == "error") {
+                err = data[i];
+            }
+            else if (i == "msg") {
+                msg = data[i];
+            }
+            else if (i == "field") {
+                field = data[i];
+            }
+        }
+        $.showTipPop('null', msg);
+        return false;
+    }
+
+    function deleteP(id) {
+        $.Bigo('/Action/DeletePost.do',{taskId: '32', cmdType: 'Update',pId:id,user_id:'<%=user_id%>'}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function topP(id) {
+        $.Bigo('/Action/JsonDispatcher.do',{taskId: '33', cmdType: 'Update',pId:id,user_id:'<%=user_id%>'}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function bestP(id) {
+        $.Bigo('/Action/JsonDispatcher.do',{taskId: '34', cmdType: 'Update',pId:id,user_id:'<%=user_id%>'}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function unDeleteP(id) {
+        $.Bigo('/Action/UnDeletePost.do',{taskId: '35', cmdType: 'Update',pId:id,user_id:'<%=user_id%>',title:$("#"+id).text()}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function unTopP(id) {
+        $.Bigo('/Action/JsonDispatcher.do',{taskId: '36', cmdType: 'Update',pId:id,user_id:'<%=user_id%>'}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function unBestP(id) {
+        $.Bigo('/Action/JsonDispatcher.do',{taskId: '37', cmdType: 'Update',pId:id,user_id:'<%=user_id%>'}, {sucAction: function s(data){
+            dataD(data);
+        }});
+    }
+    function jump(type) {
+        var yeshu = $("#tiao"+type).val();
+        var reg = /^(0|[1-9][0-9]*)$/;
+        if(!reg.test(yeshu)){
+            $.showTipPop('null', "请输入正整数页数",{btn:false});
+            return false;
+        }
+        $("#curPage"+type).val(parseInt(yeshu));
+        window.location.href="/p-center/wodeguanl.jsp?page1="+$("#curPage1").val()+"&page2="+$("#curPage2").val()+"&page3="+$("#curPage3").val()+"&page4="+$("#curPage4").val();
+    }
+</script>
+</body>
+</html>

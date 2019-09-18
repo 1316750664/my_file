@@ -1,0 +1,26 @@
+*{margin:0; padding:0}
+body{ font-family:"宋体"}
+.left{ float:left}
+.zuo{width:166px; height:420px; padding: 44px 0 0 14px}
+.zuo1{width:166px; height:109px; background:url(../images/wodtz1.jpg) no-repeat;}
+.img{ padding:24px 0 0 44px}
+#pp{ font-family:"微软雅黑"; font-size:11px; padding-left:58px}
+#pp a{text-decoration:none; color:#fff;}
+#pp a:hover{ text-decoration:none; color:#333}
+.zuo2{width:166px; height:76px; background:url(../images/wodtzy.jpg) no-repeat; margin:14px 0}
+.pp2{font-size:18px; font-family:"微软雅黑"; float:left; padding:13px 5px 0 30px}
+.pp3{ font-size:14px; clear:both; text-align:center; padding:5px 0}
+.pp3 a{ text-decoration:none; color:#000}
+.zuo3{ width:166px; height:59px; background:url(../images/wodtzj.jpg) no-repeat;}
+.img2{ padding:18px 10px 0 18px; float:left}
+.pp4{ font-size:22px; font-family:"黑体"; padding:15px 0}
+.zuo4{width:136px; height:150px; padding-left:28px}
+ul li{ background:url(../images/xiaogezi.jpg) no-repeat; width:136px; height:36px; list-style:none}
+ul li a{ text-decoration:none; color:#d14b51; display:block}
+ul li a:hover{ background:url(../images/xiaohonggezi.jpg); width:136px; height:36px; color:#fff;}
+ul li a.aver{ background:url(../images/xiaohonggezi.jpg); width:136px; height:36px; color:#fff;}
+.zuo_1{padding:10px 10px 0 15px}
+.zuo_p{padding-top:10px;}
+
+
+img{ border:0 none; display:block;} 

@@ -1,0 +1,263 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="com.util.tools.CheckTools" %>
+<%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.util.tools.ReadWriteProperties" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page import="com.service.Service.Bbs.BbsMcenterLeftService" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+
+    String ip=ToolUtil.getClientIp(request);
+    int status= LoginDetection.getInstance().loginCheck(request.getCookies(),ip,response);
+    if (status==1){
+        return;
+    }
+    String curPage = request.getParameter("page");
+    int  curP=1;
+    if (CheckTools.checkPositiveNum(curPage)) {
+        curP = Integer.parseInt(curPage);
+    }
+    String user_id = UserService.getInstance().getUidFromCookie(request);
+    String  loginid= UserService.getInstance().getUidFromCookie(request);
+    String[] param = {user_id};
+    TaskBean t = new TaskBean(38, 0, param);
+    String json1 = FragService.getInstance().fragment(0, t);
+
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json1, List.class);
+    String tou = "";
+    String ni = "";
+    String bei = "";
+    for (Map<String, String> map : list) {
+        tou = map.get("avatar");
+        ni = map.get("nick");
+        bei = map.get("remark");
+    }
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <title>个人中心-我的收藏-浙江企商汇电子商务有限公司</title>
+    <link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/pager.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/wodetiezi.css" rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class="bodd">
+        <%
+            BbsMcenterLeftService left = BbsMcenterLeftService.getInstance();
+            out.write(left.makeLeft(fragPath + "/p-center_left.txt", tou, ni, bei));
+            out.flush();
+        %>
+        <div class="you left_float">
+            <div class="you1">
+                <p class="ppl gary"> <i class="iconfont">&#xe610;</i> <strong>我的收藏</strong></p>
+            </div>
+            <div class="you2">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="huit">
+                    <col class="tian">
+                    <col class="tian1">
+                    <col class="tian1">
+                    <col>
+                    <tr>
+                        <th class="text-left padding10 bule"><i class="iconfont">&#xe610;</i> 已收藏的帖子</th>
+                        <th>版主</th>
+                        <th>更新时间</th>
+                        <th>操作</th>
+                    </tr>
+                 <%
+                     int page1 = curP;
+                     int row1 = 3;//pagesize
+                     String[] param2={loginid};
+                     TaskBean taskBean = new TaskBean(323, 1, page1, row1,param2);
+                     String j2 =FragService.getInstance().fragment(10, fragPath + "/p-center_myfavorite.txt", taskBean, "myfavorite");
+                     String[] a=j2.split("###cococoforsplit###");
+                     for(int i=1;i<a.length;i++){
+                         Pattern p= Pattern.compile("#1#:cococo1.*#1#");
+                         Matcher m=p.matcher(a[i]);
+                         while(m.find()) {
+                             String k = m.group().substring(11, m.group().length() - 3);
+                             if("".equals(k)){
+                                 a[i]=a[i].replaceAll("#1#:cococo1.*#1#","");
+                             }else {
+                                 SimpleDateFormat sd1 = new SimpleDateFormat("yyyy-MM-dd");
+                                 String date = sd1.format(Long.parseLong(k));
+                                 a[i] = a[i].replaceAll("#1#:cococo1.*#1#", date);
+                             }
+                         }
+                     }
+                     StringBuffer sb=new StringBuffer();
+                     for(int i=0;i<a.length;i++){
+                         sb.append(a[i]);
+                     }
+                     out.write(sb.toString());out.flush();
+                 %>
+                    <input type="hidden" name="curPage" id="curPage" value="<%=curP%>>"/>
+                    <input type="hidden" name="pageSize" id="pageSize" value="<%=row1%>"/>
+                    <tr>
+                        <td colspan="4" style="border:none; padding:10px 0;">
+                            <div class="allgoodslist right_f">
+                                <div class="divPagePanel" ></div>
+                                <div class="tiaozhuan">
+                                    <ul>
+                                        <li>到第<input type="text" id="goPage1" value="<%=curP%>"/>页</li>
+                                        <li class="queding"><a href="javascript:void(0) " id="gopp1">确&nbsp;定</a></li>
+                                        <div class="clear"></div>
+                                    </ul>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="pzxxx" style="border:none; padding:10px 0;">
+                            严禁在论坛中传播违法不良信息，违反者立即删除帖子，屡教不改者将封停账号！请您配合。
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $("#shouc").addClass("aver");
+    //取消收藏
+//    $(".huit tr").each(function(index, element) {
+//        $(this).find(".xuxiao").click(function(){
+//            $(this).parent("tr").remove();
+//        });
+//    });
+
+    <!--分页代码 -->
+    $(document).ready(function(){
+        var curpage=parseInt($("#curPage").val());
+        var pageSize=parseInt($("#pageSize").val());
+        var itemCount=parseInt($("#itemCount").val());
+        var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+        $(".divPagePanel").html(Hhtml);
+    });
+    function pageClick(action){
+        var curpage=parseInt($("#curPage").val());
+        var pageSize=parseInt($("#pageSize").val());
+        var itemCount=parseInt($("#itemCount").val());
+        if(action=="minus"){
+            curpage=curpage-1;
+        } else if(action=="add"){
+            curpage=curpage+1;
+        } else {
+            curpage=action;
+        }
+        $("#curPage").val(curpage);
+        var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,1);
+        $(".divPagePanel").html(Hhtml);
+        $(".tiaozhuan input").attr("value",curpage);
+        window.location.href="/p-center/myfavorite.jsp?page="+curpage;
+    }
+    $("#gopp1").click (function(){
+        var ppage1=$("#goPage1").val().trim();
+        var curpage2 = parseInt($("#curPage2").val());
+        if(!reg.test(ppage1)){
+            alert("无效的页码");
+            return false;
+        }
+        var row1=<%=row1%>;
+        var itemCount=parseInt($("#itemCount1").val());
+        if(ppage1>Math.ceil(itemCount / row1)){
+            alert("超过总页码"+Math.ceil(itemCount / row1));
+            return false;
+        }
+        window.location.href="/p-center/myfavorite.jsp?page="+ppage1;
+    })
+    //取消收藏
+    function canc(a,b){
+        $.Bigo('/Action/JsonDispatcher.do',{taskId_1: '325', cmdType_1: 'Update',taskId_2: '326', cmdType_2: 'Update',post_id:b,user_id:a}, {sucAction: suc7});
+        function suc7(data){
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                        $.showTipPop('null', '取消收藏成功', function () {
+                        window.location.href="/p-center/myfavorite.jsp?login=<%=loginid%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            $.showTipPop('null', msg);
+            return false;
+        }
+    }
+</script>
+</html>

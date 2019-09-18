@@ -1,0 +1,1033 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="com.util.tools.CheckTools" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
+<%@ page import="com.service.Service.RefcontentService" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.util.tools.ReadWriteProperties" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+
+    String loginid = UserService.getInstance().getUidFromCookie(request);
+    if(loginid==null||"".equals(loginid.trim())){
+
+        loginid="";
+    }
+    String postid=null;
+    String ID= request.getParameter("postid");
+    if (null == ID || "".equals(ID)) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    String ch= request.getParameter("ch");
+    if (ch==null){ ch="0";}
+    String curPage = request.getParameter("page");
+    int curP = 1;
+    if (CheckTools.checkPositiveNum(curPage)) {
+        curP = Integer.parseInt(curPage);
+    }
+
+    if (null != ID && !"".equals(ID)) {
+        postid = ID;
+    }
+
+    String fenleiPath=request.getSession().getServletContext().getRealPath("/fenlei");
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+    String[] param_postid = {postid};
+    int taskId = 304;
+    int cmdType = 0;
+    TaskBean taskBean = new TaskBean(taskId, cmdType, param_postid);
+    String json = FragService.getInstance().fragment(10, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+    String forum_id=null;String forum_name=null;String topic=null;String clicks=null; String replies=null;
+    String create_time=null; String content=null;String edit_time=null; String host_id=null;String is_best=null;
+    String post_clazz=null;String vote_clazz=null;String options=null;String is_view=null;String end_time=null;
+    String votes=null;String is_lock=null;
+
+
+    //、帖子不存在
+    if(list==null||list.size()==0){
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    for (Map<String, String> map : list) {
+        forum_name = map.get("forum_name");
+        topic = map.get("topic");
+        create_time = map.get("create_time");
+        clicks = map.get("clicks");
+        replies = map.get("replies");
+        content = map.get("content");
+        edit_time = map.get("edit_time");
+        forum_id=map.get("forum_id");
+        host_id=map.get("user_id");
+        is_best=map.get("is_best");
+        is_lock = map.get("is_lock");
+        post_clazz=map.get("post_clazz");//帖子类型 post_clazz    1普通铁 2投票
+        vote_clazz=map.get("vote_clazz");//投票方式 vote_clazz  1 单选 2 多选
+        options=map.get("options");       //      options 可选个数
+        is_view=map.get("is_view");      //是否投票后才能查看结果  is_view  1 YES 0 NO
+        end_time=map.get("end_time");   // 投票结束时间  end_time
+        votes=map.get("votes");         // 投票总数  votes
+    }
+
+    String create_time2=create_time;
+    SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date=new Date(Long.parseLong(create_time));
+    create_time=sd.format(date);
+
+    String[] param_forumid = {forum_id};
+    TaskBean taskBean_312 = new TaskBean(312, 0, param_forumid);
+    String r_312 = FragService.getInstance().fragment(10, taskBean_312);
+    List<Map<String, String>> list1_r312= StaticUtil.objectMapper.readValue(r_312, List.class);
+    String parent_id=null;
+
+    for (Map<String, String> map : list1_r312) {
+        parent_id = map.get("parent_id");
+    }
+
+    String[] param_parentid={parent_id};
+    TaskBean taskBean_313 = new TaskBean(313, 0, param_parentid);
+    String r_313 = FragService.getInstance().fragment(10, taskBean_313);
+    List<Map<String, String>> list_313= StaticUtil.objectMapper.readValue(r_313, List.class);
+    String parent_forlum=null;
+    for (Map<String, String> map : list_313) {
+        parent_forlum = map.get("forum_name");
+    }
+    //投票帖 判断是否已过投票日期
+    boolean  isout=false;
+    if("2".equals(post_clazz)) {
+        if(!"".equals(end_time)) {
+            if (System.currentTimeMillis() > Long.parseLong(end_time)) {
+                isout = true;
+            }
+        }
+       else{
+           isout=false;
+       }
+    }
+    //如果是投票贴  判断该用户是否投过票
+    String if_vote ="0";
+    if("2".equals(post_clazz)&&!"".equals(loginid)) {
+        List<String> listj=new ArrayList<String>();
+        listj.add(loginid);
+        listj.add(postid);
+        String[] paramk =listj.toArray(new String[2]);
+        TaskBean taskBean_318 = new TaskBean(318, 0, paramk);
+        String r_318 = FragService.getInstance().fragment(10, taskBean_318);
+        List<Map<String, String>> list_318 = StaticUtil.objectMapper.readValue(r_318, List.class);
+        for (Map<String, String> map : list_318) {
+            if_vote = map.get("counum");
+        }
+        if(if_vote==null||"0".equals(if_vote)) if_vote="0";
+        else if_vote="1";
+    }
+    //判断是否收藏过帖子
+        String if_favor = "0";
+    if(!"".equals(loginid)) {
+        List<String> listq = new ArrayList<String>();
+        listq.add(postid);
+        listq.add(loginid);
+        String[] parammm = listq.toArray(new String[2]);
+        TaskBean taskBeank_329 = new TaskBean(329, 0, parammm);
+        String r_329 = FragService.getInstance().fragment(10, taskBeank_329);
+        List<Map<String, String>> list_329 = StaticUtil.objectMapper.readValue(r_329, List.class);
+        for (Map<String, String> map : list_329) {
+            if_favor = map.get("cou");
+        }
+    }
+//楼主信息
+    String[] param_hostid={host_id};
+    TaskBean taskBean_324 = new TaskBean(324, 0, param_hostid);
+    String r_324 = FragService.getInstance().fragment(10, taskBean_324);
+    List<Map<String, String>> list_324 = StaticUtil.objectMapper.readValue(r_324, List.class);
+  //  nick,bests,posts,replies,points
+    String nick=null;String bests=null;String posts=null;
+    String replii=null;String points=null;String avatar=null;
+    String reg_time=null;
+    for (Map<String, String> map : list_324) {
+        nick   = map.get("nick");
+        bests  = map.get("bests");
+        posts  = map.get("posts");
+        replii = map.get("replies");
+        points = map.get("points");
+        avatar = map.get("avatar");
+        reg_time = map.get("reg_time");
+    }
+   String reg_time2=reg_time.substring(0,4)+"年"+reg_time.substring(5,7)+"月"+reg_time.substring(8,10)+"日";
+   ReadWriteProperties rwp = ReadWriteProperties.getInstance();
+   String path = rwp.readValue("config", "server");
+    if ("".equals(avatar)) {
+        avatar = rwp.readValue("config", "user_img");
+    } else {
+        avatar = path + avatar;
+    }
+   String level = ToolUtil.pointChinese(points, rwp, StaticUtil.objectMapper);
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%=topic%>-<%=parent_forlum%>-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找汽配,汽商汇,买汽配,卖汽配,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,防冻液-国内最专业最全面的汽配在线交易查询网"/>
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <link type="image/x-icon" href="../favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/shared.css" rel="stylesheet"/>
+    <link href="../css/head.css" rel="stylesheet" type="text/css" />
+    <link href="../font/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="../css/pager.css" />
+    <link href="../css/foot.css" rel="stylesheet" type="text/css" />
+    <link href="../css/post.css" rel="stylesheet" type="text/css" />
+    <link href="../js/kindeditor/themes/default/default.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+<div class=" fenleihead"><a href="#"><%=parent_forlum%></a><span>></span><a href="#"><%=forum_name%></a><span>></span><a href="#"><%=topic%>></a></div>
+<div class="title2">
+
+    <div class="allgoodslist">
+        <div class="divPagePanel" ></div>
+        <div class="tiaozhuan">
+            <ul>
+                <li>到第<input type="text" id="goto0"value="<%=curP%>"/>页</li>
+                <li class="queding"><a href="#" id="confirm0">确&nbsp;定 </a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="fatei">
+        <input name="" type="button" class="btn-fb"/>
+        <div class="type-fb">
+            <ul>
+                <li><a href="/fenlei/fabutiezi.jsp?fID=<%=forum_id%>"><span><img src="../images/post.png" />帖子</span></a></li>
+                <li><a href="/fenlei/toup.jsp?fID=<%=forum_id%>"><span><img src="../images/vote.png" />投票</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="btn-reply"><a href="#reply"></a></div>
+</div>
+<div class="detail-title">
+    <h4><img src="../images/post_hot.png"/><%=topic%><em><img src="../images/official_best.png" id="is_best"/></em></h4>
+                                                                <input type="hidden" name="isbest" id="isbest" value="<%=is_best%>">
+    <div class="visitor">点击:<em><%=clicks%></em>| 回复:<em><%=replies%></em></div>
+</div>
+<div class="bodycenter">
+    <div class="loucheng floor-one">
+        <div class="left ">
+            <h4><a href="#"><%=nick%></a></h4>
+            <div class="user-headimg">
+                <span class="louzhuicon"></span>
+                <a href="#" target="_blank"><img src='<%=avatar%>' width="120" height="120" /></a>
+            </div>
+            <ul class="user-info">
+                <li>等级：<a href="#"><%=level%></a></li>
+                <li>精华：<a href="#"><strong><%=bests%>帖</strong></a></li>
+                <li>帖子：<a href="#"><%=posts%>帖</a> | <a href="#"><%=replii%>回</a></li>
+                <li>注册：<span><%=reg_time2%></span></li>
+
+            </ul>
+        </div>
+        <div class="right">
+            <div class="hdtitle">
+
+                发表于 <%=create_time%><s>|</s><a href="#" id="seeown">只看楼主</a>
+                                                <a href="#" id="seeall">查看全部</a>
+                                            <em>楼主</em>
+            </div>
+            <div class="bd">
+                <div class="article">
+                    <div class="ke-post">
+                           <%=content%>
+                                <%
+                                        if("2".equals(post_clazz)) {
+                                            String strk = " <div class=\"vote\"><div class=\"title\"><img src=\"../images/vote-bd.png\" width=\"24\" height=\"24\" /><span id=\"tpTitle\"> " + topic + "</span><span class=\"txt-choose\">(可选" + options + "个)</span><span class=\"sum\">已投票人数 : <strong>" + votes + "</strong></span></div>";
+                                            out.write(strk);
+                                            out.flush();
+                                        }
+                                %>
+
+                                <%
+                                    if("2".equals(post_clazz)) {
+                                    out.write("<ul>");out.flush();
+                                    TaskBean taskBean_319 = new TaskBean(319, 0, param_postid);
+                                    String result_319 = FragService.getInstance().fragment(10, fragPath + "/post_voteoptionk.txt", taskBean_319, "voteoptionk");
+                                    out.write(result_319);
+                                    out.flush();
+
+                                    out.write("</ul>");out.flush();
+                                }
+                                %>
+                                   <%
+                                            //投票帖
+                                       if ("2".equals(post_clazz)) {
+                                           out.write("<ul>");out.flush();
+                                           TaskBean taskBean_319 = new TaskBean(319, 0, param_postid);
+                                           String result1 = FragService.getInstance().fragment(10, taskBean_319);
+                                           List<Map<String, String>> listk= StaticUtil.objectMapper.readValue(result1, List.class);
+
+                                           for(int i=0;i<listk.size();i++) {
+                                                String sk="<input class='jjjjjjjjjj' type='hidden' name=id='votenum"+i+"' id='votenum"+i+"' value='"+listk.get(i).get("votes")+"'/>";
+                                               out.write(sk);out.flush();
+                                           }
+                                           String sk2="<input type='hidden' name='if_vote' id='optioncount' value='"+listk.size()+"'/>";
+                                               out.write(sk2);out.flush();
+
+                                           String result2 = FragService.getInstance().fragment(10, fragPath + "/post_voteoption.txt", taskBean_319, "voteoption");
+
+                                           out.write(result2);out.flush();
+                                           out.write("</ul>");out.flush();
+                                       }
+
+                                   %>
+                              <%
+                                    if("2".equals(post_clazz)){
+                                        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH时");
+                                        Date date5=null;
+                                        Date date6=null;
+                                        if(!"".equals(end_time)&&!"".equals(create_time2)&&create_time2!=null&&end_time!=null) {
+                                            date5 = new Date(Long.parseLong(create_time2));
+                                            date6 = new Date(Long.parseLong(end_time));
+                                        }
+                                        String strk2=" <p><button  type=\"button\" class=\"btn-vote-v2\" onclick=\"onvote()\">投票</button> <span>本投票起止时间："+sdf.format(date5)+" 至　"+sdf.format(date6)+"</span></p>";
+                                        out.write(strk2);out.flush();
+                                    }
+                              %>
+                    </div>
+                </div>
+                    <% //投票帖漏了个div
+                        if("2".equals(post_clazz)){
+                            out.write("</div>");
+                         }
+                    %>
+
+               </div>
+            <%
+                if (edit_time!=null&&!"".equals(edit_time)) {
+                    SimpleDateFormat sd2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    Date date2 = new Date(Long.parseLong(edit_time));
+                    edit_time = sd2.format(date2);
+                    String strr="<div class=\"last-edit\">此帖于"+edit_time+"被编辑</div>";
+                    out.write(strr);out.flush();
+                }
+            %>
+
+            <div class="ft">
+               <div class="op">
+                   <%
+                       if("0".equals(is_lock)&&host_id.equals(loginid)) {
+                            String dd1 = "<a href=\"#\" id='edit'>编辑</a><s>|</s>";
+                            out.write(dd1);out.flush();
+                        }
+                   %>
+                   <a href="#" id="seeme">查看我的回复</a><s>|</s><a href="#" id="favor" >收藏</a></div>
+            </div>
+        </div>
+    </div>
+    <%
+           int row1;
+           int itemCount;
+           int page1 = curP;
+           String jsonTypeData=null;
+           List<String> l = new ArrayList<String>();
+
+        if("0".equals(ch.trim())) {
+            TaskBean taskBean3 = new TaskBean(308, 0, param_postid);
+            String j1 = FragService.getInstance().fragment(10, taskBean3);
+            List<Map<String, String>> list10= StaticUtil.objectMapper.readValue(j1, List.class);
+            String count1=null;
+            for (Map<String, String> map : list10) {
+                count1 = map.get("count1");
+            }
+            TaskBean taskBean4 = new TaskBean(309, 0, param_postid);
+            String j2 = FragService.getInstance().fragment(10, taskBean4);
+            List<Map<String, String>> list11= StaticUtil.objectMapper.readValue(j2, List.class);
+            String count2=null;
+            for (Map<String, String> map : list11) {
+                count2 = map.get("count2");
+            }
+            itemCount=Integer.parseInt(count1)+Integer.parseInt(count2);
+            if (page1 == 1) {
+                row1 = 3; l.add(postid);l.add(itemCount + "");l.add(postid);l.add(itemCount + ""); l.add("0");l.add("3");
+            } else {
+                row1 = 4;l.add(postid);l.add(itemCount + "");l.add(postid);l.add(itemCount + "");l.add(3 + (page1 - 2) * 4 + "");l.add("4");
+            }
+            String[] params = (String[]) l.toArray(new String[6]);
+            fragPath = request.getSession().getServletContext().getRealPath("/frag");
+            String[] paramType = {"int", "int", "int", "int", "int","int"};
+            TaskBean taskBean1 = new TaskBean(307, 3, params, paramType);
+            jsonTypeData = FragService.getInstance().fragment(10, fragPath + "/post_reply.txt", taskBean1, "reply");
+        }
+        else{
+            //只看该作者，只看楼主   // 只看我的回复
+            itemCount = 0;
+            String count1=null;//含有匿名的count
+            String count2=null;//没有匿名的count
+            String[] parama = {postid,ch.trim()};
+            TaskBean taskBean3 = new TaskBean(315, 0, parama);
+            String j1 = FragService.getInstance().fragment(10, taskBean3);
+            List<Map<String, String>> list10= StaticUtil.objectMapper.readValue(j1, List.class);
+            for (Map<String, String> map : list10) {
+                count1 = map.get("count1");
+            }
+            String[] parama2 = {postid,ch.trim()};
+            TaskBean taskBean31 = new TaskBean(328, 0, parama);
+            String j11 = FragService.getInstance().fragment(10, taskBean31);
+            List<Map<String, String>> list101= StaticUtil.objectMapper.readValue(j11, List.class);
+            for (Map<String, String> map : list101) {
+                count2 = map.get("count1");
+            }
+            if (page1 == 1) {
+                row1 = 3; l.add(postid);l.add(ch);l.add("0");l.add("3");
+            } else {
+                row1 = 4;l.add(postid);l.add(ch);l.add(3 + (page1 - 2) * 4 + "");l.add("4");
+            }
+            String[] params = (String[]) l.toArray(new String[4]);
+            String[] paramType = {"int", "int","int","int"};
+            TaskBean taskBean1=null;
+            if(ch.equals(host_id)&&host_id.equals(loginid)) {
+                //  登陆人是楼主      只看楼主按钮 只看我的回复按钮 都可以查出匿名
+                itemCount = Integer.parseInt(count2);
+                taskBean1 = new TaskBean(327, 3, params, paramType);
+            }else{
+                // 登陆人不是楼主     只看楼主按钮 查不出匿名  只看我的回复 可以查出匿名
+                if(ch.equals(host_id)) {
+                    itemCount = Integer.parseInt(count1);
+                    new TaskBean();
+                    taskBean1 = new TaskBean(314, 3, params, paramType);
+                }
+                else {
+                    itemCount = Integer.parseInt(count2);
+                    taskBean1 = new TaskBean(327, 3, params, paramType);
+                }
+            }
+            jsonTypeData = FragService.getInstance().fragment(10, fragPath + "/post_reply2.txt", taskBean1, "reply2");
+        }
+            String[] b = jsonTypeData.split("###cococo:forsplit###");
+            for (int i = 1; i < b.length; i++) {
+               Pattern p = Pattern.compile("#0#:cococo0.*#0#");
+               Pattern p2 = Pattern.compile("#1#:cococo1.*#1#");
+               Pattern p3 = Pattern.compile("#2#:cococo2.*#2#");
+               Pattern p4 = Pattern.compile("#4#:cococo4.*#4#");
+               Pattern p5 = Pattern.compile("#5#:cococo5.*#5#");
+               Pattern p6 = Pattern.compile("#6#:cococo6.*#6#");
+               Pattern p7 = Pattern.compile("#7#:cococo7.*#7#");
+               Pattern p8=  Pattern.compile("#8#:cococo8.*#8#");
+               Pattern p9 = Pattern.compile("#5#:cococo5.*#5#");
+               Pattern p10 = Pattern.compile("#i#:cococoi.*#i#");
+               Pattern p11 = Pattern.compile("#i#:cococoi.*#i#");
+               Pattern p12 = Pattern.compile("#j#:cococoj.*#j#");
+               Matcher m = p.matcher(b[i]);
+               Matcher m2 = p2.matcher(b[i]);
+               Matcher m3 = p3.matcher(b[i]);
+               Matcher m4 = p4.matcher(b[i]);
+               Matcher m5 = p5.matcher(b[i]);
+               Matcher m6 = p6.matcher(b[i]);
+               Matcher m7 = p7.matcher(b[i]);
+               Matcher m8 = p8.matcher(b[i]);
+               Matcher m9 = p9.matcher(b[i]);
+               Matcher m10 = p10.matcher(b[i]);
+               Matcher m11 = p11.matcher(b[i]);
+               Matcher m12 = p12.matcher(b[i]);
+                //只看楼主,只看该作者时，对内容的处理
+                if(!"0".equals(ch.trim())){
+                    while (m7.find()){
+                        String Path=request.getContextPath();
+                        String str2="<a href="+"'"+Path+"/fenlei/post.jsp?postid="+postid+"'"+">";
+                                b[i] = b[i].replaceAll("#7#:cococo7.*#7#",str2);
+                    }
+                }
+               //对回复的时间的处理
+               while (m.find()) {
+                   String k = m.group().substring(11, m.group().length() - 3);
+                   Date date3 = new Date(Long.parseLong(k));
+                   String str = sd.format(date3);
+                   b[i] = b[i].replaceAll("#0#:cococo0.*#0#", str);
+               }
+               //对回复楼层的处理
+               while (m2.find()) {
+                   String k = m2.group().substring(11, m2.group().length() - 3);
+                   if ("1".equals(k)) {
+                       b[i] = b[i].replaceAll("#1#:cococo1.*#1#", "沙发");
+                   } else if ("2".equals(k)) {
+                       b[i] = b[i].replaceAll("#1#:cococo1.*#1#", "板凳");
+                   } else if ("3".equals(k)) {
+                       b[i] = b[i].replaceAll("#1#:cococo1.*#1#", "地板");
+                   } else {
+                       b[i] = b[i].replaceAll("#1#:cococo1.*#1#", k + "楼");
+                   }
+               }
+               //对置顶的处理
+               while (m3.find()) {
+                   String k = m3.group().substring(11, m3.group().length() - 3);
+                   if ("1".equals(k)) {
+                       b[i] = b[i].replaceAll("#2#:cococo2.*#2#", "置顶");
+                   } else {
+                       b[i] = b[i].replaceAll("#2#:cococo2.*#2#", "");
+                   }
+               }
+               //对回复内容的处理
+               while (m4.find()) {
+                   List<Map<String, String>> co = new ArrayList<Map<String, String>>();
+                   String floor = m4.group().substring(3, m4.group().length() - 3).split("_#coco#_")[1];
+                   co = RefcontentService.getContentAslist(postid, floor);
+                   if (co == null) {
+                       b[i] = b[i].replaceAll("#4#:cococo4.*#4#", "");
+                   } else {
+                       StringBuffer buffer2 = new StringBuffer();
+                       String kj="<div class=\"citation\">";
+                       for (int h = 0; h < co.size(); h++)
+                           buffer2.append(kj);
+                       for (int j = 0; j < co.size(); j++) {
+                           String mycontent = null;
+                           String isdel=null;
+                           String[] param1 = {co.get(j).get("reply_id")};
+                           TaskBean taskBean5 = new TaskBean(311, 0, param1);
+                           String j3 = FragService.getInstance().fragment(10, taskBean5);
+                           List<Map<String, String>> list2 = StaticUtil.objectMapper.readValue(j3, List.class);
+                           for (Map<String, String> map : list2) {
+                               mycontent = map.get("reply_content");
+                               isdel=map.get("is_delete");
+                           }
+                           String mystring=null;
+                           if("0".equals(isdel)) {
+                                mystring ="<div class=\'citation-title\'>" +
+                                               "<span class=\'user-name\'>回复由 " + co.get(j).get("floor") + "楼 " + co.get(j).get("nick") + " 发表</span>" +
+                                               " <span class=\'citation-number\'>" + j + "</span>" +
+                                               "</div>" +
+                                               "<p>" + ToolUtil.unKillHtml(mycontent) + "</p>" +
+                                               "</div>" ;
+                           }else{
+                               mystring =   "<div class=\'citation-title\'>" +
+                                                "<span class=\'user-name\'>回复由 " + co.get(j).get("floor") + "楼 " + co.get(j).get("nick") + " 发表</span>" +
+                                                " <span class=\'citation-number\'>" + j + "</span>" +
+                                             "</div>" +
+                                               "<p>" + "该用户的发言已被删除！" + "</p>" +
+                                               "</div>";
+                           }
+                           buffer2.append(mystring);
+                       }
+                       b[i] = b[i].replaceAll("#4#:cococo4.*#4#", buffer2.toString());
+                   }
+               }
+               //匿名用户处理   1
+               while (m5.find()) {
+                   String k = m5.group().substring(11, m5.group().length() - 3);
+                   if ("1".equals(k.split("_#coco#_")[1].trim())) {
+                       b[i] = b[i].replaceAll("#5#:cococo5.*#5#", "匿名用户");
+                        while(m6.find()){
+                            b[i] = b[i].replaceAll("#6#:cococo6.*#6#", "");
+                        }
+                   } else {
+                       b[i] = b[i].replaceAll("#5#:cococo5.*#5#", k.split("_#coco#_")[0].trim());
+                       while(m6.find()){
+                           if("0".equals(ch.trim()))
+                           b[i] = b[i].replaceAll("#6#:cococo6.*#6#", "只看该作者");
+                       }
+                   }
+               }
+
+               //匿名用户处理   2 回复按钮处理
+                while (m9.find()){
+                    String k = m9.group().substring(11, m9.group().length() - 3);
+                    if ("1".equals(k.split("_#coco#_")[1].trim())) {
+                       //匿名用户
+                        while(m10.find()){
+                            String k2 = m10.group().substring(11, m10.group().length() - 3);
+                            b[i] = b[i].replaceAll("#i#:cococoi.*#i#", "'匿名用户'");
+                        }
+                    } else {
+                        //非匿名用户
+                        while(m11.find()) {
+                            String k3 = m11.group().substring(11, m11.group().length() - 3);
+                            b[i] = b[i].replaceAll("#i#:cococoi.*#i#",k3);
+                        }
+                    }
+                }
+                //内容已被删除处理
+                while (m8.find()){
+                    String k = m8.group().substring(11, m8.group().length() - 3);
+                    String isdel=k.substring(k.length()-1,k.length());
+                    if("0".equals(isdel))
+                     b[i] = b[i].replaceAll("#8#:cococo8.*#8#",ToolUtil.unKillHtml(k.substring(0,k.length()-1)));
+                    else
+                        b[i] = b[i].replaceAll("#8#:cococo8.*#8#","该用户的发言已被删除！");
+                }
+                //头像src处理
+                while(m12.find()){
+                    String k = m12.group().substring(11, m12.group().length() - 3);
+                    if ("".equals(k.trim())) {
+                        k = rwp.readValue("config", "user_img");
+                    } else {
+                        k = path + k;
+                    }
+                    b[i] = b[i].replaceAll("#j#:cococoj.*#j#",k);
+                }
+
+           }
+           StringBuffer sb = new StringBuffer();
+           for (int i = 0; i < b.length; i++) {
+               sb.append(b[i]);
+           }
+           jsonTypeData = sb.toString();
+           out.write(jsonTypeData);
+           out.flush();
+
+   %>
+    <form>
+
+
+        <input type="hidden" name="itemCount" id="itemCount" value="<%=itemCount%>"/>
+        <input type="hidden" name="postid" id="postid" value="<%=postid%>"/>
+        <input type="hidden" name="forum_id" id="forum_id" value="<%=forum_id%>"/>
+        <input type="hidden" name="ch" id="ch" value="<%=ch%>"/>
+        <input type="hidden" name="curPage" id="curPage" value="<%=curP%>"/>
+        <input type="hidden" name="pageSize" id="pageSize" value="<%=row1%>"/>
+        <input type="hidden" name="loginid" id="loginid" value="<%=loginid%>"/>
+        <input type="hidden" name="if_vote" id="if_vote" value="<%=if_vote%>"/>
+        <input type="hidden" name="is_view" id="is_view" value="<%=is_view%>"/>
+
+        <input type="hidden" name="vote_clazz" id="vote_clazz" value="<%=vote_clazz%>"/>
+        <input type="hidden" name="options" id="options" value="<%=options %>"/>
+
+        <input type="hidden" name="isout" id="isout" value="<%=isout %>"/>
+        <input type="hidden" name="iffavor" id="iffavor" value="<%=if_favor %>"/>
+
+
+         <%--vote_clazz=map.get("vote_clazz");//投票方式 vote_clazz  1 单选 2 多选--%>
+
+    </form>
+
+</div>
+
+<!--关于产品展示分页  放在alldoodslist外边 -->
+
+
+<div class="allgoodslist">
+    <div class="divPagePanel" ></div>
+    <div class="tiaozhuan">
+        <ul>
+            <li>到第<input type="text" id="goto" value="<%=curP%>"/>页</li>
+            <li class="queding"><a href="#" id="confirm" >确&nbsp;定</a></li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="detail-edit" id="reply">
+    <div class="hd"><h3>快速回复</h3></div>
+    <div class="edit-group">
+        <div class="userhead"><img src="../images/lunbo02.jpg" /></div>
+        <form class="group-form">
+            <textarea name="remark"  id="contents"></textarea>
+            <div class="wenzi">源码:已输入<em style="font-weight:bold;color:green;" class="red">0</em>/最多输入<em style=" font-weight:bold">20000</em></div>
+            <label class="for-anon" for="anon" >
+                <input type="checkbox" id="anon" name="anon">
+                <span>匿名回复</span>
+            </label>
+            <div class="Reply-info">
+                <input name="" type="button" class="btn-bm" id="rreply"/>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/kindeditor-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script>
+//搜索
+$(".list").hover(function(){
+            $(this).addClass("hover");
+            $(this).find("i").each(function(index, element) {
+                $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+            });
+        },function(){
+            $(this).removeClass("hover");
+            $(this).find("i").each(function(index, element) {
+                $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+            });
+        }
+);
+$(".ming li").each(function(index, element) {
+    $(this).click(function(){
+        var index=$(this).index();
+        var bbj=$(".ming li").eq(0).text();
+        var btr=$(".ming li").eq(0).attr("data-id");
+        var abj=$(this).text();
+        var atr=$(this).attr("data-id");
+        if(index != 0){
+            $(".ming li").eq(0).text(abj);
+            $(".ming li").eq(0).attr("data-id",atr);
+            $(".ming li").eq(1).text(bbj);
+            $(".ming li").eq(1).attr("data-id",btr);
+        }
+    });
+});
+    $(document).ready(function(){
+        <!--分页代码 -->
+        var curpage=parseInt($("#curPage").val());
+        var pageSize=parseInt($("#pageSize").val());
+        var itemCount=parseInt($("#itemCount").val());
+        var Hhtml = MyPager.printPage(curpage,pageSize,itemCount,{pageCount:parseInt(itemCount/4)+1});
+        $(".divPagePanel").html(Hhtml);
+        if(curpage==1){
+        }else{
+            $(".floor-one").hide();
+        }
+        //点击数+1
+        $.Bigo('/Action/JsonDispatcher.do',{taskId_1: '345', cmdType_1: 'Update',post_id:'<%=postid%>'}, {sucAction: suc1});
+        function suc1(data){
+        }
+        //只看该作者
+        var ch=parseInt($("#ch").val());
+        if(ch==0){
+           $("#seeall").hide();
+        }else{
+            $("#seeown").hide();
+        }
+        $("#confirm").click(function(){
+            var value=$("#goto").val();
+            var postid=parseInt($("#postid").val());
+            var ch=parseInt($("#ch").val());
+            window.location.href="/fenlei/post.jsp?postid="+ postid+"&page="+ value+"&ch="+ch;
+        });
+
+        $("#confirm0").click(function(){
+            var value=$("#goto0").val();
+            var postid=parseInt($("#postid").val());
+            var ch=parseInt($("#ch").val());
+            window.location.href="/fenlei/post.jsp?postid="+ postid+"&page="+ value+"&ch="+ch;
+        });
+        //是否加精
+       if($("#isbest").val()==0){
+           $("#is_best").hide();
+       }
+        ///发帖
+        $(".fatei").mouseenter(function(e){
+            $(".type-fb").css("display","block");}).mouseleave(function(e){
+            $(".type-fb").css("display","none");});
+        $(".vote ul:eq(1)").hide();
+        //投票贴
+        var data=new Array();
+        function havevote (data){
+           $(".vote ul:eq(0)").find("input[name='choice']:checked").each(function(index, element) {
+                data[$(this).parent().index()] += 1;
+            });
+            var total = 0;
+            for(var i = 0 ;i< data.length ; i++){
+                total += data[i];
+            }
+            $(".vote ul:eq(1)").find("li:odd").each(function(index, element) {
+                if (total==0){
+                    var pre=0+"%";
+                }else {
+                    var pre = (data[index] / total * 100).toFixed(2) + "%";
+                }
+                $(this).find("span").css("width",pre);
+
+                $(this).find(".fraction em:eq(0)").text(data[index]);
+                $(this).find(".fraction em:eq(1)").text("(" + pre + ")");
+            });
+            $(".vote ul:eq(0)").hide();
+            $(".vote ul:eq(1)").show();
+            $("input:checkbox").attr("disabled",true);
+            $(".vote").find("button").text("已投票");
+            $(".vote").find("button").attr("disabled","true");
+        };
+      //是否投票后才能查看结果  is_view  1 YES 0 NO
+       var is_view=$("#is_view").val();
+        if(is_view=="0"){
+            var optioncount=parseInt($("#optioncount").val());
+            for(var j=0;j<optioncount;j++){
+                var num=parseInt($(".jjjjjjjjjj").eq(j).val());
+                data[j]=num;
+            }
+            $(".vote ul:eq(0)").find("input[name='choice']:checked").each(function(index, element) {
+                data[$(this).parent().index()] += 1;
+            });
+            var total = 0;
+            for(var i = 0 ;i< data.length ; i++){
+                total += data[i];
+            }
+            $(".vote ul:eq(1)").find("li:odd").each(function(index, element) {
+                if (total==0){
+                    var pre=0+"%";
+                }else {
+                    var pre = (data[index] / total * 100).toFixed(2) + "%";
+                }
+                $(this).find("span").css("width",pre);
+
+                $(this).find(".fraction em:eq(0)").text(data[index]);
+                $(this).find(".fraction em:eq(1)").text("(" + pre + ")");
+            });
+            $(".vote ul:eq(0)").hide();
+            $(".vote ul:eq(1)").show();
+        }
+
+      //是否投票 如果已经投票；
+        var if_vote=$("#if_vote").val();
+        if(if_vote=="1"){
+            var optioncount=parseInt($("#optioncount").val());
+            for(var j=0;j<optioncount;j++){
+                var num=parseInt($(".jjjjjjjjjj").eq(j).val());
+                data[j]=num;
+            }
+            havevote(data)
+        }
+     //投票是否过期
+        var isout=$("#isout").val();
+        if(isout=="true"){
+            havevote(data);
+            $(".vote").find("button").text("已结束");
+        }
+       //是否已收藏
+        var iffavor=$("#iffavor").val();
+        if(iffavor=="1"){
+            $("#favor").text("已收藏");
+            $("#favor").click(function(){
+            })
+        }else{
+            $("#favor").click(function(){
+                var loginid=$("#loginid").val();
+                if(loginid==""){
+                    $.showTipPop('null', '请登陆')
+                    return false;
+                }
+                $.Bigo('/Action/Postfavor.do',{taskId_1: '330', cmdType_1: 'Update',taskId_2: '331', cmdType_2: 'Update',user_id:'<%=loginid%>',post_id:'<%=postid%>',topic:'<%=topic%>'}, {sucAction: suc6});
+                   function suc6(data){
+                    var err = null, msg = null, field = null;
+                    for (var i in data) {
+                        if (i == 0) {
+                            $.showTipPop('null', '收藏成功', function () {
+                                window.location.href="/fenlei/post.jsp?postid=<%=postid%>";
+                            });
+                            return false;
+                        }
+                        else if (i == "error") {
+                            err = data[i];
+                        }
+                        else if (i == "msg") {
+                            msg = data[i];
+                        }
+                        else if (i == "field") {
+                            field = data[i];
+                        }
+                    }
+                    $.showTipPop('null', msg);
+                    return false;
+                }
+            })
+        }
+
+        var options=parseInt($("#options").val());
+        $("input:checkbox").click(function(){
+           var len=$("input:checkbox:checked").length;
+           if(len>options) {
+               $.showTipPop('null','最多选'+options+'个');
+               $("input:checkbox:checked").attr("checked",false)
+           }
+        })
+
+
+
+        ////结束
+
+    });
+    //投票
+    function onvote(){
+        var loginid=$("#loginid").val();
+        if(loginid==""){
+            $.showTipPop('null', '请登陆')
+            return false;
+        }
+        var is_view=$("#is_view").val();
+        var if_vote=$("#if_vote").val();
+        var optioncount=parseInt($("#optioncount").val());
+        var dataArr=[];
+        if(is_view=="1"&if_vote=="0"){
+           for(var i=0;i<optioncount;i++)
+            if( $("input:checkbox").eq(i).attr("checked")=="checked"){
+                dataArr.push(i+1);
+            };
+         }else {
+            for(var i=0;i<optioncount*2;i++)
+                if( $("input:checkbox").eq(i).attr("checked")=="checked"){
+                    dataArr.push(i-optioncount+1);
+                };
+        }
+      var opt= dataArr.join(",");
+         $.Bigo('/Action/JsonDispatcher.do',{taskId_1: '320', cmdType_1: 'Update',taskId_2: '321', cmdType_2: 'Update',taskId_3: '322', cmdType_3: 'Update',post_id:'<%=postid%>',options_ids:opt,user_id:'<%=loginid%>',forum_id:'<%=forum_id%>'}, {sucAction: suc0});
+        function suc0(data){
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                    $.showTipPop('null', '投票成功', function () {
+                        window.location.href="/fenlei/post.jsp?postid=<%=postid%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            $.showTipPop('null', msg);
+            return false;
+        }
+    }
+
+
+    function pageClick(action){
+        var curpage1 = parseInt($("#curPage").val());
+        if(action == "minus"){
+            curpage1 = curpage1 - 1
+            //curpage = curpage - 1;
+        } else if(action == "add"){
+            curpage1 = curpage1 + 1
+        } else {
+            curpage1 = action;
+        }
+        var postid=parseInt($("#postid").val());
+        var ch=parseInt($("#ch").val());
+        window.location.href="/fenlei/post.jsp?postid="+ postid+"&page="+ curpage1+"&ch="+ch;
+    }
+    function dodo(c){
+        var postid=parseInt($("#postid").val());
+        window.location.href="/fenlei/post.jsp?postid="+ postid+"&ch="+c;
+    }
+    function reply(nick,floor,reply_id,post_id){
+        var loginid=$("#loginid").val();
+        if(loginid==""){
+            $.showTipPop('null', '请登陆')
+            return false;
+        }
+       var forum_id= $("#forum_id").val();
+        window.location.href="/fenlei/publish_reply.jsp?lnc="+nick+"&lcs="+floor+"&lri="+reply_id+"&tpi="+post_id+"&fri="+forum_id;
+    }
+
+    //描述,初始化kindeditor
+    var myKindEditor;
+    KindEditor.basePath = '/js/kindeditor/';
+    KindEditor.ready(function(K) {
+        myKindEditor = K.create('textarea[name="remark"]', {
+            resizeType: 1,
+            urlType: 'domain',
+            allowImageUpload: true,
+            allowFileManager: false,
+            formatUploadUrl:false,
+            uploadJson: '/FileUploadServlet.action?fileType=goodsImg&type=1',
+            items: $.kindMenu,
+            cssPath: ['/js/kindeditor/extcss.css'],
+            afterFocus:function(){},
+            afterChange:function(){
+                this.sync();
+                $(".red").text($("#contents").val().length);
+            }
+        });
+    });
+    $("#seeown").click(function(){
+       window.location.href="/fenlei/post.jsp?postid=<%=postid%>&ch=<%=host_id%>";
+    });
+    $("#seeall").click(function(){
+        window.location.href="/fenlei/post.jsp?postid=<%=postid%>&ch=<%=0%>";
+    });
+    $("#seeme").click(function(){
+        var loginid=$("#loginid").val();
+        if(loginid==""){
+            $.showTipPop('null', '请登陆')
+            return false;
+        }
+      window.location.href="/fenlei/post.jsp?postid=<%=postid%>&ch=<%=loginid%>";
+    })
+
+
+    //回复
+    $("#rreply").click(function(){
+        myKindEditor.html(killHtml(myKindEditor.html()));
+        myKindEditor.sync();
+        var loginid=$("#loginid").val();
+        if(loginid==""){
+            $.showTipPop('null', '请登陆')
+            return false;
+        }
+        var isanon;
+        if($("#anon").attr("checked") =="checked"){
+            isanon=1;
+        }else{
+            isanon=0;
+        }
+        var chang = $("#contents").val().length;
+        if(chang > 2000 || chang <= 0) {
+            $.showTipPop('null', '内容为1--2000', {btn: false});
+            return false;
+        }
+        var neiR=$("#contents").val();
+        var pID = '<%=postid%>';
+        var fID = '<%=forum_id%>';
+        $.Bigo('/Action/SendPostRep.do',{taskId_1: '316', cmdType_1: 'Update',taskId_2: '317', cmdType_2: 'Update',taskId_3: '346', cmdType_3: 'Update',pID:pID,fID:fID,user_id: '<%=loginid%>',neiR:neiR,niM:isanon}, {sucAction: suc7});
+
+        function suc7(data){
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                    $.showTipPop('null', '回贴成功', function () {
+                        window.location.href="/fenlei/post.jsp?postid=<%=postid%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            $.showTipPop('null', msg);
+            return false;
+        }
+    })
+    //编辑
+    $("#edit").click(function(){
+    if("1"== <%=post_clazz%>){
+        window.location.href="/fenlei/fabutieziEdit.jsp?fID=<%=postid%>";
+    }
+    if("2"==<%=post_clazz%>){
+        window.location.href="/fenlei/toup_edit.jsp?fID=<%=forum_id%>&&postid=<%=postid%>";
+    }
+
+    })
+
+</script>
+</body>
+</html>

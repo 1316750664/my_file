@@ -1,0 +1,5 @@
+<!--fs:voteoptionk-->
+        <li>
+            <input name="choice"  type="checkbox" ><span class="opt">选项###voteoptionk:option_sn###</span> <span class="opt-title">###voteoptionk:option_content###</span>
+        </li>
+<!--fe:voteoptionk-->

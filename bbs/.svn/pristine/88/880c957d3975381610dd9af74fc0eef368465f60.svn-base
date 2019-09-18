@@ -1,0 +1,193 @@
+package com.service.servlet;
+
+import com.bean.TaskBean;
+import com.service.Service.UserService.UserService;
+import com.service.Service.loginDetection.LoginDetection;
+import com.service.clazz.MainJsonService;
+import com.service.fragService.FragService;
+import com.util.tools.CheckTools;
+import com.util.tools.FingerUtil;
+import com.util.tools.GoodsIdHandle;
+import com.util.tools.ToolUtil;
+import com.util.tools.UrlUtil;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.DeserializationConfig;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by hty070505 on 2014/11/24.
+ */
+@WebServlet(name = "CashOutAction", urlPatterns = {"/Action/CashOutAction.do"})
+public class CashOutAction extends HttpServlet {
+    private static ObjectMapper objectMapper = new ObjectMapper();
+    static {
+        objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        objectMapper.configure(JsonParser.Feature.INTERN_FIELD_NAMES, true);
+        objectMapper.configure(JsonParser.Feature.CANONICALIZE_FIELD_NAMES, true);
+        objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setHeader("content-type", "text/html;charset=utf-8");
+
+            String cookie = ToolUtil.getRequestCookie(request.getCookies(), "cookie_uuid");
+            String user_id = LoginDetection.getInstance().getUserid(cookie);//卖家id
+            String user_idRequest = request.getParameter("user_id");
+            if (CheckTools.isNull(user_id) || !user_idRequest.equals(user_id)) {//非法访问
+                response.sendRedirect(UrlUtil.cashError("501", "非法访问", "javascript:window.close();"));
+                return;
+            }
+
+            String reqPassword = request.getParameter("trade_password");
+            if (CheckTools.isNull(reqPassword)) {
+                response.sendRedirect(UrlUtil.cashError("101", "请输入支付密码", "javascript:window.close();"));
+                return;
+            }
+
+            int taskId = 2113;
+            int cmdType = 0;
+            String[] params = {user_id};
+            TaskBean taskBean = new TaskBean(taskId, cmdType, params);
+            String tPwdResult = FragService.getInstance().fragment(10, taskBean);
+            List<Map<String, String>> pwdList = objectMapper.readValue(tPwdResult, List.class);
+            String trade_password = null;
+            String login_salt = null;
+            if (pwdList == null || pwdList.size() == 0) {
+                response.sendRedirect(UrlUtil.cashError("603", "系统繁忙，请返回重试", "javascript:window.close();"));
+                return;
+            } else {
+                login_salt = pwdList.get(0).get("login_salt");
+                trade_password = pwdList.get(0).get("trade_password");
+                reqPassword = FingerUtil.md5(FingerUtil.md5(reqPassword) + login_salt);
+            }
+            //System.out.println("密码"+trade_password);
+            if (!reqPassword.equals(trade_password)) {
+                response.sendRedirect(UrlUtil.cashError("502", "对不起，您的支付密码不正确", "javascript:window.close();"));
+                return;
+            }
+
+            String cash_money = request.getParameter("cash_money");
+            taskId = 2104;
+            TaskBean taskBean1 = new TaskBean(taskId, cmdType, params);
+            String cashResult = FragService.getInstance().fragment(10, taskBean1);
+            List<Map<String, String>> cashList = objectMapper.readValue(cashResult, List.class);
+            double balance;
+            double freeze_balance;//用于更新可用余额、冻结金额
+            //double total_balance;
+            if (cashList == null || cashList.size() == 0) {
+                response.sendRedirect(UrlUtil.cashError("603", "系统繁忙，请返回重试", "javascript:window.close();"));
+                return;
+            } else {
+                //balance = FingerUtil.decryptAES(cashList.get(0).get("balance"));
+                //total_balance = FingerUtil.decryptAES(cashList.get(0).get("total_balance"));
+                balance = UserService.getInstance().decryptUserBalance(user_id, cashList.get(0).get("balance"));
+                freeze_balance = UserService.getInstance().decryptUserBalance(user_id, cashList.get(0).get("freeze_balance"));
+                //total_balance = UserService.getInstance().decryptUserBalance(user_id,cashList.get(0).get("total_balance"));
+            }
+            //System.out.println("余额"+balance);
+            if (Double.parseDouble(cash_money) > balance) {
+                response.sendRedirect(UrlUtil.cashError("503", "对不起，您的余额不足，请选择其它支付方式", "javascript:window.close();"));
+                return;
+            }
+
+            taskId = 2112;
+            TaskBean taskBean2 = new TaskBean(taskId, cmdType, params);
+            String bankResult = FragService.getInstance().fragment(10, taskBean2);
+            List<Map<String, String>> bankList = objectMapper.readValue(bankResult, List.class);
+            String bankId = null;
+            String accountNo = null;
+            if (bankList == null || bankList.size() == 0) {
+                response.sendRedirect(UrlUtil.cashError("603", "系统繁忙，请返回重试", "javascript:window.close();"));
+                return;
+            } else {
+                bankId = bankList.get(0).get("bank_id");
+                accountNo = bankList.get(0).get("account_no");
+            }
+
+            //插入提现表，更新用户表余额,插入资金变动表
+            String cash_id = GoodsIdHandle.generateGoodId("tb_pay");
+            String encryptBalance = UserService.getInstance().encryptUserBalance(user_id, balance - Double.parseDouble(cash_money));
+            String encryptFreeze = UserService.getInstance().encryptUserBalance(user_id, freeze_balance + Double.parseDouble(cash_money));
+            Map<String, String[]> paramMap = new HashMap<String, String[]>();
+            paramMap.put("taskId_1", new String[]{"2114"});
+            paramMap.put("cmdType_1", new String[]{"Update"});
+            paramMap.put("taskId_2", new String[]{"2115"});
+            paramMap.put("cmdType_2", new String[]{"Update"});
+            paramMap.put("taskId_3", new String[]{"2166"});
+            paramMap.put("cmdType_3", new String[]{"Update"});
+            paramMap.put("cash_id", new String[]{cash_id});
+            paramMap.put("user_id", new String[]{user_id});
+            paramMap.put("balance", new String[]{String.valueOf(balance)});//原始的可用余额
+            paramMap.put("cash_money", new String[]{cash_money});
+            paramMap.put("bank_id", new String[]{bankId});
+            paramMap.put("account_no", new String[]{accountNo});
+            paramMap.put("updateBalance", new String[]{encryptBalance});//扣除提现金额后的可用余额
+            paramMap.put("freeze_balance", new String[]{encryptFreeze});//加上提现金额后的冻结余额
+
+            String result = new MainJsonService().invoke(paramMap);
+            if ("[]".equals(result)) {
+                response.sendRedirect(UrlUtil.cashError("603", "系统繁忙，请返回刷新重试", "javascript:window.close();"));
+                return;
+            }
+            response.sendRedirect("/bank/cashSuccess.html");
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = "IO错误";
+        } catch (ParseException e) {
+            exception = e.getCause();
+            errorCode = "解析出现异常";
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                try {
+                    response.sendRedirect(UrlUtil.payError("601", errorCode, "javascript:window.close();"));
+                } catch (IOException e) {
+                    //e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

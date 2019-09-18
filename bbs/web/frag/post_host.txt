@@ -1,0 +1,1 @@
+<!--fs:xunhuan-->{"reg_time":"###xunhuan:reg_time###","avatar":"###xunhuan:avatar###","nick":"###xunhuan:nick###","bests":"###xunhuan:bests###","posts":"###xunhuan:posts###","replies":"###xunhuan:replies###","points":"###jifen:###xunhuan:points######"},<!--fe:xunhuan-->

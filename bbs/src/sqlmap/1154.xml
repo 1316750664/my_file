@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <user_id >string</user_id>
+    <topic >string</topic>
+    <content>string</content>
+    <create_time>string</create_time>
+</map>

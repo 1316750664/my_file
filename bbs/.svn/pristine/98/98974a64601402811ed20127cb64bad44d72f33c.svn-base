@@ -1,0 +1,35 @@
+  <div class="zuo left_float">
+   <div class="zuo1">
+   <img src="../images/wodtzsdas.jpg" class="img"/>
+    <p id="pp"><a href="#">更换头像</a></p>
+   </div>
+   <div class="zuo2">
+    <p class="pp2"><strong>飞翔的企鹅</strong> <i class="iconfont yel">&#xe611;</i> </p>
+    <p class="pp3"><a href="#" class="gary">给自己添加一个备注呗</a></p>
+   </div>
+   <div class="zuo3">
+    <p class="pp4"><i class="iconfont red" style="font-size:22px;">&#xe60f;</i> 论坛中心</p>
+   </div>
+   <ul class="zuo4">
+     <li>
+      <a id="tiez" href="andetiezi.html" >
+       <p class="zuo_p"><i class="iconfont">&#xe60e;</i> 我的帖子</p>
+      </a>
+     </li>
+     <li>
+      <a id="huifu" href="wodehuifu.html" >
+       <p class="zuo_p"><i class="iconfont">&#xe60d;</i> 我的回复</p>
+      </a>
+     </li>    
+     <li>
+      <a id="shouc" href="wodeshoucang.html">
+       <p class="zuo_p"><i class="iconfont">&#xe610;</i> 我的收藏</p>
+      </a>
+     </li>  
+     <li>
+      <a id="guanl" href="wodeguanl.html">
+       <p class="zuo_p"><i class="iconfont">&#xe612;</i> 我的管理</p>
+      </a>
+     </li>   
+   </ul>
+  </div>

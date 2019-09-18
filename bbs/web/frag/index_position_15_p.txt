@@ -1,0 +1,9 @@
+<dl class="xiao_list">
+<!--fs:index-->
+<dd ###yang:style="padding-right:8px;"###>
+    <img src="###src###" border="0">
+    <h5><a href="/fenlei/post.jsp?postid=###index:post_id###" >###index:topic###</a></h5>
+    <small><b class="red">###index:replies###</b> 回复</small>
+</dd>
+<!--fe:index-->
+</dl>

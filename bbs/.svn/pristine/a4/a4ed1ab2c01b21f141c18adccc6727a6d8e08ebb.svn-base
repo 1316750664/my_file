@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<title>发贴-浙江企商汇电子商务有限公司</title>
+<link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="../css/body.css" rel="stylesheet"/>
+<link type="text/css" href="../css/head.css" rel="stylesheet"/>
+<link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="../css/fat.css"  rel="stylesheet">  
+<link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+</head>
+
+<body>
+<div id="JS_head"></div>
+<div id="JS_twohead"></div>
+<div id="JS_threehead"></div>
+<div class="max_width">
+    <div class="head"> 汽商论坛 &gt; 经验畅谈居 &gt; <strong>发表帖子</strong></div>
+    <div class="fa">
+     <p class="fat"><i class="iconfont">&#xe619;</i><strong>发表帖子</strong> | <em style="text-decoration:underline; font-size:12px" class="bule">《企商论坛用户发帖规则》新手必读</em></p>
+     <p class="neirong">标题:<input type="text" placeholder="不论快乐悲伤 大事小事 都可以分享出来 让大家帮你排忧解难或分享快乐" class="inputt"><select class="select" name="选择版块"><option value="选择版块">选择版块</option><option value="娱乐八卦">娱乐八卦</option><option value="汽车天地">汽车天地</option></select></p>
+     <p class="neirong margin-top10">
+       <span class="name">内容：</span>
+       <span class="kuang"></span>
+     </p>
+     <div class="anniu">
+      <span class="tishi">源码:已输入<b class="red"> 0 </b>/ 最多输入 <b class="yel">20000</b></span><span class="ant"><a href="#"><img src="../images/ft6.jpg" /></a></span>
+     </div>
+    </div>
+</div> 
+<div id="JS_foot"></div>
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/placeholder.js" charset="utf-8"></script>
+<script type="text/javascript">
+//载入头部和尾部 
+$("#JS_head").load("../Firsthead.html");
+$("#JS_twohead").load("../Twohead.html"); 
+$("#JS_threehead").load("../Thirdhead.html"); 
+$("#JS_foot").load("../footThird.html");
+</script>
+</body>
+</html>

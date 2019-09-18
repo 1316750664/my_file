@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <biaotiId valid="null">number</biaotiId>
+    <post_id valid="null">number</post_id>
+    <user_id valid="null">number</user_id>
+    <xx valid="null">number</xx>
+    <wz valid="null">string</wz>
+    <lj valid="null">string</lj>
+</map>

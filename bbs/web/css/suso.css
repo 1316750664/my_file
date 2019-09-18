@@ -1,0 +1,24 @@
+.tu{margin:10px 0; height:30px; line-height:30px; padding:5px 15px; width:973px;float:left; background:#f1f1f1; color:#555;font-size:12px}
+.shu{border-collapse:collapse; width:981px;}
+.jian{border:1px solid #ccc; padding:0 10px 10px 10px; margin:0 auto; width:981px;float:left; overflow:hidden}
+.jian tr td{overflow:hidden; word-break:break-all; word-wrap:break-word;border-bottom:1px solid #ccc}
+.jian select{outline:none; border:1px solid #ccc}
+.shu select option{font:12px 500px Arial, Helvetica, sans-serif; color:#333}
+.shu thead tr{border-top:0; height:23px; line-height:23px}
+.shu1{width:300px}
+.shu2{width:150px;}
+.shu3{width:190px}
+.shu4{width:150px}
+.shu thead td{border-bottom:2px solid #DDE4EA;text-align:center;height:40px; padding-top:6px}
+.jian thead td span{border-right: 1px solid #CCC;display: block; height:23px;}
+.jian td .th a{color:#2d78f4; text-decoration:none; font:bold 14px Arial, Helvetica, sans-serif}
+.ssyi,.sou .sser, .sssi, .sswu, .sssan{padding:3px;}
+.ssyi{ word-break:break-all}
+.ssyi span{height:14px; width:20px; float:left}
+.sssi{text-align:center; color:#555;}
+.sswu, .sser,  .sssan{text-align:center}
+.bt{font:bold 14px Arial, Helvetica, sans-serif; color:#333}
+.shu td em{color:#555}
+.shu td a{ text-decoration:none; color:#2d78f4}
+.shu td a:hover{color:#EE2502}
+.jian .allgoodslist{float:left; margin-top:10px}

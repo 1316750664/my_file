@@ -1,0 +1,82 @@
+package com.service.servlet;
+
+import com.service.clazz.MainXmlService;
+import com.util.tools.XmlHelper;
+import com.util.tools.XmlOutputMessage;
+import org.dom4j.Document;
+import org.dom4j.Element;
+
+import javax.naming.NamingException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
+
+/**
+ * User: huhoo
+ * Date: 14-4-30
+ * Time: 下午1:47
+ */
+@WebServlet(name = "XmlDispatcher", urlPatterns = {"/Action/XmlDispatcher.do"})
+public class XmlDispatcher extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        OutputStream out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-Type", "text/xml;charset=utf-8");
+            out = response.getOutputStream();
+            Document document = XmlHelper.getDocument(request.getInputStream());
+//			System.out.println("请求参数：" + document.asXML());
+            if (document != null) {
+                Element root = document.getRootElement();
+                String result = new MainXmlService().invoke(root.asXML(), request);
+//				System.out.println("回传数据：" + XmlHelper.StringToXMLDocument(result).asXML());
+                XmlHelper.putDocument(out, result);
+            }
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (NamingException e) {
+            exception = e.getCause();
+            errorCode = "数据源不存在";
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    XmlHelper.putDocument(out, XmlOutputMessage.output("0", errorCode));
+                }
+            }
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+}

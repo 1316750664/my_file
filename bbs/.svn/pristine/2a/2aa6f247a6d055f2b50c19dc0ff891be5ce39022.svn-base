@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>页面繁忙-浙江企商汇电子商务有限公司</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+<meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+<link type="image/x-icon" href="../favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+<link type="text/css" rel="stylesheet" href="../css/shared.css"/>
+<link type="text/css" href="../css/top2.css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="../css/foot.css">
+<link type="text/css" rel="stylesheet" href="../font/iconfont.css">
+<script type="text/javascript" src="../js/jquery.min.js" charset="utf-8"></script>
+<style type="text/css">
+.busycontent{float:left; padding-top:80px; margin-bottom:50px;}
+.busycontent img{float:left; margin-left:300px;}
+.busycontent p{float:left; line-height:166px;font-size:32px;color:#0082cc;font-family:Microsoft yahei; padding-left:20px}
+.busycontent span{width:1003px; float:left;font:bold 16px/32px '宋体';text-align:center;color:#444; padding-top:20px}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:2},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $(data).appendTo($("body"));
+            }
+        });
+</script>
+<div class="max_width">
+	<div class="busycontent">
+      <img src="../images/error01.png" width="178" height="166" />
+      <p>服务器繁忙！</p>
+      <span>喝杯咖啡<i style="font-size:36px; color:#5a1f01;" class="iconfont">&#xe648;</i>休息一下吧！</span>
+    </div>
+</div>
+<script type="text/javascript">
+        $.ajax({
+            type: 'post',
+            url: '/Action/HtmlHander.do',
+            data: {position:3},
+            dataType: 'html',
+            async: false,
+            success:function(data) {
+                $(data).appendTo($("body"));
+            }
+        });
+</script>
+</body>
+</html>

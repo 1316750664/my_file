@@ -1,0 +1,28 @@
+*{padding: 0px;margin: 0px}
+.mask{position:fixed;width:100%;height:100%;z-index:999;opacity:0.2;background-color:rgb(0, 0, 0);left:0px;top:0px;display:none;filter:alpha(opacity=20);}
+.mask1{position:fixed;width:100%;height:100%;z-index:2000;opacity:0.0;background-color:rgb(0, 0, 0);left:0px;top:0px;filter:alpha(opacity=0);}
+.popupcontent {position:absolute;display:none;overflow:auto;border:1px solid #CCC;background-color:#fff;padding:0 20px 10px;z-index:1500;
+    box-shadow:0px 0px 3px #999;-moz-box-shadow:0px 0px 3px #999;-webkit-box-shadow:0px 0px 3px #999;/* For IE 8 */-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');/* For IE 5.5 - 7 */filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');}
+.ui-dialog{padding:0 20px 10px;border:#bababa solid 1px;background:#fff;min-height:100px;display:block;box-shadow:0px 0px 3px #999;-moz-box-shadow:0px 0px 3px #999;-webkit-box-shadow:0px 0px 3px #999;/* For IE 8 */-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');/* For IE 5.5 - 7 */filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');}
+.ui-dialog,.remind-dialog{border:#bababa solid 1px;background:#fff;box-shadow:0px 0px 3px #999;-moz-box-shadow:0px 0px 3px #999;-webkit-box-shadow:0px 0px 3px #999;/* For IE 8 */-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');/* For IE 5.5 - 7 */filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');}
+.ui-dialog-close{cursor:pointer;font-family:tahoma;font-size:18px;font-weight:bold;height:18px;line-height:10px;position:absolute;right:7px;text-decoration:none;top:12px;z-index:10;color:#666;}
+.ui-head{height:34px;border-bottom:#ccc solid 1px;}
+.ui-head h3{ display:block;}
+
+.Bigokuang{ max-width:390px; min-width:250px;overflow: auto;border: 1px solid #CCC;background-color: #fff;padding:0 20px 10px;display:none;z-index:2500;position: absolute;box-shadow:0px 0px 3px #999;-moz-box-shadow:0px 0px 3px #999;-webkit-box-shadow:0px 0px 3px #999;/* For IE 8 */-ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');/* For IE 5.5 - 7 */filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999999');}
+.Bigokuang .content{ padding-top:15px; margin-bottom:10px;text-align:center; font:bold 14px/24px Microsoft yahei;color:#333;}
+.Bigokuang .content .tishi1{width:44px;height:44px; background:url(/images/remind_icon1.png);float:left;}
+.Bigokuang .content .tishi2{width:44px;height:44px; background:url(/images/remind_icon1.png) 0 46px;float:left;}
+.Bigokuang .content .tishi3{width:44px;height:44px; background:url(/images/remind_icon1.png) 0 97px;float:left;}
+/*.kuang1 .content .tishi4 img{width:44px;height:44px; float:left;background:url(/images/loading.gif)}*/
+.Bigokuang .bt1{cursor:pointer;border:1px solid #ff9c00;border-radius:2px;width: 56px;background:#ff9c00;padding:5px 15px;text-align:center; height:24px;font:12px"宋体";color:#fff;display:block; margin-right:10px;float:right;}
+
+/*tip css*/
+.SD-tipbox {background-color:#FFFFE9;border:1px solid #FFDE8E;padding:3px 15px 3px 10px;margin:10px;position:absolute;z-index: 100; font-size:12px; -moz-border-radius:5px; -webkit-border-radius:5px; border-radius:5px; -moz-box-shadow:1px 1px 2px rgba(0, 0, 0, .2); -webkit-box-shadow:1px 1px 2px rgba(0, 0, 0, .2); box-shadow:1px 1px 2px rgba(0, 0, 0, .2);}
+.SD-tipbox p { line-height:1.5 }
+.SD-tipbox .SD-tipbox-direction { position: absolute; }
+.SD-tipbox .SD-tipbox-direction em, .SD-tipbox .SD-tipbox-direction span { height: 19px; width: 17px; font-family: Simsun; font-size: 16px; line-height: 21px; overflow: hidden; position: absolute; }
+.SD-tipbox .SD-tipbox-direction em { color: #FFDE8E; }
+.SD-tipbox .SD-tipbox-direction span { color: #FFFFE9; }
+.SD-tipbox .SD-tipbox-up {left: 5px; top:-10px; *top:-11px;_top:-10px; }
+.SD-tipbox .SD-tipbox-up span { top:1px }

@@ -1,0 +1,54 @@
+package com.service.servlet;
+
+import com.ctd.util.database.AbstractDbPool;
+import com.ctd.util.database.DSPoolFactory;
+import com.ctd.util.database.MemCachedUtil;
+import com.util.thread.ThreadPoolExecutorUtil;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.net.URLDecoder;
+
+/**
+ * Created by hzm on 2014/10/11.
+ */
+@WebServlet(name = "InitSystemServlet", urlPatterns = {"/Action/InitSystemServlet.action"}, loadOnStartup = 1)
+public class InitSystemServlet extends HttpServlet {
+    @Override
+    public void destroy() {
+        super.destroy();
+        AbstractDbPool.closeDataSource();
+        DSPoolFactory.getInstance().stopTimer();
+        MemCachedUtil.getInstance().shutdown();
+//        MongoBdUtil.getInstance().close();
+        ThreadPoolExecutorUtil.getInstance().stopThreadPoolExecutor();
+//        PhoneSendService.getInstance().shutdownPool();
+    }
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        try {
+            String webRealPath = this.getServletContext().getRealPath("");
+//			System.out.println(webRealPath);
+            webRealPath = URLDecoder.decode(webRealPath, "UTF-8");
+            if (webRealPath != null) {
+                webRealPath = webRealPath.replace("\\", "/");
+            }
+            System.setProperty("bbsApp.root", webRealPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+
+    }
+}

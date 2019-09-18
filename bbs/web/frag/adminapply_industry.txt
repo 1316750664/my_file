@@ -1,0 +1,4 @@
+<!--fs:industry-->
+    <option value="###industry:dic_code###">###industry:dic_name###</option>
+<!--fe:industry-->
+

@@ -1,0 +1,20 @@
+.kuai .kt{width:900px; font-size:14px;padding:8px 0;color:#222;text-align:center; margin:0 auto; border-bottom:1px solid #eee}
+.kuai{width:1003px; border:1px solid #d9d9d9;  border-collapse:collapse; margin:10px 0; float:left}
+.kuai .bt{ border:1px solid #d9d9d9; background-color:#fcfcfc; width:1003px;}
+.kuai .bt a{ color:#6a6a6a; margin:0 8px; line-height:32px;}
+.kuai .bt a:hover{ text-decoration:underline;}
+.kuai .yol i{color:#31C64B; font-size:19px}
+.kuai tbody td{padding:10px 0}
+.kuai .k1{width:120px; text-align:right; padding-right:10px; font-weight:bold}
+.kuai .k2 input{height:15px; width:200px; margin-right:10px; outline:none; padding:5px;border:1px solid #ccc}
+.kuai .k2 .red{font-size:14px}
+.kuai .k2 .red i{font-size:19px;}
+.kuai .p1 textarea{width:800px; height:60px; resize:none; line-height:20px; padding:5px; margin-bottom:5px; ;border:1px solid #ccc; overflow:hidden}
+.kuai .k2 select{width:100px; height:25px; margin-right:10px}
+.kuai .p2{background:#c40001;color:#fff;}
+.kuai .xy{height:200px; width:970px; overflow:auto; border:1px solid #eee; margin:2px auto; line-height:20px;padding:5px}
+.kuai .agr{margin:0 auto; width:130px; height:20px; line-height:0px;}
+.kuai .p3{background:#eee; color:#333;margin-left:15px}
+.kuai tbody a{display:block;  height:30px; line-height:30px; width:70px;}
+.kuai .p2:hover{color:#fff}
+.kuai .p3:hover{color:#222}

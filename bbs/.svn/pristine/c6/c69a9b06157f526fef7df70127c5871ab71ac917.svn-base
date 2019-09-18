@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sqls name="SQL配置文件大于小于号用全角＜＞；ID属性大写">
+    <!--bbs分类左侧查询-->
+    <sql ID="1" value="select forum_id,forum_name,forum_style,sort_weight,parent_id from bbs_cate order by parent_id,sort_weight desc"/>
+    <!--bbs分类 样式 说明 昵称 -->
+    <sql ID="2" value="select aa.forum_style,aa.forum_remark,clicks,totals,(select nick from bbs_user where user_id = (select user_id from bbs_cate where forum_id = ?)) as nick from bbs_cate aa  where aa.forum_id = (select parent_id from bbs_cate where forum_id = ?)  "/>
+    <!--bbs分类 总贴 回帖 包括已删除 -->
+    <sql ID="3" value="select SUM(replies) as hui,count(*) as zong from bbs_posts where forum_id in (select forum_id from bbs_cate where parent_id = (select parent_id from bbs_cate where forum_id = ?)) "/>
+    <!--bbs分类 置顶帖 -->
+    <sql ID="4" value="select post_id,topic from bbs_posts where is_top = 1 and is_delete = 0 and forum_id = ? order by create_time desc limit 0,11 "/>
+    <!--bbs分类 帖子 最新 -->
+    <sql ID="5" value="select aa.post_id,aa.post_clazz,aa.topic,aa.is_best,aa.is_lock,aa.create_time,aa.replies,aa.clicks,aa.reply_time,aa.user_id,aa.replier_id,bb.nick,(select nick from tb_web_user where user_id = aa.replier_id) as rnick from bbs_posts aa left join tb_web_user bb on aa.user_id = bb.user_id where aa.is_top = 0 and aa.is_delete = 0 and aa.forum_id = ? order by create_time desc,reply_time desc limit ?,? "/>
+    <!--bbs分类 帖子 精华 -->
+    <sql ID="6" value="select aa.post_id,aa.post_clazz,aa.topic,aa.is_best,aa.is_lock,aa.create_time,aa.replies,aa.clicks,aa.reply_time,aa.user_id,aa.replier_id,bb.nick,(select nick from tb_web_user where user_id = aa.replier_id) as rnick from bbs_posts aa left join tb_web_user bb on aa.user_id = bb.user_id where aa.is_top = 0 and aa.is_delete = 0 and aa.forum_id = ? and is_best = 1 order by create_time desc,reply_time desc limit ?,?"/>
+    <!--bbs分类 帖子 投票 -->
+    <sql ID="7" value="select aa.post_id,aa.post_clazz,aa.topic,aa.is_best,aa.is_lock,aa.create_time,aa.replies,aa.clicks,aa.reply_time,aa.user_id,aa.replier_id,bb.nick,(select nick from tb_web_user where user_id = aa.replier_id) as rnick from bbs_posts aa left join tb_web_user bb on aa.user_id = bb.user_id where aa.is_top = 0 and aa.is_delete = 0 and aa.forum_id = ? and post_clazz = 2 order by create_time desc,reply_time desc limit ?,?"/>
+    <!--bbs分类 帖子 发帖类目 -->
+    <sql ID="8" value="select forum_id,forum_name from bbs_cate where parent_id = (select parent_id from bbs_cate where forum_id = ?) order by sort_weight desc "/>
+    <!--bbs分类 帖子 发帖 -->
+    <sql ID="9" value="insert into bbs_posts(forum_id,post_clazz,user_id,create_time,topic,content) VALUES(@biaotiId@,@tieL@,@user_id@,@create_time@,@biao@,@neiR@) "/>
+    <!--bbs分类 帖子 发投票 -->
+    <sql ID="10" value="insert into bbs_posts(forum_id,post_clazz,user_id,create_time,topic,content,vote_clazz,options,is_view,end_time) VALUES(@biaotiId@,@tieL@,@user_id@,@create_time@,@biao@,@remark@,@xuan@,@touNum@,@isTou@,@end_time@) "/>
+    <!--bbs分类 帖子 发投票 投票内容 -->
+    <sql ID="11" value="insert into bbs_posts_options(post_id,forum_id,user_id,option_sn,option_content,option_url)values(@post_id@,@biaotiId@,@user_id@,@xx@,@wz@,@lj@) "/>
+    <!--bbs分类 贴子 引贴内容 -->
+    <sql ID="12" value="select ref_content,is_delete from bbs_reply where reply_id = ? "/>
+    <!--bbs 回贴 多个帖子内容 -->
+    <sql ID="13" value="select reply_content,is_delete from bbs_reply where reply_id in (@ids@) "/>
+    <!--bbs 回贴 主题 -->
+    <sql ID="14" value="select topic from bbs_posts where post_id = ? "/>
+    <!--bbs 回贴 提交贴子 -->
+    <sql ID="15" value="insert into bbs_reply(post_id,forum_id,floor,user_id,reply_time,ref_content,reply_content,is_anony) values(@pID@,@fID@,IFNULL((select a.cen from (select MAX(floor)+1 as cen from bbs_reply where post_id = @pID@) a ),2),@user_id@,@create_time@,@yin@,@neiR@,@niM@) "/>
+    <!--bbs 回贴 更新帖子信息 -->
+    <sql ID="16" value="update bbs_posts set replies = replies+1, replier_id = @user_id@, reply_time = @create_time@ where post_id = @pID@ "/>
+    <!--bbs分类 总贴数 -->
+    <sql ID="17" value="update bbs_cate set totals = totals + 1 where forum_id = @biaotiId@ "/>
+    <!--bbs分类 版块点击数 -->
+    <sql ID="18" value="update bbs_cate set clicks = IFNULL(clicks + 1,1) where forum_id = @fID@ "/>
+    <!--bbs分类 贴子点击数 -->
+    <sql ID="19" value="update bbs_posts set clicks = IFNULL(clicks + 1,1) where post_id = @pID@ "/>
+    <!--bbs分类 用户所有发贴 -->
+    <sql ID="20" value="select aa.post_id,aa.post_clazz,aa.topic,aa.is_best,aa.is_lock,aa.create_time,aa.replies,aa.clicks,aa.reply_time,aa.user_id,aa.replier_id,bb.nick,(select nick from tb_web_user where user_id = aa.replier_id) as rnick from bbs_posts aa left join tb_web_user bb on aa.user_id = bb.user_id where aa.is_top = 0 and aa.is_delete = 0 and aa.user_id = ? order by create_time desc,reply_time desc "/>
+    <!--bbs分类 用户左侧信息 -->
+    <sql ID="21" value="select nick,avatar,posts,replies,bests,points,reg_time from bbs_user where user_id = ? "/>
+    <!--bbs分类 用户发贴数 -->
+    <sql ID="22" value="update bbs_user set posts = posts+1,points = points + @points@ where user_id = @user_id@ "/>
+    <!--bbs分类 用户回贴数 -->
+    <sql ID="23" value="update bbs_user set replies = replies+1,points = points + @points@ where user_id = @user_id@ "/>
+    <!--bbs分类 编辑贴子 查询 -->
+    <sql ID="24" value="select aa.post_clazz,aa.topic,aa.content,bb.forum_name from bbs_posts aa left join bbs_cate bb on aa.forum_id = bb.forum_id where aa.post_id = ? and aa.user_id = ? "/>
+    <!--bbs分类 编辑贴子 更新 -->
+    <sql ID="25" value="update bbs_posts set topic = @biao@, content = @neiR@, edit_time = @create_time@ where post_id = @fId@ and user_id = @user_id@ "/>
+    <!--查询是否存在该用户bbs账号-->
+    <sql ID="26" value="select user_id,nick,avatar,posts,replies,bests,cheers,points,remark from bbs_user where user_id=?"/>
+    <!--新建用户bbs账号-->
+    <sql ID="27" value="insert into bbs_user(user_id,nick,avatar,reg_time) values(?,?,?,now())"/>
+    <!--bbs 我的管理 新贴 -->
+    <sql ID="28" value="select aa.post_id,aa.topic,aa.create_time,bb.forum_name from bbs_posts aa left join bbs_cate bb on aa.forum_id = bb.forum_id where aa.forum_id in (select forum_ids from bbs_user where user_id = ? ) and aa.create_time ＞ (UNIX_TIMESTAMP()*1000 - 6*60*60*1000) and aa.is_delete = 0 and is_top = 0 and is_best = 0 order by create_time desc "/>
+    <!--bbs 我的管理 删除 select -->
+    <sql ID="29" value="select aa.post_id,aa.topic,aa.create_time,bb.forum_name from bbs_posts aa left join bbs_cate bb on aa.forum_id = bb.forum_id where aa.forum_id in (select forum_ids from bbs_user where user_id = ? ) and aa.create_time ＞ (UNIX_TIMESTAMP()*1000 - 6*60*60*1000) and aa.is_delete = 1 order by create_time desc "/>
+    <!--bbs 我的管理 置顶 -->
+    <sql ID="30" value="select aa.post_id,aa.topic,aa.create_time,bb.forum_name from bbs_posts aa left join bbs_cate bb on aa.forum_id = bb.forum_id where aa.forum_id in (select forum_ids from bbs_user where user_id = ? ) and aa.create_time ＞ (UNIX_TIMESTAMP()*1000 - 6*60*60*1000) and aa.is_delete = 0 and is_top = 1 order by create_time desc "/>
+    <!--bbs 我的管理 加精 -->
+    <sql ID="31" value="select aa.post_id,aa.topic,aa.create_time,bb.forum_name from bbs_posts aa left join bbs_cate bb on aa.forum_id = bb.forum_id where aa.forum_id in (select forum_ids from bbs_user where user_id = ? ) and aa.create_time ＞ (UNIX_TIMESTAMP()*1000 - 6*60*60*1000) and aa.is_delete = 0 and is_best = 1 order by create_time desc "/>
+    <!--bbs 我的管理 删除 update -->
+    <sql ID="32" value="update bbs_posts set is_delete = 1, delete_time = UNIX_TIMESTAMP(NOW())*1000 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@))"/>
+    <!--bbs 我的管理 置顶 update -->
+    <sql ID="33" value="update bbs_posts set is_top = 1, top_time = UNIX_TIMESTAMP(NOW())*1000 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@))"/>
+    <!--bbs 我的管理 加精 update -->
+    <sql ID="34" value="update bbs_posts set is_best = 1, best_time = UNIX_TIMESTAMP(NOW())*1000 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@))"/>
+    <!--bbs 我的管理 删除 撤销 -->
+    <sql ID="35" value="update bbs_posts set is_delete = 0 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@)) "/>
+    <!--bbs 我的管理 置顶 撤销 -->
+    <sql ID="36" value="update bbs_posts set is_top = 0 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@)) "/>
+    <!--bbs 我的管理 加精 撤销 -->
+    <sql ID="37" value="update bbs_posts set is_best = 0 where post_id = @pId@ and FIND_IN_SET(forum_id,(select forum_ids from bbs_user where user_id = @user_id@)) "/>
+    <!--bbs 我的管理 左侧 -->
+    <sql ID="38" value="select nick,avatar,remark from bbs_user where user_id = ? "/>
+    <!--bbs 首页 查询 -->
+    <sql ID="39" value="select read_num,position_name,remark,auto_load, case auto_load when  1 then forum_ids when 0 then post_ids end as ids ,main_img,sort_field from bbs_index_conf where position_id = ? "/>
+    <!--bbs 首页 查询 不自动 -->
+    <sql ID="40" value="select post_id,topic,content,replies,clicks,create_time,forum_id from bbs_posts where post_id in (@ids@) @orderBy@ @limit@ "/>
+    <!--bbs 首页 查询 自动 -->
+    <sql ID="41" value="select post_id,topic,content,replies,clicks,create_time,forum_id from bbs_posts where forum_id in (@ids@) @orderBy@ @limit@ "/>
+    <!--bbs 首页 查询 -->
+    <sql ID="42" value="select position_id,read_num,position_name,remark,auto_load, case auto_load when 1 then forum_ids when 0 then post_ids end as ids ,main_img,sort_field from bbs_index_conf order by position_id"/>
+    <!--bbs 品牌论坛 查询 -->
+    <sql ID="43" value="select parent_id,forum_id,forum_name,cate_sp from bbs_cate order by parent_id , cate_sp "/>
+    <!--bbs分类左侧 唯一板块查询 -->
+    <sql ID="44" value="select forum_id,forum_name,forum_style,sort_weight,parent_id from bbs_cate where forum_id = (select parent_id from bbs_cate where forum_id = ?) UNION select forum_id,forum_name,forum_style,sort_weight,parent_id from bbs_cate where parent_id = (select parent_id from bbs_cate where forum_id = ?) "/>
+    <!--bbs帖子 板块查询 -->
+    <sql ID="45" value="select forum_name from bbs_cate where forum_id=(select parent_id from bbs_cate where forum_id=2) or forum_id= ? "/>
+    <!--bbs帖子 详情 -->
+    <sql ID="46" value="select bbp.is_lock,bbp.forum_id,bbp.post_clazz,bbp.vote_clazz,bbp.options,bbp.is_view ,bbp.end_time,bbp.votes ,bbp.is_best,bbp.user_id,bbp.edit_time,bbp.content,bbp.topic,bbp.clicks,bbp.replies,bbp.create_time from bbs_posts bbp where bbp.post_id = ?"/>
+    <!--bbs帖子 回帖 -->
+    <sql ID="47" value="select bbu.nick,bbu.avatar,bbr.is_delete,bbr.is_anony,bbr.reply_id,bbr.post_id,bbr.user_id ,bbr.reply_time,bbr.reply_content, bbr.floor ,bbr.is_top ,bbr.ref_content from bbs_reply bbr ,bbs_user bbu where bbr.post_id = ? and bbr.user_id=bbu.user_id  order by bbr.is_top desc, bbr.floor limit ?,?"/>
+
+
+
+
+
+
+
+    <sql ID="99" value="select a.valid_mobile,a.valid_email,a.idcard,a.avatar,a.province_id,a.province_id,a.area_id,a.real_name,a.sex,a.qq,a.user_id,a.user_type,a.is_seller,a.login_name,a.login_pwd,a.login_salt,a.trade_accout,a.trade_password,a.is_lock,a.nick,a.last_time,a.last_ip,a.session_uuid,b.check_status from tb_web_user a left join tb_web_user_seller b on a.user_id=b.user_id where a.user_id=?"/>
+
+    <!--购物车-->
+    <sql ID="111" value="select aa.user_id,aa.goods_id,aa.seller_user_id,aa.company,aa.goods_name,aa.goods_main_img,aa.goods_num,aa.price,aa.property_code,aa.property_json,bb.parts_cate_id,aa.cart_hashcode,aa.cart_uuid,aa.car_property
+ from tb_cart aa left join tb_product_online bb on aa.goods_id = bb.goods_id where aa.user_id=@user_id@ order by aa.add_time desc"/>
+    <sql ID="131" value="delete from tb_cart where  user_id=@user_id@ and cart_uuid in (@cart_uuid@)"/>
+    <sql ID="132" value="delete from tb_cart where  user_id=@user_id@"/>
+    <sql ID="133" value="insert into tb_cart (user_id,seller_user_id,goods_num,price,goods_id, goods_name,goods_main_img,property_code,property_json,cart_hashcode,cart_uuid,car_property,add_time)
+     select @user_id@,user_id,@num@,@price@,goods_id, goods_name,goods_main_img,@property_code@,@property_json@,@cart_hashcode@,@cart_uuid@,@car_property@,now() from tb_product_online where goods_id= @goods_id@ "/>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 查询我的帖子信息-->
+    <sql ID="300" value="select bbp.post_id,bbp.topic,bbc.forum_name,bbp.clicks,bbp.replies,bbp.create_time from bbs_posts bbp ,bbs_cate bbc where bbp.user_id = ? and bbp.forum_id=bbc.forum_id and bbp.is_delete='0' order by bbp.create_time desc "/>
+
+    <!-- 查找被管理删除的帖子-->
+    <sql ID="301" value="select post_id ,topic ,delete_reason ,create_time from bbs_posts where user_id = ? and is_delete='1' order by create_time desc"/>
+
+    <!--我回复的帖子-->
+    <sql ID="302" value="select bbp.post_id, bbp.topic ,bbc.forum_name ,bbp.clicks ,bbp.replies ,bbr.reply_time from bbs_cate bbc,bbs_posts bbp,bbs_reply bbr where bbp.user_id= ? and bbp.post_id = bbr.post_id and bbp.forum_id=bbc.forum_id order by bbr.reply_time desc" />
+
+    <!--回复我的帖子-->
+    <sql  ID="303" value="select tbu.nick ,bbr.reply_content,bbr.floor,bbr.reply_time,bbc.forum_name from bbs_posts bbp,bbs_reply bbr,bbs_cate bbc,tb_web_user tbu where bbp.post_id=bbr.post_id and bbc.forum_id=bbr.forum_id and bbp.user_id=? and bbr.user_id = tbu.user_id order by bbr.reply_time desc"/>
+    <!-- 查找帖子详情 -->
+    <sql ID="304" value= "select bbp.is_lock ,bbp.post_clazz,bbp.vote_clazz,bbp.options,bbp.is_view ,bbp.end_time,bbp.votes ,bbp.is_best,bbp.user_id ,bbc.forum_id, bbc.forum_name ,bbp.edit_time,bbp.content,bbp.topic,bbp.clicks,bbp.replies,bbp.create_time from bbs_posts bbp,bbs_cate bbc where bbp.forum_id=bbc.forum_id  and bbp.post_id=?" />
+
+    <sql ID="305"  value="select forum_name from bbs_cate where forum_id=(select parent_id from bbs_cate where forum_id=?)"/>
+
+    <!--<sql ID="306"  value="select  twu.nick,twu.rank  from bbs_reply bbr,tb_web_user twu where bbr.user_id=twu.user_id"  />-->
+    <!--<sql ID="307" value="select user_id ,reply_time,reply_content, floor from bbs_reply bbr where post_id=? and is_delete=0 order by floor limit ?,?" />-->
+
+    <!--联合查询置顶的回复 和所有 回复  -->
+    <sql ID="307" value="(select bbu.nick,bbu.avatar,bbr.is_delete,bbr.is_anony,bbr.reply_id,bbr.post_id,bbr.user_id ,bbr.reply_time,bbr.reply_content,bbr.floor, bbr.is_top ,bbr.ref_content from bbs_reply bbr ,bbs_user bbu where bbr.post_id=?   and bbr.user_id=bbu.user_id and bbr.is_top=1  order by  bbr.top_time  desc  limit ?  )
+                     union all
+                        ( select bbu.nick,bbu.avatar,bbr.is_delete,bbr.is_anony,bbr.reply_id,bbr.post_id,bbr.user_id ,bbr.reply_time,bbr.reply_content, bbr.floor ,bbr.is_top ,bbr.ref_content from bbs_reply bbr ,bbs_user bbu where bbr.post_id=?  and bbr.user_id=bbu.user_id                  order by bbr.floor  limit ?  )
+                     limit ?,?" />
+    <!--根据帖子id查询置顶的回复数-->
+    <sql ID="308" value="select count(*) as count1 from bbs_reply where post_id=? and is_top =1 " />;
+    <!-- 根据帖子id查询帖子的回复数-->
+    <sql ID="309" value="select count(*) as count2 from bbs_reply where post_id=? " />;
+    <!--根据回复帖子id和楼层查询 回复的ref_content-->
+    <sql ID="310" value="select ref_content  from bbs_reply where post_id= ? and floor = ? "/>
+    <!--根据回复id查询回复内容-->
+    <sql ID="311" value="select is_delete,reply_content from bbs_reply where reply_id = ? " />
+    <!--根据板块parentid查询父板块名称-->
+    <sql ID="312"  value="select parent_id from bbs_cate where forum_id = ?"/>
+    <!--根据板块id查询板块名称-->
+    <sql ID="313"  value="select forum_name from bbs_cate where forum_id = ?"/>
+    <!--根据帖子id,user_id 查询回帖信息-->
+    <sql ID="314" value="select bbu.nick,bbr.is_delete,bbu.avatar,bbr.is_anony,bbr.reply_id,bbr.post_id,bbr.user_id ,bbr.reply_time,bbr.reply_content,bbr.floor, bbr.is_top ,bbr.ref_content from bbs_reply bbr,bbs_user bbu where bbr.post_id=? and bbr.user_id=?  and bbr.is_anony=0 and bbr.user_id=bbu.user_id order by bbr.floor limit ?,?" />
+    <!-- 根据帖子id,user_id 查询 这个人的回帖数量-->
+    <sql ID="315" value="select count(*) as count1 from bbs_reply bbr where bbr.post_id=?  and bbr.user_id=?  and bbr.is_anony=0 " />
+    <!--回帖-->
+    <sql ID="316" value="insert into bbs_reply (post_id,forum_id,floor,user_id,reply_time,reply_content,is_anony) select @pID@,@fID@,IFNULL(MAX(floor)+1,1),@user_id@,@create_time@,@neiR@,@niM@ from bbs_reply where post_id=@pID@"/>
+    <!--回帖-->
+    <sql ID="317" value="update bbs_posts set replies = replies+1, replier_id = @user_id@, reply_time = @create_time@ where post_id = @pID@ "/>
+
+    <!--查询是否投票-->
+    <sql ID="318" value="select count(*) as tou from bbs_options_record where user_id = ? and post_id=?" />
+    <!--查询出投票帖的 投票项-->
+    <sql ID="319" value=" select option_id,option_sn,option_content,votes ,option_url   from bbs_posts_options where post_id=? order by option_sn" />
+    <!--投票-->
+    <sql ID="320" value="update bbs_posts set votes=votes+1 where post_id=@post_id@"/>
+    <!--投票-->
+    <sql ID="321" value=" insert into  bbs_options_record  values ( @user_id@ , @post_id@ , @forum_id@ ,@options_ids@ )"  />
+    <!--投票-->
+    <sql ID="322" value=" update bbs_posts_options set votes=votes+1 where post_id=@post_id@ and option_sn in (@options_ids@)" />
+
+    <!--我的收藏-->
+    <sql ID="323" value="select bbp.post_id,bbf.user_id, bbf.topic, bbp.reply_time,bbu.nick from bbs_cate bbc,bbs_user bbu,bbs_favorites bbf,bbs_posts bbp where bbc.forum_id=bbp.forum_id and bbp.post_id=bbf.post_id and bbu.user_id=bbc.user_id and bbf.user_id=? " />
+
+    <!--帖子 查询楼主信息-->
+    <sql ID="324" value="select reg_time,avatar,nick,bests,posts,replies,points from bbs_user where user_id = ? " />
+
+    <!--我的收藏,取消收藏-->
+    <sql ID="325" value="delete from bbs_favorites where post_id=@post_id@ and user_id =@user_id@" />
+    <!--  <sql ID="325" value="update bbs_favorites set is_deleted=1 where post_id=@post_id@ and user_id =@user_id@" /> -->
+    <!--我的收藏,取消收藏-->
+    <sql ID="326" value="update bbs_posts set favorites=favorites-1 where post_id =@post_id@" />
+
+    <sql ID="327" value="select bbu.nick,bbr.is_delete,bbu.avatar,bbr.is_anony,bbr.reply_id,bbr.post_id,bbr.user_id ,bbr.reply_time,bbr.reply_content,bbr.floor, bbr.is_top ,bbr.ref_content from bbs_reply bbr,bbs_user bbu where bbr.post_id=? and bbr.user_id=?   and bbr.user_id=bbu.user_id order by bbr.floor limit ?,?" />
+
+    <!-- 根据帖子id,user_id 查询 这个人的回帖数量-->
+    <sql ID="328" value="select count(*) as count1 from bbs_reply bbr where bbr.post_id=?  and bbr.user_id=? " />
+
+    <!--帖子详情  判断是否收藏-->
+    <sql ID="329" value="select count(1) as cou from bbs_favorites where post_id=? and user_id= ?"/>
+    <!--帖子详情 收藏帖子-->
+    <sql ID="330" value="insert into bbs_favorites values ( @user_id@,@add_time@,null,@post_id@,@topic@,0,null)"/>
+    <!--帖子详情 收藏帖子-->
+    <sql ID="331" value="update bbs_posts set favorites=favorites+1 where post_id=@post_id@"/>
+
+    <!--编辑帖子 获得帖子内容-->
+    <sql ID="332" value="select topic,vote_clazz,content,end_time,create_time,is_view,options,vote_clazz from bbs_posts where post_id = ? and user_id=?"/>
+    <!--编辑帖子 获得投票帖选项-->
+    <sql ID="333" value="select option_sn,option_content,option_url from bbs_posts_options where post_id = ?"/>
+
+    <sql ID="334" value="select count(*) as option_count from bbs_posts_options where post_id = ?"/>
+
+    <!--编辑帖子,更新帖子内容-->
+    <sql ID="335" value="update bbs_posts set content =@remark@,topic=@biao@,forum_id=@biaotiid@, edit_time=@edit_time@ where post_id = @post_id@"/>
+
+    <!--编辑帖子,增加帖子选项-->
+    <sql ID="336" value="insert into bbs_posts_options (option_id,post_id, forum_id,user_id,option_sn,option_content,option_url,votes) select null,@post_id@,@biaotiid@,@user_id@,IFNULL(max(option_sn)+1,1),@wz@,@lj@,0 from bbs_posts_options where post_id=@post_id@" />
+
+    <!--申请版主,字典 从事行业 查询-->
+    <sql ID="337" value="select dic_name,dic_code from tb_sys_dic where dic_type= ? order by dic_code" />
+
+    <!--申请版主,字典 根据选择的code查询DIC_NAME-->
+    <sql ID="338" value="select dic_name from tb_sys_dic where dic_type= ? and dic_code= ?" />
+
+    <!--申请版主 申请表添加数据-->
+    <sql ID="339" value="insert into bbs_admin_apply values (null,@user_id@,@forum_id@,@name@,@sfz@,@address@,@pon@,@E-mail@,@industry@,@career@,@rank@,@shuoming@,0,null,null,null)" />
+
+    <!--申请版主 查询nick-->
+    <sql ID="340" value="select nick from bbs_user where user_id = ?" />
+
+    <!--搜索  帖子查询-->
+    <sql ID="341" value="select bbc.forum_id,bbp.post_id,bbc.forum_name,replier_id, bbu.user_id,bbu.nick,bbp.topic ,bbp.forum_id,bbp.create_time,bbp.reply_time,bbp.clicks,bbp.replies  from bbs_posts bbp,bbs_user bbu,bbs_cate bbc where bbp.user_id=bbu.user_id and  bbp.forum_id=bbc.forum_id  and bbp.post_id in (@dd@) order by bbp.create_time desc" />
+
+    <!--根据id查询 nick-->
+    <sql ID="342" value="select nick from bbs_user where user_id= ?"  />
+
+    <!--搜索  查询板块-->
+    <sql ID="343" value="select forum_id,forum_name from bbs_cate where parent_id= ?"/>
+
+    <!--搜索  帖子查询 指定板块id-->
+    <sql ID="344" value="select bbc.forum_id,bbp.post_id,bbc.forum_name,replier_id,bbu.user_id, bbu.nick,bbp.topic ,bbp.forum_id,bbp.create_time,bbp.reply_time,bbp.clicks,bbp.replies  from bbs_posts bbp,bbs_user bbu,bbs_cate bbc where bbp.user_id=bbu.user_id and  bbp.forum_id=bbc.forum_id  and bbp.post_id in (@dd@) and bbp.forum_id= @cc@  order by bbp.create_time desc" />
+    <!--点击数+1 -->
+    <sql ID="345" value=" update bbs_posts set clicks=clicks+1 where post_id=@post_id@"/>
+
+    <!-- 回帖 回复数+1-->
+    <sql ID="346" value=" update bbs_user set replies=replies+1 where user_id=@user_id@"/>
+    <!--bbs首页 测试 -->
+    <sql ID="1137" value="select aa.art_cateid,aa.artid,aa.art_title,cc.parent_cateid from tb_article aa left join tb_article_top bb on aa.artid=bb.artid left join tb_article_cate cc on aa.art_cateid=cc.art_cateid where cc.cate_template='simple' and  aa.is_lock = 0 limit 0,8 "/>
+
+
+</sqls>
+
+

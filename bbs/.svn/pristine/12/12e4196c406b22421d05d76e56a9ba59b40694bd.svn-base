@@ -1,0 +1,441 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    //登录检测
+    String ip = ToolUtil.getClientIp(request);
+    int statu = LoginDetection.getInstance().loginCheck(request.getCookies(), ip, response);
+    if (statu == 1) {
+        return;
+    }
+    String user_id = UserService.getInstance().getUidFromCookie(request);
+    String forum = request.getParameter("fID");
+    if (null == forum || "".equals(forum)) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    String post_id=request.getParameter("postid");
+    int taskId = 8;
+    int cmdType = 0;
+    String[] param = {forum};
+    TaskBean taskBean = new TaskBean(taskId, cmdType, param);
+    String json = FragService.getInstance().fragment(0, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+    StringBuffer sb = new StringBuffer();
+    String biaoTi = "";
+    for (Map<String, String> map : list) {
+        if (biaoTi.equals("")) {
+            if (map.get("forum_id").equals(forum)) {//给标题赋值
+                biaoTi = map.get("forum_name");
+            }
+        }
+        //下拉框赋值
+        if (map.get("forum_id").equals(forum)) {
+            sb.append("<option selected=\"selected\" data-id=\"" + map.get("forum_id") + "\" value=\"" + map.get("forum_id") + "\">"+ map.get("forum_name") + "</option>");
+        } else {
+            sb.append("<option data-id=\"" + map.get("forum_id") + "\" value=\"" + map.get("forum_id") + "\">"+ map.get("forum_name") + "</option>");
+        }
+    }
+
+
+
+    String[] param1 = {post_id,user_id};
+    TaskBean taskBean1 = new TaskBean(332, 0, param1);
+    String json1 = FragService.getInstance().fragment(0, taskBean1);
+    List<Map<String, String>> list1 = StaticUtil.objectMapper.readValue(json1, List.class);
+    String topic=null;String vote_clazz=null;String content=null;
+    String create_time=null; String end_time=null;String is_view=null;
+    String options=null;String host_id=null;
+    for (Map<String, String> map : list1) {
+        vote_clazz = map.get("vote_clazz");
+        topic = map.get("topic");
+        content = map.get("content");
+        end_time = map.get("end_time");
+        create_time = map.get("create_time");
+        is_view = map.get("is_view");
+        options = map.get("options");
+        host_id=map.get("user_id");
+    }
+    String[] param3={post_id};
+    TaskBean taskBean3 = new TaskBean(334, 0, param3);
+    String json3 = FragService.getInstance().fragment(0, taskBean3);
+    List<Map<String, String>> list3 = StaticUtil.objectMapper.readValue(json3, List.class);
+    String option_count=null;
+    for (Map<String, String> map : list3) {
+        option_count = map.get("option_count");
+    }
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <title>发贴投票-浙江企商汇电子商务有限公司</title>
+    <link type="image/x-icon" href="../favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/fat.css"  rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" />
+    <link type="text/css" href="../js/kindeditor/themes/default/default.css" rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class="head"> 汽商论坛 &gt; <span id="biaoti"><%=biaoTi%></span> &gt; <strong>编辑投票帖</strong></div>
+    <form id="postForm" action="/Action/SendPostTou.do" method="post">
+        <input type="hidden"  name="user_id" value="<%=user_id%>"/>
+        <input type="hidden" id="biaotiid" name="biaotiid" value="<%=forum%>"/>
+        <div class="fa">
+            <p class="fat"><i class="iconfont">&#xe618;</i><strong>编辑投票帖</strong> | <em style="text-decoration:underline; font-size:12px" class="bule">《企商论坛用户发帖规则》新手必读</em></p>
+            <p class="neirong">标题:<input type="text" id="biao" name="biao"  value="<%=topic%>" class="inputt" maxlength="30">
+                <select class="select" id="xuanZe" name="xuanZe">
+                    <option data-id="0">选择版块</option>
+                    <%
+                        out.write(sb.toString());
+                        out.flush();
+                    %>
+                </select>
+            </p>
+            <p class="neirong margin-top10">
+                <span class="name">内容：</span>
+                <textarea class="kuang" name="remark" id="neiR"><%=content%></textarea>
+            </p>
+            <div class="anniu" style="line-height:39px;">
+                源码:已输入<b class="red" id="red">0</b>/ 最多输入 <b class="yel">2000</b>
+            </div>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="toupiao">
+                <col class="tp">
+                <col class="tp1">
+                <col class="tp2">
+                <col class="tp3">
+                    <%
+                        String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+                        String[] param2={post_id};
+                        TaskBean taskBean2 = new TaskBean(333, 0, param2);
+                        String jsonTypeData = FragService.getInstance().fragment(10, fragPath + "/post_votepostedit.txt", taskBean2, "votepostedit");
+                        out.write(jsonTypeData);out.flush();
+                    %>
+
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td><a href="javascript:void(0)" class="bule add"><i class="iconfont">&#xe61b;</i> 增加选项</a></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text_right bor_top">投票方式：</td>
+                    <td colspan="2" class="bor_top fangshi">
+                        <span style="float:left"><input name="dang xuan" class="dang" type="radio" value="0" style="vertical-align:-2px;" id="sing" disabled="disabled"> 单选</span>
+                        <span style="float:left;padding-left:5px"> <input name="dang xuan" type="radio" class="addduo" value="1" style="vertical-align:-2px;" id="doub" disabled="disabled"> 多选</span>
+                        <span class="xiang" style="display:none;float:left; padding-left:5px" id="wuxuan"><label for="wuxuan"> &nbsp&nbsp&nbsp最多可选<%=options%>项</span>
+                    </td>
+                <tr>
+                    <td colspan="2" class="text_right bor_top">投票结果：</td>
+                    <td colspan="2" class="bor_top"><input id="jieguo" type="checkbox"  style="vertical-align:-2px;"> <label for="jieguo">只有投票才能查看结果</label><input type="hidden" id="isTou" name="isTou" value="0"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text_right bor_top">结束时间：</td>
+                    <td colspan="2" class="bor_top">
+                        <select name="day" id="day" name="day">
+                            <%
+                              Long a=  Long.parseLong(end_time)-Long.parseLong(create_time);
+                              Double b=1000*60*60*24*1.00;
+                              Double c=a.doubleValue()/b;
+                            %>
+                            <option value="1"><%= c.intValue()%>天</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="bor_top" style="float:right; width:930px; text-align:right; padding:10px 10px 0 0; margin:0 10px;"><a href="javascript:void(0);" onclick="fabiao()"><img src="../images/ft6.jpg" /></a></div>
+        </div>
+        <input type="hidden"  value="<%=post_id%>" name="post_id" id="post_id"/>
+    </form>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/placeholder.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/kindeditor-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+//搜索
+$(".list").hover(function(){
+            $(this).addClass("hover");
+            $(this).find("i").each(function(index, element) {
+                $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+            });
+        },function(){
+            $(this).removeClass("hover");
+            $(this).find("i").each(function(index, element) {
+                $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+            });
+        }
+);
+$(".ming li").each(function(index, element) {
+    $(this).click(function(){
+        var index=$(this).index();
+        var bbj=$(".ming li").eq(0).text();
+        var btr=$(".ming li").eq(0).attr("data-id");
+        var abj=$(this).text();
+        var atr=$(this).attr("data-id");
+        if(index != 0){
+            $(".ming li").eq(0).text(abj);
+            $(".ming li").eq(0).attr("data-id",atr);
+            $(".ming li").eq(1).text(bbj);
+            $(".ming li").eq(1).attr("data-id",btr);
+        }
+    });
+});
+var urlData=["http://www.8673h.com","http://bbs.8673h.com"];
+var defaultVal = "";
+
+$(document).ready(function () {
+
+    $("#xuanZe").change(function () {
+        $("#biaoti").text($(this).children('option:selected').text());
+        $("#biaotiid").val($(this).children('option:selected').attr("data-id"));
+    });
+    $("#jieguo").click(function(){
+        if($("#jieguo").attr("checked") =="checked") {
+            $("#isTou").val(1);
+        }else {
+            $("#isTou").val(0);
+        }});
+    $("#day").attr("disabled","disabled")
+    if("1"==<%=is_view%>)
+    {
+        $("#jieguo").attr("checked", "checked")
+    }
+    $("#jieguo").attr("disabled","disabled")
+    if("1"==<%=vote_clazz%>){
+        $("#sing").attr("checked","checked")
+    }else{
+        $("#doub").attr("checked","checked")
+        $(".addduo").parent().next().css("display","block");
+    }
+});
+$(".add").click(function(){
+    if($(".tr_a").length == 0) {//删完
+        $(this).parents("tr").before("<tr  class=\"tr_a\">" +
+                "<td class=\"text_center\"><i class=\"iconfont dis_none\">&#xe60b;</i></td>" +
+                "<td class=\"text_center\"><span class=\"zhi\">1<input type=\"hidden\" name=\"xx\" value=\"1\"/></span></td>" +
+                "<td><input name=\"wz\" type=\"text\" class=\"wz_kuang\"></td>" +
+                "<td><a href=\"javascript:void(0)\" class=\"bule\"><i class=\"iconfont\" style=\"font-size:20px\">&#xe61c;</i></a>" +
+                "<span class=\"dis_none\">链接到：<input name=\"lj\" type=\"text\" value=\"http://\" class=\"dz_kuang\"> <button type=\"button\" class=\"ant_ture\">确认</button> <button type=\"button\" class=\"ant_flast\">取消</button></span>" +
+                "<span class=\"dis_none\">链接到：<em></em> <a href=\"javascript:void(0)\" class=\"red\">修改</a> | <a href=\"javascript:void(0)\">删除</a></span>" +
+                "</td></tr>");
+    }else{
+        var obj = $(this).parents("tr").prev();
+        var num = parseInt(obj.find(".zhi").text()) + 1;
+        var trHtml = "<tr  class=\"tr_a\">" +
+                "<td class=\"text_center\"><i class=\"iconfont dis_none\">&#xe60b;</i></td>" +
+                "<td class=\"text_center\"><span class=\"zhi\">"+ num +"<input type=\"hidden\" name=\"xx\" value=\""+num+"\"/></span></td>" +
+                "<td><input name=\"wz\" type=\"text\" class=\"wz_kuang\"></td>" +
+                "<td><a href=\"javascript:void(0)\" class=\"bule\"><i class=\"iconfont\" style=\"font-size:20px\">&#xe61c;</i></a>" +
+                "<span class=\"dis_none\">链接到：<input name=\"lj\" type=\"text\" value=\"http://\" class=\"dz_kuang\" > <button type=\"button\" class=\"ant_ture\">确认</button> <button type=\"button\" class=\"ant_flast\">取消</button></span>" +
+                "<span class=\"dis_none\">链接到：<em></em> <a href=\"javascript:void(0)\" class=\"red\">修改</a> | <a href=\"javascript:void(0)\">删除</a></span>" +
+                "</td></tr>";
+        obj.after(trHtml);
+    }
+    trAction();
+})
+trAction();
+function trAction(){
+    var d=parseInt(<%=option_count%>)-1;
+    $(".tr_a:gt("+d+")").each(function(index, element) {
+           $(this).hover(function () {
+                $(this).addClass("tr_bg");
+                $(this).find("i:eq(0)").removeClass("dis_none");
+                $(this).find("i:eq(0)").click(function () {
+                    $(this).parents("tr").remove();
+                    $(".tr_a").each(function (index, element) {
+                        $(this).find(".zhi").text(index + 1);
+                        $(this).find(".zhi").append("<input type=\"hidden\" name=\"xx\" value=\"" + (index + 1) + "\"/>");
+                    });
+                })
+            }, function () {
+                $(this).removeClass("tr_bg");
+                $(this).find("i:eq(0)").addClass("dis_none");
+            });
+
+    });
+    urlFunc();
+}
+
+function urlFunc(){
+    $(".tr_a").each(function(index, element) {
+
+        $(this).find("a:eq(0)").click(function(){
+            if($(this).parents("tr").find(".wz_kuang").val() == ""){
+                $.showTipPop("null","请输入对应的内容",{btn:false});
+                return false;
+            }
+
+            defaultVal =  $(this).next().find(".dz_kuang").val();
+            $(this).next().removeClass("dis_none");
+            $(this).css("display","none");
+
+            $(this).next().find(".ant_flast").click(function(){
+                $(this).parent().addClass("dis_none");
+                $(this).parent().next().removeClass("dis_none");
+                if(defaultVal == "http://"){
+                    defaultVal = "";
+                    $(this).parent().next().find("em").text(defaultVal);
+                    $(this).parent().find("input").val("http://");
+                }else{
+                    $(this).parent().find("input").val(defaultVal);
+                }
+            });
+
+            $(this).next().find(".ant_ture").click(function(){
+                var txtVal = $(this).prev().val();
+                var flg = false;
+                for(var i = 0 ; i< urlData.length;i++){
+                    if(txtVal.indexOf(urlData[i]) >= 0 ){
+                        flg = true;
+                    };
+                }
+                if(!flg){
+                    $.showTipPop("null","非8673h链接，无法添加",{btn:false});
+                    return false;
+                }else{
+                    $(this).parent().addClass("dis_none");
+                    $(this).parent().next().removeClass("dis_none");
+                    $(this).parent().next().find("em").text(txtVal);
+                }
+            });
+
+            $(this).next().next().find("a:eq(0)").click(function(){
+                $(this).parent().addClass("dis_none");
+                $(this).parent().prev().removeClass("dis_none");
+                defaultVal = $(this).parent().prev().find("input").val();
+            });
+
+            $(this).next().next().find("a:eq(1)").click(function(){
+                $(this).parent().addClass("dis_none");
+                $(this).parents("td").find("input").val("http://");
+                $(this).parents("td").find(".bule").css("display","block");
+            })
+
+        });
+    });
+}
+
+var myKindEditor;
+KindEditor.basePath = '/js/kindeditor/';
+KindEditor.ready(function(K) {
+    myKindEditor = K.create('textarea[name="remark"]', {
+        resizeType: 1,
+        urlType: 'domain',
+        allowImageUpload: true,
+        allowFileManager: false,
+        formatUploadUrl:false,
+        uploadJson: '/FileUploadServlet.action?fileType=bbsImg&type=1',
+        items: $.kindMenu,
+        cssPath: ['/js/kindeditor/extcss.css'],
+        afterFocus:function(){},
+        afterChange:function(){
+            this.sync();
+            $("#red").text($("#neiR").val().length);
+        }
+    });
+});
+function fabiao () {
+    myKindEditor.html(killHtml(myKindEditor.html()));
+    myKindEditor.sync();
+    var biao = $("#biao").val();
+    if(biao.length>30||biao.length <= 0) {
+        $.showTipPop('null', '标题长度不对', {btn: false});
+        return false;
+    }
+    var biaotiid = $("#biaotiid").val();
+    if(biaotiid == "" || biaotiid == "0"){
+        $.showTipPop('null', '请选择您要发贴的板块', {btn: false});
+        return false;
+    }
+    var chang = $("#neiR").val().length;
+    if(chang > 2000 || chang <= 0) {
+        $.showTipPop('null', '内容为1--2000', {btn: false});
+        return false;
+    }
+    var neiR = $("#neiR").val();
+    var tieL = $("#tieL").val();
+    //至少两个投票内容， 内容不可为空 链接不可为空
+    if($(".tr_a").length < 2) {
+        $.showTipPop('null', '至少需要两个投票内容', {btn: false});
+        return false;
+    }
+    $(".tr_a").each(function(index, element) {
+        if($(this).find(".wz_kuang").val() == ""){
+            $.showTipPop('null', '请填写投票内容', {btn: false});
+            return false;
+        }
+        if($(this).find("em").text() == "") {
+           $.showTipPop('null', '请补充投票链接', {btn: false});
+            return false;
+       }
+    });
+    $.ajax({
+        type: 'post',
+        url: '/Action/ToupEdit.do',
+        data: $("#postForm").serialize(),
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+           console.log(data);
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                    $.showTipPop('null', '发帖成功', function () {
+                        window.location.href="/fenlei/fenlei01.jsp?ID=<%=forum%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            if(field != null) {
+                $.showTipPop('null', msg);
+                return false;
+            }
+        },
+        error: function () {
+            $.showTipPop('null', '系统错误，请刷新页面重试');
+        }
+    });
+
+}
+
+</script>
+</body>
+</html>

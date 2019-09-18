@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <user_name >string</user_name>
+    <password >string</password>
+    <email >string</email>
+    <create_timestamp>string</create_timestamp>
+</map>

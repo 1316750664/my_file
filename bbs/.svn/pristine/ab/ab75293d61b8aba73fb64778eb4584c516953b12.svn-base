@@ -1,0 +1,26 @@
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%
+    //登出
+    //memcahe清除
+    String uid = UserService.getInstance().getUidFromCookie(request);
+    UserService.getInstance().loginDetectMemcacheDel(uid);
+    //cookie清除
+    String [] names = {"cookie_cart","cookie_userInfo","cookie_uuid","cookie_goodsNum"};
+    Cookie cookie = null;
+    for(int i=0;i<names.length;i++){
+        cookie = new Cookie(names[i],"");
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+    }
+    Cookie c1 = new Cookie("_s_auto","0");
+    cookie.setMaxAge(7*24*60*60);
+    c1.setPath("/Login");
+    response.addCookie(c1);
+    //用户缓存信息清除
+    UserService.getInstance().userMemcacheUnuse(uid);
+
+    response.sendRedirect("/index.jsp");
+    return;
+%>

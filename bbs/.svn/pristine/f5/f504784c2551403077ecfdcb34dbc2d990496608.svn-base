@@ -1,0 +1,7 @@
+<!--fs:index-->
+<li>
+    <div class="left"><span class="fusu">###num###</span></div>
+    <div class="center"><a href="/fenlei/post.jsp?postid=###index:post_id###" class="gary">###index:topic###</a></div>
+    <div class="right"><a href="/fenlei/post.jsp?postid=###index:post_id###" class="gart">###index:replies###回复</a></div>
+</li>
+<!--fe:index-->

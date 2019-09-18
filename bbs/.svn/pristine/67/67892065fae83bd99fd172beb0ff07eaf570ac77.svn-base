@@ -1,0 +1,116 @@
+package com.service.servlet;
+
+import com.util.tools.AddressUtil;
+import com.util.tools.CheckMobile;
+import com.util.tools.CheckTools;
+import com.util.tools.ToolUtil;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.DeserializationConfig;
+import org.codehaus.jackson.map.ObjectMapper;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Created by hty070505 on 2015/1/24.
+ */
+@WebServlet(name = "TrackerServlet", urlPatterns = {"/Action/TrackerServlet.do"})
+public class TrackerServlet extends HttpServlet {
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    static {
+        objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        objectMapper.configure(JsonParser.Feature.INTERN_FIELD_NAMES, true);
+        objectMapper.configure(JsonParser.Feature.CANONICALIZE_FIELD_NAMES, true);
+        objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    protected void doPost(HttpServletRequest request,HttpServletResponse response){
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        int is_mobile=0;
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setHeader("content-type", "text/html;charset=utf-8");
+            String tracker = request.getParameter("tracker");
+            String t_id = request.getParameter("t_id");
+            System.out.println("tracker:"+tracker);
+            System.out.println("tId::"+t_id);
+            if(CheckTools.isNull(tracker)||CheckTools.isNull(t_id)){
+                return;
+            }
+            setCookieTracker(tracker,t_id,response);//把tracker,t_id写入cookie，防止过期
+
+            String userAgent = request.getHeader("user-agent" ).toLowerCase();
+            System.out.println("userAgent::"+userAgent);
+            is_mobile = CheckMobile.check(userAgent);
+            System.out.println("is_mobile::"+is_mobile);
+            if(is_mobile==1){
+                String os = ToolUtil.getOS();
+                System.out.println("os：" + os);
+            }else if(is_mobile==2){
+                Pattern pattern = Pattern.compile("iphone");
+                Matcher matcher = pattern.matcher(userAgent);
+                String model = null;
+                if (matcher.find()) {
+                    System.out.println("通过userAgent解析出机型：iphone");
+                }else{
+                    pattern = Pattern.compile(";\\s?(\\S*?\\s?\\S*?)\\s?(build)?/");
+                    matcher = pattern.matcher(userAgent);
+                    if (matcher.find()) {
+                        model = matcher.group(1).trim();
+                        System.out.println("通过userAgent解析出机型：" + model);
+                    }
+                }
+            }
+            //String ip = ToolUtil.getClientIp(request);
+            AddressUtil addressUtil = new AddressUtil();
+            String province = addressUtil.getAddresses("ip=60.191.133.198", "utf-8");
+            System.out.println(province);
+            /*String type = request.getParameter("type");//item产品，news新闻，other普通页面
+            if(CheckTools.isNull(type)){
+                return;
+            }else{
+                String nowTime = FormatDate.getTimestampString(new Timestamp(System.currentTimeMillis()));
+                String ip = ToolUtil.getClientIp(request);
+                String pageUri = request.getRequestURI();
+                if("item".equals(type)){
+
+                }else if ("news".equals(type)){
+
+                }else if ("other".equals(type)){
+
+                }
+            }*/
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+        doPost(request, response);
+    }
+
+    public void setCookieTracker(String tracker, String tracker_id, HttpServletResponse response) throws IOException {
+        //写入cookie
+        //String cookie_uuid = tracker + "$" + tracker_id;
+        //Cookie cookie = new Cookie("tracker", FingerUtil.encryptAES(cookie_uuid));
+        Cookie cookie1 = new Cookie("tracker", tracker);
+        Cookie cookie2 = new Cookie("t_id", tracker_id);
+        cookie1.setPath("/");
+        cookie2.setPath("/");
+        response.addCookie(cookie1);
+        response.addCookie(cookie2);
+    }
+}

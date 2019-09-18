@@ -1,0 +1,27 @@
+.applier{width:982px;font:500 12px/1.5em Verdana, Geneva, sans-serif; border:1px solid #ddd; padding:10px; background:#fdfdfd; overflow:hidden; margin:0.5em 0 1em 0; display:inline-block}
+.apph1{font-size:20px;overflow: hidden; padding:10px 0;}
+.finish{width:983px; float:right; text-align:right; padding:10px;}
+/*-----*/
+.applier .er .deal{height:400px; width:974px; margin:10px 0; overflow:hidden; overflow-y:auto;}
+/*-------*/
+.applier .row input{width:200px; height:20px; font:500 12px/1.5em Verdana, Geneva, sans-serif;outline:none; padding:2px; border:1px solid #d1d1d1}
+.applier .row{ display:table-row; margin-top:10px;}
+.applier .er textarea{outline:none; padding:4px;border:1px solid #d1d1d1;line-height:20px; font-size:14px}
+/*---2----*/
+.applier .lei1{width:983px; text-align:center; padding:0 10px;}
+.applier .lei1 tr th{text-align:right}
+.applier .lei1 tr td{text-align:left}
+.applier .lei1 tr td, .applier .lei1 tr th{height:45px; line-height:45px;}
+.lei1 textarea{background-color:transparent; width:300px; height:100px; border:1px #ccc solid}
+.applier .cell{width:40%;}
+.applier .cell1{width:60%;}
+.applier span{ color:#f00; margin-right:2px}
+.applier input{border:0; width:220px; background-color:transparent; height:30px; line-height:30px; padding-left:3px; border:1px #ccc solid} 
+.finish .a{ cursor:pointer;padding:9px 25px;text-decoration:none;border:1px solid #a09c9c; overflow:hidden; background-color:#eee; border-radius:3px; color:#444}
+.finish .a:hover{padding:9px 25px; background-color:#b9b5b5}
+.applier .next{padding:6px 20px; background-color:#4995e1; color:#fff;text-decoration:none;border:1px solid #2881da; overflow:hidden; border-radius:3px; margin-right:20px;}
+.applier .next:hover{padding:6px 20px;background-color:#4291e0;}
+
+.fenleihead{width:991px; float:left;font:12px Tahoma,Arial; margin:10px 0;border:1px solid #d9d9d9; background-color:#fcfcfc; padding-left:10px; height:32px; line-height:32px;}
+.fenleihead a{ color:#6a6a6a; margin:0 8px; line-height:32px;}
+.fenleihead a:hover{ text-decoration:underline;}

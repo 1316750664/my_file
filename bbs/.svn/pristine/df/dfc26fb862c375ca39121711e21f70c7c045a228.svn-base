@@ -1,0 +1,65 @@
+package com.service.servlet;
+
+import com.util.tools.CheckTools;
+import com.util.tools.GetPinYin;
+import com.util.tools.ToolUtil;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+
+/**
+ * Created by hty070505 on 2014/9/19.
+ */
+@WebServlet(name = "GetPinYinServlet", urlPatterns = {"/Action/GetPinYinServlet.action"})
+public class GetPinYinServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        try {
+            request.setCharacterEncoding("utf-8");
+            response.setHeader("content-type", "text/html;charset=utf-8");
+            out = response.getWriter();
+            String[] jsonType = request.getParameterValues("JsonType");
+            String name = request.getParameter("name");// 名称
+            if (!CheckTools.isNull(name)) {
+                name = name.toLowerCase().replace(",", "，");//英文逗号转换成中文逗号，避免前台分离出错
+                int len = jsonType.length;
+                String[] results = new String[len];
+                for (int i = 0; i < len; i++) {
+                    String type = jsonType[i];
+                    if (CheckTools.isEnglish(name)) {//英文先小写
+                        if ("0".equals(type)) {// 生成全拼
+                            results[i] = GetPinYin.getPingYin(name);
+                        } else if ("1".equals(type)) {//生成简拼
+                            results[i] = GetPinYin.getPinYinHeadChar(name);
+                        } else if ("2".equals(type)) {//生成首拼
+                            results[i] = name.charAt(0) + "";
+                        } else if ("3".equals(type)) {//生成首码
+                            results[i] = name.codePointAt(0) + "";
+                        }
+                    } else {//中文
+                        if ("0".equals(type)) {// 生成全拼
+                            results[i] = GetPinYin.getPingYin(name);
+                        } else if ("1".equals(type)) {//生成简拼
+                            results[i] = GetPinYin.getPinYinHeadChar(name);
+                        } else if ("2".equals(type)) {//生成首拼
+                            String sp = GetPinYin.getPinYinHeadChar(name);
+                            results[i] = sp.charAt(0) + "";
+                        } else if ("3".equals(type)) {//生成首码
+                            String sp = GetPinYin.getPinYinHeadChar(name);
+                            results[i] = sp.codePointAt(0) + "";
+                        }
+                    }
+                }
+                out.write(ToolUtil.arrayToString(results, ','));
+            } else {
+                out.print("");
+            }
+            out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

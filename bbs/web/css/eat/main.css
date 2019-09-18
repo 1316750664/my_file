@@ -1,0 +1,131 @@
+body{
+    background-color: #f5f5f5;
+}
+
+.warp{
+    width: 920px;
+    padding: 0 10px;
+    margin: 50px auto 0;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.title{
+    background-color: #e5f2f9;
+    padding: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 23px;
+    margin: 0 -10px;
+    padding: 3px 10px;
+}
+.head_warp{
+    margin-top: 20px;
+
+}
+
+.head_warp .left_head{
+    padding-left: 200px;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+.head_warp .right_head{
+    /*float: right;*/
+}
+/*.head_warp .right_head input {*/
+    /*border: 1px solid #e9e9e9;*/
+    /*height: 18px;*/
+    /*outline: medium none;*/
+    /*padding: 5px;*/
+    /*width: 175px;*/
+/*}*/
+
+.head_warp  #cookie_tx{
+    width: 100%;
+}
+
+.head_warp .right_head a {
+    background-color: #F5F5F5;
+    padding: 5px 13px;
+    border: 1px solid #e9e9e9;
+    border-left: none;
+    height: 18px;
+    line-height: 18px;
+    color: #333;
+}
+.oper_btn_warp{
+    height: 60px;
+    line-height: 60px;
+    border: 1px solid #cce1ed;
+    margin: 10px 0;
+}
+
+.oper_btn_warp a{
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    background: #229cef;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.oper_btn_warp a i{
+    position: absolute;
+    right: 8px;
+    top: 0px;
+    color: yellow;
+    font-size: 18px;
+}
+
+.oper_btn_warp a:nth-child(1){
+    margin: 0 210px;
+}
+
+.oper_btn_warp a:hover,
+.oper_btn_warp a.active{
+}
+
+
+.foot_warp{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.foot_warp a{
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    background: #229cef;
+    text-align: center;
+    color: #fff;
+}
+#calendar_container{
+    height: 430px;
+}
+
+#calendar_container .day {
+    color: #999;
+    height: 16px;
+    line-height: 15px;
+    position: relative;
+}
+#calendar_container .meal {
+    background-color: #0099cc;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    height: 14px;
+    line-height: 14px;
+    margin-bottom: 2px;
+    overflow: hidden;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 59px;
+    text-align: center;
+    margin-right: 2px;
+}

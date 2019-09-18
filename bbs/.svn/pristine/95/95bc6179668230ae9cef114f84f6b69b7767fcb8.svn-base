@@ -1,0 +1,11 @@
+    <input type="hidden" name="itemCount" id="itemCount" value="###field:itemCount###"/>
+<!--fs:myfavorite-->
+
+      ###cococoforsplit###
+        <tr>
+             <td class="padding10 text-left "><i class="iconfont">&#xe605;</i><a href="/fenlei/post.jsp?postid=###myfavorite:post_id###">###myfavorite:topic###</a></td>
+             <td class="bule">###myfavorite:nick###</td>
+             <td>#1#:cococo1###myfavorite:reply_time####1#</td>
+             <td class="xuxiao" onclick="canc(###myfavorite:user_id###,###myfavorite:post_id###)">取消收藏</td>
+        </tr>
+<!--fe:myfavorite-->

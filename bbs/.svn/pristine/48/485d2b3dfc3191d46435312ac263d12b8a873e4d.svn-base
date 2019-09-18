@@ -1,0 +1,9 @@
+<input type="hidden" name="itemCount2" id="itemCount2" value="###field:itemCount###"/>
+<!--fs:mydeletedinvit-->
+       ###cococoforsplit###
+       <tr>
+             <td class="padding10 text-left "><i class="iconfont">&#xe605;</i><a href="/fenlei/post.jsp?postid=###mydeletedinvit:post_id###">###mydeletedinvit:topic###</a></td>
+             <td>###mydeletedinvit:delete_reason###</td>
+             <td>#0#cococo0:###mydeletedinvit:create_time####0#</td>
+       </tr>
+<!--fe:mydeletedinvit-->

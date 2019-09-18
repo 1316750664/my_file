@@ -1,0 +1,264 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>申请成为斑主－-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找配件,买配件,卖配件,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,皮带,防冻液,保险杠,中网,倒车镜,钣金件,水箱,冷凝器,电子扇...国内最专业最全面的汽配在线交易查询网" />
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <link type="image/x-icon" href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/body.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/head.css" rel="stylesheet"/>
+    <link type="text/css" href="../font/iconfont.css" rel="stylesheet" >
+    <link type="text/css" href="../css/foot.css" rel="stylesheet"/>
+    <link type="text/css" href="../css/applier.css"rel="stylesheet" />
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<%
+    String user_id= UserService.getInstance().getUidFromCookie(request);
+    String forum = request.getParameter("fID");
+    if (null == forum || "".equals(forum)) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    String[] param4 = {forum};
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+    TaskBean taskBean4 = new TaskBean(313, 0, param4);
+    String result4 =  FragService.getInstance().fragment(10, taskBean4);
+    String forum_name=null;
+    List<Map<String, String>> list4 = StaticUtil.objectMapper.readValue(result4, List.class);
+    for (Map<String, String> map : list4) {
+        forum_name = map.get("forum_name");
+    }
+
+    String name="";
+    if (request.getParameter("name")!=null){
+        name=request.getParameter("name");
+    }
+    String sfz="";
+    if (request.getParameter("sfz")!=null){
+        sfz=request.getParameter("sfz");
+    }
+    String address="";
+    if (request.getParameter("address")!=null){
+        address=request.getParameter("address");
+    }
+    String email="";
+    if (request.getParameter("E-mail")!=null){
+        email=request.getParameter("E-mail");
+    }
+    String pon="";
+    if (request.getParameter("pon")!=null){
+        pon=request.getParameter("pon");
+    }
+    String shuoming="";
+    if (request.getParameter("shuoming")!=null){
+        shuoming=request.getParameter("shuoming");
+    }
+
+
+    String[] param5 = {user_id};
+    TaskBean taskBean_340 = new TaskBean(340, 0, param5);
+    String result_340 =  FragService.getInstance().fragment(10, taskBean_340);
+    List<Map<String, String>> list_340 = StaticUtil.objectMapper.readValue(result_340, List.class);
+    String nick=null;
+    for (Map<String, String> map : list_340) {
+        nick = map.get("nick");
+    }
+
+%>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class="fenleihead"><a href="#">汽商社区</a><span>&gt;</span><a href="#"><%=forum_name%></a></span>&gt;</span><a href="#">申请斑主</a></div>
+    <div class="applier">
+        <div class="apph1 bule"><i class="iconfont" style="font-size:24px">&#xe61f;</i><strong>填写基本信息</strong></div>
+        　　 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lei1">
+        <col class="cell">
+        <col class="cell1">
+        <tr>
+            <th colspan="2" scope="row" style="text-align:center; border-bottom:1px #eee solid; font-size:15px; font-family:micorsoft yehei"><strong>基本信息</strong>(务必真实有效)</th>
+        </tr>
+        <form action="applier3.jsp">
+        <tr>
+            <th>申请账号：</th>
+            <td><%=nick%></td>
+        </tr>
+            <input type="hidden" name="fID" id="fID" value="<%=forum%>" /></td>
+        <tr>
+            <th><span>*</span> 真实姓名：</th>
+
+            <td><input type="text" name="name" id="name" value="<%=name%>"/></td>
+        </tr>
+        <tr>
+            <th><span>*</span> 身份证号码：</th>
+            <td><input type="text" name="sfz" id="sfz" value="<%=sfz%>"></td>
+        </tr>
+        <tr>
+            <th><span>*</span> 联系地址：</th>
+            <td><input type="text" name="address" id="address" value="<%=address%>" /></td>
+        </tr>
+        <tr>
+            <th><span>*</span> 邮箱地址：</th>
+            <td><input type="text" name="E-mail" id="E-mail"  value="<%=email%>"/></td>
+        </tr>
+        <tr>
+            <th><span>*</span> 手机号码：</th>
+            <td><input type="text" name="pon" id="pon" value="<%=pon%>"/></td>
+        </tr>
+        <tr>
+            <th><span>*</span>从事行业：</th>
+            <td>
+            <select name="industry" id="industry">
+                <option value="0">请选择</option>
+                <%
+                    String[] param = {"18"};
+                    fragPath = request.getSession().getServletContext().getRealPath("/frag");
+                    TaskBean taskBean = new TaskBean(337, 0, param);
+                    String result = FragService.getInstance().fragment(10, fragPath + "/adminapply_industry.txt", taskBean, "industry");
+                    out.write(result);out.flush();
+
+                %>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <th> <span>*</span>职业：</th>
+            <td>
+                <select name="career" id="career">
+                    <option value="0">请选择</option>
+                    <%
+                        String[] param2 = {"19"};
+                        TaskBean taskBean2 = new TaskBean(337, 0, param2);
+                        String result2 = FragService.getInstance().fragment(10, fragPath + "/adminapply_industry.txt", taskBean2, "industry");
+                        out.write(result2);out.flush();
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th> <span>*</span>等级：</th>
+            <td>
+                <select name="rank" id="rank">
+                    <option value="0">请选择</option>
+                    <%
+                        String[] param3 = {"20"};
+                        TaskBean taskBean3 = new TaskBean(337, 0, param3);
+                        String result3 = FragService.getInstance().fragment(10, fragPath + "/adminapply_industry.txt", taskBean3, "industry");
+                        out.write(result3);out.flush();
+                    %>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th valign="top"> <span>*</span>申请说明：</th>
+            <td><textarea name="shuoming" id="shuoming"><%=shuoming%></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:center"><a class="next" href="applier1.jsp?fID=<%=forum%>">上一步</a>     <a class="next" href="#" id="com">下一步</a></td>
+                <!-- <input  class="next" type="submit" value="下一步" >    </td>  -->
+            <input hidden="hidden" type="submit" id="commit" />
+        </tr>
+       </form>
+    </table>
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $("#com").click(function(){
+        var name=$("#name").val();
+        if (name == "" || name.length < 2){
+            $.showTipPop('null', '请输入正确的姓名');
+            return false;
+        }
+        var sfz=$("#sfz").val();
+        var email=$("#E-mail").val();
+        var sj=$("#pon").val();
+        var address=$("#address").val();
+        if(!checkCardId(sfz)){
+            $.showTipPop('null', '身份证格式不正确!');
+            return false;
+        }
+        if(address.length==0){
+            $.showTipPop('null', '联系地址不能为空!');
+            return false;
+         }
+        if(!isEmail(email)){
+            $.showTipPop('null', '邮箱格式不正确');
+            return false;
+        }
+       if(checkSj(sj)==null){
+           $.showTipPop('null', '手机号不正确');
+            return false;
+        }
+        if($("#industry").val()==0){
+            $.showTipPop('null', '请选择从事行业');
+            return false;
+        }
+        if($("#career").val()==0){
+            $.showTipPop('null', '请选择职业');
+            return false;
+        }
+        if($("#rank").val()==0){
+            $.showTipPop('null', '请选择等级');
+            return false;
+        }
+        var shuoming=$("#shuoming").val();
+        if (shuoming == "" || shuoming.length == 0){
+            $.showTipPop('null', '请输入申请说明');
+            return false;
+        }
+
+        $("#commit").click();
+   })
+</script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.GregorianCalendar" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String id = "8160";
+    String ID = request.getParameter("ID");
+    if (null != ID && !"".equals(ID)) {
+        id = ID;
+    }
+
+    int taskId = 3;
+    int cmdType = 0;
+    String[] param = {id};
+    TaskBean taskBean = new TaskBean(taskId, cmdType, param);
+    String fragPath = request.getSession().getServletContext().getRealPath("/frag");
+    String json = FragService.getInstance().fragment(0, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+    String huiZong = "0";
+    String zong = "0";
+    for (Map<String, String> map : list) {
+        huiZong = map.get("hui");
+        zong = map.get("zong");
+    }
+    taskBean= new TaskBean(2, cmdType,new String[]{id,id});
+    json = FragService.getInstance().fragment(0, taskBean);
+    list = StaticUtil.objectMapper.readValue(json, List.class);
+    String color = null;
+    String remark = null;
+    String nick = "";
+    for (Map<String, String> map : list) {
+        String style = map.get("forum_style");
+        if(style.equals("")) break;
+        color = style.split(";")[0].split(":")[1];
+        remark = map.get("forum_remark");
+        nick = map.get("nick");
+    }
+    if (nick.equals("")) {
+        nick = "待申请";
+    }
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>买家地盘-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找汽配,汽商汇,买汽配,卖汽配,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,防冻液-国内最专业最全面的汽配在线交易查询网"/>
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存"/>
+    <link type="image/x-icon" href="/favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="/css/shared.css" rel="stylesheet"/>
+    <link href="/css/head.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/fenlei.css" rel="stylesheet" type="text/css"/>
+    <link href="/font/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="/css/pager.css"/>
+    <link href="/css/foot.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" href="/BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+<div class=" fenleihead">
+    <a href="javascript:void(0);">买家地盘</a><span>></span><a href="javascript:void(0);" id="xiaoT"></a></div>
+<%
+    if (null == ID || "".equals(ID)) {
+        taskId = 1;
+        cmdType = 0;
+        taskBean = new TaskBean(taskId, cmdType);
+        json = FragService.getInstance().fragment(0, taskBean);
+    } else {
+        taskId = 44;
+        cmdType = 0;
+        taskBean = new TaskBean(taskId, cmdType,new String[]{ID,ID});
+        json = FragService.getInstance().fragment(0, taskBean);
+    }
+
+    list = StaticUtil.objectMapper.readValue(json, List.class);
+    List<Map<String, String>> zhuList = new ArrayList<Map<String, String>>();
+    List<Map<String, String>> fuList = new ArrayList<Map<String, String>>();
+    for (int i = 0; i < list.size(); i++) {
+        if (list.get(i).get("parent_id").equals("0")||list.get(i).get("parent_id").equals("")) {
+            zhuList.add(list.get(i));
+        } else {
+            fuList.add(list.get(i));
+        }
+    }
+    StringBuffer sb = new StringBuffer();
+    sb.append("<div class=\"fenleimenu\"><dl>");
+    for (int i = 0; i < zhuList.size(); i++) {
+        //输出主栏目 forum_style
+        String[] styles = zhuList.get(i).get("forum_style").split(";");
+        if(styles.length > 1){
+            sb.append("<dt style=\"color:" + styles[0].split(":")[1] + "\"><i class=\"iconfont\">" + styles[1].split(":")[1] + ";</i><strong>" + zhuList.get(i).get("forum_name") + "</strong></dt><dd><ul>");
+        }else{
+            sb.append("<dt><strong>" + zhuList.get(i).get("forum_name") + "</strong></dt><dd><ul>");
+        }
+
+        String parentID = zhuList.get(i).get("forum_id");
+        Iterator<Map<String, String>> iterator = fuList.iterator();
+        while (iterator.hasNext()) {//找子id
+            Map<String, String> map = iterator.next();
+            if (map.get("parent_id").equals(parentID)) {
+                //输出子栏目
+                sb.append("<li id=\"fen" + map.get("forum_id") + "\"><a href=\"/fenlei/fenlei01.jsp?ID=" + map.get("forum_id") + "\">" + map.get("forum_name") + "</a></li>");
+                iterator.remove();
+            }
+        }
+        sb.append("</ul></dd>");
+    }
+    sb.append("</dl></div>");
+    out.write(sb.toString());
+    out.flush();
+%>
+<div class=" fenleicontent">
+<div class="toppart" style="background-color:<%=color%>;">
+    <div class="title">
+        <p><strong>本版斑主:</strong><span><%=nick%></span></p>
+        <a href="/fenlei/applier1.jsp?fID=<%=id%>" style="color:#448aca">成为斑主</a>
+        <div class="total">
+            本版总帖数：<span><%=zong%></span>
+            回帖数：<span><%=huiZong%></span>
+        </div>
+    </div>
+    <div id="topContent">
+        <ul id="tagbtn">
+            <li><a href="javascript:void(0)" onClick="selectTag('tagContent0',this)">本版介绍</a></li>
+            <li class="selectTagbtn"><a href="javascript:void(0)" onClick="selectTag('tagContent1',this)">本版置顶</a></li>
+        </ul>
+        <div id="tagContent">
+            <div class="tagContent" id="tagContent0">
+                <div class="tag1part1">
+                    <ul>
+                        <li><a href="javascript:void(0);"></a></li>
+                        <li><a href="javascript:void(0);"></a></li>
+                        <li><a href="javascript:void(0);"></a></li>
+                        <li><a href="javascript:void(0);"></a></li>
+                    </ul>
+                </div>
+                <div class="tag1part2">
+                    <p><strong>本版介绍：</strong><%=remark%>
+                    </p>
+                </div>
+            </div>
+            <div class="tagContent selectTag" id="tagContent1">
+                <div class="bigOutBor">
+                    <div id="bigImg" class="slideBox">
+                        <ul id="slides">
+                            <li style="background:url(/images/lunbo01.jpg) no-repeat" title="1">
+                                <a href="javascript:void(0)" target="_blank"></a></li>
+                            <li style="background:url(/images/lunbo02.jpg) no-repeat" title="2">
+                                <a href="javascript:void(0)" target="_blank"></a></li>
+                            <li style="background:url(/images/lunbo03.jpg) no-repeat" title="3">
+                                <a href="javascript:void(0)" target="_blank"></a></li>
+                        </ul>
+                        <ul id="focusimgtitle">
+                            <li><a href="javascript:void(0);">解读低配1车 拍昂克赛拉1.5L手动舒适型</a></li>
+                            <li style="display:none"><a href="javascript:void(0);">解读低2配车 拍昂克赛拉1.5L手动舒适型</a></li>
+                            <li style="display:none"><a href="javascript:void(0);">解读3低配车 拍昂克赛拉1.5L手动舒适型</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <%
+                    taskBean = new TaskBean(4, cmdType, param);
+                    json = FragService.getInstance().fragment(0, taskBean);
+                    list = StaticUtil.objectMapper.readValue(json, List.class);
+                    String fTitle = "";
+                    String fID = "";
+                    sb.delete(0, sb.length());
+                    for (Map<String, String> map : list) {
+                        if ("".equals(fID)) {
+                            fTitle = map.get("topic");
+                            fID = map.get("post_id");
+                        } else {
+                            sb.append("<li><a href=\"/fenlei/post.jsp?postid="+map.get("post_id")+"\" >" + map.get("topic") + "</a></li>");
+                        }
+                    }
+                    if (fTitle.equals("")) {
+                        fTitle = "无置顶贴";
+                    }
+                %>
+                <div class="tag2right">
+                    <div class="bigtitle">
+                        <%
+                            if (fID.equals("")) {
+                                out.write("<a href=\"javascript:void(0);\" style=\"color:" + color + ";\">" + fTitle + "</a>");
+                            } else {
+                                out.write("<a href=\"/fenlei/post.jsp?postid="+fID+"\" style=\"color:" + color + ";\">" + fTitle + "</a>");
+                            }
+                            out.flush();
+                        %>
+                    </div>
+                    <ul class="newslist0">
+                        <%
+                            out.write(sb.toString());
+                        %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centerpart">
+    <ul class="postState">
+        <%
+            String curPage = request.getParameter("page");
+            int curP = 1;
+            if (null != curPage && Integer.parseInt(curPage) >= 0) {
+                curP = Integer.parseInt(curPage);
+            }
+            String type = request.getParameter("type");
+            String can = "new";
+            if (null != type && !"".equals(type)) {
+                can = type;
+            }
+        %>
+        <li <%
+            if (can.equals("new")) {
+                out.write("class=\"select\"");
+            }
+        %>><a href="/fenlei/fenlei01.jsp?ID=<%=id%>&type=new">最新发表</a></li>
+        <li <%
+            if (can.equals("jing")) {
+                out.write("class=\"select\"");
+            }
+        %>><a href="/fenlei/fenlei01.jsp?ID=<%=id%>&type=jing">精华帖</a></li>
+        <li style="width:6px">|</li>
+        <li <%
+            if (can.equals("tou")) {
+                out.write("class=\"select\"");
+            }
+        %>><a href="/fenlei/fenlei01.jsp?ID=<%=id%>&type=tou">投票帖</a></li>
+    </ul>
+    <div class="fatei">
+        <input name="" type="button" class="btn-fb"/>
+
+        <div class="type-fb">
+            <ul>
+                <li><a href="/fenlei/fabutiezi.jsp?fID=<%=id%>"><span><img src="/images/post.png"/>帖子</span></a></li>
+                <li><a href="/fenlei/toup.jsp?fID=<%=id%>"><span><img src="/images/vote.png"/>投票</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--关于产品展示分页  放在alldoodslist外边 -->
+    <div class="allgoodslist">
+        <div style="float:left;" class="divPagePanel"></div>
+        <div style="float:left;" class="tiaozhuan">
+            <ul>
+                <li>到第<input type="text" name="zhiding"/>页</li>
+                <li class="queding"><a href="javascript:void(0);" onclick="tiao(this)">确定</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th class="subject">主题</th>
+            <th class="later">发表</th>
+            <th class="score">回复/点击</th>
+            <th class=" last">最后回复</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            int page1 = curP;
+            int row = 4;
+            taskBean = new TaskBean(5, 1, page1, row, param);
+            if (can.equals("jing")) {
+                taskBean.setTaskId(6);
+            } else if (can.equals("tou")) {
+                taskBean.setTaskId(7);
+            }
+            json = FragService.getInstance().fragment(0, fragPath + "/index_tiezi.txt", taskBean, "tiezi");
+            Pattern pattern = Pattern.compile("###zhong:(.*?)###");
+            Matcher matcher = pattern.matcher(json);
+            String str = null;
+            String str1 = null;
+            while (matcher.find()) {
+                str1 = matcher.group();//匹配部分，最后替换掉
+                str = matcher.group(1);//匹配的值
+                if (str.equals("1")) {
+                    str = "<img src=\"/images/post.png\" alt=\"普通帖\"/>";
+                } else if (str.equals("2")) {
+                    str = "<img src=\"/images/vote.png\" alt=\"投票帖\"/>";
+                } else if (str.equals("3")) {
+                    str = "<img src=\"/images/post.png\" alt=\"图文帖\"/>";
+                } else {
+                    str = "<img src=\"/images/post.png\" alt=\"普通帖\"/>";
+                }
+                json = json.replaceFirst(str1, str);
+            }
+            pattern = Pattern.compile("###jing:(.*?)###");
+            matcher = pattern.matcher(json);
+            while (matcher.find()) {
+                str1 = matcher.group();//匹配部分，最后替换掉
+                str = matcher.group(1);//匹配的值
+                if (str.equals("0")) {
+                    str = "";
+                } else if (str.equals("1")) {
+                    str = "<img src=\"/images/official_best.png\" alt=\"类目精华帖\" />";
+                }
+                json = json.replaceFirst(str1, str);
+            }
+            pattern = Pattern.compile("###suo:(.*?)###");
+            matcher = pattern.matcher(json);
+            while (matcher.find()) {
+                str1 = matcher.group();//匹配部分，最后替换掉
+                str = matcher.group(1);//匹配的值
+                if (str.equals("0")) {
+                    str = "";
+                } else if (str.equals("1")) {
+                    str = "<img src=\"/images/post_lock.png\" alt=\"内容锁定\"/>";
+                }
+                json = json.replaceFirst(str1, str);
+            }
+            pattern = Pattern.compile("###shijian:(.*?)###");
+            matcher = pattern.matcher(json);
+            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");// HH:mm:ss:SSS
+//            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+            Date d = new Date();
+            GregorianCalendar gc = new GregorianCalendar();
+            gc.setTime(d);
+            gc.set(Calendar.HOUR_OF_DAY,0);
+            gc.set(Calendar.MINUTE,0);
+            gc.set(Calendar.SECOND,0);
+            gc.set(Calendar.MILLISECOND,0);
+            long toDay = gc.getTime().getTime();
+//            System.out.println(sdf2.format(new Date(toDay)));
+            while (matcher.find()) {
+                str1 = matcher.group();//匹配部分，最后替换掉
+                str = matcher.group(1);//匹配的值 毫秒数
+                if(!str.equals("")){
+                    long shujushijian = Long.parseLong(str);
+                    long res = toDay - shujushijian;
+                    if (res <= 0) {//同一天，判断几秒前
+                        res = d.getTime() - shujushijian;
+                        if (0L != res / 1000 / 60 / 60) {
+                            str = res / 1000 / 60 / 60 + "小时前";
+                        } else if (0L != res / 1000 / 60) {
+                            str = res / 1000 / 60 + "分钟前";
+                        } else if (0L != res / 1000) {
+                            str = res / 1000 + "秒前";
+                        } else {
+                            str = "1秒前";
+                        }
+                    } else {//不同天，显示年月日
+                        str = sdf1.format(new Date(shujushijian));
+                    }
+                }
+                json = json.replaceFirst(str1, str);
+            }
+            out.write(json);
+            out.flush();
+        %>
+        </tbody>
+    </table>
+    <!--关于产品展示分页  放在alldoodslist外边 -->
+    <form>
+        <input type="hidden" name="curPage" id="curPage" value="<%=curP%>"/>
+        <input type="hidden" name="pageSize" id="pageSize" value="<%=row%>"/>
+    </form>
+    <div class="allgoodslist">
+        <div style="float:left;" class="divPagePanel"></div>
+        <div style="float:left;" class="tiaozhuan">
+            <ul>
+                <li>到第<input type="text" name="zhiding"/>页</li>
+                <li class="queding"><a href="javascript:void(0);" onclick="tiao(this)">确定</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+</div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/imgSilde.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/page.js" charset="utf-8"></script>
+<script type="text/javascript" src="/BigoUI/bigo.min.js" charset="utf-8"></script>
+<!--<script type="text/javascript" src="/js/head.js"></script>-->
+<script>
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    function selectTag(showContent, selfObj) {
+        // 操作标签
+        $(".tagContent").css("display", "none");
+        $("#" + showContent).css("display", "block");
+        $("#tagbtn li").removeClass("selectTagbtn");
+
+        selfObj.parentNode.className = "selectTagbtn";
+    }
+    $(document).ready(function () {
+        var objLi = $("#fen<%=id%>");
+        var liVal = objLi.find("a").text();
+        var dtVal = objLi.parents("dd").prev().find("strong").text();
+        $("#xiaoT").html(liVal);
+        $("#xiaoT").prev().prev().html(dtVal);
+        $("#fen<%=id%>").css("background-color", "#c9c9c9");
+
+        objLi.parent().find("li").each(function (i, e) {
+            var dtval = $(this).find("a").text();
+            var urlVal = $(this).find("a").attr("href");
+            $(".tag1part1 li:eq(" + i + ")").find("a").text("【" + dtval + "】");
+            $(".tag1part1 li:eq(" + i + ")").find("a").attr("href", urlVal);
+        });
+
+        var curpage = parseInt($("#curPage").val());
+        var pageSize = parseInt($("#pageSize").val());
+        var itemCount = parseInt($("#itemCount").val());
+        var Hhtml = MyPager.printPage(curpage, pageSize, itemCount, 1);
+        $(".divPagePanel").html(Hhtml);
+
+        $(".fatei").mouseenter(function (e) {
+            $(".type-fb").css("display", "block");
+        }).mouseleave(function (e) {
+            $(".type-fb").css("display", "none");
+        });
+
+        $.Bigo('/Action/JsonDispatcher.do',{taskId: '18', cmdType: 'Update',fID:'<%=id%>'}, {sucAction: function s(data){}});
+    });
+    function pageClick(action) {
+        var curpage = parseInt($("#curPage").val());
+        var pageSize = parseInt($("#pageSize").val());
+        var itemCount = parseInt($("#itemCount").val());
+        if (action == "minus") {
+            curpage = curpage - 1;
+        } else if (action == "add") {
+            curpage = curpage + 1;
+        } else {
+            curpage = action;
+        }
+        window.location.href = "/fenlei/fenlei01.jsp?ID=<%=id%>&page=" + curpage + "&type=<%=can%>";
+    }
+    function tiao(t) {
+        var zhiding = $(t).parents("ul").find("input[name='zhiding']").val();
+        var reg = /^(0|[1-9][0-9]*)$/;
+        if (!reg.test(zhiding)) {
+            alert("请输入整数");
+            return false;
+        }
+        var pageSize = parseInt($("#pageSize").val());
+        var itemCount = parseInt($("#itemCount").val());
+        var yu = itemCount % pageSize;
+        var ye;
+        if (yu == 0) {
+            ye = itemCount / pageSize;
+        } else {
+            ye = itemCount / pageSize + 1;
+        }
+        if (zhiding > ye || zhiding < 0) {
+            alert("请输入正确的页数");
+            return false;
+        }
+        window.location.href = "/fenlei/fenlei01.jsp?ID=<%=id%>&page=" + zhiding + "&type=<%=can%>";
+    }
+
+</script>
+</body>
+</html>
+

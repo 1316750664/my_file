@@ -1,0 +1,11 @@
+<input type="hidden" name="itemCount1" id="itemCount1" value="###field:itemCount###"/>
+<!--fs:myreply2other-->
+      ###cococoforsplit###
+        <tr>
+
+            <td class="padding10 text-left "><i class="iconfont">&#xe605;</i><a href="/fenlei/post.jsp?postid=###myreply2other:post_id###">###myreply2other:topic###</a></td>
+            <td>###myreply2other:forum_name###</td>
+            <td>###myreply2other:clicks###/###myreply2other:replies###</td>
+            <td>#1#:cococo1###myreply2other:reply_time####1#</td>
+        </tr>
+<!--fe:myreply2other-->

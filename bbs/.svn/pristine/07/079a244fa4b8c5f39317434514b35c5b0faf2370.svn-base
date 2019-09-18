@@ -1,0 +1,257 @@
+<%@ page import="com.bean.TaskBean" %>
+<%@ page import="com.service.fragService.FragService" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.util.tools.ToolUtil" %>
+<%@ page import="com.util.tools.StaticUtil" %>
+<%@ page import="com.service.Service.UserService.UserService" %>
+<%@ page import="com.service.Service.loginDetection.LoginDetection" %>
+<%@ page import="com.service.Service.ComHtmlHandler" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String ip = ToolUtil.getClientIp(request);
+    int statu = LoginDetection.getInstance().loginCheck(request.getCookies(), ip, response);
+    if (statu == 1) {
+        return;
+    }
+    String user_id = UserService.getInstance().getUidFromCookie(request);
+    String nick = request.getParameter("lnc");//上层人昵称
+    String floor = request.getParameter("lcs");//上层层数
+    String replyId = request.getParameter("lri");//上层回复id
+    String postId = request.getParameter("tpi");//贴子id
+    String forum_id = request.getParameter("fri");//板块id
+//    String nick = "坑3";//上层人昵称
+//    String floor = "5";//上层层数
+//    String replyId = "28";//上层回复id
+//    String postId = "49";//贴子id
+//    String forum_id = "2";//板块id
+    int taskId = 14;
+    int cmdType = 0;
+    String[] param1 = {postId};
+    TaskBean taskBean = new TaskBean(taskId, cmdType, param1);
+    String json = FragService.getInstance().fragment(0, taskBean);
+    List<Map<String, String>> list = StaticUtil.objectMapper.readValue(json, List.class);
+    String topic = "";
+    for (Map<String, String> m : list) {
+        topic = m.get("topic");
+    }
+    if (topic.equals("")) {
+        response.sendRedirect("/error/400.html");
+        return;
+    }
+    taskId = 12;
+    cmdType = 0;
+    String[] param = {replyId};
+    taskBean = new TaskBean(taskId, cmdType, param);
+    json = FragService.getInstance().fragment(0, taskBean);
+
+    List<String> replyIds = new ArrayList<String>();
+    List<String> floors = new ArrayList<String>();
+    List<String> nicks = new ArrayList<String>();
+    list = StaticUtil.objectMapper.readValue(json, List.class);
+    StringBuffer jsonContent = new StringBuffer();
+    jsonContent.append("[");
+    String isDelete = "0";
+    if (list.size() == 1) {
+        isDelete = list.get(0).get("is_delete");
+        String content = list.get(0).get("ref_content");
+        if (!"".equals(content)) {
+            List<Map<String, String>> list1 = StaticUtil.objectMapper.readValue(content, List.class);
+            for (Map<String, String> map : list1) {
+                floors.add(map.get("floor"));
+                nicks.add(map.get("nick"));
+                replyIds.add(map.get("reply_id"));
+                jsonContent.append("{\"floor\":\"" + map.get("floor") + "\",\"nick\":\"" + map.get("nick") + "\",\"reply_id\":\"" + map.get("reply_id") + "\"},");
+            }
+        }
+    }
+    if (isDelete.equals("0")) {//当前内容是否删除 已删除 不添加
+        floors.add(floor);
+        nicks.add(nick);
+        replyIds.add(replyId);
+        jsonContent.append("{\"floor\":\"" + floor + "\",\"nick\":\"" + nick + "\",\"reply_id\":\"" + replyId + "\"},");
+    }
+    jsonContent.delete(jsonContent.length() - 1, jsonContent.length());
+    jsonContent.append("]");
+//    System.out.println(jsonContent);
+    StringBuffer sb = new StringBuffer();
+    for (String s : replyIds) {
+        sb.append(s + ",");
+    }
+    sb.delete(sb.length()-1,sb.length());
+    String[] paramValue = {sb.toString()};
+    String[] paramType = {"object"};
+    taskBean = new TaskBean(13, 0, 1, paramValue, paramType);
+    json = FragService.getInstance().fragment(0, taskBean);
+    list = StaticUtil.objectMapper.readValue(json, List.class);
+    List<String> contents = new ArrayList<String>();
+    for (Map<String, String> map : list) {
+        if ("1".equals(map.get("is_delete"))) {//    引用内容是否删除，已删除显示已删除
+            contents.add("<span class=\"warned-d\">该用户的发言已被删除！</span>");
+        } else {
+            contents.add(map.get("reply_content"));
+        }
+    }
+    sb.delete(0,sb.length());
+    String tmp = "";
+    for (int i = 0; i < floors.size(); i++) {
+        tmp = sb.toString();
+        sb.delete(0, sb.length());
+        sb.append("<div class=\"citation\">" + tmp + "<div class=\"citation-title\"><span class=\"user-name\">原帖由第" + floors.get(i) + "楼 " + nicks.get(i) + " 发表</span><span class=\"citation-number\">" + i + "</span></div><p>" + ToolUtil.unKillHtml(contents.get(i)) + "</p></div>");
+    }
+%>
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>回复-<%=topic%>-买家地盘-企商论坛-买汽配-卖汽配-汽商汇-浙江企商汇电子商务有限公司</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="keywords" http-equiv="keywords" content="8673h,专业的汽车配件交易网,精准的车型数据库查询平台,找汽配,汽商汇,买汽配,卖汽配,企商汇,机油,电瓶,火花塞,养护品,刹车片,雨刷,滤清器,防冻液-国内最专业最全面的汽配在线交易查询网"/>
+    <meta name="description" http-equiv="description" content="8673h.com-浙江企商汇电子商务有限公司-提供最精准最专业的配件查询数据库,VIN码,OEM码,适用车型,配件分类,配件品牌等多种查询,旨在解决找配件查询难,让你方便快捷的找到最想要的配件,盘活汽配生产商,汽配经销商,4S店,修理厂积压的呆滞件,事故件,易损件,拆车件,原厂件库存" />
+    <link type="image/x-icon" href="../favicon.ico" mce_href="/favicon.ico" rel="shortcut icon"/>
+    <link type="text/css" href="../css/shared.css" rel="stylesheet"/>
+    <link href="../css/head.css" rel="stylesheet" type="text/css" />
+    <link href="../font/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="../css/pager.css" />
+    <link href="../css/foot.css" rel="stylesheet" type="text/css" />
+    <link href="../js/kindeditor/themes/default/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/publish_reply.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" href="../BigoUI/css/bigo.css" rel="stylesheet"/>
+</head>
+<body>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(4));
+    out.flush();
+%>
+<div class="max_width">
+    <div class=" fenleihead"><a href="javascript:void(0);">买家地盘</a><span>></span><a href="javascript:void(0);">谈天说地</a><span>></span><a href="javascript:void(0);"><%=topic%></a><span>></span>发表回复</div>
+    <div class="detail-edit" id="reply">
+        <div class="hd"><h3>发表回复</h3></div>
+        <%
+            out.write(sb.toString());
+        %>
+        <div class="edit-group">
+            <form class="group-form">
+                <textarea name="remark" id="neiR"></textarea>
+                <div class="wenzi">源码:已输入<em style="font-weight:bold;color:green;" class="red">0</em>/最多输入<em style=" font-weight:bold">20000</em></div>
+                <label class="for-anon" for="anon">
+                    <input type="checkbox" id="anon" name="">
+                    <span>匿名回复<input type="hidden" id="isTou" name="isTou" value="0"/></span>
+                </label>
+                <div class="Reply-info">
+                    <input name="" type="button" class="btn-bm" onclick="fabiao()" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%
+    out.write(ComHtmlHandler.getInstance().htmlHandler(3));
+    out.flush();
+%>
+<script type="text/javascript" src="/js/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/head.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/kindeditor-all.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/tools.js" charset="utf-8"></script>
+<script type="text/javascript" src="../BigoUI/bigo.min.js" charset="utf-8"></script>
+<script>
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+    $(".ming li").each(function(index, element) {
+        $(this).click(function(){
+            var index=$(this).index();
+            var bbj=$(".ming li").eq(0).text();
+            var btr=$(".ming li").eq(0).attr("data-id");
+            var abj=$(this).text();
+            var atr=$(this).attr("data-id");
+            if(index != 0){
+                $(".ming li").eq(0).text(abj);
+                $(".ming li").eq(0).attr("data-id",atr);
+                $(".ming li").eq(1).text(bbj);
+                $(".ming li").eq(1).attr("data-id",btr);
+            }
+        });
+    });
+    $(document).ready(function () {
+        $("#anon").click(function(){
+            if($("#anon").attr("checked") =="checked") {
+                $("#isTou").val(1);
+            }else {
+                $("#isTou").val(0);
+            }});
+    });
+    //描述,初始化kindeditor
+    var myKindEditor;
+    KindEditor.basePath = '/js/kindeditor/';
+    KindEditor.ready(function(K) {
+        myKindEditor = K.create('textarea[name="remark"]', {
+            resizeType: 1,
+            urlType: 'domain',
+            allowImageUpload: true,
+            allowFileManager: false,
+            formatUploadUrl:false,
+            uploadJson: '/FileUploadServlet.action?fileType=bbsImg&type=1',
+            items: $.kindMenu,
+            cssPath: ['/js/kindeditor/extcss.css'],
+            afterFocus:function(){},
+            afterChange:function(){
+                this.sync();
+                $(".red").text($("#neiR").val().length);
+            }
+        });
+    });
+    function fabiao () {
+        myKindEditor.html(killHtml(myKindEditor.html()));
+        myKindEditor.sync();
+        var chang = $("#neiR").val().length;
+        if(chang > 2000 || chang <= 0) {
+            $.showTipPop('null', '内容为1--2000', {btn: false});
+            return false;
+        }
+        var neiR = $("#neiR").val();
+        var pID = '<%=postId%>';
+        var fID = '<%=forum_id%>';
+        var yin = '<%=jsonContent%>';
+        var niM = $("#isTou").val();
+        $.Bigo('/Action/SendPostRep.do',{taskId_1: '15', cmdType_1: 'Update',taskId_2: '16', cmdType_2: 'Update',taskId_3: '23', cmdType_3: 'Update',pID:pID,fID:fID,user_id: '<%=user_id%>',yin:yin,neiR:neiR,niM:niM}, {sucAction: suc7});
+        function suc7(data) {
+            var err = null, msg = null, field = null;
+            for (var i in data) {
+                if (i == 0) {
+                    $.showTipPop('null', '回贴成功', function () {
+                        window.location.href="/fenlei/post.jsp?postid=<%=postId%>";
+                    });
+                    return false;
+                }
+                else if (i == "error") {
+                    err = data[i];
+                }
+                else if (i == "msg") {
+                    msg = data[i];
+                }
+                else if (i == "field") {
+                    field = data[i];
+                }
+            }
+            $.showTipPop('null', msg);
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
+

@@ -1,0 +1,4 @@
+#多服务器使用逗号分隔
+serverList=127.0.0.1:11211,192.168.2.35:11211
+weightList=1,1
+defaultCacheTime=28800

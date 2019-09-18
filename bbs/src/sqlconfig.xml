@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sqls name="SQL配置文件大于小于号用全角＜＞；ID属性大写">
+
+    <sql ID="1150" value="select user_id from bbs_user where 1=1"/>
+    <sql ID="1151" value="select * from sx_bbs_main where 1=1"/>
+    <sql ID="1152" value="insert into bbs_user (user_name,password,email,create_timestamp) value(@user_name@,@password@,@email@,@create_timestamp@)"/>
+    <sql ID="1153" value="select user_id from bbs_user where user_name=@user_name@ and password=@password@ limit 1"/>
+    <!--发帖-->
+    <sql ID="1154" value="insert into sx_bbs_main(user_id,topic,content,create_time)value(@user_id@,@topic@,@content@,@create_time@)"/>
+    <!---->
+    <sql ID="1155" value="select * from sx_bbs_main where post_id=@post_id@"/>
+    <sql ID="1156" value="update sx_bbs_main set clicks=clicks+1 where post_id=@post_id@"/>
+    <sql ID="1157" value="select * from bbs_user where 1=1 @sqlWhere@"/>
+    <sql ID="1158" value="update bbs_user set user_name=@user_name@,password=@password@,email=@email@,age=@age@,likes=@like@,is_root=@is_root@,sex=@sex@,journal=@Journal@ where user_id=@user_id@"/>
+    <sql ID="1159" value="delete  from bbs_user where user_id=@user_id@"/>
+    <sql ID="1160" value="select * from sx_bbs_main where 1=1 @sqlWhere@"/>
+    <sql ID="1162" value="update sx_bbs_main set is_elite=@is_elite@ where post_id=@post_id@"/>
+    <sql ID="1163" value="delete from sx_bbs_main where post_id=@post_id@"/>
+    <sql ID="1164" value="insert into  sx_bbs_replies (post_id,replies_user_id,replies_content,replies_timestamp)value(@post_id@,@replies_user_id@,@replies_content@,@replies_timestamp@)"/>
+</sqls>
+
+

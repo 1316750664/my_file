@@ -1,0 +1,8 @@
+<!--fs:index-->
+<div class="ya">
+    <img src="###src###">
+    <h3>###time:###index:create_time######</h3>
+    <h4><a href="/fenlei/post.jsp?postid=###index:post_id###" class="gary">###index:topic###</a></h4>
+    ###index:content###<a href="/fenlei/post.jsp?postid=###index:post_id###" class="bule">[详情]</a>
+</div>
+<!--fe:index-->

@@ -1,0 +1,27 @@
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="com.util.tools.CheckTools" %>
+<%@ page import="com.util.tools.ReadWriteProperties" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%
+
+    String web_server = ReadWriteProperties.getInstance().readValue("config","web_server");
+    String bbs_server = ReadWriteProperties.getInstance().readValue("config","bbs_server");
+
+    //获取跳过来的超链接
+    String referer = request.getHeader("Referer");
+    String reUrl = request.getParameter("reUrl");//以防部分页面包含中间页无法直接返回
+   /* reUrl = bbs_server + reUrl;
+    referer = bbs_server + referer;*/
+    if(!CheckTools.isNull(referer)&&referer.indexOf("/error/")==-1){
+        referer = URLEncoder.encode(referer,"UTF-8");
+        response.sendRedirect(web_server+"Login/loginDetect.jsp?url="+referer);
+        return;
+    } else if(!CheckTools.isNull(reUrl)){
+        reUrl = URLEncoder.encode(reUrl,"UTF-8");
+        response.sendRedirect(web_server+"Login/loginDetect.jsp?url="+reUrl);
+        return;
+    }else{
+        response.sendRedirect(web_server+"Login/loginDetect.jsp?url="+bbs_server+"/p-center/andetiezi.jsp");
+        return;
+    }
+%>

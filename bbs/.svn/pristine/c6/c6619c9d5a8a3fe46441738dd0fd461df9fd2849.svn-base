@@ -1,0 +1,303 @@
+package com.service.servlet.RegisterPackages;
+
+import com.bean.TaskBean;
+import com.bean.ValidCodeBean;
+import com.service.Service.UserService.UserService;
+import com.service.clazz.MainJsonService;
+import com.service.fragService.FragService;
+import com.util.tools.CheckTools;
+import com.util.tools.FingerUtil;
+import com.util.tools.FormParamValid;
+import com.util.tools.FormatDate;
+import com.util.tools.ToolUtil;
+import com.util.tools.ValidCodeCookie;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.map.DeserializationConfig;
+import org.codehaus.jackson.map.ObjectMapper;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URLEncoder;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * Created by xiayongwei on 2014/9/20.
+ */
+@WebServlet(name = "UserRegisterAction", urlPatterns = {"/Action/UserRegisterAction.do"})
+public class UserRegisterAction extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        PrintWriter out = null;
+        Throwable exception = null;
+        String errorCode = "未知错误";
+        try {
+            response.setHeader("content-type", "application/json;charset=utf-8");
+            out = response.getWriter();
+
+            String registerType = request.getParameter("type");
+            if (registerType == null || "".equals(registerType)) {
+                out.print("{\"error\":\"301\",\"msg\":\"\"}");
+                out.flush();
+                return;
+            }
+
+            String username = request.getParameter("txt_zh");
+            int taskId0 = 102;
+            int cmdType0 = 0;
+            String[] params0 = {username};
+            TaskBean taskBean0 = new TaskBean(taskId0, cmdType0, params0);
+            String json0 = FragService.getInstance().fragment(0, taskBean0);
+            if (json0 != null && !"".equals(json0) && !"[]".equals(json0)) {
+                out.print("{\"error\":\"301\",\"msg\":\"用户名重复!\"}");
+                out.flush();
+                return;
+            }
+
+            String authCode = request.getParameter("authcode");
+            Cookie[] cookies = request.getCookies();
+            ValidCodeCookie validCodeCookie = ValidCodeCookie.getInstance();
+            ValidCodeBean validCodeBean = validCodeCookie.readCodeCookie(response, cookies, 1);
+            if (authCode == null || "".equals((authCode = authCode.trim())) || validCodeBean == null || !authCode.equalsIgnoreCase(validCodeBean.getCode())) {
+                out.print("{\"error\":\"301\",\"msg\":\"禁止重复提交表单！\"}");
+                out.flush();
+                return;
+            }
+            validCodeCookie.deleteCodeCookie(response, cookies, 1);
+
+            String rd = request.getParameter("rd");
+            if(CheckTools.isNull(rd)){
+                rd = "0";
+            }
+            String salt = UUID.randomUUID().toString();
+            String pwd = request.getParameter("txt_pwd");
+            String strPwd = FingerUtil.md5(FingerUtil.md5(pwd) + salt);
+            String balance = UserService.getInstance().encryptUserBalance(salt, 0.00d);
+            String registerIp = ToolUtil.getClientIp(request);
+            String now_time = FormatDate.getTimestampString(new Timestamp(System.currentTimeMillis()));
+            Map<String, String[]> paramMap = new HashMap<String, String[]>(request.getParameterMap());
+            paramMap.put("cmdType", new String[]{"Update"});
+            paramMap.put("ide", new String[]{"user_id"});
+            paramMap.put("txt_pwd", new String[]{strPwd});
+            paramMap.put("login_salt", new String[]{salt});
+            paramMap.put("trade_password", new String[]{strPwd});//支付密码
+            paramMap.put("balance", new String[]{balance});
+            paramMap.put("freeze_balance", new String[]{balance});
+            paramMap.put("total_balance", new String[]{balance});
+            paramMap.put("reg_ip", new String[]{registerIp});
+            paramMap.put("reg_time", new String[]{now_time});
+            paramMap.put("rd",new String[]{rd});
+            paramMap.put("taskId_2", new String[]{"1321"});
+            paramMap.put("cmdType_2", new String[]{"Update"});
+            ///////////////////////////////////////////////
+            //paramMap.put("session_uuid", new String[]{salt});//直接利用login_salt
+            // 注册类别
+            if (registerType.equals("1")) {
+                paramMap.put("taskId", new String[]{"106"});
+                paramMap.put("usertype", new String[]{"1"});
+                String validMessage = FormParamValid.getInstance().valid(paramMap);
+                if (validMessage != null) {
+                    out.write(validMessage);
+                    out.flush();
+                    return;
+                }
+                String json = new MainJsonService().invoke(paramMap);
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+                objectMapper.configure(JsonParser.Feature.INTERN_FIELD_NAMES, true);
+                objectMapper.configure(JsonParser.Feature.CANONICALIZE_FIELD_NAMES, true);
+                objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                List<Map> list = objectMapper.readValue(json, List.class);
+                if (list == null || list.size() <= 0) {
+                    out.print("{\"error\":\"301\",\"msg\":\"\"}");
+                    out.flush();
+                    return;
+                } else {
+                    String user_id = String.valueOf(list.get(0).get("user_id"));
+                    if (user_id == null || "".equals(user_id) || "null".equals(user_id)) {
+                        out.print("{\"error\":\"301\",\"\"}");
+                        out.flush();
+                        return;
+                    }
+                    Map<String, String> memUser = new HashMap<String, String>();
+                    memUser.put("user_id", user_id);
+                    memUser.put("login_name", username);
+                    memUser.put("user_type", "1");
+                    memUser.put("is_seller", "0");
+                    memUser.put("login_salt", salt);
+//                    memUser.put("province_id","");
+//                    memUser.put("city_id","");
+//                    memUser.put("area_id","");
+                    memUser.put("last_time", now_time);
+                    memUser.put("last_ip", registerIp);
+                    memUser.put("session_uuid", salt);
+                    memUser.put("check_status", "1");
+                    UserService.getInstance().setCookieUser(salt, memUser, response);
+                    String url = "/Login/chenggong.jsp?s_n=" + URLEncoder.encode(paramMap.get("txt_zh")[0], "UTF-8") + "&s_i=" + user_id + "&s_w=" + FingerUtil.encryptPropertiesAES(request.getParameter("txt_pwd"), "pwKey");
+                    out.print("{\"error\":\"201\",\"url\":\"" + url + "\"}");
+                    out.flush();
+                    return;
+                }
+            } else {
+                paramMap.put("taskId", new String[]{"101"});
+                String validMessage = FormParamValid.getInstance().valid(paramMap);
+                if (validMessage != null) {
+                    out.write(validMessage);
+                    out.flush();
+                    return;
+                }
+                MainJsonService mainJsonService = new MainJsonService();
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER, true);
+                objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+                objectMapper.configure(JsonParser.Feature.INTERN_FIELD_NAMES, true);
+                objectMapper.configure(JsonParser.Feature.CANONICALIZE_FIELD_NAMES, true);
+                objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                String json1 = mainJsonService.invoke(paramMap);
+                List<Map> list = objectMapper.readValue(json1, List.class);
+                if (list == null || list.size() <= 0) {
+                    out.print("{\"error\":\"301\",\"msg\":\"\"}");
+                    out.flush();
+                    return;
+                } else {
+                    String user_id = String.valueOf(list.get(0).get("user_id"));
+                    if (user_id == null || "".equals(user_id) || "null".equals(user_id)) {
+                        out.print("{\"error\":\"301\",\"\"}");
+                        out.flush();
+                        return;
+                    }
+                    paramMap.put("taskId", new String[]{"104"});
+                    paramMap.put("cmdType", new String[]{"Update"});
+                    paramMap.put("user_id", new String[]{user_id});
+                    paramMap.put("taskId_1", new String[]{"2142"});
+                    paramMap.put("cmdType_1", new String[]{"Update"});
+                    paramMap.put("taskId_2", new String[]{"2143"});
+                    paramMap.put("cmdType_2", new String[]{"Update"});
+                    paramMap.put("taskId_3", new String[]{"2144"});
+                    paramMap.put("cmdType_3", new String[]{"Update"});
+                    paramMap.put("ide_1", new String[]{"freight_id"});
+                    paramMap.put("ide_2", new String[]{"freight_id"});
+                    paramMap.put("ide_3", new String[]{"freight_id"});
+                    String validMessage1 = FormParamValid.getInstance().valid(paramMap);
+                    if (validMessage1 != null) {
+                        out.write(validMessage1);
+                        out.flush();
+                        return;
+                    }
+                    String json2 = mainJsonService.invoke(paramMap);
+                    List<Map> list2 = objectMapper.readValue(json2, List.class);
+                    if (list2 == null || list2.size() <= 0) {
+                        out.print("{\"error\":\"301\",\"msg\":\"\"}");
+                        out.flush();
+                        return;
+                    } else {
+                        String copyId=null;
+                        for(int i=1;i<4;i++){
+                            if(i==1){
+                                copyId = "92";
+                            }else if(i==2){
+                                copyId = "93";
+                            }else if(i==3){
+                                copyId = "95";
+                            }
+                            String freightId = String.valueOf(list2.get(i).get("freight_id"));
+                            Map<String, String[]> freightMap = new HashMap<String, String[]>(11);
+                            freightMap.put("taskId_1", new String[]{"2145"});
+                            freightMap.put("taskId_2", new String[]{"2146"});
+                            freightMap.put("taskId_3", new String[]{"2147"});
+                            freightMap.put("taskId_4", new String[]{"2148"});
+                            freightMap.put("cmdType_1", new String[]{"Update"});
+                            freightMap.put("cmdType_2", new String[]{"Update"});
+                            freightMap.put("cmdType_3", new String[]{"Update"});
+                            freightMap.put("cmdType_4", new String[]{"Update"});
+                            freightMap.put("freight_id", new String[]{freightId});
+                            freightMap.put("user_id", new String[]{user_id});
+                            freightMap.put("copy_id", new String[]{copyId});
+                            String json3 = mainJsonService.invoke(freightMap);
+                            List<Map> list3 = objectMapper.readValue(json3, List.class);
+                            if (list3 == null || list3.size() <= 0) {
+                                out.print("{\"error\":\"301\",\"msg\":\"\"}");
+                                out.flush();
+                                return;
+                            }
+                        }
+
+//                        String isSeller = paramMap.get("seller")[0];
+//                        String checkStatus = "1";
+//                        if ("1".equals(isSeller)) {
+//                            checkStatus = "0";
+//                        }
+                        Map<String, String> memUser = new HashMap<String, String>();
+                        memUser.put("user_id", user_id);
+                        memUser.put("login_name", username);
+                        memUser.put("login_salt", salt);
+                        memUser.put("user_type", paramMap.get("usertype")[0]);
+                        memUser.put("is_seller", paramMap.get("seller")[0]);
+                        memUser.put("province_id", paramMap.get("province")[0]);
+                        memUser.put("city_id", paramMap.get("city")[0]);
+                        memUser.put("area_id", paramMap.get("town")[0]);
+                        memUser.put("last_time", now_time);
+                        memUser.put("last_ip", registerIp);
+                        memUser.put("session_uuid", salt);
+                        memUser.put("check_status", "0");//企业会员都必须经过审核
+                        /*memUser.put("check_status", "1");//先不需要审核注释*/
+                        UserService.getInstance().setCookieUser(salt, memUser, response);
+                        String url = "/Login/chenggong.jsp?s_n=" + URLEncoder.encode(paramMap.get("txt_zh")[0], "UTF-8") + "&s_i=" + paramMap.get("user_id")[0] + "&s_w=" + FingerUtil.encryptPropertiesAES(request.getParameter("txt_pwd"), "pwKey");
+                        out.print("{\"error\":\"201\",\"url\":\"" + url + "\"}");
+                        out.flush();
+                        return;
+                    }
+                }
+            }
+        } catch (NoSuchMethodException e) {
+            exception = e.getCause();
+            errorCode = "请求serviceId不存在";
+        } catch (UnsupportedEncodingException e) {
+            exception = e.getCause();
+            errorCode = "不支持的编码格式";
+        } catch (SQLException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IllegalAccessException e) {
+            exception = e.getCause();
+            errorCode = "私有serviceId方法请求";
+        } catch (InvocationTargetException e) {
+            exception = e.getTargetException();
+            errorCode = "系统错误";
+        } catch (NullPointerException e) {
+            exception = e.getCause();
+            errorCode = "空指针错误";
+        } catch (RuntimeException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } catch (IOException e) {
+            exception = e.getCause();
+            errorCode = e.getMessage();
+        } finally {
+            if (exception != null) {
+                //exception.printStackTrace();//正式环境应该删除，或转至出错页
+                if (out != null) {
+                    out.write("{\"error\":\"601\",\"msg\":\"" + errorCode + "\"}");
+                    out.flush();
+                }
+            }
+        }
+    }
+}

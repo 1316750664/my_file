@@ -1,0 +1,36 @@
+<div class="max_width">
+   <div class="bbs_index">
+      <div class="index_l">
+        <img src="/images/bbslogo.png" border="0">
+      </div>
+      <div class="index_r">
+          <div class="shoubig">
+               <div class="list">
+                 <ul class="ming">
+                    <li>帖子</li>    
+                    <li>汽友</li>
+                 </ul>
+                 <i class="iconfont shangjiao">&#xe601;</i>
+                 <i class="iconfont shangjiao dis_none">&#xe600;</i>
+               </div>
+              <input name="shuo" type="text" class="kuang">
+              <input name="shousuo" type="button" class="ant" value="搜索">
+          </div>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+//搜索
+$(".list").hover(function(){
+    $(this).addClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+},function(){
+	$(this).removeClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+	}
+);
+</script>

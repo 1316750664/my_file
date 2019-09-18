@@ -1,0 +1,181 @@
+<div class="bignav">
+   <div class="nav_h">
+      <div class="max_width">
+        <div id="max_nav">
+             <div class="navall">
+                全部社区
+                <i class="iconfont navall_xiao">&#xe601;</i>
+                <i class="iconfont navall_xiao dis_none">&#xe600;</i>
+             </div>
+             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="alllis">
+                  <tr>
+                    <td>
+                      <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd><a href="javascript:void(0);">汽商汇</a></dd>
+                               <dd><a href="/fenlei/post.jsp?ID=2">谈天说地</a></dd>
+                               <dd><a href="/fenlei/post.jsp?ID=4">七嘴八舌</a></dd>
+                               <dd><a href="/fenlei/post.jsp?ID=3">经验交流</a></dd>
+                               <dd><a href="/fenlei/post.jsp?ID=8181">奥迪A8论坛</a></dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                    <td style="border-left:1px #ccc dashed; border-right:1px #ccc dashed">
+                       <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                    <td>
+                      <div class="xingming">
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                           <dl>
+                               <dt>官网</dt>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                               <dd>汽商汇</dd>
+                           </dl>
+                        </div>
+                    </td>
+                  </tr>
+             </table>
+         </div>
+         <ul class="nav">
+            <li cag="1"><a href="/index.jsp">首页</a></li>
+            <li cag="2"><a href="javascript:void(0);">聚焦热点</a></li>
+            <li cag="3"><a href="/fenlei/serch_brand.jsp">车型论坛</a></li>
+            <li cag="4"><a href="javascript:void(0);">活动专区</a></li>
+            <li><a href="/fenlei/fenlei01.jsp?ID=9696">维修常识</a></li>
+         </ul>
+         <div class="p-center"><a href="/p-center/andetiezi.jsp" style="color:#fff" target="_blank"><i class="iconfont" style="color:#fff">&#xe604; </i>个人中心</a></div>
+      </div>
+   </div>
+   <div class="navtwo">
+      <div class="max_width">
+          <ol class="navtwo_list" id="navtwo1">
+              <li><a href="/fenlei/post.jsp?ID=2">谈天说地</a></li>
+              <li><span>|</span><a href="/fenlei/post.jsp?ID=4">七嘴八舌</a></li>
+              <li><span>|</span><a href="/fenlei/post.jsp?ID=3">经验交流</a></li>
+          </ol>
+          <ol class="navtwo_list list_margin10" id="navtwo2">
+
+              <li><a href="/fenlei/post.jsp?ID=9698">自驾游</a></li>
+              <li><span>|</span><a href="/fenlei/post.jsp?ID=9699">车模秀车</a></li>
+              <li><span>|</span><a href="/fenlei/post.jsp?ID=9700">摄影论坛</a></li>
+              <li><span>|</span><a href="/fenlei/post.jsp?ID=9701">车展专区</a></li>
+          </ol>
+          <ol class="navtwo_list list_margin15" id="navtwo3">
+              <li><a href="/fenlei/fenlei01.jsp">五菱论坛</a></li>
+              <li><span>|</span><a href="/fenlei/fenlei01.jsp?ID=8171">奥迪A3论坛</a></li>
+              <li><span>|</span><a href="/fenlei/fenlei01.jsp?ID=8172">奥迪A4L论坛</a></li>
+              <li><span>|</span><a href="/fenlei/fenlei01.jsp?ID=8173">奥迪A6L论坛</a></li>
+              <li><span>|</span><a href="/fenlei/fenlei01.jsp?ID=8174">奥迪Q3论坛</a></li>
+          </ol>
+      </div>
+   </div>
+</div>
+<script type="text/javascript">
+//头部二级导航
+$(".nav li").each(function(index, element) {
+   $(this).mouseenter(function(e){
+	   	$(".navtwo_list").css("display","none");
+		$(".nav li").removeClass("nav_bg");
+		var index = $(this).index();
+		var cg = $(this).attr("cag");
+		if($("#navtwo"+cg).length == 1){
+			$("#navtwo"+cg).css("display","block");
+			$(".navtwo").css("display","block");
+			$(".navtwo").addClass("navtwo_bg");
+			$(this).addClass("nav_bg");
+		}else{
+			$(this).addClass("nav_ye");
+			
+		}
+	}).mouseleave(function(e){
+		$(this).removeClass("nav_ye");
+		$(".navtwo").css("display","none");
+		});
+});
+
+$(".navtwo").mouseenter(function(e){
+	var index = $(this).index();
+	var cg = $(this).attr("cag");
+	$(".navtwo").css("display","inline");
+	$(".navtwo").addClass("navtwo_bg");
+
+	}).mouseleave(function(e){
+		$(".navtwo").css("display","none");
+	});
+$(".bignav").mouseleave(function(){
+    $(".nav li").removeClass("nav_bg");
+})
+//大分类
+$("#max_nav").mouseenter(function(){
+	$(".alllis").css("display","block");
+		$(".navall").find("i").each(function(index, element) {
+			  $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+		 });
+	
+
+	$(".alllis").css("display","none");
+	$(".navall").find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+});
+</script>

